@@ -13,11 +13,14 @@
   --color-surface: var(--color-surface);
   --color-surface-elevated: var(--color-surface-elevated);
   --color-surface-glass: var(--color-surface-glass);
+  --color-surface-hover: var(--color-surface-hover);
+  --color-surface-sunken: var(--color-surface-sunken);
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
   --color-text-muted: var(--color-text-muted);
   --color-border: var(--color-border);
   --color-border-subtle: var(--color-border-subtle);
+  --color-border-focus: var(--color-border-focus);
   --color-success: var(--color-success);
   --color-success-light: var(--color-success-light);
   --color-error: var(--color-error);
@@ -96,7 +99,16 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 256px 256px;
+    animation: noise-drift 8s steps(4) infinite;
   }
+}
+
+@keyframes noise-drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -2px); }
+  100% { transform: translate(0, 0); }
 }
 
 /* ===== GSAP utility classes ===== */
@@ -242,5 +254,202 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+/* ===== Spotlight card (cursor-tracking radial gradient) ===== */
+@layer components {
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(99, 102, 241, 0.12),
+      transparent 40%
+    );
+    transition: opacity 0.4s ease;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ===== Card highlight (inner top glow line) ===== */
+@layer components {
+  .card-highlight {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* ===== Text gradient: gold ===== */
+@layer components {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 40%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===== Text gradient: primary (indigo) ===== */
+@layer components {
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #818cf8 40%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===== Mesh orb — animated floating gradient ===== */
+@layer components {
+  .mesh-orb {
+    animation: mesh-float 20s ease-in-out infinite;
+    will-change: transform;
+  }
+}
+
+/* ===== Progress glow ===== */
+@layer components {
+  .progress-glow {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-pill);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 12px rgba(99, 102, 241, 0.25);
+  }
+
+  .progress-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+}
+
+/* ===== Mesh-float animation for hero orbs ===== */
+@keyframes mesh-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+  50% {
+    transform: translate(-25px, 20px) scale(0.94);
+  }
+  75% {
+    transform: translate(20px, 35px) scale(1.04);
+  }
+}
+
+/* ===== Question card: shake on wrong answer ===== */
+@keyframes qc-shake-anim {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+@layer components {
+  .qc-shake {
+    animation: qc-shake-anim 300ms ease-in-out;
+  }
+}
+
+/* ===== Question card: green glow on correct answer ===== */
+@keyframes qc-glow-anim {
+  0% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+  50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.15); }
+  100% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@layer components {
+  .qc-glow-correct {
+    animation: qc-glow-anim 600ms ease-out;
+  }
+}
+
+/* ===== Flashcard: 3D flip container ===== */
+@layer components {
+  .fc-flip-container {
+    perspective: 1200px;
+  }
+
+  .fc-flip-inner {
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fc-flip-face {
+    backface-visibility: hidden;
+  }
+}
+
+/* ===== Flashcard: fly-off animations ===== */
+@keyframes fc-fly-left-anim {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(-120%) rotate(-12deg); opacity: 0; }
+}
+
+@keyframes fc-fly-right-anim {
+  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(120%) rotate(12deg); opacity: 0; }
+}
+
+@keyframes fc-fly-up-anim {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-80%) scale(0.9); opacity: 0; }
+}
+
+@layer components {
+  .fc-fly-left {
+    animation: fc-fly-left-anim 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .fc-fly-right {
+    animation: fc-fly-right-anim 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .fc-fly-up {
+    animation: fc-fly-up-anim 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* ===== Pro pricing card: enhanced hover ===== */
+@layer components {
+  .pro-pricing-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  }
+
+  .pro-pricing-card:hover {
+    transform: scale(1.05) translateY(-6px) !important;
+    box-shadow:
+      0 0 40px rgba(245, 158, 11, 0.25),
+      0 0 80px rgba(67, 56, 202, 0.15),
+      0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .pro-pricing-card::before {
+    transition: opacity 0.4s ease;
+  }
+
+  .pro-pricing-card:hover::before {
+    opacity: 1;
   }
 }

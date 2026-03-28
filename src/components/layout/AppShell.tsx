@@ -4,6 +4,7 @@ import {
   Layers, BarChart3, FileText, Settings, LogOut, Gamepad2,
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import { useGamificationStore, LEVEL_NAMES } from '@/stores/gamificationStore'
 import BetaBanner from '@/components/layout/BetaBanner'
 import { BETA_MODE } from '@/lib/beta'
 
@@ -21,63 +22,96 @@ const GAMES_ITEMS = [
   { to: '/speed-round', icon: Gamepad2, label: 'Games' },
 ]
 
+function NavLink({ to, icon: Icon, label, active, accent = false }: {
+  to: string
+  icon: typeof LayoutDashboard
+  label: string
+  active: boolean
+  accent?: boolean
+}) {
+  const activeBg = accent ? 'bg-secondary/10' : 'bg-primary/10'
+  const activeText = accent ? 'text-secondary' : 'text-primary'
+
+  return (
+    <Link
+      to={to}
+      className={`relative flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm transition-all duration-200 ${
+        active
+          ? `${activeBg} font-medium ${activeText}`
+          : 'text-text-secondary hover:bg-surface-hover hover:text-text-primary'
+      }`}
+    >
+      {active && (
+        <span
+          className="absolute inset-0 rounded-xl border border-current opacity-10 transition-all duration-300"
+          aria-hidden="true"
+        />
+      )}
+      <Icon className="h-5 w-5" />
+      {label}
+    </Link>
+  )
+}
+
 export default function AppShell() {
   const location = useLocation()
   const navigate = useNavigate()
   const { signOut } = useAuth()
+  const level = useGamificationStore((s) => s.level)
+  const levelName = LEVEL_NAMES[Math.min(level - 1, LEVEL_NAMES.length - 1)]
 
   return (
     <div className="min-h-screen bg-background">
       {/* Desktop Sidebar */}
       <aside className="fixed top-0 bottom-0 left-0 z-40 hidden w-64 border-r border-border bg-surface/50 backdrop-blur-xl lg:block">
         <div className="flex h-full flex-col">
-          {/* Logo */}
-          <Link to="/dashboard" className="flex items-center gap-2.5 border-b border-border px-6 py-5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
-              <BookOpen className="h-5 w-5 text-white" />
+          {/* User profile area */}
+          <div className="border-b border-border px-5 py-4">
+            <Link to="/dashboard" className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+                <BookOpen className="h-5 w-5 text-white" />
+              </div>
+              <span className="font-display text-xl text-text-primary">PraxisPrep</span>
+            </Link>
+            <div className="mt-3 flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-light px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                Lv {level}
+              </span>
+              <span className="text-xs text-text-secondary">{levelName}</span>
             </div>
-            <span className="font-display text-xl text-text-primary">PraxisPrep</span>
-          </Link>
+          </div>
 
           {/* Nav Links */}
           <nav className="flex-1 space-y-1 px-3 py-4">
             {NAV_ITEMS.map((item) => {
               const active = location.pathname === item.to || location.pathname.startsWith(item.to + '/')
               return (
-                <Link
+                <NavLink
                   key={item.to}
                   to={item.to}
-                  className={`flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm transition-all ${
-                    active
-                      ? 'bg-primary/10 font-medium text-primary'
-                      : 'text-text-secondary hover:bg-surface hover:text-text-primary'
-                  }`}
-                >
-                  <item.icon className="h-5 w-5" />
-                  {item.label}
-                </Link>
+                  icon={item.icon}
+                  label={item.label}
+                  active={active}
+                />
               )
             })}
 
             {/* Games section divider */}
-            <div className="pt-4 pb-2 px-4">
+            <div className="relative pt-5 pb-2 px-4">
+              <div className="absolute left-4 right-4 top-3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
               <span className="font-body text-[10px] font-semibold uppercase tracking-widest text-text-muted">Games</span>
             </div>
             {GAMES_ITEMS.map((item) => {
               const active = location.pathname === item.to || location.pathname.startsWith(item.to + '/') || location.pathname === '/clinical-scenario'
               return (
-                <Link
+                <NavLink
                   key={item.to}
                   to={item.to}
-                  className={`flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm transition-all ${
-                    active
-                      ? 'bg-secondary/10 font-medium text-secondary'
-                      : 'text-text-secondary hover:bg-surface hover:text-text-primary'
-                  }`}
-                >
-                  <item.icon className="h-5 w-5" />
-                  {item.label}
-                </Link>
+                  icon={item.icon}
+                  label={item.label}
+                  active={active}
+                  accent
+                />
               )
             })}
           </nav>
@@ -86,7 +120,7 @@ export default function AppShell() {
           <div className="space-y-1 border-t border-border px-3 py-4">
             <Link
               to="/settings"
-              className="flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary"
+              className="flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all duration-200 hover:bg-surface-hover hover:text-text-primary"
             >
               <Settings className="h-5 w-5" />
               Settings
@@ -97,7 +131,7 @@ export default function AppShell() {
                   await signOut()
                   navigate('/login')
                 }}
-                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary"
+                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all duration-200 hover:bg-surface-hover hover:text-text-primary"
               >
                 <LogOut className="h-5 w-5" />
                 Log Out

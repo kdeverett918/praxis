@@ -80,4 +80,57 @@ export function staggerReveal(selector: string, staggerDelay = 0.1) {
   })
 }
 
+export function counterAnimation(el: HTMLElement, target: number, duration = 1.5) {
+  const obj = { val: 0 }
+  gsap.to(obj, {
+    val: target,
+    duration,
+    ease: 'power2.out',
+    onUpdate() {
+      el.textContent = Math.round(obj.val).toLocaleString()
+    },
+  })
+}
+
+export function cardEntrance(el: HTMLElement) {
+  gsap.fromTo(
+    el,
+    { opacity: 0, scale: 0.9, rotation: 1 },
+    {
+      opacity: 1,
+      scale: 1,
+      rotation: 0,
+      duration: 0.7,
+      ease: 'back.out(1.7)',
+    },
+  )
+}
+
+export function pulseGlow(el: HTMLElement, color = 'rgba(99, 102, 241, 0.4)') {
+  gsap.to(el, {
+    boxShadow: `0 0 30px ${color}, 0 0 60px ${color}`,
+    duration: 1,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  })
+}
+
+export function shakeElement(el: HTMLElement) {
+  gsap.fromTo(
+    el,
+    { x: 0 },
+    {
+      x: 8,
+      duration: 0.08,
+      ease: 'power2.inOut',
+      repeat: 5,
+      yoyo: true,
+      onComplete() {
+        gsap.set(el, { x: 0 })
+      },
+    },
+  )
+}
+
 export { gsap, ScrollTrigger }

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   BookOpen, Brain, Sparkles, Trophy, BarChart3,
@@ -9,7 +9,63 @@ import Footer from '@/components/layout/Footer'
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
-import { initScrollReveals, staggerReveal } from '@/lib/animations'
+import { initScrollReveals, staggerReveal, gsap } from '@/lib/animations'
+
+/* ===== Dashboard Mockup Component ===== */
+function DashboardMockup() {
+  return (
+    <div
+      className="gsap-reveal relative z-10 mx-auto mt-16 w-full max-w-4xl"
+      style={{ perspective: '1200px' }}
+    >
+      <div
+        className="rounded-2xl border border-border bg-surface/70 p-6 shadow-2xl shadow-primary/10 backdrop-blur-sm"
+        style={{ transform: 'rotateX(8deg)' }}
+      >
+        {/* Mini stat cards row */}
+        <div className="mb-4 grid grid-cols-3 gap-3">
+          <div className="rounded-xl border border-border bg-surface-elevated/50 p-4">
+            <div className="mb-1 h-2 w-8 rounded-full bg-success/40" />
+            <div className="font-mono text-xl font-bold text-text-primary">72%</div>
+            <div className="font-body text-[10px] text-text-muted">Accuracy</div>
+          </div>
+          <div className="rounded-xl border border-border bg-surface-elevated/50 p-4">
+            <div className="mb-1 h-2 w-8 rounded-full bg-secondary/40" />
+            <div className="font-mono text-xl font-bold text-text-primary">342</div>
+            <div className="font-body text-[10px] text-text-muted">Questions</div>
+          </div>
+          <div className="rounded-xl border border-border bg-surface-elevated/50 p-4">
+            <div className="mb-1 h-2 w-8 rounded-full bg-primary/40" />
+            <div className="font-mono text-xl font-bold text-text-primary">7</div>
+            <div className="font-body text-[10px] text-text-muted">Day Streak</div>
+          </div>
+        </div>
+
+        {/* Question card skeleton */}
+        <div className="rounded-xl border border-border bg-background/60 p-5">
+          <div className="mb-3 flex gap-2">
+            <div className="h-5 w-16 rounded-full bg-primary/20" />
+            <div className="h-5 w-12 rounded-full bg-surface-elevated/60" />
+          </div>
+          <div className="mb-4 space-y-2">
+            <div className="h-3 w-full rounded bg-text-muted/10" />
+            <div className="h-3 w-4/5 rounded bg-text-muted/10" />
+          </div>
+          <div className="space-y-2">
+            {['A', 'B', 'C', 'D'].map((l) => (
+              <div key={l} className="flex items-center gap-3 rounded-lg border border-border/50 bg-surface/30 p-2.5">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-background text-[10px] font-bold text-text-muted">
+                  {l}
+                </div>
+                <div className="h-2.5 flex-1 rounded bg-text-muted/8" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const FEATURES = [
   {
@@ -89,18 +145,42 @@ const PRICING = [
 ]
 
 const STATS = [
-  { value: '450+', label: 'Practice Questions' },
-  { value: '132', label: 'Questions Per Exam' },
-  { value: '9', label: 'Big Nine Areas' },
-  { value: '3', label: 'Content Categories' },
+  { value: 450, display: '450+', label: 'Practice Questions' },
+  { value: 132, display: '132', label: 'Questions Per Exam' },
+  { value: 9, display: '9', label: 'Big Nine Areas' },
+  { value: 3, display: '3', label: 'Content Categories' },
 ]
 
 export default function LandingPage() {
+  const statsRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     initScrollReveals()
     staggerReveal('.feature-card', 0.12)
     staggerReveal('.pricing-card', 0.15)
     staggerReveal('.stat-item', 0.1)
+
+    // Animate stat numbers counting up on viewport entry
+    if (statsRef.current) {
+      const statEls = statsRef.current.querySelectorAll<HTMLElement>('.stat-number')
+      statEls.forEach((el) => {
+        const target = parseInt(el.dataset.target ?? '0', 10)
+        const obj = { val: 0 }
+        gsap.to(obj, {
+          val: target,
+          duration: 1.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          onUpdate() {
+            el.textContent = Math.round(obj.val) + (el.dataset.suffix ?? '')
+          },
+        })
+      })
+    }
   }, [])
 
   return (
@@ -109,11 +189,11 @@ export default function LandingPage() {
 
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 text-center">
-        {/* Gradient mesh background */}
-        <div className="pointer-events-none absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" />
-        <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-secondary/10 blur-[100px]" />
-        <div className="pointer-events-none absolute top-1/3 left-1/4 h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[100px]" />
-        <div className="pointer-events-none absolute bottom-1/3 right-1/3 h-[250px] w-[250px] rounded-full bg-primary/15 blur-[90px]" />
+        {/* Animated mesh-orb background */}
+        <div className="mesh-orb pointer-events-none absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" style={{ animationDelay: '0s' }} />
+        <div className="mesh-orb pointer-events-none absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-secondary/10 blur-[100px]" style={{ animationDelay: '-5s' }} />
+        <div className="mesh-orb pointer-events-none absolute top-1/3 left-1/4 h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[100px]" style={{ animationDelay: '-10s' }} />
+        <div className="mesh-orb pointer-events-none absolute bottom-1/3 right-1/3 h-[250px] w-[250px] rounded-full bg-primary/15 blur-[90px]" style={{ animationDelay: '-15s' }} />
 
         <div className="relative z-10">
           <Badge variant="secondary" className="mb-8 gsap-reveal">
@@ -121,7 +201,7 @@ export default function LandingPage() {
             AI-Powered Praxis 5331 Prep
           </Badge>
 
-          <h1 className="gsap-reveal mx-auto max-w-5xl text-5xl leading-[1.08] font-bold tracking-tight md:text-7xl lg:text-8xl">
+          <h1 className="gsap-reveal mx-auto max-w-5xl font-bold leading-[1.08] tracking-[-0.035em] text-[clamp(3rem,6vw,5.5rem)]">
             The smartest way to{' '}
             <span className="bg-gradient-to-r from-secondary to-amber-400 bg-clip-text text-transparent">
               pass the Praxis
@@ -152,12 +232,21 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* Stats bar */}
-        <div className="gsap-reveal relative z-10 mt-20 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-8 backdrop-blur-sm">
+        {/* Dashboard Mockup */}
+        <DashboardMockup />
+
+        {/* Stats bar with count-up */}
+        <div ref={statsRef} className="gsap-reveal relative z-10 mt-16 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-8 backdrop-blur-sm">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {STATS.map((stat) => (
               <div key={stat.label} className="stat-item gsap-reveal text-center">
-                <div className="font-display text-3xl font-bold text-secondary md:text-4xl">{stat.value}</div>
+                <div
+                  className="stat-number font-display text-3xl font-bold text-secondary md:text-4xl"
+                  data-target={stat.value}
+                  data-suffix={stat.display.includes('+') ? '+' : ''}
+                >
+                  0
+                </div>
                 <div className="mt-1 font-body text-sm text-text-secondary">{stat.label}</div>
               </div>
             ))}
@@ -165,7 +254,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== FEATURES ===== */}
+      {/* ===== FEATURES (Bento Grid) ===== */}
       <section id="features" className="mx-auto max-w-7xl px-6 py-section">
         <div className="gsap-reveal text-center">
           <Badge variant="primary" className="mb-6">
@@ -180,16 +269,26 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
-            <Card key={feature.title} hover className="feature-card gsap-reveal hover-glow">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/10">
-                <feature.icon className="h-6 w-6 text-secondary" />
-              </div>
-              <h3 className="mb-2 font-display text-xl">{feature.title}</h3>
-              <p className="font-body text-sm leading-relaxed text-text-secondary">{feature.desc}</p>
-            </Card>
-          ))}
+        {/* Bento grid: 6-column layout — first row 2 wide, second row 2x2 compact */}
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          {FEATURES.map((feature, idx) => {
+            const isWide = idx < 2
+            return (
+              <Card
+                key={feature.title}
+                hover
+                className={`feature-card gsap-reveal hover-glow ${
+                  isWide ? 'lg:col-span-3 lg:py-10' : 'sm:col-span-1 lg:col-span-3'
+                }`}
+              >
+                <div className={`mb-4 flex items-center justify-center rounded-xl bg-secondary/10 ${isWide ? 'h-14 w-14' : 'h-12 w-12'}`}>
+                  <feature.icon className={`text-secondary ${isWide ? 'h-7 w-7' : 'h-6 w-6'}`} />
+                </div>
+                <h3 className={`mb-2 font-display ${isWide ? 'text-2xl' : 'text-xl'}`}>{feature.title}</h3>
+                <p className="font-body text-sm leading-relaxed text-text-secondary">{feature.desc}</p>
+              </Card>
+            )
+          })}
         </div>
       </section>
 
@@ -251,14 +350,26 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
+        {/* Save vs competitors callout */}
+        <div className="gsap-reveal mx-auto mt-10 max-w-xl rounded-2xl border border-secondary/30 bg-secondary/5 p-5 text-center backdrop-blur-sm">
+          <p className="font-body text-sm font-semibold text-secondary">
+            Save up to 60% vs. competitors
+          </p>
+          <p className="mt-1 font-body text-xs text-text-secondary">
+            Most Praxis prep subscriptions charge $99&ndash;$149/year. PraxisPrep is a one-time $49 payment with more features.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
           {PRICING.map((plan) => (
             <Card
               key={plan.name}
               variant={plan.highlighted ? 'glass' : 'default'}
               hover
               className={`pricing-card gsap-reveal relative ${
-                plan.highlighted ? 'animated-gradient-border md:scale-105' : ''
+                plan.highlighted
+                  ? 'animated-gradient-border pro-pricing-card md:scale-105'
+                  : ''
               }`}
             >
               {plan.highlighted && (
