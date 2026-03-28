@@ -11,53 +11,6 @@ import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
 import { gsap, ScrollTrigger } from '@/lib/animations'
 
-/* ===== Dashboard Mockup Component ===== */
-function DashboardMockup() {
-  return (
-    <div
-      className="relative z-10 mx-auto mt-12 w-full max-w-4xl px-2 sm:mt-16 sm:px-0"
-      style={{ perspective: '1200px' }}
-    >
-      <div
-        className="rounded-2xl border border-border bg-surface/70 p-4 shadow-2xl shadow-primary/10 backdrop-blur-sm sm:p-6"
-        style={{ transform: 'rotateX(8deg)' }}
-      >
-        <div className="mb-4 grid grid-cols-3 gap-3">
-          {[
-            { color: 'bg-success/40', val: '72%', label: 'Accuracy' },
-            { color: 'bg-secondary/40', val: '342', label: 'Questions' },
-            { color: 'bg-primary/40', val: '7', label: 'Day Streak' },
-          ].map((s) => (
-            <div key={s.label} className="rounded-xl border border-border bg-surface-elevated/50 p-4">
-              <div className={`mb-1 h-2 w-8 rounded-full ${s.color}`} />
-              <div className="font-mono text-xl font-bold text-text-primary">{s.val}</div>
-              <div className="font-body text-[10px] text-text-muted">{s.label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="rounded-xl border border-border bg-background/60 p-5">
-          <div className="mb-3 flex gap-2">
-            <div className="h-5 w-16 rounded-full bg-primary/20" />
-            <div className="h-5 w-12 rounded-full bg-surface-elevated/60" />
-          </div>
-          <div className="mb-4 space-y-2">
-            <div className="h-3 w-full rounded bg-text-muted/10" />
-            <div className="h-3 w-4/5 rounded bg-text-muted/10" />
-          </div>
-          <div className="space-y-2">
-            {['A', 'B', 'C', 'D'].map((l) => (
-              <div key={l} className="flex items-center gap-3 rounded-lg border border-border/50 bg-surface/30 p-2.5">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-background text-[10px] font-bold text-text-muted">{l}</div>
-                <div className="h-2.5 flex-1 rounded bg-text-muted/8" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const FEATURES = [
   { icon: Brain, title: 'Adaptive Engine', desc: 'Spaced repetition targets your weak areas automatically. The more you study, the smarter it gets.' },
   { icon: Sparkles, title: 'AI Rationales', desc: 'Get Claude-powered explanations for every question — why the right answer works and why yours didn\'t.' },
