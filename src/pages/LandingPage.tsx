@@ -97,7 +97,7 @@ export default function LandingPage() {
             AI-Powered Praxis 5331 Prep
           </Badge>
 
-          <h1 className="mx-auto max-w-5xl font-bold leading-[1.08] tracking-[-0.035em] text-[clamp(2.25rem,6vw,5.5rem)]">
+          <h1 className="mx-auto max-w-5xl font-bold leading-[1.15] tracking-[-0.025em] text-[clamp(2.25rem,6vw,5.5rem)] py-1">
             The smartest way to{' '}
             <span className="bg-gradient-to-r from-secondary to-amber-400 bg-clip-text text-transparent">
               pass the Praxis
