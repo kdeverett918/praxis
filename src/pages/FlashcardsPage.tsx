@@ -6,6 +6,7 @@ import Badge from '@/components/shared/Badge'
 import { category1Flashcards } from '@/data/flashcards-category-1'
 import { category2Flashcards } from '@/data/flashcards-category-2'
 import { category3Flashcards } from '@/data/flashcards-category-3'
+import { useGamificationStore } from '@/stores/gamificationStore'
 
 const ALL_FLASHCARDS = [
   ...category1Flashcards,
@@ -22,6 +23,10 @@ export default function FlashcardsPage() {
   const [flyDirection, setFlyDirection] = useState<FlyDirection>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
+  const addXP = useGamificationStore((s) => s.addXP)
+  const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
+  const updateStreak = useGamificationStore((s) => s.updateStreak)
+
   const card = ALL_FLASHCARDS[currentIndex]
 
   const handleRate = (rating: 'easy' | 'medium' | 'hard') => {
@@ -32,6 +37,10 @@ export default function FlashcardsPage() {
     }
     setFlyDirection(dirMap[rating] ?? null)
     setReviewed((r) => r + 1)
+
+    addXP(5)
+    addQuestionsAnswered(1)
+    updateStreak()
 
     setTimeout(() => {
       setIsFlipped(false)
