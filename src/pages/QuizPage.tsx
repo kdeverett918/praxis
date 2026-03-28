@@ -1,18 +1,44 @@
-import { useState } from 'react'
-import { Layers, Play } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import { Layers, Play, ArrowLeft, Trophy } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
+import QuestionCard from '@/components/question/QuestionCard'
 import { CONTENT_CATEGORY_LABELS, BIG_NINE_LABELS, DIFFICULTY_LABELS } from '@/types/question'
 import type { ContentCategory, BigNineArea, Difficulty } from '@/types/question'
 import { useSettingsStore } from '@/stores/settingsStore'
+import { useGamificationStore } from '@/stores/gamificationStore'
+import { ALL_QUESTIONS } from '@/lib/questionBank'
+import type { QuestionBankItem } from '@/lib/questionBank'
+
+function shuffle<T>(items: T[]): T[] {
+  const next = [...items]
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = next[i]
+    next[i] = next[j]!
+    next[j] = temp!
+  }
+  return next
+}
 
 export default function QuizPage() {
   const defaultQuizLength = useSettingsStore((s) => s.defaultQuizLength)
+  const addXP = useGamificationStore((s) => s.addXP)
+  const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
+  const addCorrectAnswer = useGamificationStore((s) => s.addCorrectAnswer)
+  const updateStreak = useGamificationStore((s) => s.updateStreak)
+
   const [selectedCategories, setSelectedCategories] = useState<Set<ContentCategory>>(new Set())
   const [selectedBigNine, setSelectedBigNine] = useState<Set<BigNineArea>>(new Set())
   const [selectedDifficulty, setSelectedDifficulty] = useState<Set<Difficulty>>(new Set())
   const [questionCount, setQuestionCount] = useState(defaultQuizLength)
+
+  const [quizStarted, setQuizStarted] = useState(false)
+  const [quizFinished, setQuizFinished] = useState(false)
+  const [quizQuestions, setQuizQuestions] = useState<QuestionBankItem[]>([])
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
 
   const toggleSet = <T,>(set: Set<T>, value: T): Set<T> => {
     const next = new Set(set)
@@ -21,6 +47,171 @@ export default function QuizPage() {
     return next
   }
 
+  const handleStartQuiz = () => {
+    let filtered = [...ALL_QUESTIONS]
+
+    if (selectedCategories.size > 0) {
+      filtered = filtered.filter((q) => selectedCategories.has(q.contentCategory))
+    }
+    if (selectedBigNine.size > 0) {
+      filtered = filtered.filter((q) =>
+        q.bigNine.some((area) => selectedBigNine.has(area as BigNineArea)),
+      )
+    }
+    if (selectedDifficulty.size > 0) {
+      filtered = filtered.filter((q) => selectedDifficulty.has(q.difficulty))
+    }
+
+    const shuffled = shuffle(filtered)
+    const selected = shuffled.slice(0, questionCount)
+
+    if (selected.length === 0) return
+
+    setQuizQuestions(selected)
+    setCurrentIndex(0)
+    setAnswers({})
+    setQuizFinished(false)
+    setQuizStarted(true)
+    updateStreak()
+  }
+
+  const handleAnswer = (questionId: string, optionId: string) => {
+    if (answers[questionId]) return
+    setAnswers((prev) => ({ ...prev, [questionId]: optionId }))
+
+    const question = quizQuestions.find((q) => q.id === questionId)
+    if (!question) return
+
+    const isCorrect = question.options.find((o) => o.id === optionId)?.isCorrect ?? false
+    addXP(isCorrect ? 10 : 5)
+    addQuestionsAnswered(1)
+    if (isCorrect) addCorrectAnswer()
+  }
+
+  const handleNext = () => {
+    if (currentIndex < quizQuestions.length - 1) {
+      setCurrentIndex(currentIndex + 1)
+    } else {
+      setQuizFinished(true)
+    }
+  }
+
+  const handleBackToBuilder = () => {
+    setQuizStarted(false)
+    setQuizFinished(false)
+    setQuizQuestions([])
+    setCurrentIndex(0)
+    setAnswers({})
+  }
+
+  const results = useMemo(() => {
+    if (!quizFinished) return null
+    let correct = 0
+    for (const q of quizQuestions) {
+      const ans = answers[q.id]
+      if (ans) {
+        const opt = q.options.find((o) => o.id === ans)
+        if (opt?.isCorrect) correct++
+      }
+    }
+    const total = quizQuestions.length
+    const percentage = total > 0 ? Math.round((correct / total) * 100) : 0
+    return { correct, total, percentage }
+  }, [quizFinished, quizQuestions, answers])
+
+  // Results screen
+  if (quizFinished && results) {
+    const grade =
+      results.percentage >= 80 ? 'Excellent' : results.percentage >= 60 ? 'Good' : 'Keep Practicing'
+    const gradeColor =
+      results.percentage >= 80
+        ? 'text-success'
+        : results.percentage >= 60
+          ? 'text-warning'
+          : 'text-error'
+
+    return (
+      <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
+        <Card variant="glass" className="text-center">
+          <Trophy className="mx-auto mb-4 h-16 w-16 text-secondary" />
+          <h1 className="mb-2 font-display text-3xl text-text-primary">Quiz Complete!</h1>
+          <p className={`mb-6 font-display text-xl ${gradeColor}`}>{grade}</p>
+
+          <div className="mb-8 flex justify-center gap-6">
+            <div>
+              <p className="font-mono text-4xl font-bold text-text-primary">{results.correct}</p>
+              <p className="font-body text-sm text-text-muted">Correct</p>
+            </div>
+            <div className="w-px bg-border" />
+            <div>
+              <p className="font-mono text-4xl font-bold text-text-primary">{results.total}</p>
+              <p className="font-body text-sm text-text-muted">Total</p>
+            </div>
+            <div className="w-px bg-border" />
+            <div>
+              <p className="font-mono text-4xl font-bold text-text-primary">{results.percentage}%</p>
+              <p className="font-body text-sm text-text-muted">Accuracy</p>
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-4">
+            <Button variant="outline" size="md" onClick={handleBackToBuilder}>
+              <ArrowLeft className="h-4 w-4" />
+              New Quiz
+            </Button>
+            <Button variant="primary" size="md" onClick={handleStartQuiz}>
+              <Play className="h-4 w-4" />
+              Retry Same Filters
+            </Button>
+          </div>
+        </Card>
+      </div>
+    )
+  }
+
+  // Active quiz
+  if (quizStarted && quizQuestions.length > 0) {
+    const question = quizQuestions[currentIndex]
+    if (!question) return null
+
+    return (
+      <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
+        <div className="mb-8 flex items-center gap-3">
+          <button
+            onClick={handleBackToBuilder}
+            className="flex items-center gap-2 font-body text-sm text-text-muted hover:text-text-secondary"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Builder
+          </button>
+          <div className="flex-1" />
+          <Badge variant="success">Custom Quiz</Badge>
+        </div>
+
+        <QuestionCard
+          key={question.id}
+          questionId={question.id}
+          stem={question.stem}
+          options={question.options}
+          explanation={question.explanation}
+          incorrectExplanations={question.incorrectExplanations}
+          contentCategory={question.contentCategory}
+          difficulty={question.difficulty}
+          bigNine={question.bigNine}
+          questionNumber={currentIndex + 1}
+          totalQuestions={quizQuestions.length}
+          mode="study"
+          selectedOptionId={answers[question.id] ?? null}
+          onAnswer={(optionId) => handleAnswer(question.id, optionId)}
+          onNext={handleNext}
+          onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
+          onRequestAIRationale={() => {/* Claude API call */}}
+        />
+      </div>
+    )
+  }
+
+  // Builder UI
   return (
     <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
       <div className="mb-8 flex items-center gap-3">
@@ -118,7 +309,7 @@ export default function QuizPage() {
           <Badge variant="secondary">{selectedBigNine.size || 9} Big Nine</Badge>
           <Badge variant="success">{questionCount} Questions</Badge>
         </div>
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="lg" onClick={handleStartQuiz}>
           <Play className="h-5 w-5" />
           Start Quiz
         </Button>
