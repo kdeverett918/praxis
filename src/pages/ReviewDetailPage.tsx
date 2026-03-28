@@ -5,7 +5,7 @@ import Card from '@/components/shared/Card'
 import { studyContentData } from '@/data/study-content'
 
 const CATEGORY_CONFIG: Record<string, { label: string; gradient: string; accentColor: string; badgeColor: string }> = {
-  I: { label: 'Foundations & Professional Practice', gradient: 'from-indigo-500 to-violet-500', accentColor: 'text-indigo-400', badgeColor: 'bg-indigo-500/15 text-indigo-400 border border-indigo-500/20' },
+  I: { label: 'Foundations & Professional Practice', gradient: 'from-purple-500 to-fuchsia-500', accentColor: 'text-purple-400', badgeColor: 'bg-purple-500/15 text-purple-400 border border-purple-500/20' },
   II: { label: 'Screening, Assessment, Eval & Dx', gradient: 'from-amber-500 to-orange-500', accentColor: 'text-amber-400', badgeColor: 'bg-amber-500/15 text-amber-400 border border-amber-500/20' },
   III: { label: 'Treatment Planning & Implementation', gradient: 'from-emerald-500 to-teal-500', accentColor: 'text-emerald-400', badgeColor: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20' },
 }
@@ -178,7 +178,7 @@ export default function ReviewDetailPage() {
       </Link>
 
       {/* Topic Header */}
-      <div className={`mb-8 rounded-2xl border ${catConfig.badgeColor.includes('indigo') ? 'border-indigo-500/20' : catConfig.badgeColor.includes('amber') ? 'border-amber-500/20' : 'border-emerald-500/20'} bg-gradient-to-r ${catConfig.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 p-6 md:p-8`}>
+      <div className={`mb-8 rounded-2xl border ${catConfig.badgeColor.includes('purple') ? 'border-purple-500/20' : catConfig.badgeColor.includes('amber') ? 'border-amber-500/20' : 'border-emerald-500/20'} bg-gradient-to-r ${catConfig.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 p-6 md:p-8`}>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${catConfig.badgeColor}`}>
             Category {topic.contentCategory}
