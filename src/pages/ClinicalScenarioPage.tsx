@@ -384,44 +384,44 @@ const SCENARIOS: Scenario[] = [
   {
     id: 'fluency-school',
     title: 'School-Age Fluency',
-    subtitle: 'Stuttering Assessment',
+    subtitle: 'Stuttering Referral',
     description:
-      'A 9-year-old boy, Jake, is referred by his teacher. She reports he has been "getting stuck on words" more frequently and has become noticeably quieter in class over the past semester.',
+      'A 9-year-old boy, Jake, is referred by his 3rd-grade teacher for stuttering. She reports he has been "getting stuck on words" more frequently and has become noticeably quieter in class over the past semester.',
     category: 'Fluency',
     maxPoints: 50,
     nodes: [
       {
         id: 'node1',
         narrative:
-          'You meet Jake in the school therapy room. He makes limited eye contact and answers questions with short phrases. During your conversation, you observe sound repetitions ("b-b-b-ball"), prolongations ("ssssometimes"), and occasional blocks with visible tension in his jaw. He says, "I hate reading out loud."',
-        question: 'What assessment tools and approaches should you use?',
+          'You meet Jake in the school therapy room. He makes limited eye contact and answers questions with short phrases. During your conversation, you observe sound repetitions ("b-b-b-ball"), prolongations ("ssssometimes"), and occasional blocks with visible tension in his jaw. He whispers, "I hate reading out loud." His teacher sent a note saying he has stopped raising his hand in class.',
+        question: 'What assessment approach do you choose?',
         options: [
           {
-            text: 'Use a comprehensive approach: speech samples in multiple contexts, stuttering severity instrument (SSI-4), and assess affective/cognitive components (e.g., OASES, CAT-R)',
+            text: 'Comprehensive battery: SSI-4 for severity, OASES for quality-of-life impact, plus speech samples in conversation, reading, and narrative retell',
             points: 10,
             feedback:
-              'Excellent. A comprehensive fluency assessment includes both the observable speech behaviors AND the speaker\'s attitudes, emotions, and quality of life impact. The SSI-4 quantifies severity while the OASES or CAT-R captures the hidden aspects of stuttering.',
+              'Excellent. A comprehensive fluency assessment includes both observable speech behaviors (SSI-4 across multiple contexts) AND the speaker\'s attitudes, emotions, and quality-of-life impact (OASES). This multi-dimensional approach captures both the overt and covert features of stuttering.',
             nextNode: 'node2',
           },
           {
-            text: 'Count disfluencies during a 5-minute reading passage',
+            text: 'Administer the SSI-4 only using a reading passage and conversation sample',
+            points: 5,
+            feedback:
+              'The SSI-4 is essential but captures only the observable surface features — frequency, duration, and physical concomitants. Given Jake\'s avoidance behaviors and negative self-statements, you are missing the affective and cognitive dimensions that are critical for treatment planning.',
+            nextNode: 'node2',
+          },
+          {
+            text: 'Conduct informal observation in the classroom without formal assessment tools',
             points: 3,
             feedback:
-              'Counting disfluencies in a single context provides limited information. Stuttering varies across speaking situations, and you would miss the affective and cognitive components that are critical at this age.',
+              'Naturalistic observation provides useful context, but without standardized tools you cannot quantify severity, compare to norms, or systematically assess the affective/cognitive components. Informal observation alone is insufficient for a thorough evaluation.',
             nextNode: 'node2',
           },
           {
-            text: 'Administer an articulation assessment — the repetitions might be phonological',
-            points: 1,
+            text: 'Rely on a parent interview only — parents know the child best',
+            points: 2,
             feedback:
-              'The pattern described (sound repetitions, prolongations, blocks with tension) is clearly consistent with stuttering, not a phonological disorder. Sound repetitions in stuttering differ from phonological processes in their nature and pattern.',
-            nextNode: 'node2',
-          },
-          {
-            text: 'Ask the teacher to video record him in class so you can assess natural speech',
-            points: 7,
-            feedback:
-              'Observing in natural contexts is valuable, but you should combine this with formal assessment tools. Video recording alone does not capture the affective component, which is significant for Jake given his comment about hating reading aloud.',
+              'Parent input is valuable but cannot replace direct assessment. Parents may not observe stuttering in all contexts (stuttering often varies by situation), and they cannot provide the standardized severity or quality-of-life measures needed for eligibility determination and treatment planning.',
             nextNode: 'node2',
           },
         ],
@@ -429,35 +429,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node2',
         narrative:
-          'Your assessment reveals: SSI-4 score indicates moderate stuttering (18 percentile). His stuttering frequency is 11% syllables stuttered in conversation and 18% in reading. The CAT-R (Communication Attitude Test - Revised) shows highly negative communication attitudes. Jake reports avoiding speaking in class, not raising his hand, and feeling "stupid" when he stutters.',
-        question: 'How do you interpret these findings?',
+          'Your assessment reveals: SSI-4 total score indicates moderate stuttering (18th percentile), with 11% syllables stuttered in conversation and 18% in reading. The OASES results show a significant negative impact on quality of life. Jake reports: "I feel stupid when I get stuck," "I never raise my hand anymore," and "I pretend I don\'t know the answer so I don\'t have to talk." He rates his frustration with speaking as 9/10.',
+        question: 'Jake reports significant negative feelings about his speech. What is your next step?',
         options: [
           {
-            text: 'The affective impact is disproportionately high relative to the moderate severity — both the stuttering behaviors AND the negative attitudes/avoidance need to be treatment targets',
+            text: 'Address the emotional impact alongside speech strategies — both the stuttering behaviors and the negative attitudes/avoidance must be treatment targets from the start',
             points: 10,
             feedback:
-              'Excellent clinical reasoning. The moderate severity on the SSI-4 tells only part of the story. Jake\'s high negative attitudes, avoidance behaviors, and self-perception ("feeling stupid") indicate significant covert features that may be MORE impactful than the overt stuttering.',
+              'Excellent clinical reasoning. Jake\'s affective impact is disproportionately high relative to his moderate severity. The avoidance, negative self-perception, and emotional distress may be MORE impactful on his daily life than the overt stuttering itself. Evidence-based stuttering treatment for school-age children integrates affective, behavioral, and cognitive components.',
             nextNode: 'node3',
           },
           {
-            text: 'Moderate stuttering is not severe enough to qualify for school services',
-            points: 0,
-            feedback:
-              'Severity on the SSI-4 alone should not determine eligibility. The significant impact on educational participation (avoiding speaking in class, not raising his hand) clearly demonstrates adverse educational impact.',
-            nextNode: 'node3',
-          },
-          {
-            text: 'Focus on reducing the stuttering frequency first — once he stutters less, the negative attitudes will resolve',
+            text: 'Focus only on fluency modification techniques first — once he stutters less, the negative feelings will resolve on their own',
             points: 3,
             feedback:
-              'Research shows that reducing stuttering frequency alone does not automatically resolve negative attitudes. In fact, only targeting fluency can increase pressure and worsen avoidance. Both must be addressed simultaneously.',
+              'Research clearly shows that reducing stuttering frequency alone does not automatically resolve negative attitudes, avoidance, or emotional distress. In fact, focusing only on fluency can increase communicative pressure and worsen avoidance. Both dimensions must be addressed simultaneously.',
             nextNode: 'node3',
           },
           {
-            text: 'The reading difficulty suggests he may also have a reading disorder — refer for a learning disability evaluation',
-            points: 2,
+            text: 'Ignore the affective component — that is a psychologist\'s domain, not an SLP\'s',
+            points: 0,
             feedback:
-              'The higher stuttering rate during reading is typical of stuttering (increased linguistic demands, performance pressure) and does not suggest a reading disorder. A referral is not indicated based on this alone.',
+              'The affective and cognitive components of stuttering are squarely within the SLP\'s scope of practice. ASHA recognizes counseling related to communication disorders as a core SLP competency. Ignoring these components results in incomplete treatment.',
+            nextNode: 'node3',
+          },
+          {
+            text: 'Refer to a psychologist for the emotional issues before beginning any speech therapy',
+            points: 4,
+            feedback:
+              'A psychology referral may be appropriate as a complement to speech therapy if emotional concerns are severe, but it should not REPLACE or DELAY fluency intervention. The SLP is uniquely qualified to address communication-related attitudes and emotions. Collaboration, not deferral, is the best approach.',
             nextNode: 'node3',
           },
         ],
@@ -465,35 +465,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node3',
         narrative:
-          'You determine Jake qualifies for services. His parents attend the IEP meeting. His father says: "Just teach him to slow down and think about what he wants to say. That\'s what my dad told me to do — and I grew out of it."',
-        question: 'How do you respond?',
+          'You qualify Jake for services and begin developing his treatment plan. You consider the available approaches: fluency shaping (teaching smooth, controlled speech patterns), stuttering modification (reducing struggle through cancellations, pull-outs, and preparatory sets), the Lidcombe Program (parent-delivered behavioral treatment), and avoidance reduction therapy (targeting approach behaviors and reducing avoidance).',
+        question: 'What primary treatment approach do you choose for Jake?',
         options: [
           {
-            text: 'Validate the father\'s experience, gently educate about stuttering as a neurological condition, and explain that "slowing down" and "thinking" can actually increase tension and avoidance',
+            text: 'Stuttering modification combined with counseling — teach Jake to stutter more easily while addressing his feelings, attitudes, and avoidance behaviors',
             points: 10,
             feedback:
-              'Perfect. The father\'s experience is real and should be acknowledged, but the advice to "slow down" often increases struggle and shame. Educating the family that stuttering has a neurological basis removes blame and sets the stage for effective treatment.',
+              'Excellent choice. For a 9-year-old with significant negative attitudes and avoidance, stuttering modification (Van Riper approach) combined with counseling is well-supported. This approach reduces struggle and fear by teaching Jake to manage moments of stuttering rather than avoid them, while directly addressing the affective component.',
             nextNode: 'node4',
           },
           {
-            text: 'Agree that slowing down is a good strategy and incorporate it into the IEP goals',
-            points: 0,
+            text: 'Fluency shaping only — teach prolonged speech and gentle onsets to produce fluent speech',
+            points: 4,
             feedback:
-              'Telling a person who stutters to "slow down" implies the stuttering is their fault and within their control. This can increase tension, shame, and avoidance. Evidence-based treatment takes a very different approach.',
+              'Fluency shaping can increase fluency, but used alone it does not address Jake\'s avoidance behaviors, negative attitudes, or emotional distress. It can also create an artificial-sounding speech pattern that some children resist. For Jake, whose covert features are significant, a more comprehensive approach is needed.',
             nextNode: 'node4',
           },
           {
-            text: 'Explain that the father\'s stuttering likely resolved due to neurological maturation, not the strategy itself',
-            points: 7,
-            feedback:
-              'This is factually accurate — natural recovery is neurologically mediated, not a result of "slowing down." However, be careful to validate the father\'s experience first. The delivery matters as much as the content.',
-            nextNode: 'node4',
-          },
-          {
-            text: 'Tell the parents that stuttering is genetic and Jake may never fully recover',
+            text: 'Lidcombe Program — it has strong evidence for stuttering treatment',
             points: 2,
             feedback:
-              'While genetics play a role, this framing is overly negative and not appropriate for an IEP meeting. The focus should be on what CAN be done to help Jake communicate effectively and reduce the impact of stuttering.',
+              'The Lidcombe Program is an evidence-based treatment for PRESCHOOL-age children (typically under 6). It is a parent-delivered operant program designed for young children and is not appropriate for a 9-year-old with significant affective and cognitive components to his stuttering.',
+            nextNode: 'node4',
+          },
+          {
+            text: 'Avoidance reduction therapy — focus entirely on eliminating avoidance behaviors',
+            points: 7,
+            feedback:
+              'Avoidance reduction therapy (Vivian Sisskin\'s approach) is a strong choice given Jake\'s significant avoidance patterns. It targets approach behaviors and reduces the power of avoidance. However, combining this with stuttering modification techniques gives Jake concrete tools for managing moments of stuttering, creating a more comprehensive treatment plan.',
             nextNode: 'node4',
           },
         ],
@@ -501,35 +501,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node4',
         narrative:
-          'You develop treatment goals. Jake has been coming to therapy for 6 weeks. He is learning stuttering modification techniques (cancellations, pull-outs) and is beginning to explore his feelings about stuttering through activities. He tells you, "My friend Aiden asked why I talk funny. I didn\'t know what to say."',
-        question: 'What therapeutic approach do you take?',
+          'Jake has been making progress in therapy. You are preparing for his IEP meeting and need to provide guidance to his teacher, Mrs. Chen, and his parents about how to support him in the classroom. Mrs. Chen asks: "Should I stop calling on him? I don\'t want to embarrass him. Sometimes the other kids giggle when he gets stuck."',
+        question: 'What do you tell Mrs. Chen and the school staff?',
         options: [
           {
-            text: 'Help Jake develop a personal self-disclosure statement about stuttering and practice it; role-play peer interactions; build self-advocacy skills',
+            text: 'Give Jake extra time to respond with the same participation expectations as peers — maintain normal academic expectations while reducing time pressure and educating classmates about communication differences',
             points: 10,
             feedback:
-              'Excellent. Self-disclosure and self-advocacy are evidence-based components of stuttering treatment for school-age children. Helping Jake have a simple, confident explanation empowers him and often reduces bullying and negative reactions from peers.',
+              'Perfect. Children who stutter should have the same opportunities and expectations as their peers. Providing extra wait time, signaling before calling on him, and educating the class about different ways of talking reduces stigma without singling Jake out or lowering expectations. This approach supports both his academic participation and self-advocacy.',
             nextNode: null,
           },
           {
-            text: 'Tell Jake to ignore the comment — kids can be mean',
+            text: 'Don\'t call on him in class — let him volunteer when he feels ready to avoid embarrassment',
             points: 0,
             feedback:
-              'Dismissing Jake\'s concern is invalidating and misses a critical therapeutic opportunity. Peer interactions significantly impact quality of life for children who stutter. This is exactly the kind of situation therapy should address.',
+              'Excusing Jake from participation reinforces the message that stuttering is something to hide and that he cannot handle speaking situations. This increases avoidance, reduces educational engagement, and can worsen the affective impact over time. Accommodation should enable participation, not eliminate it.',
             nextNode: null,
           },
           {
-            text: 'Contact Aiden\'s parents about the inappropriate comment',
-            points: 2,
-            feedback:
-              'Aiden\'s question may have been curiosity rather than bullying. Framing it as inappropriate does not empower Jake. The priority should be helping Jake develop his own tools for navigating these interactions.',
-            nextNode: null,
-          },
-          {
-            text: 'Focus on fluency shaping so Jake will stutter less and not attract attention',
+            text: 'Reduce his verbal participation requirements — give him written alternatives for oral reports and class discussions',
             points: 3,
             feedback:
-              'Trying to eliminate stuttering to avoid peer questions sends the message that stuttering is something to hide. A healthier approach is helping Jake be comfortable with his stuttering and equipped to explain it confidently.',
+              'Replacing verbal participation with written work removes opportunities for Jake to practice communication skills and sends the message that his speech is too impaired for classroom participation. While occasional written options may be appropriate, systematically reducing verbal demands is counterproductive.',
+            nextNode: null,
+          },
+          {
+            text: 'Treat him exactly like every other student with no modifications whatsoever',
+            points: 4,
+            feedback:
+              'Equal treatment sounds fair but ignores Jake\'s specific needs. Simple accommodations like extra wait time, advance notice before being called on, and reduced time pressure are not special treatment — they are evidence-based supports that enable equitable participation. Ignoring his stuttering is not the same as accepting it.',
             nextNode: null,
           },
         ],
