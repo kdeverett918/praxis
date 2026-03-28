@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   BookOpen, LayoutDashboard, GraduationCap, Clock,
-  Layers, BarChart3, FileText, Settings, LogOut, Gamepad2,
+  Layers, BarChart3, FileText, Settings, LogOut, Gamepad2, MessageSquareHeart,
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useGamificationStore, LEVEL_NAMES } from '@/stores/gamificationStore'
@@ -20,6 +20,10 @@ const NAV_ITEMS = [
 
 const GAMES_ITEMS = [
   { to: '/speed-round', icon: Gamepad2, label: 'Games' },
+]
+
+const FEEDBACK_ITEMS = [
+  { to: '/feedback', icon: MessageSquareHeart, label: 'Beta Feedback' },
 ]
 
 function NavLink({ to, icon: Icon, label, active, accent = false }: {
@@ -73,11 +77,11 @@ export default function AppShell() {
               </div>
               <span className="font-display text-xl text-text-primary">PraxisPrep</span>
             </Link>
-            <div className="mt-3 flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-light px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+            <div className="mt-3 flex items-center gap-2 overflow-hidden">
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary-light px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
                 Lv {level}
               </span>
-              <span className="text-xs text-text-secondary">{levelName}</span>
+              <span className="truncate text-xs text-text-secondary">{levelName}</span>
             </div>
           </div>
 
@@ -114,6 +118,23 @@ export default function AppShell() {
                 />
               )
             })}
+
+            {/* Feedback section */}
+            <div className="px-4 pt-4 pb-2">
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+            </div>
+            {FEEDBACK_ITEMS.map((item) => {
+              const active = location.pathname === item.to
+              return (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  icon={item.icon}
+                  label={item.label}
+                  active={active}
+                />
+              )
+            })}
           </nav>
 
           {/* Bottom */}
@@ -144,26 +165,26 @@ export default function AppShell() {
       {/* Main content */}
       <main className="lg:pl-64">
         <BetaBanner />
-        <div className="min-h-screen px-6 py-8 lg:px-10">
+        <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
           <Outlet />
         </div>
       </main>
 
       {/* Mobile Bottom Nav */}
-      <nav className="fixed right-0 bottom-0 left-0 z-40 border-t border-border bg-surface/90 backdrop-blur-xl lg:hidden">
-        <div className="flex items-center justify-around px-2 py-2">
+      <nav className="fixed right-0 bottom-0 left-0 z-40 border-t border-border bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
+        <div className="flex items-center justify-around px-1 py-1.5">
           {NAV_ITEMS.slice(0, 5).map((item) => {
             const active = location.pathname === item.to || location.pathname.startsWith(item.to + '/')
             return (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex flex-col items-center gap-1 rounded-xl px-3 py-2 ${
+                className={`flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 ${
                   active ? 'text-primary' : 'text-text-muted'
                 }`}
               >
-                <item.icon className="h-5 w-5" />
-                <span className="text-[10px] font-medium">{item.label}</span>
+                <item.icon className="h-5 w-5 shrink-0" />
+                <span className="truncate text-[10px] font-medium">{item.label}</span>
               </Link>
             )
           })}

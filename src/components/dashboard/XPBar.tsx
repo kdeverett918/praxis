@@ -32,7 +32,7 @@ export default function XPBar() {
   }, [percentage])
 
   return (
-    <div className="rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm">
+    <div className="flex h-full flex-col rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm">
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md">
@@ -51,7 +51,7 @@ export default function XPBar() {
         </div>
       </div>
 
-      <div className="relative h-3 overflow-hidden rounded-full bg-surface-elevated">
+      <div className="mt-auto relative h-3 overflow-hidden rounded-full bg-surface-elevated">
         <div
           ref={barRef}
           className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary via-secondary to-amber-400"

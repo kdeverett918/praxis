@@ -108,7 +108,7 @@ export default function QuizPage() {
 
       {/* Summary + Start */}
       <Card variant="glass" className="text-center">
-        <div className="mb-4 flex justify-center gap-3">
+        <div className="mb-4 flex flex-wrap justify-center gap-2 sm:gap-3">
           <Badge variant="primary">{selectedCategories.size || 3} Categories</Badge>
           <Badge variant="secondary">{selectedBigNine.size || 9} Big Nine</Badge>
           <Badge variant="success">{questionCount} Questions</Badge>

@@ -679,8 +679,8 @@ export default function ClinicalScenarioPage() {
       {phase === 'playing' && selectedScenario && currentNode && (
         <div ref={contentRef}>
           {/* Progress header */}
-          <div className="mb-6 flex items-center justify-between">
-            <div>
+          <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
               <Badge
                 variant={
                   selectedScenario.category === 'Dysphagia'
@@ -692,12 +692,12 @@ export default function ClinicalScenarioPage() {
               >
                 {selectedScenario.category}
               </Badge>
-              <h2 className="mt-2 font-display text-2xl text-text-primary">{selectedScenario.title}</h2>
+              <h2 className="mt-2 font-display text-xl text-text-primary sm:text-2xl">{selectedScenario.title}</h2>
             </div>
-            <div className="text-right">
+            <div className="shrink-0 text-right">
               <p className="font-mono text-sm font-bold text-secondary">{totalScore} pts</p>
               <p className="font-body text-xs text-text-muted">
-                Step {currentNodeIdx + 1} of {selectedScenario.nodes.length}
+                Step {currentNodeIdx + 1}/{selectedScenario.nodes.length}
               </p>
             </div>
           </div>
@@ -741,11 +741,11 @@ export default function ClinicalScenarioPage() {
                     !showFeedback ? 'hover:border-primary/30 hover:bg-surface' : ''
                   }`}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border font-mono text-xs text-text-muted">
                       {String.fromCharCode(65 + idx)}
                     </span>
-                    <span className="font-body text-sm text-text-primary">{option.text}</span>
+                    <span className="min-w-0 flex-1 font-body text-sm leading-relaxed text-text-primary">{option.text}</span>
                     {showFeedback && isCorrect && <CheckCircle2 className="ml-auto h-5 w-5 shrink-0 text-success" />}
                     {showFeedback && wasSelected && !isCorrect && <XCircle className="ml-auto h-5 w-5 shrink-0 text-error" />}
                   </div>
@@ -809,13 +809,13 @@ export default function ClinicalScenarioPage() {
           <h1 className="font-display text-4xl text-text-primary md:text-5xl">Case Complete!</h1>
           <p className="mt-2 font-body text-lg text-text-secondary">{selectedScenario.title}</p>
 
-          <div className="mt-8 grid w-full max-w-md grid-cols-2 gap-4">
-            <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-secondary">{totalScore}</p>
+          <div className="mt-8 grid w-full max-w-md grid-cols-2 items-stretch gap-4">
+            <Card className="flex flex-col items-center justify-center text-center">
+              <p className="font-mono text-2xl font-bold text-secondary sm:text-3xl">{totalScore}</p>
               <p className="mt-1 font-body text-xs text-text-muted">Points Earned</p>
             </Card>
-            <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-primary">{selectedScenario.maxPoints}</p>
+            <Card className="flex flex-col items-center justify-center text-center">
+              <p className="font-mono text-2xl font-bold text-primary sm:text-3xl">{selectedScenario.maxPoints}</p>
               <p className="mt-1 font-body text-xs text-text-muted">Max Possible</p>
             </Card>
           </div>

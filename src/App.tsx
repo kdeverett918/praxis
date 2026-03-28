@@ -16,6 +16,7 @@ const ReviewPage = lazy(() => import('@/pages/ReviewPage'))
 const ReviewDetailPage = lazy(() => import('@/pages/ReviewDetailPage'))
 const SpeedRoundPage = lazy(() => import('@/pages/SpeedRoundPage'))
 const ClinicalScenarioPage = lazy(() => import('@/pages/ClinicalScenarioPage'))
+const FeedbackPage = lazy(() => import('@/pages/FeedbackPage'))
 const AppShell = lazy(() => import('@/components/layout/AppShell'))
 
 function LoadingFallback() {
@@ -54,6 +55,7 @@ export default function App() {
           <Route path="/review/:topicId" element={<ReviewDetailPage />} />
           <Route path="/speed-round" element={<SpeedRoundPage />} />
           <Route path="/clinical-scenario" element={<ClinicalScenarioPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
         </Route>
       </Routes>
     </Suspense>

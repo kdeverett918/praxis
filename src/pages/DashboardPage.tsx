@@ -219,9 +219,9 @@ export default function DashboardPage() {
               { cat: 'III. Treatment Planning & Implementation', score: 71, color: 'bg-success' },
             ].map((item) => (
               <div key={item.cat}>
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="font-body text-sm text-text-secondary">{item.cat}</span>
-                  <span className="font-mono text-sm font-bold text-text-primary">{item.score}%</span>
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <span className="min-w-0 truncate font-body text-sm text-text-secondary">{item.cat}</span>
+                  <span className="shrink-0 font-mono text-sm font-bold text-text-primary">{item.score}%</span>
                 </div>
                 <div className="h-2.5 overflow-hidden rounded-full bg-surface-elevated">
                   <div

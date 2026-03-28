@@ -12,12 +12,12 @@ export default function DailyChallenge() {
   const xpPercent = Math.min(Math.round((dailyGoal.xpEarned / dailyGoal.xpTarget) * 100), 100)
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm">
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm">
       {/* Subtle gradient mesh */}
       <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="relative">
+      <div className="relative flex flex-1 flex-col">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -75,7 +75,7 @@ export default function DailyChallenge() {
         </div>
 
         {/* Reward callout */}
-        <div className="mt-4 flex items-center justify-between rounded-xl bg-secondary/5 px-4 py-3">
+        <div className="mt-auto flex items-center justify-between rounded-xl bg-secondary/5 px-4 py-3">
           <div className="flex items-center gap-2">
             <Zap className="h-4 w-4 text-secondary" />
             <span className="font-body text-sm text-text-secondary">

@@ -418,7 +418,7 @@ export default function SpeedRoundPage() {
                     key={idx}
                     onClick={(e) => handleAnswer(idx, e)}
                     disabled={showFeedback !== null}
-                    className={`rounded-xl border p-4 text-left font-body text-sm text-text-primary transition-all duration-200 ${style}`}
+                    className={`rounded-xl border p-3 text-left font-body text-sm leading-relaxed text-text-primary transition-all duration-200 sm:p-4 ${style}`}
                   >
                     <span className="mr-2 font-mono text-xs text-text-muted">
                       {String.fromCharCode(65 + idx)}.
@@ -440,17 +440,17 @@ export default function SpeedRoundPage() {
           <h1 className="font-display text-4xl text-text-primary md:text-5xl">Round Complete!</h1>
           <p className="mt-2 font-body text-lg text-text-secondary">Here are your results</p>
 
-          <div className="mt-8 grid w-full max-w-md grid-cols-3 gap-4">
-            <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-secondary">{score}</p>
+          <div className="mt-8 grid w-full max-w-md grid-cols-3 items-stretch gap-3 sm:gap-4">
+            <Card className="flex flex-col items-center justify-center text-center">
+              <p className="font-mono text-2xl font-bold text-secondary sm:text-3xl">{score}</p>
               <p className="mt-1 font-body text-xs text-text-muted">Points</p>
             </Card>
-            <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-primary">{totalAnswered}</p>
+            <Card className="flex flex-col items-center justify-center text-center">
+              <p className="font-mono text-2xl font-bold text-primary sm:text-3xl">{totalAnswered}</p>
               <p className="mt-1 font-body text-xs text-text-muted">Answered</p>
             </Card>
-            <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-success">{maxCombo}x</p>
+            <Card className="flex flex-col items-center justify-center text-center">
+              <p className="font-mono text-2xl font-bold text-success sm:text-3xl">{maxCombo}x</p>
               <p className="mt-1 font-body text-xs text-text-muted">Max Combo</p>
             </Card>
           </div>
