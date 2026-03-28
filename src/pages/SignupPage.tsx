@@ -1,0 +1,121 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { BookOpen, Mail, Lock, User, Eye, EyeOff } from 'lucide-react'
+import Button from '@/components/shared/Button'
+
+export default function SignupPage() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setTimeout(() => setLoading(false), 1000)
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-6">
+      <div className="w-full max-w-md">
+        <Link to="/" className="mb-10 flex items-center justify-center gap-2.5">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+            <BookOpen className="h-5 w-5 text-white" />
+          </div>
+          <span className="font-display text-2xl text-text-primary">PraxisPrep</span>
+        </Link>
+
+        <div className="rounded-2xl border border-border bg-surface p-8">
+          <h1 className="font-display text-3xl text-text-primary">Create your account</h1>
+          <p className="mt-2 font-body text-sm text-text-secondary">
+            Start studying for the Praxis 5331 — free.
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+            <div>
+              <label htmlFor="name" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+                Full Name
+              </label>
+              <div className="relative">
+                <User className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name"
+                  required
+                  className="w-full rounded-xl border border-border bg-background py-3 pr-4 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+                Email
+              </label>
+              <div className="relative">
+                <Mail className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@university.edu"
+                  required
+                  className="w-full rounded-xl border border-border bg-background py-3 pr-4 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+                Password
+              </label>
+              <div className="relative">
+                <Lock className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Min 8 characters"
+                  required
+                  minLength={8}
+                  className="w-full rounded-xl border border-border bg-background py-3 pr-12 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-3 -translate-y-1/2 text-text-muted hover:text-text-secondary"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+            </div>
+
+            <Button variant="primary" size="lg" className="w-full" disabled={loading}>
+              {loading ? 'Creating account...' : 'Create Account'}
+            </Button>
+
+            <p className="text-center font-body text-xs text-text-muted">
+              By signing up, you agree to our{' '}
+              <Link to="/terms" className="text-primary hover:underline">Terms</Link>
+              {' '}and{' '}
+              <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
+            </p>
+          </form>
+        </div>
+
+        <p className="mt-6 text-center font-body text-sm text-text-secondary">
+          Already have an account?{' '}
+          <Link to="/login" className="font-medium text-secondary hover:text-secondary-hover">
+            Log in
+          </Link>
+        </p>
+      </div>
+    </div>
+  )
+}
