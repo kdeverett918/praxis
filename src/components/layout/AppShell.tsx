@@ -3,7 +3,7 @@ import {
   BookOpen, LayoutDashboard, GraduationCap, Clock,
   Layers, BarChart3, FileText, Settings, LogOut,
 } from 'lucide-react'
-import { useAuth } from '@/contexts/AuthContext'
+import { useAuth } from '@/hooks/useAuth'
 
 const NAV_ITEMS = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },

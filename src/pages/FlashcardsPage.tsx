@@ -19,6 +19,7 @@ export default function FlashcardsPage() {
 
   const card = DEMO_CARDS[currentIndex]
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleRate = (_rating: 'easy' | 'medium' | 'hard') => {
     setIsFlipped(false)
     setReviewed((r) => r + 1)

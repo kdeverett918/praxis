@@ -9,6 +9,7 @@ export const PRICING = {
   },
 } as const
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function createCheckoutSession(_params: {
   userId: string
   email: string
