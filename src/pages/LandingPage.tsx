@@ -175,8 +175,6 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <DashboardMockup />
-
         {/* Stats */}
         <div
           ref={statsRef}
