@@ -212,7 +212,7 @@ export default function DashboardPage() {
         {/* Category Breakdown */}
         <Card className="flex h-full flex-col">
           <h3 className="mb-6 font-display text-xl text-text-primary">Category Scores</h3>
-          <div className="space-y-6">
+          <div className="flex-1 space-y-6">
             {[
               { cat: 'I. Foundations & Professional Practice', score: 78, color: 'bg-primary' },
               { cat: 'II. Screening, Assessment, Eval & Dx', score: 65, color: 'bg-secondary' },
