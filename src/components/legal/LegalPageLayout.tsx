@@ -18,19 +18,19 @@ export default function LegalPageLayout({
   children,
 }: LegalPageLayoutProps) {
   return (
-    <div className="min-h-screen bg-background text-text-primary">
+    <div className="bg-background text-text-primary min-h-screen">
       <Navbar />
       <main className="px-6 pt-32 pb-20">
         <div className="mx-auto max-w-5xl">
-          <div className="rounded-3xl border border-border bg-surface/50 p-8 shadow-xl shadow-primary/5 backdrop-blur-sm md:p-12">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.28em] text-secondary">
+          <div className="border-border bg-surface/50 shadow-primary/5 rounded-3xl border p-8 shadow-xl backdrop-blur-sm md:p-12">
+            <p className="font-body text-secondary text-xs font-semibold tracking-[0.28em] uppercase">
               {eyebrow}
             </p>
-            <h1 className="mt-4 font-display text-4xl text-text-primary md:text-5xl">{title}</h1>
-            <p className="mt-5 max-w-3xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
+            <h1 className="font-display text-text-primary mt-4 text-4xl md:text-5xl">{title}</h1>
+            <p className="font-body text-text-secondary mt-5 max-w-3xl text-base leading-relaxed md:text-lg">
               {summary}
             </p>
-            <p className="mt-6 font-body text-sm text-text-muted">Last updated {updatedOn}</p>
+            <p className="font-body text-text-muted mt-6 text-sm">Last updated {updatedOn}</p>
           </div>
 
           <div className="mt-8 space-y-6">{children}</div>

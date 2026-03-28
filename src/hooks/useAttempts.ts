@@ -43,15 +43,18 @@ export function useAttempts() {
       const reps = (existing as { repetitions: number } | null)?.repetitions ?? 0
       const updated = calculateSRS(params.isCorrect, quality, ef, interval, reps)
 
-      await supabase.from('srs_cards').upsert({
-        user_id: user.id,
-        question_id: params.questionId,
-        ease_factor: updated.easeFactor,
-        interval_days: updated.interval,
-        repetitions: updated.repetitions,
-        next_review_at: updated.nextReview.toISOString(),
-        last_reviewed_at: new Date().toISOString(),
-      } as never, { onConflict: 'user_id,question_id' })
+      await supabase.from('srs_cards').upsert(
+        {
+          user_id: user.id,
+          question_id: params.questionId,
+          ease_factor: updated.easeFactor,
+          interval_days: updated.interval,
+          repetitions: updated.repetitions,
+          next_review_at: updated.nextReview.toISOString(),
+          last_reviewed_at: new Date().toISOString(),
+        } as never,
+        { onConflict: 'user_id,question_id' },
+      )
 
       // Update profile stats via RPC
       await supabase.rpc('increment_questions_answered' as never, { p_user_id: user.id } as never)

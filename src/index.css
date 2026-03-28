@@ -80,7 +80,12 @@
     outline-offset: 2px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -104,11 +109,21 @@
 }
 
 @keyframes noise-drift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2px, 1px); }
-  50% { transform: translate(1px, -1px); }
-  75% { transform: translate(-1px, -2px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2px, 1px);
+  }
+  50% {
+    transform: translate(1px, -1px);
+  }
+  75% {
+    transform: translate(-1px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* ===== GSAP utility classes ===== */
@@ -325,7 +340,9 @@
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-pill);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 12px rgba(99, 102, 241, 0.25);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 12px rgba(99, 102, 241, 0.25);
   }
 
   .progress-glow::after {
@@ -343,7 +360,8 @@
 
 /* ===== Mesh-float animation for hero orbs ===== */
 @keyframes mesh-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   25% {
@@ -359,11 +377,22 @@
 
 /* ===== Question card: shake on wrong answer ===== */
 @keyframes qc-shake-anim {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-3px); }
-  40% { transform: translateX(3px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
 }
 
 @layer components {
@@ -374,9 +403,17 @@
 
 /* ===== Question card: green glow on correct answer ===== */
 @keyframes qc-glow-anim {
-  0% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
-  50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.15); }
-  100% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+  0% {
+    box-shadow: 0 0 0 rgba(34, 197, 94, 0);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(34, 197, 94, 0.4),
+      0 0 40px rgba(34, 197, 94, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(34, 197, 94, 0);
+  }
 }
 
 @layer components {
@@ -403,18 +440,36 @@
 
 /* ===== Flashcard: fly-off animations ===== */
 @keyframes fc-fly-left-anim {
-  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateX(-120%) rotate(-12deg); opacity: 0; }
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120%) rotate(-12deg);
+    opacity: 0;
+  }
 }
 
 @keyframes fc-fly-right-anim {
-  0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateX(120%) rotate(12deg); opacity: 0; }
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%) rotate(12deg);
+    opacity: 0;
+  }
 }
 
 @keyframes fc-fly-up-anim {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-80%) scale(0.9); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80%) scale(0.9);
+    opacity: 0;
+  }
 }
 
 @layer components {
@@ -434,7 +489,9 @@
 /* ===== Pro pricing card: enhanced hover ===== */
 @layer components {
   .pro-pricing-card {
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease;
   }
 
   .pro-pricing-card:hover {

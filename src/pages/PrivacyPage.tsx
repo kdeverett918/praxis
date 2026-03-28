@@ -55,9 +55,7 @@ const PRIVACY_SECTIONS = [
   },
   {
     title: 'Contact',
-    body: [
-      'Questions about privacy can be sent to hello@praxisprep.io.',
-    ],
+    body: ['Questions about privacy can be sent to hello@praxisprep.io.'],
   },
 ]
 
@@ -71,12 +69,12 @@ export default function PrivacyPage() {
     >
       {PRIVACY_SECTIONS.map((section) => (
         <Card key={section.title} className="p-0">
-          <div className="border-b border-border px-6 py-5">
-            <h2 className="font-display text-2xl text-text-primary">{section.title}</h2>
+          <div className="border-border border-b px-6 py-5">
+            <h2 className="font-display text-text-primary text-2xl">{section.title}</h2>
           </div>
           <div className="space-y-4 px-6 py-6">
             {section.body.map((paragraph) => (
-              <p key={paragraph} className="font-body text-sm leading-7 text-text-secondary">
+              <p key={paragraph} className="font-body text-text-secondary text-sm leading-7">
                 {paragraph}
               </p>
             ))}

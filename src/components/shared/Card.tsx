@@ -45,9 +45,9 @@ export default function Card({
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`rounded-2xl p-6 card-highlight ${variantStyles[variant]} ${spotlight ? 'spotlight-card' : ''} ${
+      className={`card-highlight rounded-2xl p-6 ${variantStyles[variant]} ${spotlight ? 'spotlight-card' : ''} ${
         hover
-          ? 'transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md hover:shadow-primary/5'
+          ? 'hover:border-primary/50 hover:shadow-primary/5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md'
           : ''
       } ${className}`}
       {...props}

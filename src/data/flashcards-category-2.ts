@@ -164,7 +164,7 @@ export const category2Flashcards: FlashcardData[] = [
   {
     id: 'c2-fc019',
     front: 'Audiogram: Conductive Hearing Loss Pattern',
-    back: 'Pattern: Normal bone conduction (BC) thresholds (0-15 dB HL) with elevated air conduction (AC) thresholds. An AIR-BONE GAP of >10 dB is present. Causes: Middle ear pathology — otitis media, otosclerosis, TM perforation, ossicular chain disruption. Maximum conductive loss: ~60 dB (the limit of the ossicular chain\'s contribution).',
+    back: "Pattern: Normal bone conduction (BC) thresholds (0-15 dB HL) with elevated air conduction (AC) thresholds. An AIR-BONE GAP of >10 dB is present. Causes: Middle ear pathology — otitis media, otosclerosis, TM perforation, ossicular chain disruption. Maximum conductive loss: ~60 dB (the limit of the ossicular chain's contribution).",
     category: 'Audiogram Interpretation',
     subcategory: 'Hearing Loss Types',
     tags: ['audiogram', 'conductive', 'air-bone-gap'],
@@ -240,7 +240,7 @@ export const category2Flashcards: FlashcardData[] = [
   {
     id: 'c2-fc028',
     front: 'Conduction Aphasia — Key Features',
-    back: 'Fluency: FLUENT (relatively normal conversational speech)\nComprehension: RELATIVELY PRESERVED\nRepetition: DISPROPORTIONATELY IMPAIRED (the hallmark feature)\nNaming: Mildly impaired (phonemic paraphasias)\nSelf-correction: Frequent attempts (conduite d\'approche)\nLesion: Left arcuate fasciculus (connecting Wernicke and Broca areas) or left supramarginal gyrus\nKey distinction: Repetition impairment is much worse than expected given relatively preserved fluency and comprehension.',
+    back: "Fluency: FLUENT (relatively normal conversational speech)\nComprehension: RELATIVELY PRESERVED\nRepetition: DISPROPORTIONATELY IMPAIRED (the hallmark feature)\nNaming: Mildly impaired (phonemic paraphasias)\nSelf-correction: Frequent attempts (conduite d'approche)\nLesion: Left arcuate fasciculus (connecting Wernicke and Broca areas) or left supramarginal gyrus\nKey distinction: Repetition impairment is much worse than expected given relatively preserved fluency and comprehension.",
     category: 'Aphasia Classification',
     subcategory: 'Boston Classification',
     tags: ['conduction', 'aphasia', 'repetition-impaired', 'arcuate-fasciculus'],

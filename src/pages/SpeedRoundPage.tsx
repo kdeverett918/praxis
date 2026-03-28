@@ -17,7 +17,12 @@ const SPEED_QUESTIONS: SpeedQuestion[] = [
   {
     id: 'sq1',
     question: 'Which cranial nerve innervates the tongue for movement?',
-    options: ['CN X (Vagus)', 'CN XII (Hypoglossal)', 'CN IX (Glossopharyngeal)', 'CN VII (Facial)'],
+    options: [
+      'CN X (Vagus)',
+      'CN XII (Hypoglossal)',
+      'CN IX (Glossopharyngeal)',
+      'CN VII (Facial)',
+    ],
     correctIndex: 1,
   },
   {
@@ -28,7 +33,7 @@ const SPEED_QUESTIONS: SpeedQuestion[] = [
   },
   {
     id: 'sq3',
-    question: 'The Broca\'s area is primarily responsible for:',
+    question: "The Broca's area is primarily responsible for:",
     options: ['Auditory comprehension', 'Speech production', 'Visual processing', 'Memory storage'],
     correctIndex: 1,
   },
@@ -47,7 +52,12 @@ const SPEED_QUESTIONS: SpeedQuestion[] = [
   {
     id: 'sq6',
     question: 'MLU is a measure of:',
-    options: ['Vocabulary size', 'Morphological development', 'Phonological awareness', 'Pragmatic skills'],
+    options: [
+      'Vocabulary size',
+      'Morphological development',
+      'Phonological awareness',
+      'Pragmatic skills',
+    ],
     correctIndex: 1,
   },
   {
@@ -58,7 +68,7 @@ const SPEED_QUESTIONS: SpeedQuestion[] = [
   },
   {
     id: 'sq8',
-    question: 'Wernicke\'s area is located in which lobe?',
+    question: "Wernicke's area is located in which lobe?",
     options: ['Frontal', 'Parietal', 'Temporal', 'Occipital'],
     correctIndex: 2,
   },
@@ -89,25 +99,41 @@ const SPEED_QUESTIONS: SpeedQuestion[] = [
   {
     id: 'sq13',
     question: 'Which voice disorder is characterized by vocal fold nodules?',
-    options: ['Spasmodic dysphonia', 'Muscle tension dysphonia', 'Phonotrauma', 'Vocal fold paralysis'],
+    options: [
+      'Spasmodic dysphonia',
+      'Muscle tension dysphonia',
+      'Phonotrauma',
+      'Vocal fold paralysis',
+    ],
     correctIndex: 2,
   },
   {
     id: 'sq14',
-    question: 'ASHA\'s Code of Ethics Principle I addresses:',
-    options: ['Professional competence', 'Welfare of persons served', 'Public trust', 'Interprofessional relationships'],
+    question: "ASHA's Code of Ethics Principle I addresses:",
+    options: [
+      'Professional competence',
+      'Welfare of persons served',
+      'Public trust',
+      'Interprofessional relationships',
+    ],
     correctIndex: 1,
   },
   {
     id: 'sq15',
-    question: 'The International Dysphagia Diet Standardisation Initiative (IDDSI) has how many levels?',
+    question:
+      'The International Dysphagia Diet Standardisation Initiative (IDDSI) has how many levels?',
     options: ['5 levels', '7 levels', '8 levels', '10 levels'],
     correctIndex: 2,
   },
   {
     id: 'sq16',
     question: 'Which is NOT a feature of childhood apraxia of speech (CAS)?',
-    options: ['Inconsistent errors', 'Difficulty with volitional movement', 'Consistent substitutions', 'Groping behaviors'],
+    options: [
+      'Inconsistent errors',
+      'Difficulty with volitional movement',
+      'Consistent substitutions',
+      'Groping behaviors',
+    ],
     correctIndex: 2,
   },
   {
@@ -182,7 +208,9 @@ function ConfettiBurst({ particles }: { particles: Particle[] }) {
           style={{
             left: p.x,
             top: p.y,
-            backgroundColor: ['#f59e0b', '#4338ca', '#22c55e', '#ef4444', '#a855f7', '#ec4899'][p.id % 6],
+            backgroundColor: ['#f59e0b', '#4338ca', '#22c55e', '#ef4444', '#a855f7', '#ec4899'][
+              p.id % 6
+            ],
           }}
         />
       ))}
@@ -326,25 +354,26 @@ export default function SpeedRoundPage() {
 
       {phase === 'ready' && (
         <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
-          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-secondary to-amber-400 shadow-lg shadow-secondary/30">
+          <div className="from-secondary shadow-secondary/30 mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br to-amber-400 shadow-lg">
             <Zap className="h-10 w-10 text-white" />
           </div>
-          <h1 className="font-display text-4xl text-text-primary md:text-5xl">Speed Round</h1>
-          <p className="mx-auto mt-4 max-w-md font-body text-lg text-text-secondary">
-            60 seconds. Rapid-fire SLP questions. Build combos for bonus points. How high can you score?
+          <h1 className="font-display text-text-primary text-4xl md:text-5xl">Speed Round</h1>
+          <p className="font-body text-text-secondary mx-auto mt-4 max-w-md text-lg">
+            60 seconds. Rapid-fire SLP questions. Build combos for bonus points. How high can you
+            score?
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
-            <div className="flex items-center gap-2 rounded-xl bg-surface px-4 py-2">
-              <Clock className="h-4 w-4 text-secondary" />
-              <span className="font-mono text-sm text-text-secondary">60 seconds</span>
+            <div className="bg-surface flex items-center gap-2 rounded-xl px-4 py-2">
+              <Clock className="text-secondary h-4 w-4" />
+              <span className="text-text-secondary font-mono text-sm">60 seconds</span>
             </div>
-            <div className="flex items-center gap-2 rounded-xl bg-surface px-4 py-2">
-              <Flame className="h-4 w-4 text-error" />
-              <span className="font-mono text-sm text-text-secondary">Combo multiplier</span>
+            <div className="bg-surface flex items-center gap-2 rounded-xl px-4 py-2">
+              <Flame className="text-error h-4 w-4" />
+              <span className="text-text-secondary font-mono text-sm">Combo multiplier</span>
             </div>
-            <div className="flex items-center gap-2 rounded-xl bg-surface px-4 py-2">
-              <Trophy className="h-4 w-4 text-primary" />
-              <span className="font-mono text-sm text-text-secondary">+10 XP per correct</span>
+            <div className="bg-surface flex items-center gap-2 rounded-xl px-4 py-2">
+              <Trophy className="text-primary h-4 w-4" />
+              <span className="text-text-secondary font-mono text-sm">+10 XP per correct</span>
             </div>
           </div>
           <Button variant="primary" size="lg" className="mt-10" onClick={startGame}>
@@ -364,20 +393,22 @@ export default function SpeedRoundPage() {
                 <span className="font-mono text-xl font-bold sm:text-2xl">{timeLeft}s</span>
               </div>
               {combo > 1 && (
-                <div className="flex items-center gap-1 rounded-full bg-secondary/15 px-2.5 py-1 sm:px-3">
-                  <Flame className="h-4 w-4 text-secondary" />
-                  <span className="font-mono text-xs font-bold text-secondary sm:text-sm">{combo}x</span>
+                <div className="bg-secondary/15 flex items-center gap-1 rounded-full px-2.5 py-1 sm:px-3">
+                  <Flame className="text-secondary h-4 w-4" />
+                  <span className="text-secondary font-mono text-xs font-bold sm:text-sm">
+                    {combo}x
+                  </span>
                 </div>
               )}
             </div>
             <div className="text-right">
-              <p className="font-mono text-xl font-bold text-text-primary sm:text-2xl">{score}</p>
-              <p className="font-body text-xs text-text-muted">points</p>
+              <p className="text-text-primary font-mono text-xl font-bold sm:text-2xl">{score}</p>
+              <p className="font-body text-text-muted text-xs">points</p>
             </div>
           </div>
 
           {/* Timer bar */}
-          <div className="mb-8 h-1.5 overflow-hidden rounded-full bg-surface-elevated">
+          <div className="bg-surface-elevated mb-8 h-1.5 overflow-hidden rounded-full">
             <div
               className={`h-full rounded-full transition-all duration-1000 ease-linear ${
                 timeLeft > 20 ? 'bg-success' : timeLeft > 10 ? 'bg-warning' : 'bg-error'
@@ -390,15 +421,15 @@ export default function SpeedRoundPage() {
           <div ref={questionRef}>
             <Card className="relative mb-6 overflow-hidden">
               {showFeedback === 'correct' && (
-                <div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-success/50 bg-success/5" />
+                <div className="border-success/50 bg-success/5 pointer-events-none absolute inset-0 rounded-2xl border-2" />
               )}
               {showFeedback === 'wrong' && (
-                <div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-error/50 bg-error/5" />
+                <div className="border-error/50 bg-error/5 pointer-events-none absolute inset-0 rounded-2xl border-2" />
               )}
-              <p className="font-body text-xs text-text-muted">
+              <p className="font-body text-text-muted text-xs">
                 Question {currentIdx + 1} of {questions.length}
               </p>
-              <h2 className="mt-2 font-display text-lg leading-snug text-text-primary sm:text-xl md:text-2xl">
+              <h2 className="font-display text-text-primary mt-2 text-lg leading-snug sm:text-xl md:text-2xl">
                 {currentQuestion.question}
               </h2>
             </Card>
@@ -418,9 +449,9 @@ export default function SpeedRoundPage() {
                     key={idx}
                     onClick={(e) => handleAnswer(idx, e)}
                     disabled={showFeedback !== null}
-                    className={`rounded-xl border p-3 text-left font-body text-sm leading-relaxed text-text-primary transition-all duration-200 sm:p-4 ${style}`}
+                    className={`font-body text-text-primary rounded-xl border p-3 text-left text-sm leading-relaxed transition-all duration-200 sm:p-4 ${style}`}
                   >
-                    <span className="mr-2 font-mono text-xs text-text-muted">
+                    <span className="text-text-muted mr-2 font-mono text-xs">
                       {String.fromCharCode(65 + idx)}.
                     </span>
                     {option}
@@ -434,31 +465,32 @@ export default function SpeedRoundPage() {
 
       {phase === 'results' && (
         <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
-          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/30">
+          <div className="from-primary to-secondary shadow-primary/30 mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br shadow-lg">
             <Trophy className="h-10 w-10 text-white" />
           </div>
-          <h1 className="font-display text-4xl text-text-primary md:text-5xl">Round Complete!</h1>
-          <p className="mt-2 font-body text-lg text-text-secondary">Here are your results</p>
+          <h1 className="font-display text-text-primary text-4xl md:text-5xl">Round Complete!</h1>
+          <p className="font-body text-text-secondary mt-2 text-lg">Here are your results</p>
 
           <div className="mt-8 grid w-full max-w-md grid-cols-3 items-stretch gap-3 sm:gap-4">
             <Card className="flex flex-col items-center justify-center text-center">
-              <p className="font-mono text-2xl font-bold text-secondary sm:text-3xl">{score}</p>
-              <p className="mt-1 font-body text-xs text-text-muted">Points</p>
+              <p className="text-secondary font-mono text-2xl font-bold sm:text-3xl">{score}</p>
+              <p className="font-body text-text-muted mt-1 text-xs">Points</p>
             </Card>
             <Card className="flex flex-col items-center justify-center text-center">
-              <p className="font-mono text-2xl font-bold text-primary sm:text-3xl">{totalAnswered}</p>
-              <p className="mt-1 font-body text-xs text-text-muted">Answered</p>
+              <p className="text-primary font-mono text-2xl font-bold sm:text-3xl">
+                {totalAnswered}
+              </p>
+              <p className="font-body text-text-muted mt-1 text-xs">Answered</p>
             </Card>
             <Card className="flex flex-col items-center justify-center text-center">
-              <p className="font-mono text-2xl font-bold text-success sm:text-3xl">{maxCombo}x</p>
-              <p className="mt-1 font-body text-xs text-text-muted">Max Combo</p>
+              <p className="text-success font-mono text-2xl font-bold sm:text-3xl">{maxCombo}x</p>
+              <p className="font-body text-text-muted mt-1 text-xs">Max Combo</p>
             </Card>
           </div>
 
-          <div className="mt-4 rounded-xl bg-secondary/10 px-6 py-3">
-            <p className="font-body text-sm text-secondary">
-              <Zap className="mr-1 inline h-4 w-4" />
-              +{score} XP earned!
+          <div className="bg-secondary/10 mt-4 rounded-xl px-6 py-3">
+            <p className="font-body text-secondary text-sm">
+              <Zap className="mr-1 inline h-4 w-4" />+{score} XP earned!
             </p>
           </div>
 
@@ -475,7 +507,7 @@ export default function SpeedRoundPage() {
 
           <button
             onClick={() => navigate('/clinical-scenario')}
-            className="mt-4 flex items-center gap-2 font-body text-sm text-text-secondary transition-colors hover:text-primary"
+            className="font-body text-text-secondary hover:text-primary mt-4 flex items-center gap-2 text-sm transition-colors"
           >
             Try Clinical Scenarios
             <ArrowRight className="h-4 w-4" />

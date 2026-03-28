@@ -13,12 +13,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<Variant, string> = {
   primary:
     'bg-gradient-to-r from-secondary via-amber-400 to-secondary text-white shadow-md card-highlight hover:shadow-glow-secondary',
-  secondary:
-    'bg-primary text-white hover:bg-primary-hover shadow-md hover:shadow-glow-primary',
+  secondary: 'bg-primary text-white hover:bg-primary-hover shadow-md hover:shadow-glow-primary',
   outline:
     'border border-border bg-transparent text-text-primary hover:bg-surface hover:border-primary/50',
-  ghost:
-    'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface',
+  ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface',
 }
 
 const sizeStyles: Record<Size, string> = {
@@ -38,17 +36,12 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-200 hover:-translate-y-px hover:shadow-lg active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-all duration-200 hover:-translate-y-px hover:shadow-lg active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       disabled={disabled || loading}
       {...props}
     >
       {loading && (
-        <svg
-          className="h-4 w-4 animate-spin"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
+        <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle
             className="opacity-25"
             cx="12"

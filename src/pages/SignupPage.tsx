@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { BookOpen, Mail, Lock, User, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import { useAuth } from '@/hooks/useAuth'
@@ -8,7 +8,8 @@ import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 export default function SignupPage() {
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [searchParams] = useSearchParams()
+  const [email, setEmail] = useState(() => searchParams.get('email') ?? '')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -19,6 +20,14 @@ export default function SignupPage() {
   const updateSettings = useSettingsStore((s) => s.updateSettings)
   const betaMode = resolveBetaMode(betaModeEnabled)
   const navigate = useNavigate()
+  const source = searchParams.get('source')
+  const score = searchParams.get('score')
+  const plan = searchParams.get('plan')
+  const nextPath = normalizeRedirectTarget(
+    searchParams.get('redirect') ??
+      searchParams.get('next') ??
+      (plan === 'pro' ? '/pro?tier=pro' : '/dashboard'),
+  )
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,7 +39,7 @@ export default function SignupPage() {
       setLoading(false)
     } else {
       setSuccess(true)
-      setTimeout(() => navigate('/dashboard'), 2000)
+      setTimeout(() => navigate(nextPath), 2000)
     }
   }
 
@@ -40,30 +49,39 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-6">
+    <div className="bg-background flex min-h-screen items-center justify-center px-6">
       <div className="w-full max-w-md">
         <Link to="/" className="mb-10 flex items-center justify-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+          <div className="from-primary to-secondary flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br">
             <BookOpen className="h-5 w-5 text-white" />
           </div>
-          <span className="font-display text-2xl text-text-primary">PraxisPrep</span>
+          <span className="font-display text-text-primary text-2xl">PraxisPrep</span>
         </Link>
 
-        <div className="rounded-2xl border border-border bg-surface p-8">
-          <h1 className="font-display text-3xl text-text-primary">Create your account</h1>
-          <p className="mt-2 font-body text-sm text-text-secondary">
-            Start studying for the Praxis 5331 — free.
+        <div className="border-border bg-surface rounded-2xl border p-8">
+          <h1 className="font-display text-text-primary text-3xl">Create your account</h1>
+          <p className="font-body text-text-secondary mt-2 text-sm">
+            {source === 'diagnostic'
+              ? 'Save your diagnostic path, then keep going into the funnel.'
+              : 'Start studying for the Praxis 5331 — free.'}
           </p>
+          {(source === 'diagnostic' || score || plan) && (
+            <div className="border-secondary/25 bg-secondary/6 font-body text-text-secondary mt-4 rounded-xl border p-3 text-sm">
+              {score
+                ? `Your last diagnostic score was ${score}%. Create the account with this same email so the study plan and upgrade path stay aligned.`
+                : 'Your diagnostic flow started here. Create the account with this same email so your study plan and upgrade path stay aligned.'}
+            </div>
+          )}
 
           {error && (
-            <div className="mt-4 flex items-center gap-2 rounded-xl bg-error-light p-3 text-sm text-error">
+            <div className="bg-error-light text-error mt-4 flex items-center gap-2 rounded-xl p-3 text-sm">
               <AlertCircle className="h-4 w-4 shrink-0" />
               {error}
             </div>
           )}
 
           {success && (
-            <div className="mt-4 flex items-center gap-2 rounded-xl bg-success-light p-3 text-sm text-success">
+            <div className="bg-success-light text-success mt-4 flex items-center gap-2 rounded-xl p-3 text-sm">
               <CheckCircle className="h-4 w-4 shrink-0" />
               Account created! Check your email to confirm, then we'll redirect you.
             </div>
@@ -71,11 +89,14 @@ export default function SignupPage() {
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
-              <label htmlFor="name" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+              <label
+                htmlFor="name"
+                className="font-body text-text-secondary mb-2 block text-sm font-medium"
+              >
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <User className="text-text-muted absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                 <input
                   id="name"
                   type="text"
@@ -83,17 +104,20 @@ export default function SignupPage() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
                   required
-                  className="w-full rounded-xl border border-border bg-background py-3 pr-4 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-primary w-full rounded-xl border py-3 pr-4 pl-10 focus:ring-1 focus:outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+              <label
+                htmlFor="email"
+                className="font-body text-text-secondary mb-2 block text-sm font-medium"
+              >
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <Mail className="text-text-muted absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                 <input
                   id="email"
                   type="email"
@@ -101,17 +125,20 @@ export default function SignupPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@university.edu"
                   required
-                  className="w-full rounded-xl border border-border bg-background py-3 pr-4 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-primary w-full rounded-xl border py-3 pr-4 pl-10 focus:ring-1 focus:outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="mb-2 block font-body text-sm font-medium text-text-secondary">
+              <label
+                htmlFor="password"
+                className="font-body text-text-secondary mb-2 block text-sm font-medium"
+              >
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-text-muted" />
+                <Lock className="text-text-muted absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -120,12 +147,12 @@ export default function SignupPage() {
                   placeholder="Min 8 characters"
                   required
                   minLength={8}
-                  className="w-full rounded-xl border border-border bg-background py-3 pr-12 pl-10 font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary placeholder:text-text-muted/50 focus:border-primary focus:ring-primary w-full rounded-xl border py-3 pr-12 pl-10 focus:ring-1 focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-3 -translate-y-1/2 text-text-muted hover:text-text-secondary"
+                  className="text-text-muted hover:text-text-secondary absolute top-1/2 right-3 -translate-y-1/2"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -137,20 +164,27 @@ export default function SignupPage() {
               {loading ? 'Creating account...' : 'Create Account'}
             </Button>
 
-            <p className="text-center font-body text-xs text-text-muted">
+            <p className="font-body text-text-muted text-center text-xs">
               By signing up, you agree to our{' '}
-              <Link to="/terms" className="text-primary hover:underline">Terms</Link>
-              {' '}and{' '}
-              <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
+              <Link to="/terms" className="text-primary hover:underline">
+                Terms
+              </Link>{' '}
+              and{' '}
+              <Link to="/privacy" className="text-primary hover:underline">
+                Privacy Policy
+              </Link>
+              .
             </p>
           </form>
 
           {BETA_MODE_AVAILABLE && (
-            <div className="mt-5 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
-              <p className="font-body text-sm text-text-primary">
-                {betaMode ? 'Beta Mode is already active in this browser.' : 'Want to explore the product first?'}
+            <div className="border-secondary/20 bg-secondary/5 mt-5 rounded-2xl border p-4">
+              <p className="font-body text-text-primary text-sm">
+                {betaMode
+                  ? 'Beta Mode is already active in this browser.'
+                  : 'Want to explore the product first?'}
               </p>
-              <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
+              <p className="font-body text-text-secondary mt-1 text-xs leading-6">
                 {betaMode
                   ? 'Open the beta workspace directly and bypass signup on protected pages.'
                   : 'Switch this browser into beta mode and use the full local workspace without creating an account yet.'}
@@ -162,13 +196,21 @@ export default function SignupPage() {
           )}
         </div>
 
-        <p className="mt-6 text-center font-body text-sm text-text-secondary">
+        <p className="font-body text-text-secondary mt-6 text-center text-sm">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-secondary hover:text-secondary-hover">
+          <Link
+            to={`/login${searchParams.toString() ? `?${searchParams.toString()}` : ''}`}
+            className="text-secondary hover:text-secondary-hover font-medium"
+          >
             Log in
           </Link>
         </p>
       </div>
     </div>
   )
+}
+
+function normalizeRedirectTarget(value: string | null) {
+  if (!value || !value.startsWith('/')) return '/dashboard'
+  return value
 }

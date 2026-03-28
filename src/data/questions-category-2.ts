@@ -24,7 +24,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Goldman-Fristoe Test of Articulation (GFTA-3)', isCorrect: false },
       { id: 'd', text: 'Clinical Evaluation of Language Fundamentals (CELF-5)', isCorrect: false },
     ],
-    explanation: 'The PLS-5 assesses auditory comprehension and expressive communication in children from birth to 7;11. It includes two subscales and is particularly useful for early identification of language disorders in young children.',
+    explanation:
+      'The PLS-5 assesses auditory comprehension and expressive communication in children from birth to 7;11. It includes two subscales and is particularly useful for early identification of language disorders in young children.',
     incorrectExplanations: {
       a: 'The PPVT-5 measures receptive vocabulary only, not comprehensive receptive and expressive language skills.',
       c: 'The GFTA-3 assesses articulation/speech sound production, not receptive and expressive language.',
@@ -45,9 +46,14 @@ export const category2Questions: QuestionData[] = [
       { id: 'a', text: 'Material enters the airway and is expelled', isCorrect: false },
       { id: 'b', text: 'Material enters the airway and is not expelled', isCorrect: false },
       { id: 'c', text: 'Material does not enter the airway', isCorrect: true },
-      { id: 'd', text: 'Material contacts the vocal folds but does not pass below them', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Material contacts the vocal folds but does not pass below them',
+        isCorrect: false,
+      },
     ],
-    explanation: 'A PAS score of 1 means material does not enter the airway at all. The scale ranges from 1 (no airway invasion) to 8 (silent aspiration — material passes below the vocal folds with no cough or visible effort to clear).',
+    explanation:
+      'A PAS score of 1 means material does not enter the airway at all. The scale ranges from 1 (no airway invasion) to 8 (silent aspiration — material passes below the vocal folds with no cough or visible effort to clear).',
     incorrectExplanations: {
       a: 'Material entering the airway and being expelled describes PAS scores of 6 or 7, depending on depth of invasion.',
       b: 'Material entering the airway without being expelled describes a PAS score of 8 (silent aspiration).',
@@ -70,7 +76,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Transcortical motor aphasia', isCorrect: false },
       { id: 'd', text: 'Conduction aphasia', isCorrect: false },
     ],
-    explanation: 'Wernicke aphasia is characterized by fluent (often paraphasic) verbal output, severely impaired auditory comprehension, and impaired repetition. Lesions typically involve the posterior superior temporal gyrus.',
+    explanation:
+      'Wernicke aphasia is characterized by fluent (often paraphasic) verbal output, severely impaired auditory comprehension, and impaired repetition. Lesions typically involve the posterior superior temporal gyrus.',
     incorrectExplanations: {
       a: 'Broca aphasia features nonfluent output with relatively preserved auditory comprehension and impaired repetition.',
       c: 'Transcortical motor aphasia features nonfluent output, relatively preserved comprehension, and intact repetition.',
@@ -88,12 +95,25 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q004',
     stem: 'Which of the following is a hallmark diagnostic feature of childhood apraxia of speech (CAS) as identified by ASHA?',
     options: [
-      { id: 'a', text: 'Consistent phoneme substitutions across repeated trials', isCorrect: false },
-      { id: 'b', text: 'Inconsistent error patterns on consonants and vowels across repeated productions of the same word', isCorrect: true },
-      { id: 'c', text: 'Distortion errors primarily in later-developing phonemes', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Consistent phoneme substitutions across repeated trials',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Inconsistent error patterns on consonants and vowels across repeated productions of the same word',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Distortion errors primarily in later-developing phonemes',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Difficulty with only multisyllabic words', isCorrect: false },
     ],
-    explanation: 'ASHA identified three consensus-based features of CAS: inconsistent errors on consonants and vowels in repeated productions, disrupted coarticulatory transitions, and inappropriate prosody (particularly in lexical or phrasal stress). Inconsistency is the most diagnostically distinguishing feature.',
+    explanation:
+      'ASHA identified three consensus-based features of CAS: inconsistent errors on consonants and vowels in repeated productions, disrupted coarticulatory transitions, and inappropriate prosody (particularly in lexical or phrasal stress). Inconsistency is the most diagnostically distinguishing feature.',
     incorrectExplanations: {
       a: 'Consistent substitutions are more characteristic of a phonological disorder, not CAS.',
       c: 'Distortion errors in later-developing phonemes are typical of articulation disorders, not the hallmark feature of CAS.',
@@ -114,9 +134,14 @@ export const category2Questions: QuestionData[] = [
       { id: 'a', text: 'Conductive hearing loss', isCorrect: false },
       { id: 'b', text: 'Sensorineural hearing loss', isCorrect: false },
       { id: 'c', text: 'Mixed hearing loss', isCorrect: false },
-      { id: 'd', text: 'This pattern is not consistent with any standard hearing loss configuration', isCorrect: true },
+      {
+        id: 'd',
+        text: 'This pattern is not consistent with any standard hearing loss configuration',
+        isCorrect: true,
+      },
     ],
-    explanation: 'If AC thresholds are normal, BC thresholds cannot be elevated without an air-bone gap, because BC thresholds represent the best cochlear sensitivity and AC thresholds can only be equal to or poorer than BC thresholds. This audiometric pattern is inconsistent and would indicate a testing error.',
+    explanation:
+      'If AC thresholds are normal, BC thresholds cannot be elevated without an air-bone gap, because BC thresholds represent the best cochlear sensitivity and AC thresholds can only be equal to or poorer than BC thresholds. This audiometric pattern is inconsistent and would indicate a testing error.',
     incorrectExplanations: {
       a: 'Conductive hearing loss shows normal BC with elevated AC, producing an air-bone gap.',
       b: 'Sensorineural hearing loss shows equally elevated AC and BC thresholds with no air-bone gap.',
@@ -128,7 +153,10 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['audiogram', 'hearing-loss', 'air-bone-gap', 'screening'],
     clinicalSetting: null,
-    referenceSources: ['Katz Handbook of Clinical Audiology (8th ed.)', 'ASHA Practice Portal: Hearing Loss'],
+    referenceSources: [
+      'Katz Handbook of Clinical Audiology (8th ed.)',
+      'ASHA Practice Portal: Hearing Loss',
+    ],
   },
   {
     id: 'c2-q006',
@@ -139,7 +167,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'CN V (Trigeminal)', isCorrect: false },
       { id: 'd', text: 'CN XII (Hypoglossal)', isCorrect: false },
     ],
-    explanation: 'Velopharyngeal closure involves elevation of the soft palate (primarily innervated by CN X via the pharyngeal plexus) and constriction of the pharyngeal walls (CN IX and X). Both cranial nerves are assessed when the clinician observes palatal elevation during sustained /a/ phonation.',
+    explanation:
+      'Velopharyngeal closure involves elevation of the soft palate (primarily innervated by CN X via the pharyngeal plexus) and constriction of the pharyngeal walls (CN IX and X). Both cranial nerves are assessed when the clinician observes palatal elevation during sustained /a/ phonation.',
     incorrectExplanations: {
       a: 'CN VII innervates the muscles of facial expression, not the velopharyngeal mechanism.',
       c: 'CN V provides motor innervation to the muscles of mastication, not the velum.',
@@ -151,7 +180,10 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['cranial-nerves', 'velopharyngeal', 'oral-mech-exam', 'anatomy'],
     clinicalSetting: null,
-    referenceSources: ['Duffy (2019) Motor Speech Disorders', 'ASHA Practice Portal: Cleft Lip and Palate'],
+    referenceSources: [
+      'Duffy (2019) Motor Speech Disorders',
+      'ASHA Practice Portal: Cleft Lip and Palate',
+    ],
   },
   {
     id: 'c2-q007',
@@ -162,7 +194,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'A measure of reading and writing performance', isCorrect: false },
       { id: 'd', text: 'A quality-of-life rating related to communication', isCorrect: false },
     ],
-    explanation: 'The AQ is a composite score derived from the four oral language subtests of the WAB-R: Spontaneous Speech, Auditory Verbal Comprehension, Repetition, and Naming/Word Finding. It provides an overall severity index for aphasia classification.',
+    explanation:
+      'The AQ is a composite score derived from the four oral language subtests of the WAB-R: Spontaneous Speech, Auditory Verbal Comprehension, Repetition, and Naming/Word Finding. It provides an overall severity index for aphasia classification.',
     incorrectExplanations: {
       a: 'The AQ specifically measures oral language, not cognitive-linguistic function. The WAB-R does have supplemental subtests for reading/writing and cognition, but those contribute to the Language Quotient (LQ) and Cortical Quotient (CQ), not the AQ.',
       c: 'Reading and writing performance contribute to the Language Quotient (LQ), not the Aphasia Quotient (AQ).',
@@ -181,11 +214,16 @@ export const category2Questions: QuestionData[] = [
     stem: 'During a FEES examination, the clinician cannot directly visualize which phase of the swallow?',
     options: [
       { id: 'a', text: 'Oral preparatory phase', isCorrect: false },
-      { id: 'b', text: 'Pharyngeal phase at the moment of maximum pharyngeal contraction', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Pharyngeal phase at the moment of maximum pharyngeal contraction',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Pre-swallow pharyngeal phase', isCorrect: false },
       { id: 'd', text: 'Post-swallow pharyngeal residue', isCorrect: false },
     ],
-    explanation: 'During FEES, the pharyngeal squeeze causes a "whiteout" period where the endoscope image is obscured by pharyngeal wall and epiglottic contact. This means the exact moment of hyolaryngeal excursion and upper esophageal sphincter opening cannot be directly observed. Events before and after the whiteout are clearly visible.',
+    explanation:
+      'During FEES, the pharyngeal squeeze causes a "whiteout" period where the endoscope image is obscured by pharyngeal wall and epiglottic contact. This means the exact moment of hyolaryngeal excursion and upper esophageal sphincter opening cannot be directly observed. Events before and after the whiteout are clearly visible.',
     incorrectExplanations: {
       a: 'The oral cavity is partially visible during FEES from the overhead view, and bolus management in the oropharynx can be observed.',
       c: 'FEES provides excellent visualization of premature spillage, vallecular pooling, and pre-swallow aspiration/penetration.',
@@ -197,7 +235,10 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['FEES', 'whiteout', 'dysphagia', 'instrumental-assessment'],
     clinicalSetting: 'medical',
-    referenceSources: ['Langmore (2001) Endoscopic Evaluation and Treatment of Swallowing Disorders', 'ASHA Practice Portal: Adult Dysphagia'],
+    referenceSources: [
+      'Langmore (2001) Endoscopic Evaluation and Treatment of Swallowing Disorders',
+      'ASHA Practice Portal: Adult Dysphagia',
+    ],
   },
   {
     id: 'c2-q009',
@@ -208,7 +249,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: '22q11.2 deletion syndrome (velocardiofacial syndrome)', isCorrect: true },
       { id: 'd', text: 'Turner syndrome', isCorrect: false },
     ],
-    explanation: '22q11.2 deletion syndrome (also known as velocardiofacial syndrome or DiGeorge syndrome) is the most common genetic cause of VPI without overt cleft. Up to 75% of affected individuals have velopharyngeal dysfunction, often with a submucous cleft palate, palatal muscle hypotonia, or structurally short velum.',
+    explanation:
+      '22q11.2 deletion syndrome (also known as velocardiofacial syndrome or DiGeorge syndrome) is the most common genetic cause of VPI without overt cleft. Up to 75% of affected individuals have velopharyngeal dysfunction, often with a submucous cleft palate, palatal muscle hypotonia, or structurally short velum.',
     incorrectExplanations: {
       a: 'Fragile X syndrome is associated with language delays, pragmatic deficits, and perseverative speech, not primarily VPI.',
       b: 'Down syndrome is associated with hypotonia, language delays, and articulation difficulties but VPI is not the hallmark feature.',
@@ -231,7 +273,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Comprehensive Assessment of Spoken Language (CASL-2)', isCorrect: false },
       { id: 'd', text: 'Expressive Vocabulary Test (EVT-3)', isCorrect: false },
     ],
-    explanation: 'The Social Language Development Test (SLDT) specifically evaluates social/pragmatic language skills including making inferences, interpreting social situations, and understanding nonliteral language in school-age children.',
+    explanation:
+      'The Social Language Development Test (SLDT) specifically evaluates social/pragmatic language skills including making inferences, interpreting social situations, and understanding nonliteral language in school-age children.',
     incorrectExplanations: {
       a: 'TOPS-3 assesses critical thinking and problem-solving language, not specifically pragmatic/social communication.',
       c: 'CASL-2 is a comprehensive language battery that includes a pragmatic judgment subtest but is not specifically designed as a pragmatic language measure.',
@@ -243,7 +286,10 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['pragmatics', 'social-communication', 'pediatric', 'standardized-assessment'],
     clinicalSetting: 'school',
-    referenceSources: ['SLDT Technical Manual', 'ASHA Practice Portal: Social Communication Disorder'],
+    referenceSources: [
+      'SLDT Technical Manual',
+      'ASHA Practice Portal: Social Communication Disorder',
+    ],
   },
 
   // ─── APPLICATION (15 questions) ──────────────────────────────────────
@@ -256,7 +302,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Stopping of fricatives', isCorrect: false },
       { id: 'd', text: 'A combination of fronting and voicing errors', isCorrect: true },
     ],
-    explanation: 'The child is replacing velar sounds with alveolar sounds (/k/ to /t/, /g/ to /d/) which is fronting, and some voicing changes are also present. "tat" for "cat" shows fronting of the initial /k/ to /t/. "dod" for "dog" shows fronting of /g/ to /d/. "tup" for "cup" is fronting. "do" for "go" is fronting. However, final consonant changes (like /d/ for /g/) also involve fronting. The pattern is primarily velar fronting.',
+    explanation:
+      'The child is replacing velar sounds with alveolar sounds (/k/ to /t/, /g/ to /d/) which is fronting, and some voicing changes are also present. "tat" for "cat" shows fronting of the initial /k/ to /t/. "dod" for "dog" shows fronting of /g/ to /d/. "tup" for "cup" is fronting. "do" for "go" is fronting. However, final consonant changes (like /d/ for /g/) also involve fronting. The pattern is primarily velar fronting.',
     incorrectExplanations: {
       a: 'While fronting is present, this answer is incomplete. The child shows fronting as the dominant pattern, but the answer should recognize it occurs across voiced and voiceless velar targets, making option D the best answer as it accounts for the full error pattern.',
       b: 'Backing involves replacing anterior sounds with posterior ones (e.g., /t/ to /k/), which is the opposite of what is observed here.',
@@ -279,7 +326,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'PAS 7', isCorrect: false },
       { id: 'd', text: 'PAS 8', isCorrect: true },
     ],
-    explanation: 'PAS 8 indicates material enters the airway, passes below the vocal folds, and no effort is made to eject it. This is silent aspiration — the most clinically significant finding because the patient has no protective cough reflex, placing them at high aspiration risk.',
+    explanation:
+      'PAS 8 indicates material enters the airway, passes below the vocal folds, and no effort is made to eject it. This is silent aspiration — the most clinically significant finding because the patient has no protective cough reflex, placing them at high aspiration risk.',
     incorrectExplanations: {
       a: 'PAS 5 indicates material contacts the vocal folds and is not ejected, but does not pass below them.',
       b: 'PAS 6 indicates material passes below the vocal folds but IS ejected into the larynx or out of the airway.',
@@ -297,12 +345,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q013',
     stem: 'A school-based SLP needs to determine whether a 6-year-old who speaks Vietnamese at home and English at school has a language disorder versus a language difference. Which of the following approaches is MOST appropriate?',
     options: [
-      { id: 'a', text: 'Administer the CELF-5 in English since the child attends an English-speaking school', isCorrect: false },
-      { id: 'b', text: 'Collect language samples in both Vietnamese and English and compare with bilingual developmental expectations', isCorrect: true },
-      { id: 'c', text: 'Refer the child for psychoeducational testing to rule out intellectual disability first', isCorrect: false },
-      { id: 'd', text: 'Wait 12 months for additional English language exposure before assessing', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Administer the CELF-5 in English since the child attends an English-speaking school',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Collect language samples in both Vietnamese and English and compare with bilingual developmental expectations',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Refer the child for psychoeducational testing to rule out intellectual disability first',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Wait 12 months for additional English language exposure before assessing',
+        isCorrect: false,
+      },
     ],
-    explanation: 'When evaluating bilingual children, best practice requires assessing both languages to determine whether deficits are present across languages (indicating a disorder) or only in the second language (indicating a difference). Language sampling with comparison to bilingual developmental norms provides the most valid picture.',
+    explanation:
+      'When evaluating bilingual children, best practice requires assessing both languages to determine whether deficits are present across languages (indicating a disorder) or only in the second language (indicating a difference). Language sampling with comparison to bilingual developmental norms provides the most valid picture.',
     incorrectExplanations: {
       a: 'Administering a standardized English-only test to a bilingual child produces results that reflect language exposure, not necessarily language ability. This approach leads to over-identification of language disorders in bilingual children.',
       c: 'A referral for psychoeducational testing is not the first step. The SLP should first determine if a true language disorder exists across both languages before pursuing additional evaluation.',
@@ -325,7 +390,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Esophageal phase dysphagia with reflux', isCorrect: false },
       { id: 'd', text: 'Pharyngeal residue in the valleculae only', isCorrect: false },
     ],
-    explanation: 'Coughing during or immediately after a swallow combined with wet/gurgly vocal quality strongly suggests material has entered the laryngeal vestibule (penetration) or passed below the vocal folds (aspiration). The wet vocal quality indicates material sitting on or near the vocal folds.',
+    explanation:
+      'Coughing during or immediately after a swallow combined with wet/gurgly vocal quality strongly suggests material has entered the laryngeal vestibule (penetration) or passed below the vocal folds (aspiration). The wet vocal quality indicates material sitting on or near the vocal folds.',
     incorrectExplanations: {
       a: 'Anterior bolus loss occurs before the swallow is initiated and does not typically produce coughing or wet vocal quality.',
       c: 'Esophageal dysphagia with reflux occurs after the pharyngeal phase and would not produce immediate coughing during swallowing thin liquids.',
@@ -343,12 +409,25 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q015',
     stem: 'An SLP is screening kindergarten students for speech-language concerns. One 5-year-old child produces /w/ for /r/ in all word positions and omits /s/ in clusters (e.g., "top" for "stop"). The SLP should:',
     options: [
-      { id: 'a', text: 'Immediately refer the child for a comprehensive speech-language evaluation', isCorrect: false },
-      { id: 'b', text: 'Document the findings as age-appropriate and pass the child on the screening', isCorrect: true },
-      { id: 'c', text: 'Begin intervention for cluster reduction since it affects intelligibility', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Immediately refer the child for a comprehensive speech-language evaluation',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Document the findings as age-appropriate and pass the child on the screening',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Begin intervention for cluster reduction since it affects intelligibility',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Refer the child for an audiological evaluation', isCorrect: false },
     ],
-    explanation: 'Gliding of /r/ to /w/ is developmentally appropriate until approximately age 6, and cluster reduction is typical until approximately ages 4-5. At age 5, these patterns are at the upper end of the normal developmental range and would not warrant referral from a screening alone.',
+    explanation:
+      'Gliding of /r/ to /w/ is developmentally appropriate until approximately age 6, and cluster reduction is typical until approximately ages 4-5. At age 5, these patterns are at the upper end of the normal developmental range and would not warrant referral from a screening alone.',
     incorrectExplanations: {
       a: 'These error patterns are still within developmental expectations for a 5-year-old. A comprehensive evaluation is not warranted at this time based on these findings alone.',
       c: 'A screening does not lead directly to intervention. Additionally, cluster reduction at age 5 may still be developmental.',
@@ -371,7 +450,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Ataxic dysarthria', isCorrect: false },
       { id: 'd', text: 'Flaccid dysarthria', isCorrect: false },
     ],
-    explanation: 'Hypokinetic dysarthria, most commonly associated with Parkinson disease, is characterized by reduced loudness, monopitch, monoloudness, imprecise articulation, breathy voice quality, and reduced facial expression. The overall presentation reflects basal ganglia pathology affecting movement amplitude.',
+    explanation:
+      'Hypokinetic dysarthria, most commonly associated with Parkinson disease, is characterized by reduced loudness, monopitch, monoloudness, imprecise articulation, breathy voice quality, and reduced facial expression. The overall presentation reflects basal ganglia pathology affecting movement amplitude.',
     incorrectExplanations: {
       a: 'Spastic dysarthria is characterized by strained-strangled voice quality, slow rate, reduced range of motion, and hypertonicity — not breathiness and reduced loudness.',
       c: 'Ataxic dysarthria features irregular articulatory breakdowns, excess and equal stress patterns, and coordination difficulties — a more irregular presentation.',
@@ -389,12 +469,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q017',
     stem: 'An SLP is evaluating a 3-year-old child with Trisomy 21 (Down syndrome). Which of the following assessment considerations is MOST important for this population?',
     options: [
-      { id: 'a', text: 'Use only standardized norm-referenced tests to ensure objective results', isCorrect: false },
-      { id: 'b', text: 'Defer assessment until the child is at least 4 years old when more reliable data can be obtained', isCorrect: false },
-      { id: 'c', text: 'Include assessment of oral motor function, hearing status, and intelligibility in addition to language measures', isCorrect: true },
-      { id: 'd', text: 'Focus exclusively on expressive language since it is the primary deficit in this population', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Use only standardized norm-referenced tests to ensure objective results',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Defer assessment until the child is at least 4 years old when more reliable data can be obtained',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Include assessment of oral motor function, hearing status, and intelligibility in addition to language measures',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Focus exclusively on expressive language since it is the primary deficit in this population',
+        isCorrect: false,
+      },
     ],
-    explanation: 'Children with Down syndrome commonly present with hypotonia affecting oral motor function, higher prevalence of hearing loss (both conductive and sensorineural), reduced intelligibility, and both receptive and expressive language delays. A comprehensive evaluation must address all of these areas.',
+    explanation:
+      'Children with Down syndrome commonly present with hypotonia affecting oral motor function, higher prevalence of hearing loss (both conductive and sensorineural), reduced intelligibility, and both receptive and expressive language delays. A comprehensive evaluation must address all of these areas.',
     incorrectExplanations: {
       a: 'Standardized tests alone may underestimate abilities in children with Down syndrome. Criterion-referenced measures, language sampling, and dynamic assessment provide a more complete picture.',
       b: 'There is no justification for delaying assessment. Early identification and intervention are critical for this population.',
@@ -412,12 +509,25 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q018',
     stem: 'A patient is referred for voice evaluation with a chief complaint of chronic hoarseness for 3 months. The SLP should first:',
     options: [
-      { id: 'a', text: 'Begin a trial of vocal hygiene education and resonant voice therapy', isCorrect: false },
-      { id: 'b', text: 'Collect a comprehensive case history and confirm that the patient has had a laryngeal visualization by an otolaryngologist', isCorrect: true },
+      {
+        id: 'a',
+        text: 'Begin a trial of vocal hygiene education and resonant voice therapy',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Collect a comprehensive case history and confirm that the patient has had a laryngeal visualization by an otolaryngologist',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Perform acoustic analysis using a sustained vowel task', isCorrect: false },
-      { id: 'd', text: 'Administer the Voice Handicap Index (VHI) to determine severity', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Administer the Voice Handicap Index (VHI) to determine severity',
+        isCorrect: false,
+      },
     ],
-    explanation: 'ASHA guidelines recommend that patients with persistent voice changes be evaluated by an otolaryngologist (ENT) for laryngeal visualization before or in conjunction with the SLP evaluation. This is critical to rule out laryngeal pathology including malignancy. The SLP should confirm this has occurred as a first step.',
+    explanation:
+      'ASHA guidelines recommend that patients with persistent voice changes be evaluated by an otolaryngologist (ENT) for laryngeal visualization before or in conjunction with the SLP evaluation. This is critical to rule out laryngeal pathology including malignancy. The SLP should confirm this has occurred as a first step.',
     incorrectExplanations: {
       a: 'Beginning therapy without a medical evaluation and proper diagnosis is inappropriate. Chronic hoarseness requires laryngeal visualization to rule out pathology.',
       c: 'Acoustic analysis is part of a comprehensive voice evaluation but should not precede confirming that a medical evaluation has been completed.',
@@ -435,15 +545,32 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q019',
     stem: 'An SLP is assessing a 7-year-old child for stuttering. The child exhibits part-word repetitions, prolongations, and visible tension in the jaw during speech. In addition to frequency measures, which of the following should the SLP evaluate?',
     options: [
-      { id: 'a', text: 'Only the number of disfluencies per 100 syllables to determine severity', isCorrect: false },
-      { id: 'b', text: 'The child\'s awareness, emotional reactions, avoidance behaviors, and impact on communication participation', isCorrect: true },
-      { id: 'c', text: 'Standardized articulation testing to rule out a co-occurring phonological disorder', isCorrect: false },
-      { id: 'd', text: 'Only parent report, since children this age cannot reliably self-report', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Only the number of disfluencies per 100 syllables to determine severity',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "The child's awareness, emotional reactions, avoidance behaviors, and impact on communication participation",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Standardized articulation testing to rule out a co-occurring phonological disorder',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Only parent report, since children this age cannot reliably self-report',
+        isCorrect: false,
+      },
     ],
-    explanation: 'A comprehensive stuttering evaluation goes beyond frequency counts to include assessment of secondary behaviors (tension, struggle), the child\'s cognitive and affective reactions, avoidance behaviors, and impact on communication participation. The ASHA practice guidelines emphasize a multidimensional assessment approach.',
+    explanation:
+      "A comprehensive stuttering evaluation goes beyond frequency counts to include assessment of secondary behaviors (tension, struggle), the child's cognitive and affective reactions, avoidance behaviors, and impact on communication participation. The ASHA practice guidelines emphasize a multidimensional assessment approach.",
     incorrectExplanations: {
       a: 'Frequency counts alone do not capture the full impact of stuttering. Severity involves secondary behaviors, tension, avoidance, and communicative impact.',
-      c: 'While co-occurring disorders should be considered, this is not the priority in a stuttering evaluation. The question asks what ELSE should be assessed beyond frequency, and the child\'s experience of stuttering is the primary answer.',
+      c: "While co-occurring disorders should be considered, this is not the priority in a stuttering evaluation. The question asks what ELSE should be assessed beyond frequency, and the child's experience of stuttering is the primary answer.",
       d: 'Children as young as 3 can demonstrate awareness of stuttering. A 7-year-old can provide valuable self-report information about attitudes, feelings, and avoidance.',
     },
     contentCategory: 'II',
@@ -463,7 +590,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Auditory comprehension and repetition', isCorrect: false },
       { id: 'd', text: 'Verbal fluency and naming', isCorrect: false },
     ],
-    explanation: 'Right hemisphere damage commonly affects visuospatial processing (including left neglect), attention (especially sustained and divided attention), and executive function. These are hallmark deficits of right hemisphere stroke, distinct from the linguistic deficits seen in left hemisphere stroke.',
+    explanation:
+      'Right hemisphere damage commonly affects visuospatial processing (including left neglect), attention (especially sustained and divided attention), and executive function. These are hallmark deficits of right hemisphere stroke, distinct from the linguistic deficits seen in left hemisphere stroke.',
     incorrectExplanations: {
       a: 'Phonological processing and word retrieval deficits are more characteristic of left hemisphere damage.',
       c: 'Auditory comprehension and repetition deficits are hallmarks of left hemisphere aphasia (e.g., Wernicke or conduction aphasia).',
@@ -482,11 +610,16 @@ export const category2Questions: QuestionData[] = [
     stem: 'A child with Fragile X syndrome is referred for a communication evaluation. Based on the known phenotype, the SLP should prioritize assessment of which areas?',
     options: [
       { id: 'a', text: 'Oral motor function and feeding skills only', isCorrect: false },
-      { id: 'b', text: 'Pragmatic language, perseverative speech, anxiety-related communication behaviors, and sensory processing effects on communication', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Pragmatic language, perseverative speech, anxiety-related communication behaviors, and sensory processing effects on communication',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Phonological awareness and reading skills only', isCorrect: false },
       { id: 'd', text: 'Voice quality and resonance', isCorrect: false },
     ],
-    explanation: 'Fragile X syndrome is commonly associated with pragmatic language deficits, perseverative and tangential language, social anxiety affecting communication, sensory sensitivities, and difficulties with topic maintenance. Males are typically more significantly affected than females. Assessment should address these known characteristics.',
+    explanation:
+      'Fragile X syndrome is commonly associated with pragmatic language deficits, perseverative and tangential language, social anxiety affecting communication, sensory sensitivities, and difficulties with topic maintenance. Males are typically more significantly affected than females. Assessment should address these known characteristics.',
     incorrectExplanations: {
       a: 'While oral motor function may be relevant, the primary communication concerns in Fragile X are related to pragmatic language and social communication, not isolated feeding issues.',
       c: 'Phonological awareness may be affected, but the hallmark communication features of Fragile X involve pragmatics, perseveration, and social communication.',
@@ -506,10 +639,15 @@ export const category2Questions: QuestionData[] = [
     options: [
       { id: 'a', text: 'Mild bilateral flat sensorineural hearing loss', isCorrect: false },
       { id: 'b', text: 'Moderate bilateral flat sensorineural hearing loss', isCorrect: true },
-      { id: 'c', text: 'Moderately severe bilateral flat sensorineural hearing loss', isCorrect: false },
+      {
+        id: 'c',
+        text: 'Moderately severe bilateral flat sensorineural hearing loss',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Severe bilateral flat sensorineural hearing loss', isCorrect: false },
     ],
-    explanation: 'A hearing level of 55 dB HL falls within the moderate range (41-55 dB HL per Clark, 1981). The loss is bilateral (both ears), flat (similar thresholds across frequencies), and sensorineural (no air-bone gap). This degree of loss significantly impacts speech perception, especially in noise.',
+    explanation:
+      'A hearing level of 55 dB HL falls within the moderate range (41-55 dB HL per Clark, 1981). The loss is bilateral (both ears), flat (similar thresholds across frequencies), and sensorineural (no air-bone gap). This degree of loss significantly impacts speech perception, especially in noise.',
     incorrectExplanations: {
       a: 'Mild hearing loss is defined as 26-40 dB HL. A threshold of 55 dB exceeds this range.',
       c: 'Moderately severe hearing loss is defined as 56-70 dB HL. At exactly 55 dB, the threshold falls in the moderate range.',
@@ -527,12 +665,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q023',
     stem: 'An SLP is selecting an AAC system for a 10-year-old with cerebral palsy who has severe dysarthria, good receptive language, and limited hand function. Which assessment approach is MOST critical before recommending a specific AAC device?',
     options: [
-      { id: 'a', text: 'Determine the child\'s reading level to select a text-based system', isCorrect: false },
-      { id: 'b', text: 'Conduct a motor access evaluation to determine the most reliable and efficient method of device access', isCorrect: true },
-      { id: 'c', text: 'Administer a standardized language assessment to determine language age', isCorrect: false },
-      { id: 'd', text: 'Interview the classroom teacher about the child\'s academic needs', isCorrect: false },
+      {
+        id: 'a',
+        text: "Determine the child's reading level to select a text-based system",
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Conduct a motor access evaluation to determine the most reliable and efficient method of device access',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Administer a standardized language assessment to determine language age',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: "Interview the classroom teacher about the child's academic needs",
+        isCorrect: false,
+      },
     ],
-    explanation: 'For children with severe motor impairments, determining the most reliable and efficient access method (direct selection, scanning, eye gaze, head tracking, switch access) is the most critical step. Without identifying a viable motor access pathway, no AAC system can be used effectively.',
+    explanation:
+      'For children with severe motor impairments, determining the most reliable and efficient access method (direct selection, scanning, eye gaze, head tracking, switch access) is the most critical step. Without identifying a viable motor access pathway, no AAC system can be used effectively.',
     incorrectExplanations: {
       a: 'Reading level is relevant for selecting vocabulary representation (symbols vs. text) but is secondary to determining how the child will physically access the system.',
       c: 'Language assessment is important for selecting appropriate vocabulary and language organization, but it does not address the fundamental question of how the child will operate the device.',
@@ -555,7 +710,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Cricopharyngeal dysfunction', isCorrect: false },
       { id: 'd', text: 'Reduced laryngeal elevation', isCorrect: false },
     ],
-    explanation: 'Bilateral pyriform sinus residue that clears with an additional swallow effort suggests reduced pharyngeal contraction (stripping wave). The pharyngeal constrictors are not generating sufficient pressure to clear the bolus through the pharynx on the initial swallow, but the mechanism can clear with a second attempt.',
+    explanation:
+      'Bilateral pyriform sinus residue that clears with an additional swallow effort suggests reduced pharyngeal contraction (stripping wave). The pharyngeal constrictors are not generating sufficient pressure to clear the bolus through the pharynx on the initial swallow, but the mechanism can clear with a second attempt.',
     incorrectExplanations: {
       a: 'Reduced tongue base retraction typically results in vallecular residue (the space between the tongue base and epiglottis), not pyriform sinus residue.',
       c: 'Cricopharyngeal (upper esophageal sphincter) dysfunction typically results in residue that does NOT clear on subsequent swallow attempts, as the sphincter remains unable to open adequately.',
@@ -573,12 +729,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q025',
     stem: 'A 30-month-old child is referred for a speech-language evaluation. The parent reports the child uses approximately 15 single words and no word combinations. Which of the following best describes the appropriate clinical decision?',
     options: [
-      { id: 'a', text: 'The child is a "late talker" and should be monitored with reassessment in 6 months', isCorrect: false },
-      { id: 'b', text: 'The child\'s expressive language is within normal limits for age', isCorrect: false },
-      { id: 'c', text: 'The child meets criteria for evaluation and likely for early intervention services based on significant expressive language delay', isCorrect: true },
-      { id: 'd', text: 'A formal standardized test cannot be administered until age 3, so the child should return then', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The child is a "late talker" and should be monitored with reassessment in 6 months',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "The child's expressive language is within normal limits for age",
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'The child meets criteria for evaluation and likely for early intervention services based on significant expressive language delay',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'A formal standardized test cannot be administered until age 3, so the child should return then',
+        isCorrect: false,
+      },
     ],
-    explanation: 'By 24 months, children are expected to use at least 50 words and begin combining two words. At 30 months, a child using only 15 single words with no combinations has a significant expressive language delay that warrants comprehensive evaluation and likely intervention, not just monitoring.',
+    explanation:
+      'By 24 months, children are expected to use at least 50 words and begin combining two words. At 30 months, a child using only 15 single words with no combinations has a significant expressive language delay that warrants comprehensive evaluation and likely intervention, not just monitoring.',
     incorrectExplanations: {
       a: 'While some late talkers do catch up, a child at 30 months with only 15 words is significantly below expectations and should not simply be monitored. This level of delay warrants intervention.',
       b: 'Fifteen words at 30 months is well below the expected range. Most children have 200+ words and are using multi-word utterances by this age.',
@@ -603,7 +776,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Global aphasia', isCorrect: false },
       { id: 'd', text: 'Transcortical sensory aphasia', isCorrect: false },
     ],
-    explanation: 'The profile of nonfluent, agrammatic output with relatively preserved comprehension (especially for simple material), impaired repetition, and preserved automatic speech is the hallmark presentation of Broca aphasia. The difficulty with syntactically complex comprehension is also consistent, as Broca aphasia involves syntactic processing deficits across modalities.',
+    explanation:
+      'The profile of nonfluent, agrammatic output with relatively preserved comprehension (especially for simple material), impaired repetition, and preserved automatic speech is the hallmark presentation of Broca aphasia. The difficulty with syntactically complex comprehension is also consistent, as Broca aphasia involves syntactic processing deficits across modalities.',
     incorrectExplanations: {
       a: 'Wernicke aphasia features fluent output with poor comprehension, which is the opposite of this presentation.',
       c: 'Global aphasia involves severely impaired output AND comprehension, with very limited communication across all modalities. This patient has relatively preserved comprehension.',
@@ -622,11 +796,24 @@ export const category2Questions: QuestionData[] = [
     stem: 'An SLP is reviewing MBSS results for a patient with amyotrophic lateral sclerosis (ALS). The study reveals reduced tongue base retraction, delayed pharyngeal swallow initiation, reduced hyolaryngeal excursion, and incomplete epiglottic inversion. Based on these findings, the SLP should interpret the swallowing impairment as primarily involving:',
     options: [
       { id: 'a', text: 'Isolated oral phase dysfunction', isCorrect: false },
-      { id: 'b', text: 'Pharyngeal phase dysfunction with contributions from both upper and lower motor neuron involvement', isCorrect: true },
-      { id: 'c', text: 'Esophageal motility disorder requiring GI referral only', isCorrect: false },
-      { id: 'd', text: 'Cognitive-related dysphagia from frontal lobe involvement', isCorrect: false },
+      {
+        id: 'b',
+        text: 'Pharyngeal phase dysfunction with contributions from both upper and lower motor neuron involvement',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Esophageal motility disorder requiring GI referral only',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Cognitive-related dysphagia from frontal lobe involvement',
+        isCorrect: false,
+      },
     ],
-    explanation: 'ALS involves progressive degeneration of both upper and lower motor neurons, affecting the entire swallowing mechanism. Reduced tongue base retraction, delayed pharyngeal swallow initiation, reduced hyolaryngeal excursion, and incomplete epiglottic inversion all represent pharyngeal phase impairments consistent with the mixed upper and lower motor neuron pathology of ALS.',
+    explanation:
+      'ALS involves progressive degeneration of both upper and lower motor neurons, affecting the entire swallowing mechanism. Reduced tongue base retraction, delayed pharyngeal swallow initiation, reduced hyolaryngeal excursion, and incomplete epiglottic inversion all represent pharyngeal phase impairments consistent with the mixed upper and lower motor neuron pathology of ALS.',
     incorrectExplanations: {
       a: 'While oral phase dysfunction may occur in ALS, the described findings (pharyngeal swallow delay, reduced hyolaryngeal excursion, incomplete epiglottic inversion) clearly indicate pharyngeal phase involvement.',
       c: 'Although GI referral may be appropriate at some point, the described findings are pharyngeal, not esophageal. The SLP can address these within their scope.',
@@ -644,12 +831,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q028',
     stem: 'A 5-year-old child produces the following speech sample: "My daduh wented to duh store and he buyed me a big big cookie and I eated it all up." Analysis of this sample reveals which of the following patterns?',
     options: [
-      { id: 'a', text: 'Overregularization of past tense morphemes, typical for this age', isCorrect: false },
-      { id: 'b', text: 'Overregularization of past tense morphemes, atypical for this age', isCorrect: false },
-      { id: 'c', text: 'Overregularization of past tense morphemes, which requires further evaluation to determine clinical significance in context with other language measures', isCorrect: true },
-      { id: 'd', text: 'Random morphological errors indicating a language disorder', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Overregularization of past tense morphemes, typical for this age',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Overregularization of past tense morphemes, atypical for this age',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Overregularization of past tense morphemes, which requires further evaluation to determine clinical significance in context with other language measures',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Random morphological errors indicating a language disorder',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The child shows overregularization of irregular past tense ("wented," "buyed," "eated"). While overregularization is a normal phase of morphological development, by age 5 most children are using many irregular past tense forms correctly. A single sample is insufficient to diagnose; these findings should be interpreted alongside other language measures, developmental history, and a larger corpus to determine clinical significance.',
+    explanation:
+      'The child shows overregularization of irregular past tense ("wented," "buyed," "eated"). While overregularization is a normal phase of morphological development, by age 5 most children are using many irregular past tense forms correctly. A single sample is insufficient to diagnose; these findings should be interpreted alongside other language measures, developmental history, and a larger corpus to determine clinical significance.',
     incorrectExplanations: {
       a: 'While overregularization occurs in typical development, persistent overregularization of common irregular forms at age 5 may or may not be typical. The answer oversimplifies by stating it is definitively typical.',
       b: 'Declaring these errors definitively atypical without additional data oversimplifies the clinical picture. Context is needed.',
@@ -672,7 +876,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Normal swallowing physiology with no clinical concern', isCorrect: false },
       { id: 'd', text: 'Post-swallow aspiration from residue', isCorrect: false },
     ],
-    explanation: 'The liquid reaching the pyriform sinuses and contacting the arytenoid mucosa before the pharyngeal swallow is triggered represents premature spillage (loss of bolus control before the swallow) with pre-swallow penetration. The liquid on the arytenoid mucosa indicates material at the laryngeal vestibule. This places the patient at risk for pre-swallow aspiration.',
+    explanation:
+      'The liquid reaching the pyriform sinuses and contacting the arytenoid mucosa before the pharyngeal swallow is triggered represents premature spillage (loss of bolus control before the swallow) with pre-swallow penetration. The liquid on the arytenoid mucosa indicates material at the laryngeal vestibule. This places the patient at risk for pre-swallow aspiration.',
     incorrectExplanations: {
       a: 'The observation was made before the swallow was triggered, so aspiration during the swallow cannot be confirmed from this description. The FEES whiteout during the swallow would prevent visualization.',
       c: 'Liquid reaching the pyriform sinuses and arytenoid mucosa before a swallow is triggered is not normal and represents a clinical concern, particularly for thin liquids.',
@@ -695,10 +900,11 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Wernicke aphasia', isCorrect: false },
       { id: 'd', text: 'Conduction aphasia', isCorrect: false },
     ],
-    explanation: 'Transcortical sensory aphasia is characterized by fluent output, INTACT repetition, and severely impaired auditory comprehension. The preserved repetition distinguishes it from Wernicke aphasia. Poor self-monitoring and lack of awareness of comprehension deficits (anosognosia) are common features.',
+    explanation:
+      'Transcortical sensory aphasia is characterized by fluent output, INTACT repetition, and severely impaired auditory comprehension. The preserved repetition distinguishes it from Wernicke aphasia. Poor self-monitoring and lack of awareness of comprehension deficits (anosognosia) are common features.',
     incorrectExplanations: {
       a: 'Anomic aphasia features relatively preserved comprehension with word-finding difficulties as the primary deficit. This patient has severe comprehension impairment.',
-      c: 'Wernicke aphasia shares many features (fluent output, poor comprehension) but critically has IMPAIRED repetition. This patient\'s intact repetition rules out Wernicke aphasia.',
+      c: "Wernicke aphasia shares many features (fluent output, poor comprehension) but critically has IMPAIRED repetition. This patient's intact repetition rules out Wernicke aphasia.",
       d: 'Conduction aphasia features fluent output, good comprehension, and impaired repetition — essentially the opposite comprehension/repetition profile from this patient.',
     },
     contentCategory: 'II',
@@ -713,16 +919,33 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q031',
     stem: 'An SLP evaluates a 9-year-old child whose standardized language test scores are all within normal limits, but the classroom teacher reports the child struggles to participate in group discussions, follow multi-step verbal instructions, and understand figurative language used by peers. The MOST appropriate next step is:',
     options: [
-      { id: 'a', text: 'Report that the child does not have a language disorder based on the standardized test results', isCorrect: false },
-      { id: 'b', text: 'Conduct additional assessment including a language sample in a naturalistic context, pragmatic assessment, and classroom observation', isCorrect: true },
-      { id: 'c', text: 'Recommend the child for a learning disability evaluation since language skills are intact', isCorrect: false },
-      { id: 'd', text: 'Provide the teacher with classroom strategies and dismiss the child from further evaluation', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Report that the child does not have a language disorder based on the standardized test results',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Conduct additional assessment including a language sample in a naturalistic context, pragmatic assessment, and classroom observation',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Recommend the child for a learning disability evaluation since language skills are intact',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Provide the teacher with classroom strategies and dismiss the child from further evaluation',
+        isCorrect: false,
+      },
     ],
-    explanation: 'When standardized test results do not align with functional communication concerns reported by teachers and caregivers, additional assessment is essential. Standardized tests may not capture pragmatic, discourse-level, or contextualized language abilities. Language sampling, pragmatic evaluation, and classroom observation can reveal deficits not detected by standardized measures.',
+    explanation:
+      'When standardized test results do not align with functional communication concerns reported by teachers and caregivers, additional assessment is essential. Standardized tests may not capture pragmatic, discourse-level, or contextualized language abilities. Language sampling, pragmatic evaluation, and classroom observation can reveal deficits not detected by standardized measures.',
     incorrectExplanations: {
       a: 'Relying solely on standardized test scores when functional communication concerns exist violates best practice principles. Standardized tests have limitations in capturing all aspects of language, especially pragmatic and contextual skills.',
       c: 'Declaring language skills "intact" based solely on standardized scores and deferring to another discipline is premature. The SLP should conduct a more thorough, ecologically valid assessment first.',
-      d: 'Dismissing the child from evaluation without adequately investigating the teacher\'s concerns is inappropriate. Classroom strategies alone may be insufficient if an underlying communication deficit exists.',
+      d: "Dismissing the child from evaluation without adequately investigating the teacher's concerns is inappropriate. Classroom strategies alone may be insufficient if an underlying communication deficit exists.",
     },
     contentCategory: 'II',
     subcategory: 'Discrepancy Between Standardized and Functional Assessment',
@@ -741,7 +964,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Ataxic dysarthria', isCorrect: false },
       { id: 'd', text: 'Unilateral upper motor neuron dysarthria', isCorrect: false },
     ],
-    explanation: 'The combination of breathy voice, hypernasality, nasal emission, absent gag reflex, and minimal palatal elevation indicates lower motor neuron damage affecting the cranial nerves (particularly CN X). This pattern of muscle weakness/paralysis with hypotonia is characteristic of flaccid dysarthria, consistent with brainstem stroke affecting the cranial nerve nuclei.',
+    explanation:
+      'The combination of breathy voice, hypernasality, nasal emission, absent gag reflex, and minimal palatal elevation indicates lower motor neuron damage affecting the cranial nerves (particularly CN X). This pattern of muscle weakness/paralysis with hypotonia is characteristic of flaccid dysarthria, consistent with brainstem stroke affecting the cranial nerve nuclei.',
     incorrectExplanations: {
       a: 'Spastic dysarthria results from bilateral upper motor neuron damage and features strained-strangled voice quality and hypertonia, not breathiness and absent reflexes.',
       c: 'Ataxic dysarthria results from cerebellar damage and features irregular articulatory breakdowns, excess and equal stress, and coordination errors — not the flaccid pattern described.',
@@ -760,11 +984,20 @@ export const category2Questions: QuestionData[] = [
     stem: 'An SLP reviewing an audiogram for a 4-year-old with recurrent otitis media notes the following: right ear AC thresholds at 35-40 dB HL across frequencies, right ear BC thresholds at 5-10 dB HL, left ear AC thresholds at 15-20 dB HL, left ear BC thresholds at 5-10 dB HL. The SLP should interpret this as:',
     options: [
       { id: 'a', text: 'Bilateral moderate conductive hearing loss', isCorrect: false },
-      { id: 'b', text: 'Right mild-to-moderate conductive hearing loss with left ear hearing within normal limits', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Right mild-to-moderate conductive hearing loss with left ear hearing within normal limits',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Bilateral sensorineural hearing loss', isCorrect: false },
-      { id: 'd', text: 'Right mixed hearing loss with left mild sensorineural hearing loss', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Right mixed hearing loss with left mild sensorineural hearing loss',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The right ear shows AC thresholds of 35-40 dB (mild to moderate range) with BC thresholds at 5-10 dB (normal), creating an air-bone gap of approximately 25-35 dB — consistent with conductive hearing loss. The left ear has AC at 15-20 dB and BC at 5-10 dB, both within or at the borderline of normal limits. This pattern is typical for recurrent otitis media.',
+    explanation:
+      'The right ear shows AC thresholds of 35-40 dB (mild to moderate range) with BC thresholds at 5-10 dB (normal), creating an air-bone gap of approximately 25-35 dB — consistent with conductive hearing loss. The left ear has AC at 15-20 dB and BC at 5-10 dB, both within or at the borderline of normal limits. This pattern is typical for recurrent otitis media.',
     incorrectExplanations: {
       a: 'The left ear thresholds (15-20 dB AC) are within or at the border of normal limits, not in the moderate range. The loss is not bilateral.',
       c: 'Sensorineural hearing loss would show equally elevated AC and BC thresholds with no air-bone gap. The significant air-bone gap in the right ear indicates conductive pathology.',
@@ -782,12 +1015,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q034',
     stem: 'An SLP is assessing a 12-year-old with traumatic brain injury (TBI) 2 months post-injury. The student performs within normal limits on the CELF-5 Core Language subtests but demonstrates difficulty with extended discourse organization, understanding nonliteral language in conversational contexts, and self-monitoring during group discussions. This pattern suggests:',
     options: [
-      { id: 'a', text: 'The student has recovered language function and can be discharged', isCorrect: false },
-      { id: 'b', text: 'The cognitive-communication deficits characteristic of TBI that may not be captured by standardized language tests', isCorrect: true },
-      { id: 'c', text: 'The student has an emotional-behavioral disorder rather than a communication disorder', isCorrect: false },
-      { id: 'd', text: 'The CELF-5 was incorrectly administered and should be repeated', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The student has recovered language function and can be discharged',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The cognitive-communication deficits characteristic of TBI that may not be captured by standardized language tests',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'The student has an emotional-behavioral disorder rather than a communication disorder',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The CELF-5 was incorrectly administered and should be repeated',
+        isCorrect: false,
+      },
     ],
-    explanation: 'TBI commonly produces cognitive-communication deficits affecting executive function, attention, memory, and higher-level language (discourse, pragmatics, figurative language) that may not be detected by standardized language tests. The CELF-5 primarily measures structural language abilities. Students with TBI often present with a disconnect between normal structural language test scores and impaired functional communication.',
+    explanation:
+      'TBI commonly produces cognitive-communication deficits affecting executive function, attention, memory, and higher-level language (discourse, pragmatics, figurative language) that may not be detected by standardized language tests. The CELF-5 primarily measures structural language abilities. Students with TBI often present with a disconnect between normal structural language test scores and impaired functional communication.',
     incorrectExplanations: {
       a: 'Normal standardized test scores do not mean full recovery after TBI. Cognitive-communication deficits in discourse, pragmatics, and executive function often persist and impact academic and social functioning.',
       c: 'The described difficulties with discourse organization, nonliteral language, and self-monitoring are cognitive-communication deficits consistent with TBI, not primarily emotional-behavioral in nature.',
@@ -799,25 +1049,29 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['TBI', 'cognitive-communication', 'pediatric', 'school-based', 'assessment-limitations'],
     clinicalSetting: 'school',
-    referenceSources: ['Turkstra et al. (2005)', 'ASHA Practice Portal: Traumatic Brain Injury in Children'],
+    referenceSources: [
+      'Turkstra et al. (2005)',
+      'ASHA Practice Portal: Traumatic Brain Injury in Children',
+    ],
   },
   {
     id: 'c2-q035',
-    stem: 'An SLP is analyzing a language sample from a 4-year-old. The child\'s MLU in morphemes is 2.8, and the sample shows limited use of grammatical morphemes (only -ing present; no past tense, plurals, articles, or copula). Compared to Brown\'s stages of morphological development, this child is functioning at approximately:',
+    stem: "An SLP is analyzing a language sample from a 4-year-old. The child's MLU in morphemes is 2.8, and the sample shows limited use of grammatical morphemes (only -ing present; no past tense, plurals, articles, or copula). Compared to Brown's stages of morphological development, this child is functioning at approximately:",
     options: [
       { id: 'a', text: 'Stage I (MLU 1.0-2.0)', isCorrect: false },
       { id: 'b', text: 'Late Stage I to Early Stage II (MLU 1.75-2.5)', isCorrect: false },
       { id: 'c', text: 'Stage II (MLU 2.0-2.5) to Early Stage III (MLU 2.5-3.0)', isCorrect: true },
       { id: 'd', text: 'Stage V (MLU 3.5-4.0)', isCorrect: false },
     ],
-    explanation: 'An MLU of 2.8 falls in the range of Early Stage III (2.5-3.0). The presence of -ing but absence of other grammatical morphemes (plurals, past tense, articles, copula) is consistent with early morphological development at approximately Stage II-III. At age 4, typical MLU is approximately 4.0-4.5, so this child demonstrates a significant delay in morphosyntactic development.',
+    explanation:
+      'An MLU of 2.8 falls in the range of Early Stage III (2.5-3.0). The presence of -ing but absence of other grammatical morphemes (plurals, past tense, articles, copula) is consistent with early morphological development at approximately Stage II-III. At age 4, typical MLU is approximately 4.0-4.5, so this child demonstrates a significant delay in morphosyntactic development.',
     incorrectExplanations: {
       a: 'Stage I (MLU 1.0-2.0) involves primarily single words and early word combinations. An MLU of 2.8 exceeds this range.',
       b: 'While the morphological profile is limited, the MLU of 2.8 places the child above Stage I (upper limit of 2.0) and above early Stage II (which extends to 2.5).',
-      d: 'Stage V (MLU 3.5-4.0) involves complex sentences and mastery of many grammatical morphemes. The child\'s limited morphological repertoire and MLU of 2.8 are well below this stage.',
+      d: "Stage V (MLU 3.5-4.0) involves complex sentences and mastery of many grammatical morphemes. The child's limited morphological repertoire and MLU of 2.8 are well below this stage.",
     },
     contentCategory: 'II',
-    subcategory: 'Language Sample Analysis — MLU and Brown\'s Stages',
+    subcategory: "Language Sample Analysis — MLU and Brown's Stages",
     bigNine: ['language'],
     difficulty: 'analysis',
     tags: ['language-sample', 'MLU', 'Browns-stages', 'morphology', 'pediatric'],
@@ -833,7 +1087,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Left inferior frontal gyrus', isCorrect: false },
       { id: 'd', text: 'Bilateral supplementary motor areas', isCorrect: false },
     ],
-    explanation: 'The described features — excess and equal stress, irregular articulatory breakdowns, scanning speech, and vowel distortions — are the hallmark characteristics of ataxic dysarthria, which results from cerebellar damage. The cerebellum coordinates the timing, force, and range of movement needed for smooth speech production.',
+    explanation:
+      'The described features — excess and equal stress, irregular articulatory breakdowns, scanning speech, and vowel distortions — are the hallmark characteristics of ataxic dysarthria, which results from cerebellar damage. The cerebellum coordinates the timing, force, and range of movement needed for smooth speech production.',
     incorrectExplanations: {
       a: 'Basal ganglia damage produces hypokinetic dysarthria (as in Parkinson disease) characterized by monopitch, reduced loudness, and rushed rate — not the irregular, scanning pattern described.',
       c: 'Left inferior frontal gyrus damage (Broca area) produces nonfluent aphasia or apraxia of speech, not ataxic dysarthria.',
@@ -853,10 +1108,15 @@ export const category2Questions: QuestionData[] = [
     options: [
       { id: 'a', text: 'Overt cleft palate', isCorrect: false },
       { id: 'b', text: 'Submucous cleft palate', isCorrect: true },
-      { id: 'c', text: 'Velopharyngeal insufficiency with structurally intact palate', isCorrect: false },
+      {
+        id: 'c',
+        text: 'Velopharyngeal insufficiency with structurally intact palate',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Phoneme-specific nasal emission', isCorrect: false },
     ],
-    explanation: 'The classic triad of submucous cleft palate includes: bifid uvula, translucent zone (zona pellucida) along the midline of the soft palate indicating muscle diastasis, and a notch in the posterior border of the hard palate. This is commonly seen in 22q11.2 deletion syndrome and explains the hypernasality and nasal emission.',
+    explanation:
+      'The classic triad of submucous cleft palate includes: bifid uvula, translucent zone (zona pellucida) along the midline of the soft palate indicating muscle diastasis, and a notch in the posterior border of the hard palate. This is commonly seen in 22q11.2 deletion syndrome and explains the hypernasality and nasal emission.',
     incorrectExplanations: {
       a: 'An overt cleft palate involves a visible opening in the palatal structures. The description indicates intact mucosal covering with underlying muscle separation, which defines a submucous cleft.',
       c: 'While VPI is present, the structural findings (bifid uvula, zona pellucida) indicate a specific structural cause — submucous cleft palate — not simply a functional insufficiency.',
@@ -874,12 +1134,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q038',
     stem: 'An SLP is comparing assessment results for a 6-year-old who was administered the GFTA-3, the CELF-5, and a conversational language sample. The GFTA-3 standard score is 78, the CELF-5 Core Language Score is 72, and the language sample reveals MLU and grammatical complexity below age expectations with multiple phonological processes. Which interpretation is MOST appropriate?',
     options: [
-      { id: 'a', text: 'The child has a speech sound disorder only, and the low CELF-5 score is likely due to unintelligible responses being scored as incorrect', isCorrect: false },
-      { id: 'b', text: 'The child has a co-occurring speech sound disorder and language disorder, supported by converging evidence from multiple measures', isCorrect: true },
-      { id: 'c', text: 'The tests are measuring the same construct and the results are redundant', isCorrect: false },
-      { id: 'd', text: 'The language sample is the only valid measure; standardized tests should be disregarded', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The child has a speech sound disorder only, and the low CELF-5 score is likely due to unintelligible responses being scored as incorrect',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The child has a co-occurring speech sound disorder and language disorder, supported by converging evidence from multiple measures',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'The tests are measuring the same construct and the results are redundant',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The language sample is the only valid measure; standardized tests should be disregarded',
+        isCorrect: false,
+      },
     ],
-    explanation: 'Converging evidence from the GFTA-3 (speech sounds), CELF-5 (language), and language sample (functional communication) all indicate deficits in their respective domains. The language sample independently confirms both reduced grammatical complexity (language) and active phonological processes (speech), supporting a diagnosis of co-occurring speech sound disorder and language disorder.',
+    explanation:
+      'Converging evidence from the GFTA-3 (speech sounds), CELF-5 (language), and language sample (functional communication) all indicate deficits in their respective domains. The language sample independently confirms both reduced grammatical complexity (language) and active phonological processes (speech), supporting a diagnosis of co-occurring speech sound disorder and language disorder.',
     incorrectExplanations: {
       a: 'While intelligibility can affect test performance, the language sample independently confirms grammatical and morphological deficits beyond what intelligibility alone would explain. The CELF-5 Core Language Score reflects language abilities, not just speech clarity.',
       c: 'These assessments measure different constructs: articulation/phonology (GFTA-3), structured language abilities (CELF-5), and functional communication (language sample). They complement rather than duplicate each other.',
@@ -891,7 +1168,10 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['assessment-integration', 'co-occurring-disorders', 'pediatric', 'GFTA', 'CELF'],
     clinicalSetting: 'school',
-    referenceSources: ['ASHA Practice Portal: Speech Sound Disorders', 'ASHA Practice Portal: Spoken Language Disorders'],
+    referenceSources: [
+      'ASHA Practice Portal: Speech Sound Disorders',
+      'ASHA Practice Portal: Spoken Language Disorders',
+    ],
   },
   {
     id: 'c2-q039',
@@ -902,7 +1182,8 @@ export const category2Questions: QuestionData[] = [
       { id: 'c', text: 'Logopenic variant primary progressive aphasia (lvPPA)', isCorrect: false },
       { id: 'd', text: 'Mild cognitive impairment (MCI) — amnestic type', isCorrect: false },
     ],
-    explanation: 'Semantic variant PPA (svPPA) is characterized by progressive loss of semantic knowledge — word-finding difficulty, semantic paraphasias, impaired object recognition (associative agnosia), and reduced verbal fluency, with relatively preserved repetition and phonology. The progressive nature and prominence of semantic deficits distinguish it from stroke-based aphasia.',
+    explanation:
+      'Semantic variant PPA (svPPA) is characterized by progressive loss of semantic knowledge — word-finding difficulty, semantic paraphasias, impaired object recognition (associative agnosia), and reduced verbal fluency, with relatively preserved repetition and phonology. The progressive nature and prominence of semantic deficits distinguish it from stroke-based aphasia.',
     incorrectExplanations: {
       a: 'Broca aphasia is nonfluent with agrammatic output and is caused by stroke (acute onset), not progressive deterioration. Repetition would also be impaired.',
       c: 'Logopenic variant PPA features word-finding pauses, impaired repetition (especially for sentences), and phonological errors — repetition is impaired, unlike in this case.',
@@ -914,18 +1195,30 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['PPA', 'semantic-variant', 'progressive-aphasia', 'dementia', 'differential-diagnosis'],
     clinicalSetting: 'medical',
-    referenceSources: ['Gorno-Tempini et al. (2011)', 'ASHA Practice Portal: Primary Progressive Aphasia'],
+    referenceSources: [
+      'Gorno-Tempini et al. (2011)',
+      'ASHA Practice Portal: Primary Progressive Aphasia',
+    ],
   },
   {
     id: 'c2-q040',
     stem: 'An MBSS reveals that a patient aspirates thin liquids but tolerates nectar-thick liquids with only trace penetration (PAS 2). Pudding-thick consistencies and solids are managed with mild vallecular residue that clears with a cued second swallow. The SLP identifies reduced hyolaryngeal excursion and delayed pharyngeal swallow initiation as the primary physiological impairments. Which recommendation integrates both compensatory and rehabilitative approaches?',
     options: [
       { id: 'a', text: 'NPO status with nasogastric tube placement', isCorrect: false },
-      { id: 'b', text: 'Nectar-thick liquids and regular solids with a chin tuck, combined with Mendelsohn maneuver and effortful swallows as therapeutic exercises', isCorrect: true },
-      { id: 'c', text: 'Thin liquids with a chin tuck only, since the patient just needs a postural strategy', isCorrect: false },
+      {
+        id: 'b',
+        text: 'Nectar-thick liquids and regular solids with a chin tuck, combined with Mendelsohn maneuver and effortful swallows as therapeutic exercises',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Thin liquids with a chin tuck only, since the patient just needs a postural strategy',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Puree diet with honey-thick liquids to maximize safety', isCorrect: false },
     ],
-    explanation: 'This recommendation matches the assessment findings: nectar-thick liquids are safe (PAS 2 = material enters airway but is ejected), regular solids are tolerated with mild residue clearing on cue, and chin tuck may further protect the airway. The Mendelsohn maneuver addresses reduced hyolaryngeal excursion, and effortful swallows target pharyngeal clearance. This integrates compensatory (diet modification, chin tuck) and rehabilitative (exercises targeting identified impairments) approaches.',
+    explanation:
+      'This recommendation matches the assessment findings: nectar-thick liquids are safe (PAS 2 = material enters airway but is ejected), regular solids are tolerated with mild residue clearing on cue, and chin tuck may further protect the airway. The Mendelsohn maneuver addresses reduced hyolaryngeal excursion, and effortful swallows target pharyngeal clearance. This integrates compensatory (diet modification, chin tuck) and rehabilitative (exercises targeting identified impairments) approaches.',
     incorrectExplanations: {
       a: 'NPO is overly restrictive. The patient safely manages nectar-thick liquids and solids. NPO should be reserved for patients who aspirate on all consistencies or have severe medical complications.',
       c: 'Thin liquids were aspirated during the study. A chin tuck alone does not address the aspiration risk for thin liquids, and this recommendation ignores the rehabilitative component.',
@@ -935,9 +1228,18 @@ export const category2Questions: QuestionData[] = [
     subcategory: 'MBSS-Based Recommendations',
     bigNine: ['feeding and swallowing'],
     difficulty: 'analysis',
-    tags: ['MBSS', 'diet-recommendations', 'compensatory-strategies', 'rehabilitative', 'dysphagia'],
+    tags: [
+      'MBSS',
+      'diet-recommendations',
+      'compensatory-strategies',
+      'rehabilitative',
+      'dysphagia',
+    ],
     clinicalSetting: 'medical',
-    referenceSources: ['Martin-Harris et al. (2008) MBSImP', 'ASHA Practice Portal: Adult Dysphagia'],
+    referenceSources: [
+      'Martin-Harris et al. (2008) MBSImP',
+      'ASHA Practice Portal: Adult Dysphagia',
+    ],
   },
 
   // ─── CLINICAL REASONING (10 questions) ───────────────────────────────
@@ -945,12 +1247,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q041',
     stem: 'A 3-year-old child is referred for evaluation after failing a preschool speech-language screening. The child produces speech that is approximately 50% intelligible to unfamiliar listeners. Parent report indicates the child understands and follows complex directions at home. During the evaluation, the SLP obtains the following: GFTA-3 standard score of 62, numerous phonological processes including cluster reduction, final consonant deletion, stopping, and fronting. The PLS-5 Auditory Comprehension score is 92 and the Expressive Communication score is 78. Given this profile, which diagnostic conclusion and recommendation is MOST appropriate?',
     options: [
-      { id: 'a', text: 'Childhood apraxia of speech; recommend intensive motor-based treatment 4x/week', isCorrect: false },
-      { id: 'b', text: 'Severe phonological disorder with a mild expressive language delay; recommend a phonological approach to intervention with monitoring of expressive language', isCorrect: true },
-      { id: 'c', text: 'Articulation disorder only; recommend traditional articulation therapy targeting sounds in error', isCorrect: false },
-      { id: 'd', text: 'Language disorder with secondary speech effects; recommend language therapy only', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Childhood apraxia of speech; recommend intensive motor-based treatment 4x/week',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Severe phonological disorder with a mild expressive language delay; recommend a phonological approach to intervention with monitoring of expressive language',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Articulation disorder only; recommend traditional articulation therapy targeting sounds in error',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Language disorder with secondary speech effects; recommend language therapy only',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The child presents with multiple active phonological processes (systematic, pattern-based errors) resulting in significantly reduced intelligibility, consistent with a severe phonological disorder. The PLS-5 Expressive Communication score of 78 indicates a mild expressive language delay, while receptive language is within normal limits. A phonological approach targets the underlying patterns rather than individual sounds, and the expressive language deficit should be monitored and addressed if it persists.',
+    explanation:
+      'The child presents with multiple active phonological processes (systematic, pattern-based errors) resulting in significantly reduced intelligibility, consistent with a severe phonological disorder. The PLS-5 Expressive Communication score of 78 indicates a mild expressive language delay, while receptive language is within normal limits. A phonological approach targets the underlying patterns rather than individual sounds, and the expressive language deficit should be monitored and addressed if it persists.',
     incorrectExplanations: {
       a: 'CAS is characterized by inconsistent errors, disrupted coarticulatory transitions, and inappropriate prosody — not the systematic phonological process patterns described here. The errors are consistent and pattern-based.',
       c: 'The presence of multiple systematic phonological processes indicates a phonological disorder, not an articulation disorder. A traditional articulation approach targeting individual sounds would not be efficient for addressing pattern-based errors.',
@@ -962,18 +1281,30 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['phonological-disorder', 'differential-diagnosis', 'pediatric', 'treatment-planning'],
     clinicalSetting: 'pediatric',
-    referenceSources: ['Bernthal, Bankson & Flipsen (2017)', 'ASHA Practice Portal: Speech Sound Disorders'],
+    referenceSources: [
+      'Bernthal, Bankson & Flipsen (2017)',
+      'ASHA Practice Portal: Speech Sound Disorders',
+    ],
   },
   {
     id: 'c2-q042',
-    stem: 'A 62-year-old patient is admitted to the hospital with acute onset of slurred speech, right facial droop, and right arm weakness. The SLP is consulted within 24 hours. During bedside evaluation, the patient exhibits strained-strangled vocal quality, reduced speech rate, imprecise consonants, and short phrases. Auditory comprehension appears functional for basic conversation. The patient\'s spouse reports the speech was normal prior to admission. Imaging confirms a left hemisphere stroke affecting the internal capsule and corona radiata bilaterally. The SLP should diagnose:',
+    stem: "A 62-year-old patient is admitted to the hospital with acute onset of slurred speech, right facial droop, and right arm weakness. The SLP is consulted within 24 hours. During bedside evaluation, the patient exhibits strained-strangled vocal quality, reduced speech rate, imprecise consonants, and short phrases. Auditory comprehension appears functional for basic conversation. The patient's spouse reports the speech was normal prior to admission. Imaging confirms a left hemisphere stroke affecting the internal capsule and corona radiata bilaterally. The SLP should diagnose:",
     options: [
       { id: 'a', text: 'Broca aphasia with concomitant dysarthria', isCorrect: false },
-      { id: 'b', text: 'Spastic dysarthria with functional language comprehension', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Spastic dysarthria with functional language comprehension',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Apraxia of speech as the sole motor speech disorder', isCorrect: false },
-      { id: 'd', text: 'Mixed dysarthria (spastic-flaccid) due to bilateral involvement', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Mixed dysarthria (spastic-flaccid) due to bilateral involvement',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The strained-strangled vocal quality, reduced rate, imprecise consonants, and short phrases with bilateral upper motor neuron pathway involvement (internal capsule and corona radiata bilaterally) are consistent with spastic dysarthria. The preserved auditory comprehension and absence of word-finding difficulty, agrammatism, or language formulation deficits argue against aphasia. The bilateral upper motor neuron lesion sites confirm the spastic type.',
+    explanation:
+      'The strained-strangled vocal quality, reduced rate, imprecise consonants, and short phrases with bilateral upper motor neuron pathway involvement (internal capsule and corona radiata bilaterally) are consistent with spastic dysarthria. The preserved auditory comprehension and absence of word-finding difficulty, agrammatism, or language formulation deficits argue against aphasia. The bilateral upper motor neuron lesion sites confirm the spastic type.',
     incorrectExplanations: {
       a: 'While the left hemisphere is involved, the speech characteristics (strained-strangled quality, reduced rate) are motor execution problems, not linguistic/aphasia features. There are no reported word-finding problems, agrammatism, or language formulation deficits to support an aphasia diagnosis.',
       c: 'Apraxia of speech features groping, inconsistent articulatory errors, and disrupted prosody with trial-and-error attempts. The consistent strained-strangled quality and reduced rate pattern is more consistent with spastic dysarthria.',
@@ -991,12 +1322,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q043',
     stem: 'An SLP is evaluating a 14-month-old infant referred by the pediatrician for "not talking yet." The infant produces varied consonant-vowel babbling (ba, da, ma, ga), uses gestures (pointing, reaching, showing), responds to name consistently, understands approximately 20 words per parent report, and engages in joint attention with caregivers. The SLP should:',
     options: [
-      { id: 'a', text: 'Diagnose an expressive language delay and recommend immediate weekly therapy', isCorrect: false },
-      { id: 'b', text: 'Counsel the parents that the child\'s communication development is within expected limits and provide developmental monitoring recommendations', isCorrect: true },
-      { id: 'c', text: 'Recommend a comprehensive audiological evaluation as the first step', isCorrect: false },
-      { id: 'd', text: 'Refer to a developmental pediatrician for possible autism spectrum disorder evaluation', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Diagnose an expressive language delay and recommend immediate weekly therapy',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "Counsel the parents that the child's communication development is within expected limits and provide developmental monitoring recommendations",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Recommend a comprehensive audiological evaluation as the first step',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Refer to a developmental pediatrician for possible autism spectrum disorder evaluation',
+        isCorrect: false,
+      },
     ],
-    explanation: 'At 14 months, first words typically emerge between 10-15 months, and this child is at the early end of this window. The presence of varied CV babbling, communicative gestures, joint attention, name response, and comprehension of 20 words are all positive prognostic indicators. The prelinguistic communication foundations are solid, suggesting first words are imminent. Parent education and monitoring are appropriate.',
+    explanation:
+      'At 14 months, first words typically emerge between 10-15 months, and this child is at the early end of this window. The presence of varied CV babbling, communicative gestures, joint attention, name response, and comprehension of 20 words are all positive prognostic indicators. The prelinguistic communication foundations are solid, suggesting first words are imminent. Parent education and monitoring are appropriate.',
     incorrectExplanations: {
       a: 'The child demonstrates age-appropriate prelinguistic skills and is within the typical range for first word emergence. Diagnosing a delay at 14 months with these strong foundations would be premature.',
       c: 'The child responds to name consistently, understands approximately 20 words, and demonstrates varied babbling — all suggesting functional hearing. An audiological evaluation is not the urgent first step here.',
@@ -1008,18 +1356,38 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['early-intervention', 'prelinguistic', 'infant', 'developmental-norms'],
     clinicalSetting: 'pediatric',
-    referenceSources: ['Wetherby & Prizant (2002) CSBS', 'ASHA Practice Portal: Late Language Emergence'],
+    referenceSources: [
+      'Wetherby & Prizant (2002) CSBS',
+      'ASHA Practice Portal: Late Language Emergence',
+    ],
   },
   {
     id: 'c2-q044',
     stem: 'A patient who experienced a left hemisphere stroke 6 months ago presents for re-evaluation. Current assessment reveals: fluent speech with frequent circumlocutions, intact repetition, intact auditory comprehension, significant word-finding deficits across all contexts, and functional reading and writing with occasional word-retrieval pauses. The WAB-R AQ is 83. Compared to the initial evaluation (WAB-R AQ 54, nonfluent output, impaired repetition, moderately impaired comprehension), how should the SLP interpret these findings?',
     options: [
-      { id: 'a', text: 'The patient has fully recovered and should be discharged from services', isCorrect: false },
-      { id: 'b', text: 'The patient has evolved from Broca aphasia to anomic aphasia, showing significant recovery but with residual word-finding deficits warranting continued treatment', isCorrect: true },
-      { id: 'c', text: 'The patient\'s aphasia type has not changed; the test was likely administered incorrectly', isCorrect: false },
-      { id: 'd', text: 'The patient now has transcortical motor aphasia based on the preserved repetition', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The patient has fully recovered and should be discharged from services',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The patient has evolved from Broca aphasia to anomic aphasia, showing significant recovery but with residual word-finding deficits warranting continued treatment',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: "The patient's aphasia type has not changed; the test was likely administered incorrectly",
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The patient now has transcortical motor aphasia based on the preserved repetition',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The initial profile (nonfluent, impaired repetition, moderately impaired comprehension, AQ 54) is consistent with Broca aphasia. The current profile (fluent with circumlocutions, intact repetition and comprehension, primary word-finding deficits, AQ 83) is consistent with anomic aphasia. This evolution is a well-documented recovery pattern where patients progress from more severe to less severe aphasia types. The residual word-finding deficits still warrant intervention.',
+    explanation:
+      'The initial profile (nonfluent, impaired repetition, moderately impaired comprehension, AQ 54) is consistent with Broca aphasia. The current profile (fluent with circumlocutions, intact repetition and comprehension, primary word-finding deficits, AQ 83) is consistent with anomic aphasia. This evolution is a well-documented recovery pattern where patients progress from more severe to less severe aphasia types. The residual word-finding deficits still warrant intervention.',
     incorrectExplanations: {
       a: 'An AQ of 83 still indicates mild aphasia, and significant word-finding deficits across all contexts impact functional communication. Discharge is not appropriate when meaningful deficits remain.',
       c: 'Aphasia type evolution during recovery is well-documented. The clearly different profiles at the two time points represent genuine change, not testing error.',
@@ -1035,16 +1403,33 @@ export const category2Questions: QuestionData[] = [
   },
   {
     id: 'c2-q045',
-    stem: 'An SLP receives a referral for a 5-year-old child adopted from an orphanage in Eastern Europe 8 months ago. The adoptive parents are concerned about the child\'s English language development. The child speaks in 2-3 word phrases, has difficulty following multi-step directions, and shows limited vocabulary. The child\'s birth language exposure was minimal (institutional care with limited interaction). How should the SLP approach this evaluation?',
+    stem: "An SLP receives a referral for a 5-year-old child adopted from an orphanage in Eastern Europe 8 months ago. The adoptive parents are concerned about the child's English language development. The child speaks in 2-3 word phrases, has difficulty following multi-step directions, and shows limited vocabulary. The child's birth language exposure was minimal (institutional care with limited interaction). How should the SLP approach this evaluation?",
     options: [
-      { id: 'a', text: 'Administer standardized English language tests and compare to English-speaking normative data', isCorrect: false },
-      { id: 'b', text: 'Wait 2 more years for sufficient English exposure before evaluating', isCorrect: false },
-      { id: 'c', text: 'Conduct a comprehensive evaluation including developmental history, institutional background, dynamic assessment, and comparison to internationally adopted children\'s developmental patterns', isCorrect: true },
-      { id: 'd', text: 'Assess only the birth language since it was the child\'s first language', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Administer standardized English language tests and compare to English-speaking normative data',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Wait 2 more years for sufficient English exposure before evaluating',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: "Conduct a comprehensive evaluation including developmental history, institutional background, dynamic assessment, and comparison to internationally adopted children's developmental patterns",
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: "Assess only the birth language since it was the child's first language",
+        isCorrect: false,
+      },
     ],
-    explanation: 'Internationally adopted children present unique assessment challenges. They may not have a fully developed first language due to institutional deprivation, and comparing them to monolingual English norms is inappropriate. Best practice involves understanding the institutional background, using dynamic assessment to evaluate learning potential, considering the effects of early language deprivation, and comparing to research on development patterns in internationally adopted children.',
+    explanation:
+      'Internationally adopted children present unique assessment challenges. They may not have a fully developed first language due to institutional deprivation, and comparing them to monolingual English norms is inappropriate. Best practice involves understanding the institutional background, using dynamic assessment to evaluate learning potential, considering the effects of early language deprivation, and comparing to research on development patterns in internationally adopted children.',
     incorrectExplanations: {
-      a: 'Standardized English norms do not account for the child\'s limited language exposure history. Results would reflect exposure, not ability, and would likely overidentify the child as having a disorder.',
+      a: "Standardized English norms do not account for the child's limited language exposure history. Results would reflect exposure, not ability, and would likely overidentify the child as having a disorder.",
       b: 'Delaying evaluation for 2 years is inappropriate. The child may have genuine language-learning difficulties compounded by deprivation, and early intervention during this critical period is essential.',
       d: 'After 8 months with minimal birth language input in an institutional setting, the birth language is unlikely to be meaningfully assessable. Additionally, the child may never have developed age-appropriate skills in the birth language due to institutional deprivation.',
     },
@@ -1052,7 +1437,12 @@ export const category2Questions: QuestionData[] = [
     subcategory: 'Culturally Responsive Assessment — Adoption',
     bigNine: ['language'],
     difficulty: 'clinical_reasoning',
-    tags: ['international-adoption', 'language-deprivation', 'dynamic-assessment', 'culturally-responsive'],
+    tags: [
+      'international-adoption',
+      'language-deprivation',
+      'dynamic-assessment',
+      'culturally-responsive',
+    ],
     clinicalSetting: 'pediatric',
     referenceSources: ['Glennen (2009)', 'ASHA Practice Portal: Bilingual Service Delivery'],
   },
@@ -1060,12 +1450,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q046',
     stem: 'A 70-year-old patient with a 3-day history of worsening dysphagia is referred for MBSS. The study reveals complete absence of pharyngeal swallow initiation with all consistencies. Oral transit is intact but the bolus pools in the valleculae and pyriform sinuses without triggering a pharyngeal response. The patient then aspirates from overflow of pooled material. Neurological examination is pending. Based on the MBSS findings alone, the SLP should:',
     options: [
-      { id: 'a', text: 'Recommend a puree diet with thickened liquids and schedule re-evaluation in 2 weeks', isCorrect: false },
-      { id: 'b', text: 'Recommend NPO status, communicate findings urgently to the medical team including the absent pharyngeal swallow, and recommend expedited neurological workup', isCorrect: true },
-      { id: 'c', text: 'Recommend compensatory strategies such as chin tuck and multiple swallows to manage the pooling', isCorrect: false },
-      { id: 'd', text: 'Begin thermal-tactile application to stimulate the pharyngeal swallow and reassess in 1 week', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Recommend a puree diet with thickened liquids and schedule re-evaluation in 2 weeks',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Recommend NPO status, communicate findings urgently to the medical team including the absent pharyngeal swallow, and recommend expedited neurological workup',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Recommend compensatory strategies such as chin tuck and multiple swallows to manage the pooling',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Begin thermal-tactile application to stimulate the pharyngeal swallow and reassess in 1 week',
+        isCorrect: false,
+      },
     ],
-    explanation: 'Complete absence of pharyngeal swallow initiation with all consistencies and rapid onset (3 days) represents a severe and potentially emergent clinical finding. No oral intake is safe because the patient cannot initiate a pharyngeal swallow. The acute nature of this presentation requires urgent communication with the medical team and expedited neurological evaluation to identify the underlying cause (e.g., brainstem stroke, progressive neurological disease, or other acute pathology).',
+    explanation:
+      'Complete absence of pharyngeal swallow initiation with all consistencies and rapid onset (3 days) represents a severe and potentially emergent clinical finding. No oral intake is safe because the patient cannot initiate a pharyngeal swallow. The acute nature of this presentation requires urgent communication with the medical team and expedited neurological evaluation to identify the underlying cause (e.g., brainstem stroke, progressive neurological disease, or other acute pathology).',
     incorrectExplanations: {
       a: 'Modified consistencies are ineffective when there is no pharyngeal swallow to initiate. The bolus will still pool and overflow regardless of consistency, maintaining aspiration risk.',
       c: 'Compensatory strategies presume some degree of pharyngeal swallow function to modify. With absent pharyngeal swallow initiation, these strategies cannot address the fundamental problem.',
@@ -1086,9 +1493,14 @@ export const category2Questions: QuestionData[] = [
       { id: 'a', text: 'Phonological disorder with multiple active processes', isCorrect: false },
       { id: 'b', text: 'Childhood apraxia of speech (CAS)', isCorrect: true },
       { id: 'c', text: 'Dysarthria of childhood', isCorrect: false },
-      { id: 'd', text: 'Phonological delay consistent with the child\'s developmental level', isCorrect: false },
+      {
+        id: 'd',
+        text: "Phonological delay consistent with the child's developmental level",
+        isCorrect: false,
+      },
     ],
-    explanation: 'This presentation matches all three ASHA consensus features of CAS: (1) inconsistent errors on consonants and vowels across repeated productions, (2) disrupted coarticulatory transitions (groping, difficulty with multisyllabic words despite isolated phoneme production), and (3) inappropriate prosody (even stress). The ability to produce phonemes in isolation but not in connected speech further supports a motor planning/programming deficit rather than a phonological or phonetic production issue.',
+    explanation:
+      'This presentation matches all three ASHA consensus features of CAS: (1) inconsistent errors on consonants and vowels across repeated productions, (2) disrupted coarticulatory transitions (groping, difficulty with multisyllabic words despite isolated phoneme production), and (3) inappropriate prosody (even stress). The ability to produce phonemes in isolation but not in connected speech further supports a motor planning/programming deficit rather than a phonological or phonetic production issue.',
     incorrectExplanations: {
       a: 'Phonological disorders involve consistent, pattern-based errors. The hallmark of this presentation is inconsistency across trials — the same word is produced differently each time, which is not characteristic of a phonological disorder.',
       c: 'Childhood dysarthria involves consistent articulatory distortions due to neuromuscular weakness, tone, or coordination deficits. The inconsistency across trials and ability to produce sounds in isolation argue against dysarthria.',
@@ -1100,18 +1512,31 @@ export const category2Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['CAS', 'apraxia', 'differential-diagnosis', 'inconsistency', 'prosody'],
     clinicalSetting: 'pediatric',
-    referenceSources: ['ASHA Technical Report on CAS (2007)', 'Strand (2020)', 'Murray et al. (2015)'],
+    referenceSources: [
+      'ASHA Technical Report on CAS (2007)',
+      'Strand (2020)',
+      'Murray et al. (2015)',
+    ],
   },
   {
     id: 'c2-q048',
     stem: 'A 45-year-old patient with myasthenia gravis reports that speech becomes increasingly slurred and hypernasality worsens as the day progresses or during extended conversations. At the beginning of the evaluation, speech is mildly imprecise but intelligible. After 15 minutes of continuous speaking tasks, the SLP observes markedly increased hypernasality, nasal emission, and progressive reduction in articulatory precision. This pattern of deterioration is most consistent with:',
     options: [
       { id: 'a', text: 'Spastic dysarthria that worsens with effort', isCorrect: false },
-      { id: 'b', text: 'Flaccid dysarthria with neuromuscular junction fatigue characteristic of myasthenia gravis', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Flaccid dysarthria with neuromuscular junction fatigue characteristic of myasthenia gravis',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Psychogenic voice disorder with functional overlay', isCorrect: false },
-      { id: 'd', text: 'Ataxic dysarthria with breakdown during sustained tasks', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Ataxic dysarthria with breakdown during sustained tasks',
+        isCorrect: false,
+      },
     ],
-    explanation: 'Myasthenia gravis involves antibodies against acetylcholine receptors at the neuromuscular junction, causing progressive fatigue with sustained or repeated muscle use. The pattern of worsening speech with continuous use — progressive hypernasality, nasal emission, and reduced articulatory precision — is the hallmark of neuromuscular junction fatigue. This produces a flaccid dysarthria that characteristically worsens with sustained use and improves with rest.',
+    explanation:
+      'Myasthenia gravis involves antibodies against acetylcholine receptors at the neuromuscular junction, causing progressive fatigue with sustained or repeated muscle use. The pattern of worsening speech with continuous use — progressive hypernasality, nasal emission, and reduced articulatory precision — is the hallmark of neuromuscular junction fatigue. This produces a flaccid dysarthria that characteristically worsens with sustained use and improves with rest.',
     incorrectExplanations: {
       a: 'Spastic dysarthria does not show the same pattern of progressive deterioration with use. Spastic features (strained-strangled quality) tend to be relatively consistent, not progressively worsening.',
       c: 'The pattern is entirely consistent with the known pathophysiology of myasthenia gravis (neuromuscular junction fatigue). Attributing it to a psychogenic etiology would be inappropriate given the confirmed medical diagnosis.',
@@ -1129,16 +1554,33 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q049',
     stem: 'An SLP is evaluating a 7-year-old child with a known diagnosis of autism spectrum disorder (ASD) for AAC needs. The child uses some single words but relies primarily on leading adults by the hand to desired items and engaging in challenging behaviors when wants are not understood. Receptive language testing indicates comprehension at approximately the 3-year level. Which assessment framework should guide the AAC evaluation?',
     options: [
-      { id: 'a', text: 'Wait until the child has failed to develop speech before considering AAC, since AAC may inhibit speech development', isCorrect: false },
-      { id: 'b', text: 'Match the AAC system vocabulary to the child\'s current receptive language level only', isCorrect: false },
-      { id: 'c', text: 'Use a participation-based assessment model examining communication opportunities, barriers, and the child\'s current and potential communication modes across environments', isCorrect: true },
-      { id: 'd', text: 'Select a picture-based communication system since the child has ASD and will not benefit from language-based AAC', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Wait until the child has failed to develop speech before considering AAC, since AAC may inhibit speech development',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "Match the AAC system vocabulary to the child's current receptive language level only",
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: "Use a participation-based assessment model examining communication opportunities, barriers, and the child's current and potential communication modes across environments",
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Select a picture-based communication system since the child has ASD and will not benefit from language-based AAC',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The participation-based model (Beukelman & Light) examines communication demands across environments, identifies barriers to participation, evaluates current communication strategies, and considers the child\'s potential across multiple access methods and representation levels. This approach does not require prerequisite skills and plans for both current and future communication needs.',
+    explanation:
+      "The participation-based model (Beukelman & Light) examines communication demands across environments, identifies barriers to participation, evaluates current communication strategies, and considers the child's potential across multiple access methods and representation levels. This approach does not require prerequisite skills and plans for both current and future communication needs.",
     incorrectExplanations: {
       a: 'Research consistently shows that AAC does NOT inhibit speech development and often facilitates it. ASHA\'s position is that AAC should be introduced early and should not require prerequisite skills or "failure" of other approaches.',
       b: 'AAC vocabulary should include both current functional needs and opportunities for language growth beyond current levels. Restricting vocabulary to current receptive level limits growth and does not account for the language-learning potential that AAC can support.',
-      d: 'AAC system selection should be individualized based on the child\'s strengths, needs, and potential — not predetermined by diagnosis. Children with ASD benefit from various AAC systems including those with robust language capabilities.',
+      d: "AAC system selection should be individualized based on the child's strengths, needs, and potential — not predetermined by diagnosis. Children with ASD benefit from various AAC systems including those with robust language capabilities.",
     },
     contentCategory: 'II',
     subcategory: 'AAC Assessment — Participation Model',
@@ -1152,12 +1594,25 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q050',
     stem: 'A 58-year-old patient presents to outpatient rehabilitation 2 weeks after surgical removal of a large acoustic neuroma (vestibular schwannoma) on the right side. The patient reports difficulty swallowing, facial weakness on the right side, hearing loss in the right ear, and a hoarse, breathy voice. During the evaluation, the SLP observes right facial droop, absent right corneal reflex, reduced sensation on the right side of the face, and pooling of food in the right buccal sulcus. The SLP should recognize that these findings are explained by:',
     options: [
-      { id: 'a', text: 'Damage to cranial nerves V, VII, VIII, and X from tumor removal — resulting in flaccid deficits to the ipsilateral facial, trigeminal, vestibulocochlear, and vagus systems', isCorrect: true },
-      { id: 'b', text: 'Bilateral upper motor neuron damage causing spastic deficits', isCorrect: false },
-      { id: 'c', text: 'Right hemisphere cortical stroke occurring during surgery', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Damage to cranial nerves V, VII, VIII, and X from tumor removal — resulting in flaccid deficits to the ipsilateral facial, trigeminal, vestibulocochlear, and vagus systems',
+        isCorrect: true,
+      },
+      {
+        id: 'b',
+        text: 'Bilateral upper motor neuron damage causing spastic deficits',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Right hemisphere cortical stroke occurring during surgery',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Psychogenic response to surgical trauma', isCorrect: false },
     ],
-    explanation: 'Acoustic neuroma surgery at the cerebellopontine angle can damage multiple cranial nerves. CN V (reduced facial sensation, absent corneal reflex), CN VII (facial droop, food pocketing in buccal sulcus), CN VIII (hearing loss), and CN X (hoarse/breathy voice, dysphagia) are all anatomically adjacent and vulnerable during tumor removal. The deficits are ipsilateral and flaccid, consistent with lower motor neuron damage.',
+    explanation:
+      'Acoustic neuroma surgery at the cerebellopontine angle can damage multiple cranial nerves. CN V (reduced facial sensation, absent corneal reflex), CN VII (facial droop, food pocketing in buccal sulcus), CN VIII (hearing loss), and CN X (hoarse/breathy voice, dysphagia) are all anatomically adjacent and vulnerable during tumor removal. The deficits are ipsilateral and flaccid, consistent with lower motor neuron damage.',
     incorrectExplanations: {
       b: 'The findings are unilateral and consistent with lower motor neuron (cranial nerve) damage, not bilateral upper motor neuron damage. Spastic deficits would produce strained-strangled voice quality, not breathiness.',
       c: 'The pattern of specific cranial nerve deficits (V, VII, VIII, X) on the same side as the surgery is consistent with peripheral nerve damage at the cerebellopontine angle, not a cortical stroke, which would produce different symptom patterns.',
@@ -1177,12 +1632,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q051',
     stem: 'Which of the following findings on FEES would indicate the need for an immediate change in diet recommendations?',
     options: [
-      { id: 'a', text: 'Mild residue in valleculae that clears with a dry swallow', isCorrect: false },
-      { id: 'b', text: 'Silent aspiration of thin liquids observed before and after the swallow', isCorrect: true },
-      { id: 'c', text: 'Trace penetration to the level of the arytenoids with spontaneous clearing', isCorrect: false },
-      { id: 'd', text: 'Premature spillage of puree into the pharynx without airway invasion', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Mild residue in valleculae that clears with a dry swallow',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Silent aspiration of thin liquids observed before and after the swallow',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Trace penetration to the level of the arytenoids with spontaneous clearing',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Premature spillage of puree into the pharynx without airway invasion',
+        isCorrect: false,
+      },
     ],
-    explanation: 'Silent aspiration — material passing below the vocal folds without a cough response — represents the highest risk finding and requires immediate action to protect the airway. The patient is aspirating without any protective mechanism, necessitating diet modification and potentially alternative means of nutrition.',
+    explanation:
+      'Silent aspiration — material passing below the vocal folds without a cough response — represents the highest risk finding and requires immediate action to protect the airway. The patient is aspirating without any protective mechanism, necessitating diet modification and potentially alternative means of nutrition.',
     incorrectExplanations: {
       a: 'Mild residue that clears with a cued swallow is a common finding and does not necessarily warrant diet changes. It suggests adequate compensatory strategies.',
       c: 'Trace penetration to the arytenoid level with spontaneous clearing (PAS 2) is a relatively benign finding that demonstrates intact protective mechanisms.',
@@ -1200,14 +1672,27 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q052',
     stem: 'A child with Down syndrome is being evaluated at age 18 months. The SLP observes that the child uses approximately 5 words, points to request, and responds to "no" and simple commands with gestures. The child has chronic middle ear effusion documented by the pediatrician. Which assessment priority addresses the MOST critical factor that could be impeding this child\'s communication development?',
     options: [
-      { id: 'a', text: 'Comprehensive language evaluation using the Bayley Scales', isCorrect: false },
-      { id: 'b', text: 'Audiological evaluation to determine the impact of chronic middle ear effusion on hearing thresholds', isCorrect: true },
-      { id: 'c', text: 'Oral motor evaluation focused on tongue protrusion patterns', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Comprehensive language evaluation using the Bayley Scales',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Audiological evaluation to determine the impact of chronic middle ear effusion on hearing thresholds',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Oral motor evaluation focused on tongue protrusion patterns',
+        isCorrect: false,
+      },
       { id: 'd', text: 'AAC evaluation to supplement current communication', isCorrect: false },
     ],
-    explanation: 'Chronic middle ear effusion can cause fluctuating conductive hearing loss that significantly impacts language development, especially in a child already at risk for delays. Determining current hearing status is critical because untreated hearing loss compounds the communication challenges already associated with Down syndrome. Medical management of the effusion could substantially improve the auditory input available for language learning.',
+    explanation:
+      'Chronic middle ear effusion can cause fluctuating conductive hearing loss that significantly impacts language development, especially in a child already at risk for delays. Determining current hearing status is critical because untreated hearing loss compounds the communication challenges already associated with Down syndrome. Medical management of the effusion could substantially improve the auditory input available for language learning.',
     incorrectExplanations: {
-      a: 'While language evaluation is important, it will not address the underlying factor (potential hearing loss) that may be most limiting the child\'s access to language input.',
+      a: "While language evaluation is important, it will not address the underlying factor (potential hearing loss) that may be most limiting the child's access to language input.",
       c: 'Oral motor evaluation has value for this population but does not address the potentially remediable hearing loss that could be the most significant barrier to communication development.',
       d: 'AAC may be appropriate eventually, but the most critical priority is ensuring the child has adequate access to auditory input by addressing the hearing concern first.',
     },
@@ -1223,12 +1708,29 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q053',
     stem: 'During a voice evaluation, the SLP measures the following acoustic parameters for a 35-year-old female patient: fundamental frequency (F0) of 185 Hz, jitter of 3.2%, shimmer of 6.8%, and harmonics-to-noise ratio (HNR) of 14 dB. How should the SLP interpret these findings?',
     options: [
-      { id: 'a', text: 'All parameters are within normal limits for an adult female', isCorrect: false },
-      { id: 'b', text: 'F0 is normal, but elevated jitter and shimmer with reduced HNR suggest increased aperiodicity consistent with a voice disorder', isCorrect: true },
-      { id: 'c', text: 'F0 is abnormally low, but perturbation measures are within normal limits', isCorrect: false },
-      { id: 'd', text: 'These measures are invalid because they should only be obtained during running speech, not sustained vowels', isCorrect: false },
+      {
+        id: 'a',
+        text: 'All parameters are within normal limits for an adult female',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'F0 is normal, but elevated jitter and shimmer with reduced HNR suggest increased aperiodicity consistent with a voice disorder',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'F0 is abnormally low, but perturbation measures are within normal limits',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'These measures are invalid because they should only be obtained during running speech, not sustained vowels',
+        isCorrect: false,
+      },
     ],
-    explanation: 'An F0 of 185 Hz is within the typical range for adult females (approximately 180-230 Hz). However, jitter above approximately 1.04% and shimmer above approximately 3.81% are considered elevated. An HNR of 14 dB is below the typical threshold of approximately 20 dB. Together, these perturbation measures indicate increased vocal fold aperiodicity and noise, consistent with a voice disorder.',
+    explanation:
+      'An F0 of 185 Hz is within the typical range for adult females (approximately 180-230 Hz). However, jitter above approximately 1.04% and shimmer above approximately 3.81% are considered elevated. An HNR of 14 dB is below the typical threshold of approximately 20 dB. Together, these perturbation measures indicate increased vocal fold aperiodicity and noise, consistent with a voice disorder.',
     incorrectExplanations: {
       a: 'While F0 is normal, the jitter (3.2%), shimmer (6.8%), and HNR (14 dB) all exceed normative thresholds, indicating abnormal vocal fold vibration patterns.',
       c: 'F0 of 185 Hz is within the normal range for adult females. The perturbation measures (jitter and shimmer) are elevated, not within normal limits.',
@@ -1246,16 +1748,33 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q054',
     stem: 'An SLP is conducting a dynamic assessment of a 6-year-old English Language Learner (ELL) who scored below average on the CELF-5 Sentence Assembly subtest. During the test-teach-retest protocol, the clinician provides mediation by modeling sentence structures and giving explicit feedback. The child quickly learns the targeted structures and applies them to novel sentences within the session. This response to mediation MOST likely indicates:',
     options: [
-      { id: 'a', text: 'The child has a true language disorder that responds well to therapy', isCorrect: false },
-      { id: 'b', text: 'The child\'s difficulty is related to limited English exposure rather than a language disorder, as evidenced by high modifiability', isCorrect: true },
-      { id: 'c', text: 'The standardized test results should be disregarded entirely', isCorrect: false },
-      { id: 'd', text: 'The child needs more time before any conclusions can be drawn', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The child has a true language disorder that responds well to therapy',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "The child's difficulty is related to limited English exposure rather than a language disorder, as evidenced by high modifiability",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'The standardized test results should be disregarded entirely',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The child needs more time before any conclusions can be drawn',
+        isCorrect: false,
+      },
     ],
-    explanation: 'In dynamic assessment, "modifiability" refers to how readily a child learns with mediation. High modifiability (quick learning, generalization to novel items) suggests the child has intact language learning ability and the initial low scores were due to limited exposure rather than an underlying disorder. Children with true language disorders typically show low modifiability — they need more support and generalize slowly.',
+    explanation:
+      'In dynamic assessment, "modifiability" refers to how readily a child learns with mediation. High modifiability (quick learning, generalization to novel items) suggests the child has intact language learning ability and the initial low scores were due to limited exposure rather than an underlying disorder. Children with true language disorders typically show low modifiability — they need more support and generalize slowly.',
     incorrectExplanations: {
       a: 'High modifiability during dynamic assessment is a positive indicator that the child does NOT have a language disorder. A child with a true language disorder would show limited response to mediation.',
-      c: 'The standardized results are not invalid — they accurately reflect the child\'s current English performance. They should be interpreted in context alongside the dynamic assessment results.',
-      d: 'The dynamic assessment results provide meaningful data about the child\'s language learning ability. The high modifiability is a clear finding that can inform clinical decision-making.',
+      c: "The standardized results are not invalid — they accurately reflect the child's current English performance. They should be interpreted in context alongside the dynamic assessment results.",
+      d: "The dynamic assessment results provide meaningful data about the child's language learning ability. The high modifiability is a clear finding that can inform clinical decision-making.",
     },
     contentCategory: 'II',
     subcategory: 'Dynamic Assessment — ELL',
@@ -1269,14 +1788,31 @@ export const category2Questions: QuestionData[] = [
     id: 'c2-q055',
     stem: 'A 60-year-old patient who underwent total laryngectomy 6 weeks ago is being evaluated for alaryngeal speech options. The patient has adequate hearing, good manual dexterity, strong cognitive function, and is highly motivated. The patient lives alone and works remotely in a position requiring frequent phone calls. Which combination of alaryngeal speech methods should the SLP recommend for initial training?',
     options: [
-      { id: 'a', text: 'Esophageal speech only, as it is the most natural-sounding option', isCorrect: false },
-      { id: 'b', text: 'Artificial larynx (electrolarynx) for immediate functional communication, with concurrent introduction to tracheoesophageal (TE) speech for long-term use', isCorrect: true },
-      { id: 'c', text: 'Writing and text-based AAC since alaryngeal speech is not viable this soon after surgery', isCorrect: false },
-      { id: 'd', text: 'Esophageal speech and artificial larynx simultaneously, avoiding TE speech due to maintenance requirements', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Esophageal speech only, as it is the most natural-sounding option',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Artificial larynx (electrolarynx) for immediate functional communication, with concurrent introduction to tracheoesophageal (TE) speech for long-term use',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Writing and text-based AAC since alaryngeal speech is not viable this soon after surgery',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Esophageal speech and artificial larynx simultaneously, avoiding TE speech due to maintenance requirements',
+        isCorrect: false,
+      },
     ],
-    explanation: 'The electrolarynx provides immediate functional communication, which is critical for this patient who lives alone and needs to communicate for work. TE speech, when a tracheoesophageal puncture (TEP) is placed, produces the most natural-sounding alaryngeal voice and is the gold standard for alaryngeal speech rehabilitation. The combination addresses both immediate needs and long-term optimal voice outcomes. The patient\'s good cognition, motivation, and manual dexterity support success with both methods.',
+    explanation:
+      "The electrolarynx provides immediate functional communication, which is critical for this patient who lives alone and needs to communicate for work. TE speech, when a tracheoesophageal puncture (TEP) is placed, produces the most natural-sounding alaryngeal voice and is the gold standard for alaryngeal speech rehabilitation. The combination addresses both immediate needs and long-term optimal voice outcomes. The patient's good cognition, motivation, and manual dexterity support success with both methods.",
     incorrectExplanations: {
-      a: 'Esophageal speech is the most difficult to learn, with success rates of approximately 25-30%. It also has limited loudness, making phone use challenging. It would not address the patient\'s immediate communication needs.',
+      a: "Esophageal speech is the most difficult to learn, with success rates of approximately 25-30%. It also has limited loudness, making phone use challenging. It would not address the patient's immediate communication needs.",
       c: 'Alaryngeal speech options are absolutely viable at 6 weeks post-surgery. An electrolarynx can be used as soon as tissue healing permits, and delaying speech rehabilitation is unnecessary.',
       d: 'TE speech should not be dismissed. It is the most commonly used and successful alaryngeal speech method. Maintenance requirements are manageable, especially for a patient with good manual dexterity and cognition.',
     },

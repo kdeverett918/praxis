@@ -39,7 +39,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['cranial-nerves', 'anatomy', 'mastication'],
     clinicalSetting: null,
-    referenceSources: ['Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-002',
@@ -115,7 +117,7 @@ export const category1Questions: QuestionData[] = [
   },
   {
     id: 'cat1-005',
-    stem: 'According to Roger Brown\'s stages of language development, what is the mean length of utterance (MLU) range for Stage II?',
+    stem: "According to Roger Brown's stages of language development, what is the mean length of utterance (MLU) range for Stage II?",
     options: [
       { id: 'a', text: '1.0–2.0 morphemes', isCorrect: false },
       { id: 'b', text: '2.0–2.5 morphemes', isCorrect: true },
@@ -123,11 +125,11 @@ export const category1Questions: QuestionData[] = [
       { id: 'd', text: '3.0–3.75 morphemes', isCorrect: false },
     ],
     explanation:
-      'Brown\'s Stage II corresponds to an MLU of 2.0–2.5 morphemes, typically occurring around ages 27–30 months, and is characterized by the emergence of grammatical morphemes.',
+      "Brown's Stage II corresponds to an MLU of 2.0–2.5 morphemes, typically occurring around ages 27–30 months, and is characterized by the emergence of grammatical morphemes.",
     incorrectExplanations: {
-      a: 'An MLU of 1.0–2.0 morphemes corresponds to Brown\'s Stage I (approximately 12–26 months), marked by single words and early two-word combinations.',
-      c: 'An MLU of 2.5–3.0 morphemes corresponds to Brown\'s Stage III (approximately 31–34 months), characterized by simple sentence forms.',
-      d: 'An MLU of 3.0–3.75 morphemes corresponds to Brown\'s Stage IV (approximately 35–40 months), marked by embedded clauses.',
+      a: "An MLU of 1.0–2.0 morphemes corresponds to Brown's Stage I (approximately 12–26 months), marked by single words and early two-word combinations.",
+      c: "An MLU of 2.5–3.0 morphemes corresponds to Brown's Stage III (approximately 31–34 months), characterized by simple sentence forms.",
+      d: "An MLU of 3.0–3.75 morphemes corresponds to Brown's Stage IV (approximately 35–40 months), marked by embedded clauses.",
     },
     contentCategory: 'I',
     subcategory: 'Developmental Milestones',
@@ -207,7 +209,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['cranial-nerves', 'anatomy', 'velopharyngeal-closure', 'vagus'],
     clinicalSetting: null,
-    referenceSources: ['Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-009',
@@ -237,10 +241,22 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-010',
     stem: 'In evidence-based practice (EBP), which of the following represents the three pillars that guide clinical decision-making?',
     options: [
-      { id: 'a', text: 'Scientific evidence, clinical expertise, and client/caregiver preferences', isCorrect: true },
-      { id: 'b', text: 'Randomized controlled trials, case studies, and expert opinion', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Scientific evidence, clinical expertise, and client/caregiver preferences',
+        isCorrect: true,
+      },
+      {
+        id: 'b',
+        text: 'Randomized controlled trials, case studies, and expert opinion',
+        isCorrect: false,
+      },
       { id: 'c', text: 'Assessment data, treatment plans, and outcome measures', isCorrect: false },
-      { id: 'd', text: 'Peer-reviewed research, insurance guidelines, and physician referrals', isCorrect: false },
+      {
+        id: 'd',
+        text: 'Peer-reviewed research, insurance guidelines, and physician referrals',
+        isCorrect: false,
+      },
     ],
     explanation:
       'The three pillars of EBP are: (1) best available scientific evidence, (2) clinical expertise of the practitioner, and (3) client/caregiver values and preferences. All three must be integrated for ethical, effective clinical practice.',
@@ -255,14 +271,20 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['EBP', 'evidence-based-practice', 'clinical-decision-making'],
     clinicalSetting: null,
-    referenceSources: ['Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders'],
+    referenceSources: [
+      'Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders',
+    ],
   },
   {
     id: 'cat1-011',
     stem: 'Under HIPAA, which of the following is classified as protected health information (PHI)?',
     options: [
       { id: 'a', text: 'De-identified aggregate data used in research', isCorrect: false },
-      { id: 'b', text: 'A patient\'s diagnostic code linked to their date of birth', isCorrect: true },
+      {
+        id: 'b',
+        text: "A patient's diagnostic code linked to their date of birth",
+        isCorrect: true,
+      },
       { id: 'c', text: 'General prevalence statistics for aphasia', isCorrect: false },
       { id: 'd', text: 'A textbook description of dysphagia treatment', isCorrect: false },
     ],
@@ -327,7 +349,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'recall',
     tags: ['EBP', 'research-design', 'systematic-review', 'meta-analysis'],
     clinicalSetting: null,
-    referenceSources: ['Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders'],
+    referenceSources: [
+      'Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders',
+    ],
   },
 
   // ─────────────────────────────────────────────────────────
@@ -359,7 +383,7 @@ export const category1Questions: QuestionData[] = [
   },
   {
     id: 'cat1-015',
-    stem: 'A speech-language pathologist is asked by a classroom teacher to share a student\'s speech therapy progress notes with the student\'s grandparent who frequently picks them up from school. Which legislation governs how the SLP should handle this request?',
+    stem: "A speech-language pathologist is asked by a classroom teacher to share a student's speech therapy progress notes with the student's grandparent who frequently picks them up from school. Which legislation governs how the SLP should handle this request?",
     options: [
       { id: 'a', text: 'HIPAA', isCorrect: false },
       { id: 'b', text: 'FERPA', isCorrect: true },
@@ -403,19 +427,25 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['cranial-nerves', 'gag-reflex', 'CN-IX', 'feeding-evaluation'],
     clinicalSetting: 'medical',
-    referenceSources: ['Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-017',
-    stem: 'A 30-month-old child produces an MLU of 1.5 morphemes based on a language sample. According to Brown\'s stages, this performance is most consistent with which developmental expectation?',
+    stem: "A 30-month-old child produces an MLU of 1.5 morphemes based on a language sample. According to Brown's stages, this performance is most consistent with which developmental expectation?",
     options: [
-      { id: 'a', text: 'Within normal limits for the child\'s age', isCorrect: false },
+      { id: 'a', text: "Within normal limits for the child's age", isCorrect: false },
       { id: 'b', text: 'Below expectations — the child should be in Stage II', isCorrect: true },
-      { id: 'c', text: 'Above expectations for the child\'s age', isCorrect: false },
-      { id: 'd', text: 'Cannot be determined without additional standardized testing', isCorrect: false },
+      { id: 'c', text: "Above expectations for the child's age", isCorrect: false },
+      {
+        id: 'd',
+        text: 'Cannot be determined without additional standardized testing',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'At 30 months, a child is expected to be in Brown\'s Stage II (MLU 2.0–2.5) or transitioning into Stage III. An MLU of 1.5 falls within Stage I (MLU 1.0–2.0), which is typical of children around 12–26 months. This suggests the child is performing below age expectations in morphosyntactic development.',
+      "At 30 months, a child is expected to be in Brown's Stage II (MLU 2.0–2.5) or transitioning into Stage III. An MLU of 1.5 falls within Stage I (MLU 1.0–2.0), which is typical of children around 12–26 months. This suggests the child is performing below age expectations in morphosyntactic development.",
     incorrectExplanations: {
       a: 'An MLU of 1.5 at 30 months is not within normal limits. Stage I (MLU 1.0–2.0) is expected for children approximately 12–26 months old.',
       c: 'An MLU of 1.5 at 30 months is below, not above, developmental expectations.',
@@ -427,14 +457,21 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['Browns-stages', 'MLU', 'language-sample', 'developmental-delay'],
     clinicalSetting: 'early-intervention',
-    referenceSources: ['Brown — A First Language: The Early Stages', 'Owens — Language Development: An Introduction'],
+    referenceSources: [
+      'Brown — A First Language: The Early Stages',
+      'Owens — Language Development: An Introduction',
+    ],
   },
   {
     id: 'cat1-018',
     stem: 'An SLP is reading a research article and finds that the study reports a p-value of 0.03. Which of the following best interprets this finding?',
     options: [
       { id: 'a', text: 'There is a 3% chance the treatment is effective', isCorrect: false },
-      { id: 'b', text: 'There is a 3% probability that the observed results occurred by chance if the null hypothesis is true', isCorrect: true },
+      {
+        id: 'b',
+        text: 'There is a 3% probability that the observed results occurred by chance if the null hypothesis is true',
+        isCorrect: true,
+      },
       { id: 'c', text: 'The treatment explains 3% of the variance in outcomes', isCorrect: false },
       { id: 'd', text: 'The study has a 97% power to detect a true effect', isCorrect: false },
     ],
@@ -451,7 +488,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['research-methodology', 'p-value', 'statistical-significance', 'EBP'],
     clinicalSetting: null,
-    referenceSources: ['Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders'],
+    referenceSources: [
+      'Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-019',
@@ -479,19 +518,35 @@ export const category1Questions: QuestionData[] = [
   },
   {
     id: 'cat1-020',
-    stem: 'An SLP receives a referral for a 4-year-old who has been receiving speech therapy from another SLP for two years with no measurable progress. The parent asks the new SLP to comment on the previous clinician\'s competence. According to the ASHA Code of Ethics, the SLP should:',
+    stem: "An SLP receives a referral for a 4-year-old who has been receiving speech therapy from another SLP for two years with no measurable progress. The parent asks the new SLP to comment on the previous clinician's competence. According to the ASHA Code of Ethics, the SLP should:",
     options: [
-      { id: 'a', text: 'Provide an honest assessment of the previous clinician\'s likely shortcomings', isCorrect: false },
-      { id: 'b', text: 'Refrain from making disparaging comments about the colleague and focus on the child\'s current needs', isCorrect: true },
-      { id: 'c', text: 'Report the previous clinician to ASHA for possible incompetence', isCorrect: false },
-      { id: 'd', text: 'Decline to take the case to avoid a conflict of interest', isCorrect: false },
+      {
+        id: 'a',
+        text: "Provide an honest assessment of the previous clinician's likely shortcomings",
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "Refrain from making disparaging comments about the colleague and focus on the child's current needs",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Report the previous clinician to ASHA for possible incompetence',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Decline to take the case to avoid a conflict of interest',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'ASHA Code of Ethics Principle IV, Rule E states that individuals shall not engage in dishonesty, fraud, deceit, or misrepresentation, and Principle IV addresses the duty to uphold professional dignity. The SLP should focus on the child\'s current status and needs rather than making judgments about a colleague\'s competence without full information.',
+      "ASHA Code of Ethics Principle IV, Rule E states that individuals shall not engage in dishonesty, fraud, deceit, or misrepresentation, and Principle IV addresses the duty to uphold professional dignity. The SLP should focus on the child's current status and needs rather than making judgments about a colleague's competence without full information.",
     incorrectExplanations: {
-      a: 'Commenting negatively on a colleague\'s competence without full knowledge of the situation violates the professional standards outlined in the ASHA Code of Ethics.',
+      a: "Commenting negatively on a colleague's competence without full knowledge of the situation violates the professional standards outlined in the ASHA Code of Ethics.",
       c: 'There is not enough information provided to warrant filing an ethics complaint. Lack of progress alone does not constitute incompetence — many factors affect therapy outcomes.',
-      d: 'There is no conflict of interest in accepting a new client who previously received services elsewhere. The SLP can and should provide services based on the child\'s needs.',
+      d: "There is no conflict of interest in accepting a new client who previously received services elsewhere. The SLP can and should provide services based on the child's needs.",
     },
     contentCategory: 'I',
     subcategory: 'Professional Ethics',
@@ -545,9 +600,17 @@ export const category1Questions: QuestionData[] = [
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Language'],
     difficulty: 'application',
-    tags: ['bilingualism', 'code-switching', 'cultural-linguistic-diversity', 'language-difference'],
+    tags: [
+      'bilingualism',
+      'code-switching',
+      'cultural-linguistic-diversity',
+      'language-difference',
+    ],
     clinicalSetting: 'school',
-    referenceSources: ['Kohnert — Language Disorders in Bilingual Children and Adults', 'ASHA Practice Portal — Bilingual Service Delivery'],
+    referenceSources: [
+      'Kohnert — Language Disorders in Bilingual Children and Adults',
+      'ASHA Practice Portal — Bilingual Service Delivery',
+    ],
   },
   {
     id: 'cat1-023',
@@ -571,21 +634,27 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['research-design', 'single-subject', 'ABAB', 'aphasia'],
     clinicalSetting: null,
-    referenceSources: ['Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders'],
+    referenceSources: [
+      'Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-024',
     stem: 'A typically developing 18-month-old would be expected to demonstrate which of the following communication behaviors?',
     options: [
       { id: 'a', text: 'Using 3–4 word sentences', isCorrect: false },
-      { id: 'b', text: 'Producing approximately 50 words and beginning to combine two words', isCorrect: true },
+      {
+        id: 'b',
+        text: 'Producing approximately 50 words and beginning to combine two words',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Speaking in complete grammatical sentences', isCorrect: false },
       { id: 'd', text: 'Using primarily gestural communication with no words', isCorrect: false },
     ],
     explanation:
       'At 18 months, typically developing children have an expressive vocabulary of approximately 50 words and are at the cusp of producing early two-word combinations. This period precedes the vocabulary spurt that often occurs between 18–24 months.',
     incorrectExplanations: {
-      a: 'Three- to four-word sentences are expected closer to 30–36 months, during Brown\'s Stages III–IV.',
+      a: "Three- to four-word sentences are expected closer to 30–36 months, during Brown's Stages III–IV.",
       c: 'Complete grammatical sentences emerge much later, typically after 3–4 years of age.',
       d: 'By 18 months, most typically developing children are using words in addition to gestures. Reliance on primarily gestural communication at this age would be a concern.',
     },
@@ -601,10 +670,26 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-025',
     stem: 'An SLP working in a hospital reviews a research article reporting that a new dysphagia screening tool has a sensitivity of 95% and specificity of 60%. What is the primary clinical implication of these values?',
     options: [
-      { id: 'a', text: 'The tool accurately identifies individuals without dysphagia', isCorrect: false },
-      { id: 'b', text: 'The tool is very good at identifying individuals who have dysphagia but will produce a high number of false positives', isCorrect: true },
-      { id: 'c', text: 'The tool is equally good at identifying both those with and without dysphagia', isCorrect: false },
-      { id: 'd', text: 'The tool should not be used clinically due to low specificity', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The tool accurately identifies individuals without dysphagia',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The tool is very good at identifying individuals who have dysphagia but will produce a high number of false positives',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'The tool is equally good at identifying both those with and without dysphagia',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The tool should not be used clinically due to low specificity',
+        isCorrect: false,
+      },
     ],
     explanation:
       'High sensitivity (95%) means the tool correctly identifies 95% of individuals who truly have dysphagia (few false negatives). Low specificity (60%) means the tool incorrectly flags 40% of individuals without dysphagia as positive (many false positives). For screening tools, high sensitivity is typically prioritized to avoid missing true cases.',
@@ -619,7 +704,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['sensitivity', 'specificity', 'screening', 'dysphagia', 'research-methodology'],
     clinicalSetting: 'medical',
-    referenceSources: ['Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders'],
+    referenceSources: [
+      'Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders',
+    ],
   },
   {
     id: 'cat1-026',
@@ -643,7 +730,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['cranial-nerves', 'CN-XI', 'oral-mechanism-exam'],
     clinicalSetting: 'medical',
-    referenceSources: ['Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-027',
@@ -673,17 +762,29 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-028',
     stem: 'An SLP supervisor discovers that a clinical fellow (CF) has been documenting therapy sessions that were never conducted. According to the ASHA Code of Ethics, the supervisor is obligated to:',
     options: [
-      { id: 'a', text: 'Handle the matter internally and require the CF to correct the documentation', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Handle the matter internally and require the CF to correct the documentation',
+        isCorrect: false,
+      },
       { id: 'b', text: 'Report the violation to the ASHA Board of Ethics', isCorrect: true },
-      { id: 'c', text: 'Inform the CF\'s clients and discontinue supervision immediately', isCorrect: false },
-      { id: 'd', text: 'Wait to see if the behavior continues before taking any action', isCorrect: false },
+      {
+        id: 'c',
+        text: "Inform the CF's clients and discontinue supervision immediately",
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Wait to see if the behavior continues before taking any action',
+        isCorrect: false,
+      },
     ],
     explanation:
       'ASHA Code of Ethics Principle IV, Rule P states that individuals who have reason to believe that a colleague has violated the Code of Ethics shall inform the Board of Ethics. Fraudulent documentation is a clear violation (Principle I — welfare of persons served; Principle IV — dishonesty and fraud).',
     incorrectExplanations: {
       a: 'While correcting documentation is necessary, handling the matter only internally is insufficient. Fraudulent documentation constitutes an ethics violation that must be reported to the ASHA Board of Ethics.',
-      c: 'Discontinuing supervision immediately may leave the CF\'s clients without services. The ethical obligation is to report to the Board of Ethics, which will determine appropriate consequences.',
-      d: 'Waiting to observe further violations is inappropriate when fraudulent documentation has already been confirmed. This puts clients at risk and violates the supervisor\'s ethical obligation to report.',
+      c: "Discontinuing supervision immediately may leave the CF's clients without services. The ethical obligation is to report to the Board of Ethics, which will determine appropriate consequences.",
+      d: "Waiting to observe further violations is inappropriate when fraudulent documentation has already been confirmed. This puts clients at risk and violates the supervisor's ethical obligation to report.",
     },
     contentCategory: 'I',
     subcategory: 'Professional Ethics',
@@ -697,15 +798,15 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-029',
     stem: 'Under IDEA Part C, early intervention services for infants and toddlers with disabilities are provided from birth through what age?',
     options: [
-      { id: 'a', text: 'Age 2 (the child\'s second birthday)', isCorrect: false },
-      { id: 'b', text: 'Age 3 (the child\'s third birthday)', isCorrect: true },
+      { id: 'a', text: "Age 2 (the child's second birthday)", isCorrect: false },
+      { id: 'b', text: "Age 3 (the child's third birthday)", isCorrect: true },
       { id: 'c', text: 'Age 5 (kindergarten entry)', isCorrect: false },
       { id: 'd', text: 'Age 6 (first grade entry)', isCorrect: false },
     ],
     explanation:
       'IDEA Part C provides early intervention services for infants and toddlers (birth through age 2, until the third birthday). At age 3, eligible children transition to Part B services provided through the local school district.',
     incorrectExplanations: {
-      a: 'Part C services continue until the child\'s third birthday, not the second birthday.',
+      a: "Part C services continue until the child's third birthday, not the second birthday.",
       c: 'Age 5 is associated with kindergarten entry and continued Part B services. Part C ends at the third birthday.',
       d: 'Part C services end well before first grade entry. The transition from Part C to Part B occurs at age 3.',
     },
@@ -739,21 +840,39 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'application',
     tags: ['research-design', 'RCT', 'experimental-design'],
     clinicalSetting: null,
-    referenceSources: ['Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders'],
+    referenceSources: [
+      'Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-031',
     stem: 'An SLP is evaluating a Mandarin-English bilingual child whose parents report that the child uses approximately 30 words in Mandarin and 20 words in English at age 2. The SLP should:',
     options: [
-      { id: 'a', text: 'Diagnose a language delay based on the low English vocabulary', isCorrect: false },
-      { id: 'b', text: 'Calculate the child\'s total conceptual vocabulary across both languages', isCorrect: true },
-      { id: 'c', text: 'Recommend English-only instruction to improve English acquisition', isCorrect: false },
-      { id: 'd', text: 'Defer evaluation until the child has more exposure to English', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Diagnose a language delay based on the low English vocabulary',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "Calculate the child's total conceptual vocabulary across both languages",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Recommend English-only instruction to improve English acquisition',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Defer evaluation until the child has more exposure to English',
+        isCorrect: false,
+      },
     ],
     explanation:
       'For bilingual children, total conceptual vocabulary — the total number of unique concepts expressed across both languages — provides the most accurate picture of linguistic competence. A child with 30 Mandarin words and 20 English words may have a total conceptual vocabulary of up to 50 words (accounting for overlap), which is within normal limits for a 2-year-old.',
     incorrectExplanations: {
-      a: 'Evaluating only English vocabulary underestimates the bilingual child\'s linguistic abilities. A bilingual child\'s vocabulary should be considered across both languages.',
+      a: "Evaluating only English vocabulary underestimates the bilingual child's linguistic abilities. A bilingual child's vocabulary should be considered across both languages.",
       c: 'Recommending English-only instruction is culturally insensitive and linguistically inappropriate. Research shows that maintaining the home language supports second language acquisition and overall development.',
       d: 'Deferring evaluation delays identification of a potential disorder. Bilingual children can and should be assessed using culturally and linguistically appropriate methods.',
     },
@@ -761,9 +880,17 @@ export const category1Questions: QuestionData[] = [
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Language'],
     difficulty: 'application',
-    tags: ['bilingualism', 'assessment', 'total-conceptual-vocabulary', 'cultural-linguistic-diversity'],
+    tags: [
+      'bilingualism',
+      'assessment',
+      'total-conceptual-vocabulary',
+      'cultural-linguistic-diversity',
+    ],
     clinicalSetting: 'early-intervention',
-    referenceSources: ['Kohnert — Language Disorders in Bilingual Children and Adults', 'ASHA Practice Portal — Bilingual Service Delivery'],
+    referenceSources: [
+      'Kohnert — Language Disorders in Bilingual Children and Adults',
+      'ASHA Practice Portal — Bilingual Service Delivery',
+    ],
   },
 
   // ─────────────────────────────────────────────────────────
@@ -773,13 +900,13 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-032',
     stem: 'An SLP reviews a language sample from a 4-year-old monolingual English speaker and finds an MLU of 3.5 morphemes. The child uses regular past tense (-ed), present progressive (-ing), and plural (-s) but omits articles, copulas, and auxiliary verbs. This pattern is MOST consistent with:',
     options: [
-      { id: 'a', text: 'Typical language development for the child\'s age', isCorrect: false },
+      { id: 'a', text: "Typical language development for the child's age", isCorrect: false },
       { id: 'b', text: 'A specific language impairment affecting morphosyntax', isCorrect: true },
       { id: 'c', text: 'A phonological disorder affecting word production', isCorrect: false },
       { id: 'd', text: 'English as a second language influence', isCorrect: false },
     ],
     explanation:
-      'At age 4, a child should be in Brown\'s Stage IV–V (MLU 3.0–4.5+), which is roughly consistent with the MLU. However, the selective omission of grammatical morphemes — specifically articles, copulas, and auxiliary verbs — while other morphemes are present is a hallmark profile of specific language impairment (now termed developmental language disorder). These finite verb morphemes are particularly vulnerable in children with SLI/DLD.',
+      "At age 4, a child should be in Brown's Stage IV–V (MLU 3.0–4.5+), which is roughly consistent with the MLU. However, the selective omission of grammatical morphemes — specifically articles, copulas, and auxiliary verbs — while other morphemes are present is a hallmark profile of specific language impairment (now termed developmental language disorder). These finite verb morphemes are particularly vulnerable in children with SLI/DLD.",
     incorrectExplanations: {
       a: 'While the MLU is roughly age-appropriate, the selective pattern of morpheme omission is clinically significant. By age 4, copulas and auxiliary verbs should be emerging or established.',
       c: 'Phonological disorders affect speech sound production, not the omission of grammatical morphemes in language. The pattern described is syntactic, not phonological.',
@@ -791,14 +918,21 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['language-sample-analysis', 'morphosyntax', 'SLI', 'DLD', 'Browns-stages'],
     clinicalSetting: 'school',
-    referenceSources: ['Leonard — Children with Specific Language Impairment', 'Brown — A First Language: The Early Stages'],
+    referenceSources: [
+      'Leonard — Children with Specific Language Impairment',
+      'Brown — A First Language: The Early Stages',
+    ],
   },
   {
     id: 'cat1-033',
     stem: 'An SLP reads a study claiming a new treatment cured 90% of children who stutter. The study used a pre-test/post-test design with no control group and included only 10 participants. Which of the following is the MOST significant limitation of this study?',
     options: [
       { id: 'a', text: 'The study lacked random assignment', isCorrect: false },
-      { id: 'b', text: 'The absence of a control group makes it impossible to rule out natural recovery as an explanation for improvement', isCorrect: true },
+      {
+        id: 'b',
+        text: 'The absence of a control group makes it impossible to rule out natural recovery as an explanation for improvement',
+        isCorrect: true,
+      },
       { id: 'c', text: 'The study used pre-test and post-test measures', isCorrect: false },
       { id: 'd', text: 'The results were too positive to be credible', isCorrect: false },
     ],
@@ -813,9 +947,17 @@ export const category1Questions: QuestionData[] = [
     subcategory: 'Research Methodology',
     bigNine: ['Fluency'],
     difficulty: 'analysis',
-    tags: ['research-critique', 'control-group', 'internal-validity', 'stuttering', 'natural-recovery'],
+    tags: [
+      'research-critique',
+      'control-group',
+      'internal-validity',
+      'stuttering',
+      'natural-recovery',
+    ],
     clinicalSetting: null,
-    referenceSources: ['Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders'],
+    referenceSources: [
+      'Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders',
+    ],
   },
   {
     id: 'cat1-034',
@@ -839,39 +981,74 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['cranial-nerves', 'CN-X', 'vagus', 'brainstem-stroke', 'vocal-fold-paralysis'],
     clinicalSetting: 'medical',
-    referenceSources: ['Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-035',
     stem: 'An SLP is evaluating a 6-year-old child who speaks African American English (AAE) at home. During standardized testing, the child consistently produces "mou" for "mouth" and "baf" for "bath." The SLP should interpret these productions as:',
     options: [
-      { id: 'a', text: 'Evidence of a phonological disorder requiring treatment', isCorrect: false },
-      { id: 'b', text: 'Dialectal variations consistent with AAE phonological features', isCorrect: true },
-      { id: 'c', text: 'Signs of an oral-motor weakness affecting fricative production', isCorrect: false },
-      { id: 'd', text: 'Developmental errors that will resolve without intervention', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Evidence of a phonological disorder requiring treatment',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Dialectal variations consistent with AAE phonological features',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Signs of an oral-motor weakness affecting fricative production',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Developmental errors that will resolve without intervention',
+        isCorrect: false,
+      },
     ],
     explanation:
       'In African American English (AAE), word-final "th" (/θ/) may be realized as [f] (e.g., "baf" for "bath") and word-final "th" (/ð/) may be deleted or produced as a vowel. These are systematic, rule-governed features of the dialect, not errors. The SLP must differentiate between dialect features and true speech-sound disorders to avoid misdiagnosis.',
     incorrectExplanations: {
       a: 'Interpreting dialectal features as a disorder would result in misdiagnosis. AAE has well-documented phonological rules including /θ/ to [f] in word-final position.',
       c: 'These are consistent phonological patterns specific to a dialect, not signs of oral-motor weakness. Oral-motor issues would present differently and affect multiple sound classes across linguistic contexts.',
-      d: 'These are not developmental errors — they are stable features of the child\'s dialect and would not be expected to change. Dialect features are distinct from developmental phonological processes.',
+      d: "These are not developmental errors — they are stable features of the child's dialect and would not be expected to change. Dialect features are distinct from developmental phonological processes.",
     },
     contentCategory: 'I',
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Articulation/Phonology'],
     difficulty: 'analysis',
-    tags: ['AAE', 'dialect', 'cultural-linguistic-diversity', 'phonological-features', 'assessment-bias'],
+    tags: [
+      'AAE',
+      'dialect',
+      'cultural-linguistic-diversity',
+      'phonological-features',
+      'assessment-bias',
+    ],
     clinicalSetting: 'school',
-    referenceSources: ['ASHA Practice Portal — Cultural and Linguistic Diversity', 'Wolfram & Schilling — American English: Dialects and Variation'],
+    referenceSources: [
+      'ASHA Practice Portal — Cultural and Linguistic Diversity',
+      'Wolfram & Schilling — American English: Dialects and Variation',
+    ],
   },
   {
     id: 'cat1-036',
-    stem: 'An SLP conducts a standardized language assessment on a 5-year-old child and obtains a standard score of 78 (mean = 100, SD = 15). The child\'s score falls within which range?',
+    stem: "An SLP conducts a standardized language assessment on a 5-year-old child and obtains a standard score of 78 (mean = 100, SD = 15). The child's score falls within which range?",
     options: [
       { id: 'a', text: 'Within normal limits (within 1 SD of the mean)', isCorrect: false },
-      { id: 'b', text: 'Mildly below average (between 1 and 1.5 SD below the mean)', isCorrect: true },
-      { id: 'c', text: 'Moderately below average (between 1.5 and 2 SD below the mean)', isCorrect: false },
+      {
+        id: 'b',
+        text: 'Mildly below average (between 1 and 1.5 SD below the mean)',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Moderately below average (between 1.5 and 2 SD below the mean)',
+        isCorrect: false,
+      },
       { id: 'd', text: 'Severely below average (more than 2 SD below the mean)', isCorrect: false },
     ],
     explanation:
@@ -893,10 +1070,26 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-037',
     stem: 'A 4-year-old presents with the following phonological patterns: stopping of all fricatives, deletion of all final consonants, and reduplication of syllables. Compared to developmental norms, this error pattern is MOST concerning because:',
     options: [
-      { id: 'a', text: 'All three processes are age-appropriate for a 4-year-old', isCorrect: false },
-      { id: 'b', text: 'Stopping is age-appropriate but the other two processes should have been suppressed by age 3', isCorrect: false },
-      { id: 'c', text: 'All three processes should have been suppressed by age 3, suggesting a significant phonological delay', isCorrect: true },
-      { id: 'd', text: 'Only reduplication is atypical; the other two processes are still developing', isCorrect: false },
+      {
+        id: 'a',
+        text: 'All three processes are age-appropriate for a 4-year-old',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Stopping is age-appropriate but the other two processes should have been suppressed by age 3',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'All three processes should have been suppressed by age 3, suggesting a significant phonological delay',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Only reduplication is atypical; the other two processes are still developing',
+        isCorrect: false,
+      },
     ],
     explanation:
       'Final consonant deletion is typically suppressed by age 3. Reduplication (e.g., "baba" for "bottle") is typically suppressed by age 2;6. Stopping of most fricatives is suppressed by age 3–3;6. The persistence of all three at age 4 indicates a significant phonological delay warranting intervention.',
@@ -911,19 +1104,38 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['phonological-processes', 'suppression-ages', 'phonological-delay', 'assessment'],
     clinicalSetting: 'school',
-    referenceSources: ['Grunwell — Phonological Assessment of Child Speech', 'Bauman-Waengler — Articulatory and Phonological Impairments'],
+    referenceSources: [
+      'Grunwell — Phonological Assessment of Child Speech',
+      'Bauman-Waengler — Articulatory and Phonological Impairments',
+    ],
   },
   {
     id: 'cat1-038',
     stem: 'An SLP in private practice is contacted by an attorney representing one of their former clients. The attorney requests all therapy records without a signed client authorization. According to HIPAA, the SLP should:',
     options: [
-      { id: 'a', text: 'Release the records since an attorney has the legal right to access client information', isCorrect: false },
-      { id: 'b', text: 'Release only summary information without identifying details', isCorrect: false },
-      { id: 'c', text: 'Decline to release records until a valid client authorization or court order is obtained', isCorrect: true },
-      { id: 'd', text: 'Release the records only if the attorney is working on a malpractice case', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Release the records since an attorney has the legal right to access client information',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Release only summary information without identifying details',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Decline to release records until a valid client authorization or court order is obtained',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Release the records only if the attorney is working on a malpractice case',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'Under HIPAA, protected health information cannot be disclosed without a valid authorization from the client, a court order, or a qualifying subpoena with appropriate safeguards. An attorney\'s request alone, without client authorization, does not meet HIPAA disclosure requirements.',
+      "Under HIPAA, protected health information cannot be disclosed without a valid authorization from the client, a court order, or a qualifying subpoena with appropriate safeguards. An attorney's request alone, without client authorization, does not meet HIPAA disclosure requirements.",
     incorrectExplanations: {
       a: 'Attorneys do not have an inherent right to access PHI. Proper authorization from the client or a court order is required.',
       b: 'Even summary information constitutes PHI if it is individually identifiable. Disclosure without authorization is not permitted regardless of the level of detail.',
@@ -941,32 +1153,64 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-039',
     stem: 'An SLP evaluates a 3-year-old from a low-income household using a standardized vocabulary test normed on predominantly middle- and upper-class children. The child scores significantly below the mean. The SLP should FIRST consider that:',
     options: [
-      { id: 'a', text: 'The child has a language disorder and should begin treatment immediately', isCorrect: false },
-      { id: 'b', text: 'The standardized test may not provide a valid representation of the child\'s abilities due to norming sample bias', isCorrect: true },
-      { id: 'c', text: 'Low socioeconomic status directly causes language disorders', isCorrect: false },
-      { id: 'd', text: 'The test results are valid and additional testing is unnecessary', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The child has a language disorder and should begin treatment immediately',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "The standardized test may not provide a valid representation of the child's abilities due to norming sample bias",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Low socioeconomic status directly causes language disorders',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'The test results are valid and additional testing is unnecessary',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'When the norming sample of a standardized test does not represent the population characteristics of the child being assessed (in this case, socioeconomic diversity), the test may not yield valid results. The SLP should supplement with additional measures such as language sampling, dynamic assessment, and parent report to obtain an accurate picture of the child\'s abilities.',
+      "When the norming sample of a standardized test does not represent the population characteristics of the child being assessed (in this case, socioeconomic diversity), the test may not yield valid results. The SLP should supplement with additional measures such as language sampling, dynamic assessment, and parent report to obtain an accurate picture of the child's abilities.",
     incorrectExplanations: {
       a: 'Beginning treatment based solely on a potentially biased assessment would be premature. The validity of the test for this population must be considered before making diagnostic decisions.',
       c: 'Low socioeconomic status is a risk factor associated with reduced language exposure, but it does not directly cause language disorders. Language differences related to experience should not be pathologized.',
-      d: 'Test results from instruments whose norming samples do not match the child\'s demographic characteristics may not be valid. Additional assessment is essential.',
+      d: "Test results from instruments whose norming samples do not match the child's demographic characteristics may not be valid. Additional assessment is essential.",
     },
     contentCategory: 'I',
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Language'],
     difficulty: 'analysis',
-    tags: ['assessment-bias', 'norming-sample', 'socioeconomic-factors', 'cultural-linguistic-diversity'],
+    tags: [
+      'assessment-bias',
+      'norming-sample',
+      'socioeconomic-factors',
+      'cultural-linguistic-diversity',
+    ],
     clinicalSetting: 'early-intervention',
-    referenceSources: ['ASHA Practice Portal — Cultural and Linguistic Diversity', 'Shipley & McAfee — Assessment in Speech-Language Pathology'],
+    referenceSources: [
+      'ASHA Practice Portal — Cultural and Linguistic Diversity',
+      'Shipley & McAfee — Assessment in Speech-Language Pathology',
+    ],
   },
   {
     id: 'cat1-040',
     stem: 'A study reports a correlation coefficient of r = 0.85 between vocabulary size and reading comprehension in elementary school children. Which interpretation is MOST accurate?',
     options: [
-      { id: 'a', text: 'Increasing vocabulary size causes improved reading comprehension', isCorrect: false },
-      { id: 'b', text: 'There is a strong positive relationship between vocabulary size and reading comprehension, but causation cannot be established', isCorrect: true },
+      {
+        id: 'a',
+        text: 'Increasing vocabulary size causes improved reading comprehension',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'There is a strong positive relationship between vocabulary size and reading comprehension, but causation cannot be established',
+        isCorrect: true,
+      },
       { id: 'c', text: 'Reading comprehension causes vocabulary growth', isCorrect: false },
       { id: 'd', text: 'The relationship is weak and not clinically meaningful', isCorrect: false },
     ],
@@ -983,11 +1227,13 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['correlation', 'causation', 'research-interpretation', 'statistics'],
     clinicalSetting: null,
-    referenceSources: ['Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders'],
+    referenceSources: [
+      'Maxwell & Satake — Research and Statistical Methods in Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-041',
-    stem: 'An SLP working in early intervention notices that a 14-month-old uses primarily contact gestures (e.g., pulling a caregiver\'s hand toward a desired object) but no distal gestures (e.g., pointing). The SLP should be MOST concerned about potential deficits in:',
+    stem: "An SLP working in early intervention notices that a 14-month-old uses primarily contact gestures (e.g., pulling a caregiver's hand toward a desired object) but no distal gestures (e.g., pointing). The SLP should be MOST concerned about potential deficits in:",
     options: [
       { id: 'a', text: 'Fine motor skills', isCorrect: false },
       { id: 'b', text: 'Joint attention and social communication', isCorrect: true },
@@ -1007,19 +1253,34 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['joint-attention', 'gestures', 'pointing', 'early-intervention', 'ASD-red-flags'],
     clinicalSetting: 'early-intervention',
-    referenceSources: ['Wetherby & Prizant — Communication and Symbolic Behavior Scales', 'Owens — Language Development: An Introduction'],
+    referenceSources: [
+      'Wetherby & Prizant — Communication and Symbolic Behavior Scales',
+      'Owens — Language Development: An Introduction',
+    ],
   },
   {
     id: 'cat1-042',
-    stem: 'An SLP is reviewing a study on a new language intervention. The study reports a statistically significant difference (p < 0.05) between the treatment and control groups but also reports a Cohen\'s d of 0.15. The SLP should conclude that:',
+    stem: "An SLP is reviewing a study on a new language intervention. The study reports a statistically significant difference (p < 0.05) between the treatment and control groups but also reports a Cohen's d of 0.15. The SLP should conclude that:",
     options: [
-      { id: 'a', text: 'The treatment is clearly effective and should be implemented clinically', isCorrect: false },
-      { id: 'b', text: 'The treatment produced a statistically significant but clinically negligible effect', isCorrect: true },
+      {
+        id: 'a',
+        text: 'The treatment is clearly effective and should be implemented clinically',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The treatment produced a statistically significant but clinically negligible effect',
+        isCorrect: true,
+      },
       { id: 'c', text: 'The study lacked adequate statistical power', isCorrect: false },
-      { id: 'd', text: 'The p-value and effect size are contradictory, indicating a methodological error', isCorrect: false },
+      {
+        id: 'd',
+        text: 'The p-value and effect size are contradictory, indicating a methodological error',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'A Cohen\'s d of 0.15 indicates a very small effect size (small = 0.2, medium = 0.5, large = 0.8). Statistical significance (p < 0.05) can be achieved with large sample sizes even when the actual effect is trivially small. For clinical decision-making, effect size is often more meaningful than statistical significance because it indicates the practical magnitude of the treatment effect.',
+      "A Cohen's d of 0.15 indicates a very small effect size (small = 0.2, medium = 0.5, large = 0.8). Statistical significance (p < 0.05) can be achieved with large sample sizes even when the actual effect is trivially small. For clinical decision-making, effect size is often more meaningful than statistical significance because it indicates the practical magnitude of the treatment effect.",
     incorrectExplanations: {
       a: 'Statistical significance alone does not indicate clinical effectiveness. The small effect size suggests the treatment difference, while real, is too small to be meaningful in practice.',
       c: 'The study achieved statistical significance, which indicates it had sufficient power to detect the (small) effect. Inadequate power would result in failure to achieve significance.',
@@ -1031,22 +1292,40 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'analysis',
     tags: ['effect-size', 'statistical-significance', 'Cohens-d', 'clinical-significance', 'EBP'],
     clinicalSetting: null,
-    referenceSources: ['Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders'],
+    referenceSources: [
+      'Dollaghan — The Handbook for Evidence-Based Practice in Communication Disorders',
+    ],
   },
   {
     id: 'cat1-043',
     stem: 'An SLP is part of an IEP team discussing services for a child with a speech-language impairment. The school administrator suggests placing the child in a self-contained special education classroom for all instruction. The SLP should advocate for:',
     options: [
-      { id: 'a', text: 'Full inclusion in the general education classroom with no supports', isCorrect: false },
-      { id: 'b', text: 'Placement in the least restrictive environment (LRE) appropriate for the child\'s needs, with necessary supports and services', isCorrect: true },
-      { id: 'c', text: 'The administrator\'s recommendation since they are responsible for resource allocation', isCorrect: false },
-      { id: 'd', text: 'A homebound instruction program to provide individualized attention', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Full inclusion in the general education classroom with no supports',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: "Placement in the least restrictive environment (LRE) appropriate for the child's needs, with necessary supports and services",
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: "The administrator's recommendation since they are responsible for resource allocation",
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'A homebound instruction program to provide individualized attention',
+        isCorrect: false,
+      },
     ],
     explanation:
       'IDEA mandates that children with disabilities be educated in the least restrictive environment (LRE) to the maximum extent appropriate. For most children with speech-language impairments, this means participation in general education with supplementary aids and services. A self-contained placement for a child with only a speech-language impairment would be overly restrictive unless the team has documented that the child cannot be educated satisfactorily in the general environment.',
     incorrectExplanations: {
-      a: 'Full inclusion without supports may not meet the child\'s needs. LRE requires appropriate supports and services to enable participation in general education.',
-      c: 'Placement decisions are made by the IEP team based on the child\'s individual needs and the LRE mandate, not solely by the administrator based on resource availability.',
+      a: "Full inclusion without supports may not meet the child's needs. LRE requires appropriate supports and services to enable participation in general education.",
+      c: "Placement decisions are made by the IEP team based on the child's individual needs and the LRE mandate, not solely by the administrator based on resource availability.",
       d: 'Homebound instruction is the most restrictive placement option and is typically reserved for children who are medically unable to attend school. This would be inappropriate for a child with a speech-language impairment.',
     },
     contentCategory: 'I',
@@ -1059,12 +1338,28 @@ export const category1Questions: QuestionData[] = [
   },
   {
     id: 'cat1-044',
-    stem: 'During a clinical practicum, a graduate student confides to their supervisor that they feel uncomfortable treating a client whose cultural practices conflict with the student\'s personal beliefs. According to the ASHA Code of Ethics, the supervisor should:',
+    stem: "During a clinical practicum, a graduate student confides to their supervisor that they feel uncomfortable treating a client whose cultural practices conflict with the student's personal beliefs. According to the ASHA Code of Ethics, the supervisor should:",
     options: [
-      { id: 'a', text: 'Reassign the client to another student without further discussion', isCorrect: false },
-      { id: 'b', text: 'Use this as a learning opportunity to discuss cultural humility and the ethical obligation to provide services without discrimination', isCorrect: true },
-      { id: 'c', text: 'Allow the student to decline treatment based on personal beliefs', isCorrect: false },
-      { id: 'd', text: 'Report the student to the academic program for discriminatory attitudes', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Reassign the client to another student without further discussion',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Use this as a learning opportunity to discuss cultural humility and the ethical obligation to provide services without discrimination',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Allow the student to decline treatment based on personal beliefs',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Report the student to the academic program for discriminatory attitudes',
+        isCorrect: false,
+      },
     ],
     explanation:
       'ASHA Principle I, Rule C states that individuals shall not discriminate in the delivery of professional services based on race, ethnicity, sex, gender identity, religion, national origin, sexual orientation, or disability. The supervisor should use this as a teaching moment about cultural humility, self-reflection, and the ethical obligation to serve all clients equitably while providing support to help the student develop cultural competence.',
@@ -1087,12 +1382,28 @@ export const category1Questions: QuestionData[] = [
   // ─────────────────────────────────────────────────────────
   {
     id: 'cat1-045',
-    stem: 'An SLP in a skilled nursing facility is asked to evaluate a new patient for dysphagia. The patient is a 78-year-old woman who was admitted following a left-hemisphere cerebrovascular accident. During the bedside evaluation, the SLP observes wet vocal quality after thin liquid trials, delayed cough response, and reduced lingual range of motion. When interpreting these findings in the context of the patient\'s neurological profile, the SLP should MOST reasonably hypothesize that:',
+    stem: "An SLP in a skilled nursing facility is asked to evaluate a new patient for dysphagia. The patient is a 78-year-old woman who was admitted following a left-hemisphere cerebrovascular accident. During the bedside evaluation, the SLP observes wet vocal quality after thin liquid trials, delayed cough response, and reduced lingual range of motion. When interpreting these findings in the context of the patient's neurological profile, the SLP should MOST reasonably hypothesize that:",
     options: [
-      { id: 'a', text: 'The patient has intact swallowing because the cough response indicates airway protection', isCorrect: false },
-      { id: 'b', text: 'The combination of wet vocal quality, delayed cough, and reduced lingual movement suggests impaired oral and pharyngeal phases of swallowing with likely aspiration risk, warranting instrumental assessment', isCorrect: true },
-      { id: 'c', text: 'The reduced lingual range of motion is unrelated to swallowing and only affects speech', isCorrect: false },
-      { id: 'd', text: 'Thin liquid trials should continue to further assess the swallowing pattern', isCorrect: false },
+      {
+        id: 'a',
+        text: 'The patient has intact swallowing because the cough response indicates airway protection',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'The combination of wet vocal quality, delayed cough, and reduced lingual movement suggests impaired oral and pharyngeal phases of swallowing with likely aspiration risk, warranting instrumental assessment',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'The reduced lingual range of motion is unrelated to swallowing and only affects speech',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Thin liquid trials should continue to further assess the swallowing pattern',
+        isCorrect: false,
+      },
     ],
     explanation:
       'Wet vocal quality suggests material on or near the vocal folds, indicating laryngeal penetration or aspiration. A delayed cough response suggests reduced pharyngeal and laryngeal sensation. Reduced lingual range of motion (CN XII involvement consistent with left-hemisphere CVA) can impair bolus formation, manipulation, and propulsion. Together, these findings suggest impairment in both oral and pharyngeal phases with aspiration risk. An instrumental assessment (MBSS or FEES) is warranted to visualize swallow physiology and guide diet recommendations.',
@@ -1107,16 +1418,35 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['dysphagia', 'bedside-evaluation', 'aspiration', 'cranial-nerves', 'CVA'],
     clinicalSetting: 'skilled-nursing',
-    referenceSources: ['Logemann — Evaluation and Treatment of Swallowing Disorders', 'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders'],
+    referenceSources: [
+      'Logemann — Evaluation and Treatment of Swallowing Disorders',
+      'Seikel, Drumright, & Seikel — Essentials of Anatomy & Physiology for Communication Sciences and Disorders',
+    ],
   },
   {
     id: 'cat1-046',
     stem: 'A school-based SLP is evaluating a 7-year-old bilingual Spanish-English student who was referred for "not talking enough in class." The child\'s teacher reports that the student rarely participates verbally in English instruction but performs well on written assignments. The parents report that the child communicates fluently in Spanish at home and has strong academic skills in Spanish from their previous schooling. Given this information, the SLP\'s MOST appropriate course of action is to:',
     options: [
-      { id: 'a', text: 'Diagnose a language disorder based on the limited verbal participation in English', isCorrect: false },
-      { id: 'b', text: 'Recommend a silent period as typical for sequential bilingual acquisition and monitor progress while providing classroom supports', isCorrect: true },
-      { id: 'c', text: 'Begin pull-out speech-language therapy to address the English language deficit', isCorrect: false },
-      { id: 'd', text: 'Refer for a comprehensive psychological evaluation for selective mutism', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Diagnose a language disorder based on the limited verbal participation in English',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Recommend a silent period as typical for sequential bilingual acquisition and monitor progress while providing classroom supports',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Begin pull-out speech-language therapy to address the English language deficit',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Refer for a comprehensive psychological evaluation for selective mutism',
+        isCorrect: false,
+      },
     ],
     explanation:
       'Sequential bilingual children commonly go through a "silent period" during which they are processing the new language before producing it verbally. The child\'s strong Spanish abilities and academic performance in Spanish indicate intact language competence. Limited verbal output in English, with adequate performance on written tasks, is consistent with normal second language acquisition rather than a language disorder. Monitoring with classroom supports (e.g., visual aids, peer modeling, reduced verbal demands) is appropriate.',
@@ -1129,25 +1459,50 @@ export const category1Questions: QuestionData[] = [
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Language'],
     difficulty: 'clinical_reasoning',
-    tags: ['bilingualism', 'silent-period', 'language-difference-vs-disorder', 'sequential-bilingual', 'school-setting'],
+    tags: [
+      'bilingualism',
+      'silent-period',
+      'language-difference-vs-disorder',
+      'sequential-bilingual',
+      'school-setting',
+    ],
     clinicalSetting: 'school',
-    referenceSources: ['Kohnert — Language Disorders in Bilingual Children and Adults', 'ASHA Practice Portal — Bilingual Service Delivery'],
+    referenceSources: [
+      'Kohnert — Language Disorders in Bilingual Children and Adults',
+      'ASHA Practice Portal — Bilingual Service Delivery',
+    ],
   },
   {
     id: 'cat1-047',
     stem: 'An SLP in a rehabilitation hospital is treating a patient who has been making consistent functional gains in swallowing after a stroke. The patient\'s insurance company notifies the SLP that they are denying continued coverage because the patient "has plateaued." The patient still has difficulty swallowing thin liquids safely. The SLP should:',
     options: [
-      { id: 'a', text: 'Discharge the patient immediately as directed by the insurance company', isCorrect: false },
-      { id: 'b', text: 'Continue treatment without billing the insurance company', isCorrect: false },
-      { id: 'c', text: 'Document continued functional progress, appeal the denial with supporting clinical evidence, and advocate for ongoing medically necessary services', isCorrect: true },
-      { id: 'd', text: 'Modify the treatment plan to focus only on compensatory strategies to justify continued coverage', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Discharge the patient immediately as directed by the insurance company',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Continue treatment without billing the insurance company',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Document continued functional progress, appeal the denial with supporting clinical evidence, and advocate for ongoing medically necessary services',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Modify the treatment plan to focus only on compensatory strategies to justify continued coverage',
+        isCorrect: false,
+      },
     ],
     explanation:
       'ASHA Principle I mandates that the welfare of persons served is paramount. When a patient continues to demonstrate functional improvement, the SLP has an ethical obligation to advocate for continued services. This includes thorough documentation of measurable progress, filing an appeal with clinical evidence, and if necessary, involving the patient and family in understanding their rights to appeal insurance decisions.',
     incorrectExplanations: {
       a: 'Discharging a patient who is still making functional gains and has ongoing safety concerns with swallowing would compromise patient welfare. The SLP should advocate through the appeals process.',
       b: 'Providing services without billing creates ethical and financial issues. The appropriate action is to appeal the denial with supporting documentation.',
-      d: 'Treatment should be guided by the patient\'s clinical needs, not by what justifies insurance coverage. Compensatory strategies may be appropriate as part of a comprehensive plan, but the treatment plan should not be distorted to satisfy a payer.',
+      d: "Treatment should be guided by the patient's clinical needs, not by what justifies insurance coverage. Compensatory strategies may be appropriate as part of a comprehensive plan, but the treatment plan should not be distorted to satisfy a payer.",
     },
     contentCategory: 'I',
     subcategory: 'Professional Ethics',
@@ -1161,10 +1516,26 @@ export const category1Questions: QuestionData[] = [
     id: 'cat1-048',
     stem: 'A 2;6-year-old child is referred to an SLP for a speech-language evaluation. The child produces approximately 15 single words, no two-word combinations, and relies heavily on gestures and vocalizations. The parents report that the child understands simple directions and follows routines well. Based on this developmental profile and considering the eligibility requirements under IDEA Part C, the SLP should:',
     options: [
-      { id: 'a', text: 'Recommend monitoring without services since receptive language appears intact', isCorrect: false },
-      { id: 'b', text: 'Determine eligibility based on the significant expressive language delay and develop an IFSP with family-centered goals', isCorrect: true },
-      { id: 'c', text: 'Wait until age 3 to evaluate under Part B since the child is close to the transition age', isCorrect: false },
-      { id: 'd', text: 'Recommend only a parent education program since the child is too young for direct intervention', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Recommend monitoring without services since receptive language appears intact',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Determine eligibility based on the significant expressive language delay and develop an IFSP with family-centered goals',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Wait until age 3 to evaluate under Part B since the child is close to the transition age',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Recommend only a parent education program since the child is too young for direct intervention',
+        isCorrect: false,
+      },
     ],
     explanation:
       'At 2;6, a child should be combining words and have an expressive vocabulary of well over 50 words. Fifteen single words with no combinations at this age represents a significant expressive language delay (more than 25% delay). Under Part C, the child likely qualifies for services. The SLP should develop an Individualized Family Service Plan (IFSP) with family-centered goals that can include both direct and consultative services delivered in natural environments.',
@@ -1177,47 +1548,95 @@ export const category1Questions: QuestionData[] = [
     subcategory: 'Legislation & Policy',
     bigNine: ['Language'],
     difficulty: 'clinical_reasoning',
-    tags: ['IDEA', 'Part-C', 'IFSP', 'early-intervention', 'expressive-language-delay', 'eligibility'],
+    tags: [
+      'IDEA',
+      'Part-C',
+      'IFSP',
+      'early-intervention',
+      'expressive-language-delay',
+      'eligibility',
+    ],
     clinicalSetting: 'early-intervention',
     referenceSources: ['IDEA 2004 — Part C', 'Owens — Language Development: An Introduction'],
   },
   {
     id: 'cat1-049',
-    stem: 'An SLP is asked to evaluate a 5-year-old child adopted from another country 6 months ago. The child speaks their birth language with age-appropriate complexity according to a community interpreter but produces very limited English. The school team is pressuring the SLP to qualify the child for speech-language services. The SLP\'s BEST response is to:',
+    stem: "An SLP is asked to evaluate a 5-year-old child adopted from another country 6 months ago. The child speaks their birth language with age-appropriate complexity according to a community interpreter but produces very limited English. The school team is pressuring the SLP to qualify the child for speech-language services. The SLP's BEST response is to:",
     options: [
-      { id: 'a', text: 'Qualify the child for services to provide extra English support', isCorrect: false },
-      { id: 'b', text: 'Explain that the child demonstrates age-appropriate language in their first language and the limited English reflects normal second language acquisition, then recommend ESL services and monitoring', isCorrect: true },
-      { id: 'c', text: 'Administer a standardized English-language test and use the scores for eligibility', isCorrect: false },
-      { id: 'd', text: 'Refuse to evaluate since the child does not speak English', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Qualify the child for services to provide extra English support',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Explain that the child demonstrates age-appropriate language in their first language and the limited English reflects normal second language acquisition, then recommend ESL services and monitoring',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Administer a standardized English-language test and use the scores for eligibility',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Refuse to evaluate since the child does not speak English',
+        isCorrect: false,
+      },
     ],
     explanation:
-      'A child who demonstrates age-appropriate language in their first language does not have a language disorder — they have a language difference related to second language acquisition. Qualifying a child for special education based on limited English proficiency is inappropriate and may violate IDEA provisions against misidentification due to cultural or linguistic factors. ESL/ELL services through the school\'s general education program are the appropriate support.',
+      "A child who demonstrates age-appropriate language in their first language does not have a language disorder — they have a language difference related to second language acquisition. Qualifying a child for special education based on limited English proficiency is inappropriate and may violate IDEA provisions against misidentification due to cultural or linguistic factors. ESL/ELL services through the school's general education program are the appropriate support.",
     incorrectExplanations: {
       a: 'Using special education services to provide English language support misuses limited resources and misidentifies a language difference as a disability, which IDEA specifically prohibits.',
       c: 'Standardized English tests are not valid for a child who has only been exposed to English for 6 months. Results would reflect limited exposure, not a disorder.',
-      d: 'The SLP should complete an evaluation — assessment of the child\'s language abilities can and should occur in their dominant language. Refusing to evaluate is not appropriate.',
+      d: "The SLP should complete an evaluation — assessment of the child's language abilities can and should occur in their dominant language. Refusing to evaluate is not appropriate.",
     },
     contentCategory: 'I',
     subcategory: 'Cultural & Linguistic Factors',
     bigNine: ['Language'],
     difficulty: 'clinical_reasoning',
-    tags: ['language-difference-vs-disorder', 'adopted-children', 'bilingualism', 'assessment-bias', 'IDEA'],
+    tags: [
+      'language-difference-vs-disorder',
+      'adopted-children',
+      'bilingualism',
+      'assessment-bias',
+      'IDEA',
+    ],
     clinicalSetting: 'school',
-    referenceSources: ['ASHA Practice Portal — Bilingual Service Delivery', 'IDEA 2004 — 34 CFR §300.306(b)'],
+    referenceSources: [
+      'ASHA Practice Portal — Bilingual Service Delivery',
+      'IDEA 2004 — 34 CFR §300.306(b)',
+    ],
   },
   {
     id: 'cat1-050',
     stem: 'An SLP working in a university clinic receives a request from a local school district to provide telepractice services to students in a rural area. The SLP holds licensure in the state where the university is located but not in the state where the school district is. According to professional practice guidelines, the SLP should:',
     options: [
-      { id: 'a', text: 'Provide services since the SLP is physically located in their licensed state', isCorrect: false },
-      { id: 'b', text: 'Obtain appropriate licensure or verify that an interstate compact applies before providing services', isCorrect: true },
-      { id: 'c', text: 'Provide services as long as the school district signs a contract', isCorrect: false },
-      { id: 'd', text: 'Decline the request because telepractice is not an evidence-based service delivery model', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Provide services since the SLP is physically located in their licensed state',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Obtain appropriate licensure or verify that an interstate compact applies before providing services',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Provide services as long as the school district signs a contract',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Decline the request because telepractice is not an evidence-based service delivery model',
+        isCorrect: false,
+      },
     ],
     explanation:
       'For telepractice, the SLP must hold licensure in the state where the client is located (or where services are received), not just where the SLP is physically sitting. Some states participate in interstate licensure compacts that may facilitate cross-state practice. The SLP should verify licensure requirements and obtain necessary credentials before initiating services.',
     incorrectExplanations: {
-      a: 'Most state licensure boards require that the practitioner be licensed in the state where the client receives services. Being licensed only in the clinician\'s physical location is typically insufficient.',
+      a: "Most state licensure boards require that the practitioner be licensed in the state where the client receives services. Being licensed only in the clinician's physical location is typically insufficient.",
       c: 'A contract between the SLP and school district does not substitute for state licensure. Licensure is a legal requirement that cannot be waived by a service agreement.',
       d: 'Telepractice is a well-established, evidence-based service delivery model endorsed by ASHA. The concern here is licensure, not the validity of telepractice.',
     },
@@ -1231,17 +1650,33 @@ export const category1Questions: QuestionData[] = [
   },
   {
     id: 'cat1-051',
-    stem: 'An SLP in an outpatient clinic is evaluating a 4-year-old who was adopted domestically at birth and has no known history of prenatal alcohol or drug exposure. The child presents with an expressive vocabulary of approximately 100 words, uses primarily 2-word phrases, and demonstrates limited use of grammatical morphemes. Receptive language testing reveals scores 1.5 SD below the mean. Hearing screening is within normal limits. The child\'s oral mechanism examination is unremarkable. Considering the full clinical picture, the SLP should:',
+    stem: "An SLP in an outpatient clinic is evaluating a 4-year-old who was adopted domestically at birth and has no known history of prenatal alcohol or drug exposure. The child presents with an expressive vocabulary of approximately 100 words, uses primarily 2-word phrases, and demonstrates limited use of grammatical morphemes. Receptive language testing reveals scores 1.5 SD below the mean. Hearing screening is within normal limits. The child's oral mechanism examination is unremarkable. Considering the full clinical picture, the SLP should:",
     options: [
-      { id: 'a', text: 'Diagnose articulation disorder and begin phonological therapy', isCorrect: false },
-      { id: 'b', text: 'Determine that the child meets criteria for developmental language disorder and recommend comprehensive language intervention targeting both expressive and receptive skills', isCorrect: true },
-      { id: 'c', text: 'Attribute the delays to adoption-related adjustment and recommend monitoring', isCorrect: false },
-      { id: 'd', text: 'Refer to audiology for a comprehensive hearing evaluation before taking any further action', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Diagnose articulation disorder and begin phonological therapy',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Determine that the child meets criteria for developmental language disorder and recommend comprehensive language intervention targeting both expressive and receptive skills',
+        isCorrect: true,
+      },
+      {
+        id: 'c',
+        text: 'Attribute the delays to adoption-related adjustment and recommend monitoring',
+        isCorrect: false,
+      },
+      {
+        id: 'd',
+        text: 'Refer to audiology for a comprehensive hearing evaluation before taking any further action',
+        isCorrect: false,
+      },
     ],
     explanation:
       'The child presents with significant delays in both expressive language (100 words and 2-word phrases at age 4 are consistent with approximately 18–24 month development) and receptive language (1.5 SD below the mean). With normal hearing and no identified etiology, this profile is consistent with developmental language disorder (DLD). Comprehensive language intervention should target vocabulary expansion, morphosyntactic development, and receptive language skills.',
     incorrectExplanations: {
-      a: 'The primary concern described is language, not articulation. The child\'s limited vocabulary and morphosyntactic development are language deficits, not speech sound errors.',
+      a: "The primary concern described is language, not articulation. The child's limited vocabulary and morphosyntactic development are language deficits, not speech sound errors.",
       c: 'The child was adopted at birth and is now 4 years old. Adoption-related adjustment would not account for this level of language delay in a child who has been in a stable home since infancy.',
       d: 'The hearing screening was within normal limits. While comprehensive audiological evaluation may be part of a thorough workup, it should not delay identification and treatment of an obvious language disorder.',
     },
@@ -1251,23 +1686,42 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['DLD', 'developmental-language-disorder', 'assessment', 'intervention-planning'],
     clinicalSetting: 'outpatient',
-    referenceSources: ['Leonard — Children with Specific Language Impairment', 'Owens — Language Development: An Introduction'],
+    referenceSources: [
+      'Leonard — Children with Specific Language Impairment',
+      'Owens — Language Development: An Introduction',
+    ],
   },
   {
     id: 'cat1-052',
     stem: 'An SLP is conducting a research study comparing two treatment approaches for childhood apraxia of speech. Midway through data collection, the SLP realizes that children in the experimental group are showing dramatically better outcomes than those in the control group receiving traditional articulation therapy. Several parents of control-group children have expressed frustration that their children are not improving. The MOST ethical course of action is to:',
     options: [
-      { id: 'a', text: 'Continue the study as designed to maintain research integrity', isCorrect: false },
-      { id: 'b', text: 'Immediately terminate the study and switch all children to the experimental treatment', isCorrect: false },
-      { id: 'c', text: 'Consult with the IRB about early stopping rules, consider whether the control group is being harmed by receiving a less effective treatment, and offer the experimental treatment to control-group participants after study completion', isCorrect: true },
-      { id: 'd', text: 'Tell the parents that research participation requires accepting the assigned condition', isCorrect: false },
+      {
+        id: 'a',
+        text: 'Continue the study as designed to maintain research integrity',
+        isCorrect: false,
+      },
+      {
+        id: 'b',
+        text: 'Immediately terminate the study and switch all children to the experimental treatment',
+        isCorrect: false,
+      },
+      {
+        id: 'c',
+        text: 'Consult with the IRB about early stopping rules, consider whether the control group is being harmed by receiving a less effective treatment, and offer the experimental treatment to control-group participants after study completion',
+        isCorrect: true,
+      },
+      {
+        id: 'd',
+        text: 'Tell the parents that research participation requires accepting the assigned condition',
+        isCorrect: false,
+      },
     ],
     explanation:
       'This scenario involves the ethical tension between research rigor and participant welfare. The researcher should consult with the Institutional Review Board (IRB) about whether pre-specified early stopping rules have been met. Ethical principles require that participants not be harmed by research participation. A common resolution is to complete the study with appropriate modifications if the IRB approves, and offer the more effective treatment to all participants after the study concludes (a "crossover" or "waitlist" provision).',
     incorrectExplanations: {
       a: 'Continuing without review when there are concerns about participant welfare violates the ethical principle of beneficence. Research integrity should not override participant well-being.',
       b: 'Immediately terminating the study without IRB consultation may be premature. Interim differences may not represent final outcomes, and proper statistical analysis of interim data is needed.',
-      d: 'While informed consent includes understanding random assignment, participants always retain the right to withdraw. Dismissing parental concerns about their children\'s progress is ethically inappropriate.',
+      d: "While informed consent includes understanding random assignment, participants always retain the right to withdraw. Dismissing parental concerns about their children's progress is ethically inappropriate.",
     },
     contentCategory: 'I',
     subcategory: 'Research Methodology',
@@ -1275,6 +1729,9 @@ export const category1Questions: QuestionData[] = [
     difficulty: 'clinical_reasoning',
     tags: ['research-ethics', 'IRB', 'beneficence', 'CAS', 'early-stopping'],
     clinicalSetting: null,
-    referenceSources: ['ASHA Code of Ethics (2023)', 'Belmont Report — Ethical Principles and Guidelines for Research'],
+    referenceSources: [
+      'ASHA Code of Ethics (2023)',
+      'Belmont Report — Ethical Principles and Guidelines for Research',
+    ],
   },
 ]

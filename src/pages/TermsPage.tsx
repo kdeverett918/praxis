@@ -123,9 +123,7 @@ const TERMS_SECTIONS = [
   {
     number: 16,
     title: 'Contact',
-    paragraphs: [
-      'Questions about these Terms and Conditions can be sent to hello@praxisprep.io.',
-    ],
+    paragraphs: ['Questions about these Terms and Conditions can be sent to hello@praxisprep.io.'],
   },
   {
     number: 17,
@@ -154,22 +152,22 @@ export default function TermsPage() {
     >
       {TERMS_SECTIONS.map((section) => (
         <Card key={section.number} className="p-0">
-          <div className="border-b border-border px-6 py-5">
-            <h2 className="font-display text-2xl text-text-primary">
+          <div className="border-border border-b px-6 py-5">
+            <h2 className="font-display text-text-primary text-2xl">
               {section.number}. {section.title}
             </h2>
           </div>
           <div className="space-y-4 px-6 py-6">
             {section.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="font-body text-sm leading-7 text-text-secondary">
+              <p key={paragraph} className="font-body text-text-secondary text-sm leading-7">
                 {paragraph}
               </p>
             ))}
             {section.bullets && (
-              <ul className="space-y-3 font-body text-sm leading-7 text-text-secondary">
+              <ul className="font-body text-text-secondary space-y-3 text-sm leading-7">
                 {section.bullets.map((bullet) => (
                   <li key={bullet} className="flex gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-secondary" aria-hidden="true" />
+                    <span className="bg-secondary mt-2 h-2 w-2 rounded-full" aria-hidden="true" />
                     <span>{bullet}</span>
                   </li>
                 ))}

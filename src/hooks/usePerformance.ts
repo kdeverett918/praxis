@@ -19,7 +19,9 @@ interface PerformanceData {
   totalAnswered: number
   accuracy: number
   categoryScores: Record<string, { correct: number; total: number; percentage: number }>
-  bigNineScores: Partial<Record<BigNineArea, { correct: number; total: number; percentage: number }>>
+  bigNineScores: Partial<
+    Record<BigNineArea, { correct: number; total: number; percentage: number }>
+  >
   recentExams: Array<{ id: string; score: number; total: number; completedAt: string }>
   studyStreak: number
   questionsToday: number
@@ -66,7 +68,8 @@ export function usePerformance() {
     const totalCorrect = attempts.filter((a) => a.is_correct).length
 
     // Category scores
-    const categoryScores: Record<string, { correct: number; total: number; percentage: number }> = {}
+    const categoryScores: Record<string, { correct: number; total: number; percentage: number }> =
+      {}
     for (const attempt of attempts) {
       if (!attempt.questions) continue
       const key = attempt.questions.content_category
@@ -79,7 +82,9 @@ export function usePerformance() {
     }
 
     // Big Nine scores
-    const bigNineScores: Partial<Record<BigNineArea, { correct: number; total: number; percentage: number }>> = {}
+    const bigNineScores: Partial<
+      Record<BigNineArea, { correct: number; total: number; percentage: number }>
+    > = {}
     for (const attempt of attempts) {
       if (!attempt.questions?.big_nine) continue
       for (const area of attempt.questions.big_nine) {

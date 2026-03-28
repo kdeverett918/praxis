@@ -8,11 +8,7 @@ import { category2Flashcards } from '@/data/flashcards-category-2'
 import { category3Flashcards } from '@/data/flashcards-category-3'
 import { useGamificationStore } from '@/stores/gamificationStore'
 
-const ALL_FLASHCARDS = [
-  ...category1Flashcards,
-  ...category2Flashcards,
-  ...category3Flashcards,
-]
+const ALL_FLASHCARDS = [...category1Flashcards, ...category2Flashcards, ...category3Flashcards]
 
 type FlyDirection = 'left' | 'center' | 'right' | null
 
@@ -63,24 +59,21 @@ export default function FlashcardsPage() {
   return (
     <div className="mx-auto max-w-2xl pb-24 lg:pb-0">
       <div className="mb-8 flex items-center gap-3">
-        <Brain className="h-6 w-6 text-warning" />
-        <h1 className="font-display text-2xl text-text-primary">Flashcards</h1>
+        <Brain className="text-warning h-6 w-6" />
+        <h1 className="font-display text-text-primary text-2xl">Flashcards</h1>
         <Badge variant="warning">{reviewed} reviewed</Badge>
       </div>
 
       {/* Progress */}
-      <div className="mb-6 h-1 overflow-hidden rounded-full bg-surface-elevated">
+      <div className="bg-surface-elevated mb-6 h-1 overflow-hidden rounded-full">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-warning to-secondary transition-all duration-500"
+          className="from-warning to-secondary h-full rounded-full bg-gradient-to-r transition-all duration-500"
           style={{ width: `${((currentIndex + 1) / ALL_FLASHCARDS.length) * 100}%` }}
         />
       </div>
 
       {/* Card stack + 3D flip */}
-      <div
-        className="fc-stack-wrapper relative"
-        style={{ perspective: '1200px' }}
-      >
+      <div className="fc-stack-wrapper relative" style={{ perspective: '1200px' }}>
         {/* Stack cards behind current */}
         <div className="pointer-events-none absolute inset-0 z-0">
           <Card
@@ -118,14 +111,15 @@ export default function FlashcardsPage() {
           >
             {/* Front face */}
             <div className="fc-flip-face" style={{ backfaceVisibility: 'hidden' }}>
-              <Card
-                variant="glass"
-                className="relative min-h-[280px] sm:min-h-[320px]"
-              >
-                <Badge variant="default" className="mb-4">{card.category}</Badge>
+              <Card variant="glass" className="relative min-h-[280px] sm:min-h-[320px]">
+                <Badge variant="default" className="mb-4">
+                  {card.category}
+                </Badge>
                 <div className="flex min-h-[200px] flex-col items-center justify-center text-center sm:min-h-[240px]">
-                  <p className="font-display text-xl text-text-primary sm:text-2xl md:text-3xl">{card.front}</p>
-                  <p className="mt-6 font-body text-sm text-text-muted">Tap to reveal answer</p>
+                  <p className="font-display text-text-primary text-xl sm:text-2xl md:text-3xl">
+                    {card.front}
+                  </p>
+                  <p className="font-body text-text-muted mt-6 text-sm">Tap to reveal answer</p>
                 </div>
               </Card>
             </div>
@@ -140,12 +134,16 @@ export default function FlashcardsPage() {
             >
               <Card
                 variant="glass"
-                className="relative min-h-[280px] bg-surface-elevated sm:min-h-[320px]"
+                className="bg-surface-elevated relative min-h-[280px] sm:min-h-[320px]"
               >
-                <Badge variant="default" className="mb-4">{card.category}</Badge>
+                <Badge variant="default" className="mb-4">
+                  {card.category}
+                </Badge>
                 <div className="flex min-h-[200px] flex-col justify-center sm:min-h-[240px]">
-                  <p className="mb-2 font-body text-sm font-semibold text-secondary">{card.front}</p>
-                  <p className="font-body leading-relaxed text-text-secondary">{card.back}</p>
+                  <p className="font-body text-secondary mb-2 text-sm font-semibold">
+                    {card.front}
+                  </p>
+                  <p className="font-body text-text-secondary leading-relaxed">{card.back}</p>
                 </div>
               </Card>
             </div>
@@ -156,16 +154,31 @@ export default function FlashcardsPage() {
       {/* Rating buttons */}
       {isFlipped && !flyDirection && (
         <div className="mt-6 grid grid-cols-3 gap-3 sm:flex sm:justify-center sm:gap-4">
-          <Button variant="outline" size="md" onClick={() => handleRate('hard')} className="w-full sm:w-auto">
-            <ThumbsDown className="h-4 w-4 text-error" />
+          <Button
+            variant="outline"
+            size="md"
+            onClick={() => handleRate('hard')}
+            className="w-full sm:w-auto"
+          >
+            <ThumbsDown className="text-error h-4 w-4" />
             Hard
           </Button>
-          <Button variant="outline" size="md" onClick={() => handleRate('medium')} className="w-full sm:w-auto">
-            <Minus className="h-4 w-4 text-warning" />
+          <Button
+            variant="outline"
+            size="md"
+            onClick={() => handleRate('medium')}
+            className="w-full sm:w-auto"
+          >
+            <Minus className="text-warning h-4 w-4" />
             Medium
           </Button>
-          <Button variant="outline" size="md" onClick={() => handleRate('easy')} className="w-full sm:w-auto">
-            <ThumbsUp className="h-4 w-4 text-success" />
+          <Button
+            variant="outline"
+            size="md"
+            onClick={() => handleRate('easy')}
+            className="w-full sm:w-auto"
+          >
+            <ThumbsUp className="text-success h-4 w-4" />
             Easy
           </Button>
         </div>
@@ -174,8 +187,13 @@ export default function FlashcardsPage() {
       {/* Reset */}
       <div className="mt-8 text-center">
         <button
-          onClick={() => { setCurrentIndex(0); setIsFlipped(false); setReviewed(0); setFlyDirection(null) }}
-          className="inline-flex items-center gap-2 font-body text-sm text-text-muted hover:text-text-secondary"
+          onClick={() => {
+            setCurrentIndex(0)
+            setIsFlipped(false)
+            setReviewed(0)
+            setFlyDirection(null)
+          }}
+          className="font-body text-text-muted hover:text-text-secondary inline-flex items-center gap-2 text-sm"
         >
           <RotateCcw className="h-4 w-4" />
           Reset deck

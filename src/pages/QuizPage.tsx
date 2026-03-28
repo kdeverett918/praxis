@@ -133,24 +133,26 @@ export default function QuizPage() {
     return (
       <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
         <Card variant="glass" className="text-center">
-          <Trophy className="mx-auto mb-4 h-16 w-16 text-secondary" />
-          <h1 className="mb-2 font-display text-3xl text-text-primary">Quiz Complete!</h1>
-          <p className={`mb-6 font-display text-xl ${gradeColor}`}>{grade}</p>
+          <Trophy className="text-secondary mx-auto mb-4 h-16 w-16" />
+          <h1 className="font-display text-text-primary mb-2 text-3xl">Quiz Complete!</h1>
+          <p className={`font-display mb-6 text-xl ${gradeColor}`}>{grade}</p>
 
           <div className="mb-8 flex justify-center gap-6">
             <div>
-              <p className="font-mono text-4xl font-bold text-text-primary">{results.correct}</p>
-              <p className="font-body text-sm text-text-muted">Correct</p>
+              <p className="text-text-primary font-mono text-4xl font-bold">{results.correct}</p>
+              <p className="font-body text-text-muted text-sm">Correct</p>
             </div>
-            <div className="w-px bg-border" />
+            <div className="bg-border w-px" />
             <div>
-              <p className="font-mono text-4xl font-bold text-text-primary">{results.total}</p>
-              <p className="font-body text-sm text-text-muted">Total</p>
+              <p className="text-text-primary font-mono text-4xl font-bold">{results.total}</p>
+              <p className="font-body text-text-muted text-sm">Total</p>
             </div>
-            <div className="w-px bg-border" />
+            <div className="bg-border w-px" />
             <div>
-              <p className="font-mono text-4xl font-bold text-text-primary">{results.percentage}%</p>
-              <p className="font-body text-sm text-text-muted">Accuracy</p>
+              <p className="text-text-primary font-mono text-4xl font-bold">
+                {results.percentage}%
+              </p>
+              <p className="font-body text-text-muted text-sm">Accuracy</p>
             </div>
           </div>
 
@@ -179,7 +181,7 @@ export default function QuizPage() {
         <div className="mb-8 flex items-center gap-3">
           <button
             onClick={handleBackToBuilder}
-            className="flex items-center gap-2 font-body text-sm text-text-muted hover:text-text-secondary"
+            className="font-body text-text-muted hover:text-text-secondary flex items-center gap-2 text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Builder
@@ -205,7 +207,9 @@ export default function QuizPage() {
           onAnswer={(optionId) => handleAnswer(question.id, optionId)}
           onNext={handleNext}
           onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
-          onRequestAIRationale={() => {/* Claude API call */}}
+          onRequestAIRationale={() => {
+            /* Claude API call */
+          }}
         />
       </div>
     )
@@ -215,39 +219,41 @@ export default function QuizPage() {
   return (
     <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
       <div className="mb-8 flex items-center gap-3">
-        <Layers className="h-6 w-6 text-success" />
-        <h1 className="font-display text-2xl text-text-primary">Custom Quiz Builder</h1>
+        <Layers className="text-success h-6 w-6" />
+        <h1 className="font-display text-text-primary text-2xl">Custom Quiz Builder</h1>
       </div>
 
       {/* Category Filter */}
       <Card className="mb-6">
-        <h2 className="mb-4 font-display text-lg text-text-primary">Content Categories</h2>
+        <h2 className="font-display text-text-primary mb-4 text-lg">Content Categories</h2>
         <div className="flex flex-wrap gap-2">
-          {(Object.entries(CONTENT_CATEGORY_LABELS) as [ContentCategory, string][]).map(([key, label]) => (
-            <button
-              key={key}
-              onClick={() => setSelectedCategories(toggleSet(selectedCategories, key))}
-              className={`rounded-xl border px-4 py-2 font-body text-sm transition-all ${
-                selectedCategories.has(key)
-                  ? 'border-primary bg-primary/10 text-primary'
-                  : 'border-border text-text-secondary hover:border-primary/50'
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+          {(Object.entries(CONTENT_CATEGORY_LABELS) as [ContentCategory, string][]).map(
+            ([key, label]) => (
+              <button
+                key={key}
+                onClick={() => setSelectedCategories(toggleSet(selectedCategories, key))}
+                className={`font-body rounded-xl border px-4 py-2 text-sm transition-all ${
+                  selectedCategories.has(key)
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border text-text-secondary hover:border-primary/50'
+                }`}
+              >
+                {label}
+              </button>
+            ),
+          )}
         </div>
       </Card>
 
       {/* Big Nine Filter */}
       <Card className="mb-6">
-        <h2 className="mb-4 font-display text-lg text-text-primary">Big Nine Areas</h2>
+        <h2 className="font-display text-text-primary mb-4 text-lg">Big Nine Areas</h2>
         <div className="flex flex-wrap gap-2">
           {(Object.entries(BIG_NINE_LABELS) as [BigNineArea, string][]).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setSelectedBigNine(toggleSet(selectedBigNine, key))}
-              className={`rounded-xl border px-4 py-2 font-body text-sm transition-all ${
+              className={`font-body rounded-xl border px-4 py-2 text-sm transition-all ${
                 selectedBigNine.has(key)
                   ? 'border-secondary bg-secondary/10 text-secondary'
                   : 'border-border text-text-secondary hover:border-secondary/50'
@@ -261,13 +267,13 @@ export default function QuizPage() {
 
       {/* Difficulty Filter */}
       <Card className="mb-6">
-        <h2 className="mb-4 font-display text-lg text-text-primary">Difficulty</h2>
+        <h2 className="font-display text-text-primary mb-4 text-lg">Difficulty</h2>
         <div className="flex flex-wrap gap-2">
           {(Object.entries(DIFFICULTY_LABELS) as [Difficulty, string][]).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setSelectedDifficulty(toggleSet(selectedDifficulty, key))}
-              className={`rounded-xl border px-4 py-2 font-body text-sm transition-all ${
+              className={`font-body rounded-xl border px-4 py-2 text-sm transition-all ${
                 selectedDifficulty.has(key)
                   ? 'border-success bg-success/10 text-success'
                   : 'border-border text-text-secondary hover:border-success/50'
@@ -282,8 +288,10 @@ export default function QuizPage() {
       {/* Question Count */}
       <Card className="mb-8">
         <div className="mb-4 flex items-center justify-between gap-3">
-          <h2 className="font-display text-lg text-text-primary">Number of Questions</h2>
-          <span className="font-body text-xs text-text-muted">Saved default: {defaultQuizLength}</span>
+          <h2 className="font-display text-text-primary text-lg">Number of Questions</h2>
+          <span className="font-body text-text-muted text-xs">
+            Saved default: {defaultQuizLength}
+          </span>
         </div>
         <div className="flex items-center gap-4">
           {[10, 20, 30, 50].map((count) => (

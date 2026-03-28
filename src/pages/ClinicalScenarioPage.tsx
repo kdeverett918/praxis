@@ -2,8 +2,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import {
-  Stethoscope, ArrowRight, RotateCcw, Home, CheckCircle2,
-  XCircle, ChevronRight, Star,
+  Stethoscope,
+  ArrowRight,
+  RotateCcw,
+  Home,
+  CheckCircle2,
+  XCircle,
+  ChevronRight,
+  Star,
 } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
@@ -47,7 +53,7 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node1',
         narrative:
-          'You arrive at the patient\'s bedside. He is alert but has right-sided hemiplegia and mild dysarthria. His oxygen saturation is 94% on room air. The nurse mentions he coughed several times during his breakfast of scrambled eggs and thin liquids.',
+          "You arrive at the patient's bedside. He is alert but has right-sided hemiplegia and mild dysarthria. His oxygen saturation is 94% on room air. The nurse mentions he coughed several times during his breakfast of scrambled eggs and thin liquids.",
         question: 'What is your first course of action?',
         options: [
           {
@@ -176,7 +182,7 @@ const SCENARIOS: Scenario[] = [
             text: 'Request a repeat MBSS immediately',
             points: 5,
             feedback:
-              'A repeat MBSS this soon (2 days) is unlikely to show significant improvement. Re-evaluation is typically done after a period of rehabilitation. Address the patient\'s concerns first.',
+              "A repeat MBSS this soon (2 days) is unlikely to show significant improvement. Re-evaluation is typically done after a period of rehabilitation. Address the patient's concerns first.",
             nextNode: null,
           },
           {
@@ -206,17 +212,17 @@ const SCENARIOS: Scenario[] = [
         question: 'What is your initial assessment approach?',
         options: [
           {
-            text: 'Begin with a detailed parent interview in the family\'s preferred language (Spanish) to gather communication history, language exposure patterns, and developmental milestones',
+            text: "Begin with a detailed parent interview in the family's preferred language (Spanish) to gather communication history, language exposure patterns, and developmental milestones",
             points: 10,
             feedback:
-              'Excellent. Starting with a parent interview in L1 (Spanish) establishes rapport, yields the most accurate information about the child\'s full communicative profile, and is culturally responsive. Understanding language exposure is essential for bilingual assessment.',
+              "Excellent. Starting with a parent interview in L1 (Spanish) establishes rapport, yields the most accurate information about the child's full communicative profile, and is culturally responsive. Understanding language exposure is essential for bilingual assessment.",
             nextNode: 'node2',
           },
           {
             text: 'Administer a standardized English-only assessment to establish a baseline',
             points: 0,
             feedback:
-              'An English-only standardized test would significantly underestimate Sofia\'s abilities. Bilingual children distribute their vocabulary across languages, so testing in only one language gives an incomplete and biased picture.',
+              "An English-only standardized test would significantly underestimate Sofia's abilities. Bilingual children distribute their vocabulary across languages, so testing in only one language gives an incomplete and biased picture.",
             nextNode: 'node2',
           },
           {
@@ -239,7 +245,7 @@ const SCENARIOS: Scenario[] = [
         id: 'node2',
         narrative:
           'Your parent interview reveals Sofia\'s language exposure is approximately 65% Spanish, 35% English. She says about 20 words in Spanish and 15 in English, with 5 of those being translation equivalents (e.g., "agua" and "water"). She uses pointing, reaching, and showing to communicate. No concerns about hearing, play skills, or social interaction.',
-        question: 'How do you measure Sofia\'s vocabulary most accurately?',
+        question: "How do you measure Sofia's vocabulary most accurately?",
         options: [
           {
             text: 'Use conceptual scoring across both languages — count each unique concept once, regardless of which language it is expressed in',
@@ -252,7 +258,7 @@ const SCENARIOS: Scenario[] = [
             text: 'Administer the English MacArthur-Bates CDI only, since English is the language of education',
             points: 0,
             feedback:
-              'The English CDI alone would show only 15 words, dramatically underestimating Sofia\'s abilities. Bilingual children\'s vocabulary must be measured across both languages. Using a single-language measure leads to over-identification of language disorders.',
+              "The English CDI alone would show only 15 words, dramatically underestimating Sofia's abilities. Bilingual children's vocabulary must be measured across both languages. Using a single-language measure leads to over-identification of language disorders.",
             nextNode: 'node3',
           },
           {
@@ -275,7 +281,8 @@ const SCENARIOS: Scenario[] = [
         id: 'node3',
         narrative:
           'Your full assessment shows: conceptual vocabulary of approximately 30 words at age 2.5 (expected: 200-300+ words). Receptive language is age-appropriate in Spanish and slightly below in English. She demonstrates symbolic play, joint attention, and age-appropriate social skills. Language sample shows single words only, no word combinations in either language. Her skills are distributed across both languages — stronger in Spanish for home routines, stronger in English for daycare vocabulary.',
-        question: 'Given these results showing distributed competence across languages, what is your clinical interpretation?',
+        question:
+          'Given these results showing distributed competence across languages, what is your clinical interpretation?',
         options: [
           {
             text: 'Language disorder — expressive vocabulary is significantly below expectations even with conceptual scoring, despite adequate receptive skills and normal development in other areas',
@@ -311,13 +318,14 @@ const SCENARIOS: Scenario[] = [
         id: 'node4',
         narrative:
           'You share your findings with Sofia\'s parents. Her mother becomes tearful and says, "My mother told me this would happen if we spoke two languages. Should we just switch to English at home so she can catch up?" Her father adds, "We want to do whatever is best for her."',
-        question: 'What do you tell the parents about bilingualism and Sofia\'s language development?',
+        question:
+          "What do you tell the parents about bilingualism and Sofia's language development?",
         options: [
           {
             text: 'Explain that bilingualism did NOT cause the delay, encourage maintaining both Spanish and English, and share that strong L1 skills actually support L2 development',
             points: 10,
             feedback:
-              'Perfect response. Research conclusively shows bilingualism does not cause language disorders. Maintaining the home language (Spanish) preserves family bonds, cultural identity, and actually supports the acquisition of the second language. Dropping Spanish would harm family communication without helping Sofia\'s language development.',
+              "Perfect response. Research conclusively shows bilingualism does not cause language disorders. Maintaining the home language (Spanish) preserves family bonds, cultural identity, and actually supports the acquisition of the second language. Dropping Spanish would harm family communication without helping Sofia's language development.",
             nextNode: 'node5',
           },
           {
@@ -331,11 +339,11 @@ const SCENARIOS: Scenario[] = [
             text: 'Suggest they speak only English at home since that is the language she will need for school',
             points: 0,
             feedback:
-              'Advising parents to abandon their home language is one of the most harmful recommendations an SLP can make. It severs family communication (grandparents, extended family), damages cultural identity, and has NO evidence of improving outcomes. ASHA\'s position is clear: support both languages.',
+              "Advising parents to abandon their home language is one of the most harmful recommendations an SLP can make. It severs family communication (grandparents, extended family), damages cultural identity, and has NO evidence of improving outcomes. ASHA's position is clear: support both languages.",
             nextNode: 'node5',
           },
           {
-            text: 'Tell them language choice doesn\'t matter much either way — they should do whatever feels comfortable',
+            text: "Tell them language choice doesn't matter much either way — they should do whatever feels comfortable",
             points: 3,
             feedback:
               'While being supportive of family comfort is good, this response misses a critical opportunity to provide evidence-based guidance. The family specifically asked for direction, and research clearly supports maintaining both languages. An SLP has a responsibility to share this evidence.',
@@ -353,14 +361,14 @@ const SCENARIOS: Scenario[] = [
             text: 'Begin parent training in L1 (Spanish) now — coach parents to use language facilitation strategies at home — while also providing direct therapy and pursuing the bilingual SLP referral',
             points: 10,
             feedback:
-              'Excellent. Parent training in the home language provides immediate intervention through the child\'s most natural communication partners. Parents can implement strategies throughout daily routines, maximizing language input. Combining this with direct therapy and pursuing bilingual services creates a comprehensive approach.',
+              "Excellent. Parent training in the home language provides immediate intervention through the child's most natural communication partners. Parents can implement strategies throughout daily routines, maximizing language input. Combining this with direct therapy and pursuing bilingual services creates a comprehensive approach.",
             nextNode: null,
           },
           {
             text: 'Provide English-only therapy yourself and skip the bilingual SLP referral since the waitlist is too long',
             points: 3,
             feedback:
-              'English-only therapy ignores 65% of Sofia\'s language environment. While you should begin services, providing therapy in only one language is insufficient. Parent coaching in Spanish and pursuing bilingual services are essential components of an equitable treatment plan.',
+              "English-only therapy ignores 65% of Sofia's language environment. While you should begin services, providing therapy in only one language is insufficient. Parent coaching in Spanish and pursuing bilingual services are essential components of an equitable treatment plan.",
             nextNode: null,
           },
           {
@@ -400,14 +408,14 @@ const SCENARIOS: Scenario[] = [
             text: 'Comprehensive battery: SSI-4 for severity, OASES for quality-of-life impact, plus speech samples in conversation, reading, and narrative retell',
             points: 10,
             feedback:
-              'Excellent. A comprehensive fluency assessment includes both observable speech behaviors (SSI-4 across multiple contexts) AND the speaker\'s attitudes, emotions, and quality-of-life impact (OASES). This multi-dimensional approach captures both the overt and covert features of stuttering.',
+              "Excellent. A comprehensive fluency assessment includes both observable speech behaviors (SSI-4 across multiple contexts) AND the speaker's attitudes, emotions, and quality-of-life impact (OASES). This multi-dimensional approach captures both the overt and covert features of stuttering.",
             nextNode: 'node2',
           },
           {
             text: 'Administer the SSI-4 only using a reading passage and conversation sample',
             points: 5,
             feedback:
-              'The SSI-4 is essential but captures only the observable surface features — frequency, duration, and physical concomitants. Given Jake\'s avoidance behaviors and negative self-statements, you are missing the affective and cognitive dimensions that are critical for treatment planning.',
+              "The SSI-4 is essential but captures only the observable surface features — frequency, duration, and physical concomitants. Given Jake's avoidance behaviors and negative self-statements, you are missing the affective and cognitive dimensions that are critical for treatment planning.",
             nextNode: 'node2',
           },
           {
@@ -430,13 +438,14 @@ const SCENARIOS: Scenario[] = [
         id: 'node2',
         narrative:
           'Your assessment reveals: SSI-4 total score indicates moderate stuttering (18th percentile), with 11% syllables stuttered in conversation and 18% in reading. The OASES results show a significant negative impact on quality of life. Jake reports: "I feel stupid when I get stuck," "I never raise my hand anymore," and "I pretend I don\'t know the answer so I don\'t have to talk." He rates his frustration with speaking as 9/10.',
-        question: 'Jake reports significant negative feelings about his speech. What is your next step?',
+        question:
+          'Jake reports significant negative feelings about his speech. What is your next step?',
         options: [
           {
             text: 'Address the emotional impact alongside speech strategies — both the stuttering behaviors and the negative attitudes/avoidance must be treatment targets from the start',
             points: 10,
             feedback:
-              'Excellent clinical reasoning. Jake\'s affective impact is disproportionately high relative to his moderate severity. The avoidance, negative self-perception, and emotional distress may be MORE impactful on his daily life than the overt stuttering itself. Evidence-based stuttering treatment for school-age children integrates affective, behavioral, and cognitive components.',
+              "Excellent clinical reasoning. Jake's affective impact is disproportionately high relative to his moderate severity. The avoidance, negative self-perception, and emotional distress may be MORE impactful on his daily life than the overt stuttering itself. Evidence-based stuttering treatment for school-age children integrates affective, behavioral, and cognitive components.",
             nextNode: 'node3',
           },
           {
@@ -447,10 +456,10 @@ const SCENARIOS: Scenario[] = [
             nextNode: 'node3',
           },
           {
-            text: 'Ignore the affective component — that is a psychologist\'s domain, not an SLP\'s',
+            text: "Ignore the affective component — that is a psychologist's domain, not an SLP's",
             points: 0,
             feedback:
-              'The affective and cognitive components of stuttering are squarely within the SLP\'s scope of practice. ASHA recognizes counseling related to communication disorders as a core SLP competency. Ignoring these components results in incomplete treatment.',
+              "The affective and cognitive components of stuttering are squarely within the SLP's scope of practice. ASHA recognizes counseling related to communication disorders as a core SLP competency. Ignoring these components results in incomplete treatment.",
             nextNode: 'node3',
           },
           {
@@ -479,7 +488,7 @@ const SCENARIOS: Scenario[] = [
             text: 'Fluency shaping only — teach prolonged speech and gentle onsets to produce fluent speech',
             points: 4,
             feedback:
-              'Fluency shaping can increase fluency, but used alone it does not address Jake\'s avoidance behaviors, negative attitudes, or emotional distress. It can also create an artificial-sounding speech pattern that some children resist. For Jake, whose covert features are significant, a more comprehensive approach is needed.',
+              "Fluency shaping can increase fluency, but used alone it does not address Jake's avoidance behaviors, negative attitudes, or emotional distress. It can also create an artificial-sounding speech pattern that some children resist. For Jake, whose covert features are significant, a more comprehensive approach is needed.",
             nextNode: 'node4',
           },
           {
@@ -493,7 +502,7 @@ const SCENARIOS: Scenario[] = [
             text: 'Avoidance reduction therapy — focus entirely on eliminating avoidance behaviors',
             points: 7,
             feedback:
-              'Avoidance reduction therapy (Vivian Sisskin\'s approach) is a strong choice given Jake\'s significant avoidance patterns. It targets approach behaviors and reduces the power of avoidance. However, combining this with stuttering modification techniques gives Jake concrete tools for managing moments of stuttering, creating a more comprehensive treatment plan.',
+              "Avoidance reduction therapy (Vivian Sisskin's approach) is a strong choice given Jake's significant avoidance patterns. It targets approach behaviors and reduces the power of avoidance. However, combining this with stuttering modification techniques gives Jake concrete tools for managing moments of stuttering, creating a more comprehensive treatment plan.",
             nextNode: 'node4',
           },
         ],
@@ -512,7 +521,7 @@ const SCENARIOS: Scenario[] = [
             nextNode: null,
           },
           {
-            text: 'Don\'t call on him in class — let him volunteer when he feels ready to avoid embarrassment',
+            text: "Don't call on him in class — let him volunteer when he feels ready to avoid embarrassment",
             points: 0,
             feedback:
               'Excusing Jake from participation reinforces the message that stuttering is something to hide and that he cannot handle speaking situations. This increases avoidance, reduces educational engagement, and can worsen the affective impact over time. Accommodation should enable participation, not eliminate it.',
@@ -529,7 +538,7 @@ const SCENARIOS: Scenario[] = [
             text: 'Treat him exactly like every other student with no modifications whatsoever',
             points: 4,
             feedback:
-              'Equal treatment sounds fair but ignores Jake\'s specific needs. Simple accommodations like extra wait time, advance notice before being called on, and reduced time pressure are not special treatment — they are evidence-based supports that enable equitable participation. Ignoring his stuttering is not the same as accepting it.',
+              "Equal treatment sounds fair but ignores Jake's specific needs. Simple accommodations like extra wait time, advance notice before being called on, and reduced time pressure are not special treatment — they are evidence-based supports that enable equitable participation. Ignoring his stuttering is not the same as accepting it.",
             nextNode: null,
           },
         ],
@@ -635,7 +644,8 @@ export default function ClinicalScenarioPage() {
   }
 
   const currentNode = selectedScenario?.nodes[currentNodeIdx] ?? null
-  const currentOption = selectedOption !== null && currentNode ? currentNode.options[selectedOption] : null
+  const currentOption =
+    selectedOption !== null && currentNode ? currentNode.options[selectedOption] : null
 
   return (
     <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
@@ -643,31 +653,47 @@ export default function ClinicalScenarioPage() {
       {phase === 'select' && (
         <div ref={contentRef}>
           <div className="mb-10 text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-indigo-400 shadow-lg shadow-primary/30">
+            <div className="from-primary shadow-primary/30 mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br to-indigo-400 shadow-lg">
               <Stethoscope className="h-10 w-10 text-white" />
             </div>
-            <h1 className="font-display text-4xl text-text-primary md:text-5xl">Clinical Scenarios</h1>
-            <p className="mx-auto mt-4 max-w-lg font-body text-lg text-text-secondary">
-              Navigate branching clinical cases. Make decisions at each step and see how your clinical reasoning scores.
+            <h1 className="font-display text-text-primary text-4xl md:text-5xl">
+              Clinical Scenarios
+            </h1>
+            <p className="font-body text-text-secondary mx-auto mt-4 max-w-lg text-lg">
+              Navigate branching clinical cases. Make decisions at each step and see how your
+              clinical reasoning scores.
             </p>
           </div>
 
           <div className="grid items-stretch gap-6 md:grid-cols-3">
             {SCENARIOS.map((scenario) => (
-              <Card key={scenario.id} hover className="group flex h-full cursor-pointer flex-col" onClick={() => startScenario(scenario)}>
-                <Badge variant={scenario.category === 'Dysphagia' ? 'error' : scenario.category === 'Language' ? 'primary' : 'secondary'}>
+              <Card
+                key={scenario.id}
+                hover
+                className="group flex h-full cursor-pointer flex-col"
+                onClick={() => startScenario(scenario)}
+              >
+                <Badge
+                  variant={
+                    scenario.category === 'Dysphagia'
+                      ? 'error'
+                      : scenario.category === 'Language'
+                        ? 'primary'
+                        : 'secondary'
+                  }
+                >
                   {scenario.category}
                 </Badge>
-                <h3 className="mt-4 font-display text-xl text-text-primary">{scenario.title}</h3>
-                <p className="mt-1 font-body text-sm text-text-muted">{scenario.subtitle}</p>
-                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-text-secondary line-clamp-3">
+                <h3 className="font-display text-text-primary mt-4 text-xl">{scenario.title}</h3>
+                <p className="font-body text-text-muted mt-1 text-sm">{scenario.subtitle}</p>
+                <p className="font-body text-text-secondary mt-3 line-clamp-3 flex-1 text-sm leading-relaxed">
                   {scenario.description}
                 </p>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="font-mono text-xs text-text-muted">
+                  <span className="text-text-muted font-mono text-xs">
                     {scenario.nodes.length} decisions &middot; {scenario.maxPoints} XP
                   </span>
-                  <ArrowRight className="h-4 w-4 text-text-muted transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="text-text-muted h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </Card>
             ))}
@@ -692,35 +718,41 @@ export default function ClinicalScenarioPage() {
               >
                 {selectedScenario.category}
               </Badge>
-              <h2 className="mt-2 font-display text-xl text-text-primary sm:text-2xl">{selectedScenario.title}</h2>
+              <h2 className="font-display text-text-primary mt-2 text-xl sm:text-2xl">
+                {selectedScenario.title}
+              </h2>
             </div>
             <div className="shrink-0 text-right">
-              <p className="font-mono text-sm font-bold text-secondary">{totalScore} pts</p>
-              <p className="font-body text-xs text-text-muted">
+              <p className="text-secondary font-mono text-sm font-bold">{totalScore} pts</p>
+              <p className="font-body text-text-muted text-xs">
                 Step {currentNodeIdx + 1}/{selectedScenario.nodes.length}
               </p>
             </div>
           </div>
 
           {/* Progress bar */}
-          <div className="mb-8 h-1.5 overflow-hidden rounded-full bg-surface-elevated">
+          <div className="bg-surface-elevated mb-8 h-1.5 overflow-hidden rounded-full">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
-              style={{ width: `${((currentNodeIdx + (showFeedback ? 1 : 0)) / selectedScenario.nodes.length) * 100}%` }}
+              className="from-primary to-secondary h-full rounded-full bg-gradient-to-r transition-all duration-500"
+              style={{
+                width: `${((currentNodeIdx + (showFeedback ? 1 : 0)) / selectedScenario.nodes.length) * 100}%`,
+              }}
             />
           </div>
 
           {/* Narrative */}
           <Card className="mb-6">
-            <p className="font-body leading-relaxed text-text-secondary">{currentNode.narrative}</p>
-            <h3 className="mt-4 font-display text-lg text-text-primary">{currentNode.question}</h3>
+            <p className="font-body text-text-secondary leading-relaxed">{currentNode.narrative}</p>
+            <h3 className="font-display text-text-primary mt-4 text-lg">{currentNode.question}</h3>
           </Card>
 
           {/* Options */}
           <div className="space-y-3">
             {currentNode.options.map((option, idx) => {
               const isSelected = selectedOption === idx
-              const isCorrect = showFeedback && option.points === Math.max(...currentNode.options.map((o) => o.points))
+              const isCorrect =
+                showFeedback &&
+                option.points === Math.max(...currentNode.options.map((o) => o.points))
               const wasSelected = showFeedback && isSelected
 
               let borderClass = 'border-border'
@@ -742,12 +774,18 @@ export default function ClinicalScenarioPage() {
                   }`}
                 >
                   <div className="flex items-start gap-2 sm:gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border font-mono text-xs text-text-muted">
+                    <span className="border-border text-text-muted mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border font-mono text-xs">
                       {String.fromCharCode(65 + idx)}
                     </span>
-                    <span className="min-w-0 flex-1 font-body text-sm leading-relaxed text-text-primary">{option.text}</span>
-                    {showFeedback && isCorrect && <CheckCircle2 className="ml-auto h-5 w-5 shrink-0 text-success" />}
-                    {showFeedback && wasSelected && !isCorrect && <XCircle className="ml-auto h-5 w-5 shrink-0 text-error" />}
+                    <span className="font-body text-text-primary min-w-0 flex-1 text-sm leading-relaxed">
+                      {option.text}
+                    </span>
+                    {showFeedback && isCorrect && (
+                      <CheckCircle2 className="text-success ml-auto h-5 w-5 shrink-0" />
+                    )}
+                    {showFeedback && wasSelected && !isCorrect && (
+                      <XCircle className="text-error ml-auto h-5 w-5 shrink-0" />
+                    )}
                   </div>
                 </button>
               )
@@ -763,17 +801,17 @@ export default function ClinicalScenarioPage() {
                   : 'border-warning/30 bg-warning/5'
               }`}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="mb-2 flex items-center gap-2">
                 {currentOption.points === Math.max(...currentNode.options.map((o) => o.points)) ? (
-                  <CheckCircle2 className="h-5 w-5 text-success" />
+                  <CheckCircle2 className="text-success h-5 w-5" />
                 ) : (
-                  <Star className="h-5 w-5 text-warning" />
+                  <Star className="text-warning h-5 w-5" />
                 )}
-                <span className="font-mono text-sm font-bold text-text-primary">
+                <span className="text-text-primary font-mono text-sm font-bold">
                   +{currentOption.points} points
                 </span>
               </div>
-              <p className="font-body text-sm leading-relaxed text-text-secondary">
+              <p className="font-body text-text-secondary text-sm leading-relaxed">
                 {currentOption.feedback}
               </p>
             </Card>
@@ -782,11 +820,7 @@ export default function ClinicalScenarioPage() {
           {/* Action buttons */}
           <div className="mt-6 flex justify-end gap-3">
             {!showFeedback ? (
-              <Button
-                variant="primary"
-                onClick={submitDecision}
-                disabled={selectedOption === null}
-              >
+              <Button variant="primary" onClick={submitDecision} disabled={selectedOption === null}>
                 Submit Decision
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -802,39 +836,51 @@ export default function ClinicalScenarioPage() {
 
       {/* Results */}
       {phase === 'results' && selectedScenario && (
-        <div ref={contentRef} className="flex min-h-[60vh] flex-col items-center justify-center text-center">
-          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/30">
+        <div
+          ref={contentRef}
+          className="flex min-h-[60vh] flex-col items-center justify-center text-center"
+        >
+          <div className="from-primary to-secondary shadow-primary/30 mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br shadow-lg">
             <Stethoscope className="h-10 w-10 text-white" />
           </div>
-          <h1 className="font-display text-4xl text-text-primary md:text-5xl">Case Complete!</h1>
-          <p className="mt-2 font-body text-lg text-text-secondary">{selectedScenario.title}</p>
+          <h1 className="font-display text-text-primary text-4xl md:text-5xl">Case Complete!</h1>
+          <p className="font-body text-text-secondary mt-2 text-lg">{selectedScenario.title}</p>
 
           <div className="mt-8 grid w-full max-w-md grid-cols-2 items-stretch gap-4">
             <Card className="flex flex-col items-center justify-center text-center">
-              <p className="font-mono text-2xl font-bold text-secondary sm:text-3xl">{totalScore}</p>
-              <p className="mt-1 font-body text-xs text-text-muted">Points Earned</p>
+              <p className="text-secondary font-mono text-2xl font-bold sm:text-3xl">
+                {totalScore}
+              </p>
+              <p className="font-body text-text-muted mt-1 text-xs">Points Earned</p>
             </Card>
             <Card className="flex flex-col items-center justify-center text-center">
-              <p className="font-mono text-2xl font-bold text-primary sm:text-3xl">{selectedScenario.maxPoints}</p>
-              <p className="mt-1 font-body text-xs text-text-muted">Max Possible</p>
+              <p className="text-primary font-mono text-2xl font-bold sm:text-3xl">
+                {selectedScenario.maxPoints}
+              </p>
+              <p className="font-body text-text-muted mt-1 text-xs">Max Possible</p>
             </Card>
           </div>
 
           {/* Decision breakdown */}
           <div className="mt-6 w-full max-w-md">
-            <h3 className="mb-3 font-display text-lg text-text-primary">Decision Breakdown</h3>
+            <h3 className="font-display text-text-primary mb-3 text-lg">Decision Breakdown</h3>
             <div className="space-y-2">
               {decisions.map((d, idx) => (
-                <div key={d.nodeId} className="flex items-center justify-between rounded-xl bg-surface px-4 py-3">
-                  <span className="font-body text-sm text-text-secondary">Decision {idx + 1}</span>
+                <div
+                  key={d.nodeId}
+                  className="bg-surface flex items-center justify-between rounded-xl px-4 py-3"
+                >
+                  <span className="font-body text-text-secondary text-sm">Decision {idx + 1}</span>
                   <div className="flex items-center gap-2">
-                    <span className={`font-mono text-sm font-bold ${d.points === d.maxPoints ? 'text-success' : d.points > 0 ? 'text-warning' : 'text-error'}`}>
+                    <span
+                      className={`font-mono text-sm font-bold ${d.points === d.maxPoints ? 'text-success' : d.points > 0 ? 'text-warning' : 'text-error'}`}
+                    >
                       {d.points}/{d.maxPoints}
                     </span>
                     {d.points === d.maxPoints ? (
-                      <CheckCircle2 className="h-4 w-4 text-success" />
+                      <CheckCircle2 className="text-success h-4 w-4" />
                     ) : (
-                      <XCircle className="h-4 w-4 text-text-muted" />
+                      <XCircle className="text-text-muted h-4 w-4" />
                     )}
                   </div>
                 </div>
@@ -842,8 +888,8 @@ export default function ClinicalScenarioPage() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-xl bg-secondary/10 px-6 py-3">
-            <p className="font-body text-sm text-secondary">+{totalScore} XP earned!</p>
+          <div className="bg-secondary/10 mt-4 rounded-xl px-6 py-3">
+            <p className="font-body text-secondary text-sm">+{totalScore} XP earned!</p>
           </div>
 
           <div className="mt-8 flex gap-4">

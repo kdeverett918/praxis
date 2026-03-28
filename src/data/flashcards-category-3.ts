@@ -12,7 +12,8 @@ export const category3Flashcards: FlashcardData[] = [
 
   {
     id: 'c3-fc001',
-    front: 'LSVT LOUD — What is the treatment protocol, target population, and primary treatment focus?',
+    front:
+      'LSVT LOUD — What is the treatment protocol, target population, and primary treatment focus?',
     back: 'Protocol: 16 sessions over 4 weeks (4x/week, 1 hour each). Population: Originally developed for Parkinson disease; also studied in other neurological conditions. Focus: Single target — increase vocal loudness ("Think LOUD!"). Relies on high-effort practice, intensive scheduling, and self-calibration of loudness. Strongest evidence base for hypophonia in PD. Key principle: recalibrate the patient\'s perception of their own loudness.',
     category: 'III — Treatment',
     subcategory: 'Voice Treatment — Named Programs',
@@ -20,7 +21,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc002',
-    front: 'Melodic Intonation Therapy (MIT) — Candidate criteria, mechanism, and protocol structure',
+    front:
+      'Melodic Intonation Therapy (MIT) — Candidate criteria, mechanism, and protocol structure',
     back: 'Candidates: Severe nonfluent aphasia (e.g., Broca), very limited propositional speech, relatively preserved auditory comprehension, poor repetition, good motivation. Mechanism: Leverages right hemisphere processing of melody and rhythm to facilitate verbal output through intoning (singing-like speech). Protocol: Three levels of increasing difficulty — (1) humming melody with hand-tapping, (2) unison intoning with clinician, (3) fading to independent production. Phrases progress from high-frequency functional utterances to longer, novel sentences.',
     category: 'III — Treatment',
     subcategory: 'Aphasia Treatment — Named Programs',
@@ -28,7 +30,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc003',
-    front: 'VNeST (Verb Network Strengthening Treatment) — How does it work and what does the evidence show?',
+    front:
+      'VNeST (Verb Network Strengthening Treatment) — How does it work and what does the evidence show?',
     back: 'Procedure: Patient generates agent-verb-patient thematic role combinations for target verbs (e.g., "carpenter-measure-board"). Then answers wh-questions (Where? Why? When?). Mechanism: Activates the verb\'s semantic network through spreading activation of thematic roles. Evidence: Demonstrated generalization to untrained words and improved discourse in chronic aphasia. Sessions typically 2x/week for 6 weeks. Targets lexical retrieval through verb-centered semantic activation rather than phonological cueing.',
     category: 'III — Treatment',
     subcategory: 'Aphasia Treatment — Named Programs',
@@ -36,8 +39,9 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc004',
-    front: 'PROMPT (Prompts for Restructuring Oral Muscular Phonetic Targets) — Describe the approach and population',
-    back: 'Approach: Tactile-kinesthetic treatment where the clinician uses touch cues on the patient\'s face, jaw, and lips to guide articulatory movements. Provides spatial (where to move) and timing (when and how fast) information externally. Population: Primarily childhood apraxia of speech (CAS); also used with dysarthria and other motor speech disorders. Key feature: The clinician physically shapes the movement, bypassing the motor planning deficit. Requires PROMPT certification for full implementation.',
+    front:
+      'PROMPT (Prompts for Restructuring Oral Muscular Phonetic Targets) — Describe the approach and population',
+    back: "Approach: Tactile-kinesthetic treatment where the clinician uses touch cues on the patient's face, jaw, and lips to guide articulatory movements. Provides spatial (where to move) and timing (when and how fast) information externally. Population: Primarily childhood apraxia of speech (CAS); also used with dysarthria and other motor speech disorders. Key feature: The clinician physically shapes the movement, bypassing the motor planning deficit. Requires PROMPT certification for full implementation.",
     category: 'III — Treatment',
     subcategory: 'Speech Sound Treatment — Named Programs',
     tags: ['PROMPT', 'CAS', 'tactile-kinesthetic', 'motor speech'],
@@ -85,7 +89,7 @@ export const category3Flashcards: FlashcardData[] = [
   {
     id: 'c3-fc010',
     front: 'Script Training for Aphasia — Procedure, evidence, and target population',
-    back: 'Population: Adults with chronic aphasia who want to participate in specific life activities. Procedure: Develop personalized scripts for functional situations (ordering food, calling family, introducing self). Practice repeatedly until script becomes automatic. Progress from supported to independent production. Evidence: Cherney et al. demonstrated that practiced scripts can become automatic and functional, enabling participation in real-life situations. Key: Scripts should be personally relevant, motivating, and target the patient\'s Life Participation goals.',
+    back: "Population: Adults with chronic aphasia who want to participate in specific life activities. Procedure: Develop personalized scripts for functional situations (ordering food, calling family, introducing self). Practice repeatedly until script becomes automatic. Progress from supported to independent production. Evidence: Cherney et al. demonstrated that practiced scripts can become automatic and functional, enabling participation in real-life situations. Key: Scripts should be personally relevant, motivating, and target the patient's Life Participation goals.",
     category: 'III — Treatment',
     subcategory: 'Aphasia Treatment — Named Programs',
     tags: ['script training', 'aphasia', 'functional communication', 'automaticity'],
@@ -111,7 +115,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc013',
-    front: 'EMST (Expiratory Muscle Strength Training) — Device, protocol, and multisystem benefits',
+    front:
+      'EMST (Expiratory Muscle Strength Training) — Device, protocol, and multisystem benefits',
     back: 'Device: Calibrated pressure-threshold device (e.g., EMST150). Patient exhales forcefully into the device; air only passes when expiratory pressure exceeds the calibrated threshold. Protocol: 5 sets of 5 breaths, 5 days/week, 4-8 weeks. Threshold set at 75% of maximum expiratory pressure (MEP). Benefits: (1) Increased MEP, (2) improved cough effectiveness for airway protection, (3) increased hyolaryngeal excursion during swallowing, (4) improved subglottic pressure for voice. Studied in Parkinson disease, ALS, stroke, healthy aging.',
     category: 'III — Treatment',
     subcategory: 'Dysphagia — Rehabilitative Exercises',
@@ -189,7 +194,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc022',
-    front: 'Postural Compensatory Strategies for Dysphagia — List the 4 main postures and their indications',
+    front:
+      'Postural Compensatory Strategies for Dysphagia — List the 4 main postures and their indications',
     back: '1. Chin Tuck: Widens valleculae, narrows airway entrance, pushes tongue base posteriorly. For premature spillage, delayed swallow onset. 2. Head Rotation (turn to weak side): Closes pyriform sinus on the turned side, directs bolus to stronger side. For unilateral pharyngeal weakness. 3. Head Tilt (tilt to strong side): Uses gravity to direct bolus toward stronger side. For unilateral oral weakness. 4. Head Extension (chin up): Uses gravity to move bolus from oral cavity to pharynx. For reduced posterior tongue propulsion (use ONLY with intact airway protection).',
     category: 'III — Treatment',
     subcategory: 'Dysphagia — Compensatory Strategies',
@@ -208,8 +214,9 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc024',
-    front: 'Three Pillars of Evidence-Based Practice (EBP) — What are they and how do they interact?',
-    back: '1. Best Available Research Evidence: External scientific research ranked by the evidence hierarchy. 2. Clinical Expertise: The clinician\'s accumulated knowledge, skills, and professional judgment from experience. 3. Patient/Client Values and Preferences: Individual\'s unique concerns, expectations, cultural/linguistic background, and priorities. Integration: No single pillar overrides the others. If strong evidence supports Treatment A but the patient strongly prefers Treatment B (with moderate evidence), the clinician uses clinical expertise to discuss options and reach a shared decision. EBP is a framework for decision-making, not a mandate to follow the highest-level study.',
+    front:
+      'Three Pillars of Evidence-Based Practice (EBP) — What are they and how do they interact?',
+    back: "1. Best Available Research Evidence: External scientific research ranked by the evidence hierarchy. 2. Clinical Expertise: The clinician's accumulated knowledge, skills, and professional judgment from experience. 3. Patient/Client Values and Preferences: Individual's unique concerns, expectations, cultural/linguistic background, and priorities. Integration: No single pillar overrides the others. If strong evidence supports Treatment A but the patient strongly prefers Treatment B (with moderate evidence), the clinician uses clinical expertise to discuss options and reach a shared decision. EBP is a framework for decision-making, not a mandate to follow the highest-level study.",
     category: 'III — Treatment',
     subcategory: 'Evidence-Based Practice',
     tags: ['EBP', 'clinical decision-making', 'patient preferences', 'clinical expertise'],
@@ -227,7 +234,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc026',
-    front: 'Long-Term Goal vs. Short-Term Goal vs. Benchmark — Distinguish these in SLP treatment planning',
+    front:
+      'Long-Term Goal vs. Short-Term Goal vs. Benchmark — Distinguish these in SLP treatment planning',
     back: 'Long-Term Goal (LTG): The functional outcome expected by the end of the treatment period. Written at the participation/activity level. Example: "The patient will communicate basic wants and needs using verbal speech or AAC in daily interactions." Short-Term Goal (STG): Stepping stones toward the LTG. More specific behaviors with measurable criteria. Example: "The patient will name common objects with phonemic cuing with 80% accuracy in structured tasks." Benchmark: Intermediate performance levels that track progress toward the STG. Example: "By Week 4: 50% accuracy; By Week 8: 70% accuracy." STGs should clearly build toward the LTG in a logical hierarchy.',
     category: 'III — Treatment',
     subcategory: 'Treatment Planning — Goal Hierarchy',
@@ -239,14 +247,15 @@ export const category3Flashcards: FlashcardData[] = [
   {
     id: 'c3-fc027',
     front: 'AAC Feature Matching — What is it and what factors are considered?',
-    back: 'Feature matching is the process of matching AAC system features to the user\'s abilities, needs, and environments. Key factors: Motor: Access method (direct selection vs. scanning; hand, eye-gaze, switch). Vision: Display size, symbol type (photos, line drawings, text), contrast. Cognition: Number of symbols, organization (grid, visual scene, hybrid), navigation depth. Language: Core vs. fringe vocabulary balance, symbol system (PCS, SymbolStix, Minspeak). Environment: Portability, durability, noise level, mounting. Social: Communication partners, cultural/linguistic needs. Growth: System must support increasing complexity as skills develop. No single AAC system is universally best — it must be matched to the individual.',
+    back: "Feature matching is the process of matching AAC system features to the user's abilities, needs, and environments. Key factors: Motor: Access method (direct selection vs. scanning; hand, eye-gaze, switch). Vision: Display size, symbol type (photos, line drawings, text), contrast. Cognition: Number of symbols, organization (grid, visual scene, hybrid), navigation depth. Language: Core vs. fringe vocabulary balance, symbol system (PCS, SymbolStix, Minspeak). Environment: Portability, durability, noise level, mounting. Social: Communication partners, cultural/linguistic needs. Growth: System must support increasing complexity as skills develop. No single AAC system is universally best — it must be matched to the individual.",
     category: 'III — Treatment',
     subcategory: 'AAC Implementation — Feature Matching',
     tags: ['AAC', 'feature matching', 'access method', 'symbol selection'],
   },
   {
     id: 'c3-fc028',
-    front: 'Core Vocabulary vs. Fringe Vocabulary in AAC — Define and explain clinical implications',
+    front:
+      'Core Vocabulary vs. Fringe Vocabulary in AAC — Define and explain clinical implications',
     back: 'Core vocabulary: A small set of high-frequency words (approximately 200-400 words) that account for ~80% of daily communication. Mostly function words and common verbs (I, want, go, more, that, not, help, put, like). Consistent across age, gender, and context. Fringe vocabulary: Content-specific words unique to individuals, topics, or contexts (pizza, recess, Grandma, dinosaur). Changes frequently. Clinical implication: AAC systems should prioritize core vocabulary access on the main display for generative language, with fringe vocabulary organized in topic-based pages. Core vocabulary enables novel sentence generation; fringe vocabulary alone limits communication to pre-programmed messages.',
     category: 'III — Treatment',
     subcategory: 'AAC Implementation — Vocabulary Selection',
@@ -300,7 +309,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc034',
-    front: 'Stuttering Treatment Across the Lifespan — What approach is most appropriate at each age?',
+    front:
+      'Stuttering Treatment Across the Lifespan — What approach is most appropriate at each age?',
     back: 'Preschool (2-5): Lidcombe Program (parent-delivered operant), Palin PCI (parent-child interaction), indirect approaches (environmental modification). High natural recovery potential. Parental involvement is critical. School-age (6-12): Integrated approaches — fluency management techniques + desensitization + social-emotional support. Self-monitoring skills. Classroom accommodations. Adolescent (13-17): Strong focus on attitudes/avoidance, self-advocacy, acceptance alongside fluency management. Peer support critical. Self-monitoring and generalization emphasis. Adult (18+): Camperdown Program, stuttering modification, CBT for stuttering-related anxiety. Self-help/support groups (NSA, Friends). Focus on communication confidence and life participation.',
     category: 'III — Treatment',
     subcategory: 'Fluency Treatment — Lifespan Approaches',
@@ -319,7 +329,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc036',
-    front: 'Rancho Los Amigos Levels and Treatment Focus — Summarize levels I-VIII with appropriate SLP intervention',
+    front:
+      'Rancho Los Amigos Levels and Treatment Focus — Summarize levels I-VIII with appropriate SLP intervention',
     back: 'I (No Response): Sensory stimulation — varied modalities to elicit responses. II (Generalized Response): Continued multisensory stimulation. Document any consistent responses. III (Localized Response): Structured sensory input. Establish yes/no responses. IV (Confused-Agitated): Reduce stimulation. Short, structured sessions. Simple commands. Caregiver training. V (Confused-Inappropriate): External structure. Visual schedules. Memory aids with cueing. Familiar routine practice. VI (Confused-Appropriate): Goal-directed tasks. Memory notebook training. Simple problem-solving. Supervised community tasks. VII (Automatic-Appropriate): Higher-level cognitive-linguistic tasks. Self-monitoring. Vocational/academic reintegration planning. VIII (Purposeful-Appropriate): Advanced executive function. Social communication refinement. Full community/vocational reintegration.',
     category: 'III — Treatment',
     subcategory: 'Cognitive-Communication Treatment — TBI Recovery',
@@ -349,7 +360,8 @@ export const category3Flashcards: FlashcardData[] = [
 
   {
     id: 'c3-fc039',
-    front: 'CIAT/ILAT (Constraint-Induced Aphasia Therapy / Intensive Language-Action Therapy) — Principles and protocol',
+    front:
+      'CIAT/ILAT (Constraint-Induced Aphasia Therapy / Intensive Language-Action Therapy) — Principles and protocol',
     back: 'Principles: (1) Constraint: Restrict compensatory modalities (gesture, writing, drawing) — force verbal speech. (2) Massed practice: 3+ hours per day of intensive treatment. (3) Behavioral relevance: Use communicative language games (card-requesting activities) where verbal output has real consequences. Protocol: Group format (2-3 patients). Barrier tasks with cards — patient must verbally request specific cards from partners. Complexity systematically increased. Typically 2-4 weeks of daily intensive treatment. Modeled after constraint-induced movement therapy (CIMT) from physical rehabilitation. Evidence: Multiple studies showing improvements in chronic aphasia.',
     category: 'III — Treatment',
     subcategory: 'Aphasia Treatment — Named Programs',
@@ -357,7 +369,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc040',
-    front: 'McNeill Dysphagia Therapy Program (MDTP) — Describe this systematic rehabilitative approach',
+    front:
+      'McNeill Dysphagia Therapy Program (MDTP) — Describe this systematic rehabilitative approach',
     back: 'Approach: Systematic, exercise-based swallowing rehabilitation that uses real food and liquid swallows as the primary exercise modality (rather than non-swallowing exercises). Principle: The best exercise for swallowing is swallowing itself — uses actual swallows at systematically increasing levels of difficulty. Protocol: Hierarchical progression of bolus types (easiest to most challenging). Adjunctive swallowing maneuvers used as needed. Progressive difficulty based on patient performance. Frequency: Typically 3-5x/week. Key distinction: Unlike exercise-only approaches (Shaker, EMST), MDTP uses real swallows as the primary rehabilitative tool, maintaining ecological validity.',
     category: 'III — Treatment',
     subcategory: 'Dysphagia — Rehabilitative Programs',
@@ -365,7 +378,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc041',
-    front: 'Treatment Intensity — Define dose, dose frequency, dose form, and total intervention duration',
+    front:
+      'Treatment Intensity — Define dose, dose frequency, dose form, and total intervention duration',
     back: 'Dose: Number of properly administered teaching episodes per session (e.g., 100 naming trials per session). Dose form: The activity within which the teaching episodes are delivered (e.g., naming pictures, conversation, barrier game). Dose frequency: How often sessions occur (e.g., 3x/week, daily). Session duration: Length of each session (e.g., 45 minutes). Total intervention duration: The entire period of treatment (e.g., 12 weeks). Cumulative intervention intensity: Dose x dose frequency x total intervention duration = total teaching episodes. Clinical implication: Research increasingly shows that intensity matters — more intensive treatment often produces better outcomes (e.g., CIAT, LSVT LOUD, Lidcombe). But intensity must be balanced with patient factors (fatigue, access, compliance).',
     category: 'III — Treatment',
     subcategory: 'Treatment Planning — Intensity',
@@ -373,7 +387,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc042',
-    front: 'Motor Learning Principles for SLP Treatment — List the key principles and clinical applications',
+    front:
+      'Motor Learning Principles for SLP Treatment — List the key principles and clinical applications',
     back: 'Key principles: (1) Prepractice: Clear instruction + modeling before practice begins. (2) Practice amount: More practice = better learning (massed vs. distributed). (3) Practice distribution: Distributed practice (spread over time) generally superior for retention. (4) Practice variability: Variable practice (varying targets/contexts) promotes generalization. (5) Practice schedule: Random practice order harder initially but better for retention than blocked practice. (6) Feedback: Knowledge of results (KR) — was it correct? Knowledge of performance (KP) — how was the movement? (7) Feedback frequency: Reduced/delayed feedback promotes motor learning better than constant/immediate feedback. (8) Feedback schedule: Summary feedback (after several trials) better than trial-by-trial for retention. Applies to: CAS, apraxia of speech, dysarthria, voice therapy, dysphagia exercises.',
     category: 'III — Treatment',
     subcategory: 'Treatment Planning — Motor Learning',
@@ -381,7 +396,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc043',
-    front: 'Spaced Retrieval Training (SRT) — Describe the technique and its application in cognitive-communication',
+    front:
+      'Spaced Retrieval Training (SRT) — Describe the technique and its application in cognitive-communication',
     back: 'Technique: Teach a target piece of information, then test recall at systematically expanding intervals. If correct: double the interval (30s → 1min → 2min → 4min → 8min → etc.). If incorrect: provide the answer and return to the last successful interval. Mechanism: Exploits preserved implicit memory systems even when explicit memory is impaired. Applications in SLP: (1) Teaching names of caregivers or family to patients with dementia. (2) Teaching use of memory aids (e.g., "Look at your memory book"). (3) Teaching swallowing strategies (e.g., "Use chin tuck when drinking"). (4) Teaching AAC device use. Populations: Dementia, TBI, stroke with memory impairment. Advantage: Can be embedded in functional activities and requires minimal cognitive demand.',
     category: 'III — Treatment',
     subcategory: 'Cognitive-Communication Treatment — Memory Strategies',
@@ -389,7 +405,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc044',
-    front: 'Bilingual Treatment Planning — Key principles for treating bilingual individuals with communication disorders',
+    front:
+      'Bilingual Treatment Planning — Key principles for treating bilingual individuals with communication disorders',
     back: 'Principles: (1) A communication disorder affects ALL languages — it is not a disorder in one language only. (2) Treat in both languages when possible; cross-linguistic transfer occurs. (3) Do not recommend dropping one language — it harms family communication and cultural identity. (4) Use language bridges — cognates, shared concepts, cross-linguistic facilitation. (5) If only one treatment language is possible, treat in the language with the most functional use AND provide home language support through family. (6) Dynamic assessment can separate difference from disorder. (7) Standardized tests normed on monolingual English speakers cannot diagnose disorder in bilingual speakers. (8) Interpreters should be trained in communication disorders assessment, not just general interpretation.',
     category: 'III — Treatment',
     subcategory: 'Treatment Planning — Bilingual Considerations',
@@ -397,7 +414,8 @@ export const category3Flashcards: FlashcardData[] = [
   },
   {
     id: 'c3-fc045',
-    front: 'Progressive Neurological Conditions — How does treatment planning differ from non-progressive conditions?',
+    front:
+      'Progressive Neurological Conditions — How does treatment planning differ from non-progressive conditions?',
     back: 'Key differences: (1) Goal is maintenance and proactive planning, not restoration. (2) Strengthening exercises may be contraindicated (e.g., ALS — risk of overuse fatigue). (3) AAC assessment should begin EARLY while the patient can still participate in training and voice banking. (4) Staging: Plan for anticipated decline with clear triggers for advancing to next phase (e.g., "When intelligibility drops below 70%, transition to AAC as primary"). (5) Counseling: Support grief, identity changes, and family adjustment at each stage. (6) Compensatory over rehabilitative: Emphasize energy conservation and compensatory strategies. (7) Voice banking: Record before significant decline for future AAC personalization. Examples: ALS, Parkinson disease (progressive), primary progressive aphasia, Huntington disease, MS. Each has a unique trajectory requiring tailored staging.',
     category: 'III — Treatment',
     subcategory: 'Treatment Planning — Progressive Conditions',

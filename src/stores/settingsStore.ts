@@ -13,7 +13,14 @@ interface SettingsState {
   examTimerWarnings: boolean
   betaModeEnabled: boolean
   setHasHydrated: (hasHydrated: boolean) => void
-  updateSettings: (updates: Partial<Pick<SettingsState, 'displayName' | 'defaultQuizLength' | 'examTimerWarnings' | 'betaModeEnabled'>>) => void
+  updateSettings: (
+    updates: Partial<
+      Pick<
+        SettingsState,
+        'displayName' | 'defaultQuizLength' | 'examTimerWarnings' | 'betaModeEnabled'
+      >
+    >,
+  ) => void
   resetSettings: () => void
 }
 

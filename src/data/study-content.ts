@@ -80,13 +80,41 @@ export const studyContentData: StudyContentData[] = [
 > **High-Yield:** "1-2-3-4 = 25-50-75-100" — this ratio appears frequently on the exam.
 `,
     keyTerms: [
-      { term: 'Canonical babbling', definition: 'Repetitive consonant-vowel sequences (e.g., "bababa") emerging ~7 months; a critical pre-linguistic milestone' },
-      { term: 'Vocabulary spurt', definition: 'Rapid word-learning acceleration around 18 months when expressive vocabulary reaches ~50 words' },
-      { term: 'MLU', definition: 'Mean Length of Utterance — average number of morphemes per utterance; primary measure of grammatical development' },
-      { term: 'Overextension', definition: 'Using a word too broadly (e.g., calling all four-legged animals "dog"); common in early word learning' },
-      { term: 'Underextension', definition: 'Using a word too narrowly (e.g., "cup" only for child\'s own cup); less noticed but equally common' },
-      { term: 'Brown\'s Stages', definition: 'Roger Brown\'s 5 stages of morphological development indexed by MLU ranges (I = 1.0–2.0 through V = 4.0+)' },
-      { term: 'Jargon', definition: 'Long strings of babbled sounds with sentence-like prosody but no real words; appears ~10–18 months' },
+      {
+        term: 'Canonical babbling',
+        definition:
+          'Repetitive consonant-vowel sequences (e.g., "bababa") emerging ~7 months; a critical pre-linguistic milestone',
+      },
+      {
+        term: 'Vocabulary spurt',
+        definition:
+          'Rapid word-learning acceleration around 18 months when expressive vocabulary reaches ~50 words',
+      },
+      {
+        term: 'MLU',
+        definition:
+          'Mean Length of Utterance — average number of morphemes per utterance; primary measure of grammatical development',
+      },
+      {
+        term: 'Overextension',
+        definition:
+          'Using a word too broadly (e.g., calling all four-legged animals "dog"); common in early word learning',
+      },
+      {
+        term: 'Underextension',
+        definition:
+          'Using a word too narrowly (e.g., "cup" only for child\'s own cup); less noticed but equally common',
+      },
+      {
+        term: "Brown's Stages",
+        definition:
+          "Roger Brown's 5 stages of morphological development indexed by MLU ranges (I = 1.0–2.0 through V = 4.0+)",
+      },
+      {
+        term: 'Jargon',
+        definition:
+          'Long strings of babbled sounds with sentence-like prosody but no real words; appears ~10–18 months',
+      },
     ],
     sortOrder: 1,
   },
@@ -150,12 +178,36 @@ export const studyContentData: StudyContentData[] = [
 > **High-Yield:** SLPs have a critical role in literacy. Know that phonological awareness deficits underlie most reading disabilities, not visual processing issues.
 `,
     keyTerms: [
-      { term: 'Metalinguistic awareness', definition: 'Ability to think about and analyze language as an object; includes phonological, morphological, syntactic, and pragmatic awareness' },
-      { term: 'Phonological awareness', definition: 'Ability to recognize and manipulate the sound structure of language; strongest predictor of early reading ability' },
-      { term: 'Story grammar', definition: 'Structural elements of a narrative: setting, initiating event, internal response, plan, attempt, consequence, resolution' },
-      { term: 'Matthew Effect', definition: 'Stanovich\'s concept that good readers get better (more exposure) while poor readers fall further behind — "the rich get richer"' },
-      { term: 'Literate language', definition: 'Complex language features used in academic/written contexts: subordination, elaborated noun phrases, metalinguistic verbs' },
-      { term: 'Simple View of Reading', definition: 'Gough & Tunmer model: Reading Comprehension = Decoding x Linguistic Comprehension; both components are necessary' },
+      {
+        term: 'Metalinguistic awareness',
+        definition:
+          'Ability to think about and analyze language as an object; includes phonological, morphological, syntactic, and pragmatic awareness',
+      },
+      {
+        term: 'Phonological awareness',
+        definition:
+          'Ability to recognize and manipulate the sound structure of language; strongest predictor of early reading ability',
+      },
+      {
+        term: 'Story grammar',
+        definition:
+          'Structural elements of a narrative: setting, initiating event, internal response, plan, attempt, consequence, resolution',
+      },
+      {
+        term: 'Matthew Effect',
+        definition:
+          'Stanovich\'s concept that good readers get better (more exposure) while poor readers fall further behind — "the rich get richer"',
+      },
+      {
+        term: 'Literate language',
+        definition:
+          'Complex language features used in academic/written contexts: subordination, elaborated noun phrases, metalinguistic verbs',
+      },
+      {
+        term: 'Simple View of Reading',
+        definition:
+          'Gough & Tunmer model: Reading Comprehension = Decoding x Linguistic Comprehension; both components are necessary',
+      },
     ],
     sortOrder: 2,
   },
@@ -222,13 +274,41 @@ export const studyContentData: StudyContentData[] = [
 > **High-Yield:** The complexity approach is evidence-based and often tested. Know that targeting complex sounds (e.g., clusters) can lead to system-wide change without directly treating simpler sounds.
 `,
     keyTerms: [
-      { term: 'Phonological process', definition: 'Systematic sound simplification pattern used by typically developing children; becomes disordered when persisting past expected suppression age' },
-      { term: 'Fronting', definition: 'Substituting a front sound for a back sound (e.g., /t/ for /k/); suppressed by ~3;6' },
-      { term: 'Stopping', definition: 'Replacing a fricative or affricate with a stop (e.g., /t/ for /s/); suppressed by ~3;0–5;0 depending on target' },
-      { term: 'Gliding', definition: 'Replacing a liquid (/r/ or /l/) with a glide (/w/ or /j/); suppressed by ~5;0–6;0' },
-      { term: 'PCC (Percent Consonants Correct)', definition: 'Severity metric for speech sound disorders calculated from connected speech sample' },
-      { term: 'Complexity approach', definition: 'Targeting later-developing, more complex sounds to promote generalization to simpler untreated targets' },
-      { term: 'Stimulability', definition: 'Ability to produce a sound correctly when given a model; high stimulability may predict self-correction' },
+      {
+        term: 'Phonological process',
+        definition:
+          'Systematic sound simplification pattern used by typically developing children; becomes disordered when persisting past expected suppression age',
+      },
+      {
+        term: 'Fronting',
+        definition:
+          'Substituting a front sound for a back sound (e.g., /t/ for /k/); suppressed by ~3;6',
+      },
+      {
+        term: 'Stopping',
+        definition:
+          'Replacing a fricative or affricate with a stop (e.g., /t/ for /s/); suppressed by ~3;0–5;0 depending on target',
+      },
+      {
+        term: 'Gliding',
+        definition:
+          'Replacing a liquid (/r/ or /l/) with a glide (/w/ or /j/); suppressed by ~5;0–6;0',
+      },
+      {
+        term: 'PCC (Percent Consonants Correct)',
+        definition:
+          'Severity metric for speech sound disorders calculated from connected speech sample',
+      },
+      {
+        term: 'Complexity approach',
+        definition:
+          'Targeting later-developing, more complex sounds to promote generalization to simpler untreated targets',
+      },
+      {
+        term: 'Stimulability',
+        definition:
+          'Ability to produce a sound correctly when given a model; high stimulability may predict self-correction',
+      },
     ],
     sortOrder: 3,
   },
@@ -289,12 +369,36 @@ export const studyContentData: StudyContentData[] = [
 > **High-Yield:** Tongue deviates toward the WEAK side (ipsilateral). Jaw deviates toward the WEAK side. Uvula deviates toward the STRONG side (away from lesion).
 `,
     keyTerms: [
-      { term: 'Recurrent Laryngeal Nerve (RLN)', definition: 'Branch of CN X innervating all intrinsic laryngeal muscles except cricothyroid; damage causes vocal fold paralysis' },
-      { term: 'Superior Laryngeal Nerve (SLN)', definition: 'Branch of CN X; external branch innervates cricothyroid (pitch); internal branch provides sensory innervation above vocal folds' },
-      { term: 'CN V (Trigeminal)', definition: 'Mixed nerve responsible for jaw movement (mastication) and facial/oral sensation; jaw deviates to weak side' },
-      { term: 'CN VII (Facial)', definition: 'Mixed nerve controlling facial expression, lip closure, taste to anterior 2/3 tongue, sublingual/submandibular salivary glands' },
-      { term: 'CN XII (Hypoglossal)', definition: 'Pure motor nerve innervating tongue muscles; tongue deviates to weak/damaged side on protrusion' },
-      { term: 'Gag reflex', definition: 'Afferent limb = CN IX (glossopharyngeal); efferent limb = CN X (vagus). Absence does NOT predict aspiration risk.' },
+      {
+        term: 'Recurrent Laryngeal Nerve (RLN)',
+        definition:
+          'Branch of CN X innervating all intrinsic laryngeal muscles except cricothyroid; damage causes vocal fold paralysis',
+      },
+      {
+        term: 'Superior Laryngeal Nerve (SLN)',
+        definition:
+          'Branch of CN X; external branch innervates cricothyroid (pitch); internal branch provides sensory innervation above vocal folds',
+      },
+      {
+        term: 'CN V (Trigeminal)',
+        definition:
+          'Mixed nerve responsible for jaw movement (mastication) and facial/oral sensation; jaw deviates to weak side',
+      },
+      {
+        term: 'CN VII (Facial)',
+        definition:
+          'Mixed nerve controlling facial expression, lip closure, taste to anterior 2/3 tongue, sublingual/submandibular salivary glands',
+      },
+      {
+        term: 'CN XII (Hypoglossal)',
+        definition:
+          'Pure motor nerve innervating tongue muscles; tongue deviates to weak/damaged side on protrusion',
+      },
+      {
+        term: 'Gag reflex',
+        definition:
+          'Afferent limb = CN IX (glossopharyngeal); efferent limb = CN X (vagus). Absence does NOT predict aspiration risk.',
+      },
     ],
     sortOrder: 4,
   },
@@ -382,13 +486,40 @@ When facing an ethical dilemma:
 | Conflict of interest (product sales) | Disclose; prioritize client welfare | I & IV |
 `,
     keyTerms: [
-      { term: 'Principle I', definition: 'Hold paramount the welfare of persons served; the highest ethical obligation in SLP practice' },
-      { term: 'Principle II', definition: 'Achieve and maintain highest professional competence; practice only within scope of training' },
-      { term: 'Principle III', definition: 'Responsibility to the public; honesty, accuracy, obligation to report ethics violations' },
-      { term: 'Principle IV', definition: 'Maintain honorable professional relationships; avoid conflicts of interest' },
-      { term: 'Informed consent', definition: 'Ethical and legal requirement to explain nature, risks, and alternatives of services before beginning treatment' },
-      { term: 'Scope of competence', definition: 'Ethical principle that SLPs must only practice in areas where they have adequate education, training, and supervised experience' },
-      { term: 'Mandatory reporting', definition: 'Obligation to report known Code of Ethics violations to the ASHA Board of Ethics' },
+      {
+        term: 'Principle I',
+        definition:
+          'Hold paramount the welfare of persons served; the highest ethical obligation in SLP practice',
+      },
+      {
+        term: 'Principle II',
+        definition:
+          'Achieve and maintain highest professional competence; practice only within scope of training',
+      },
+      {
+        term: 'Principle III',
+        definition:
+          'Responsibility to the public; honesty, accuracy, obligation to report ethics violations',
+      },
+      {
+        term: 'Principle IV',
+        definition: 'Maintain honorable professional relationships; avoid conflicts of interest',
+      },
+      {
+        term: 'Informed consent',
+        definition:
+          'Ethical and legal requirement to explain nature, risks, and alternatives of services before beginning treatment',
+      },
+      {
+        term: 'Scope of competence',
+        definition:
+          'Ethical principle that SLPs must only practice in areas where they have adequate education, training, and supervised experience',
+      },
+      {
+        term: 'Mandatory reporting',
+        definition:
+          'Obligation to report known Code of Ethics violations to the ASHA Board of Ethics',
+      },
     ],
     sortOrder: 5,
   },
@@ -467,13 +598,41 @@ When facing an ethical dilemma:
 > **High-Yield:** Medicare requires services to be "skilled" — maintenance programs alone are not sufficient unless skilled SLP judgment is needed to maintain function (Jimmo v. Sebelius).
 `,
     keyTerms: [
-      { term: 'FAPE', definition: 'Free Appropriate Public Education — IDEA mandate that students with disabilities receive special education at no cost in the least restrictive environment' },
-      { term: 'LRE', definition: 'Least Restrictive Environment — students with disabilities educated with non-disabled peers to the maximum extent appropriate' },
-      { term: 'IFSP', definition: 'Individualized Family Service Plan — Part C early intervention plan for birth–2; family-centered with outcomes in natural environments' },
-      { term: 'IEP', definition: 'Individualized Education Program — Part B plan for ages 3–21; includes measurable goals, services, accommodations' },
-      { term: 'PHI', definition: 'Protected Health Information — individually identifiable health data protected under HIPAA' },
-      { term: 'FERPA', definition: 'Federal law protecting student education records; applies to school-based SLPs rather than HIPAA' },
-      { term: 'Jimmo v. Sebelius', definition: '2013 settlement clarifying Medicare covers skilled maintenance therapy — function need not be improving if skilled care is needed to maintain or prevent decline' },
+      {
+        term: 'FAPE',
+        definition:
+          'Free Appropriate Public Education — IDEA mandate that students with disabilities receive special education at no cost in the least restrictive environment',
+      },
+      {
+        term: 'LRE',
+        definition:
+          'Least Restrictive Environment — students with disabilities educated with non-disabled peers to the maximum extent appropriate',
+      },
+      {
+        term: 'IFSP',
+        definition:
+          'Individualized Family Service Plan — Part C early intervention plan for birth–2; family-centered with outcomes in natural environments',
+      },
+      {
+        term: 'IEP',
+        definition:
+          'Individualized Education Program — Part B plan for ages 3–21; includes measurable goals, services, accommodations',
+      },
+      {
+        term: 'PHI',
+        definition:
+          'Protected Health Information — individually identifiable health data protected under HIPAA',
+      },
+      {
+        term: 'FERPA',
+        definition:
+          'Federal law protecting student education records; applies to school-based SLPs rather than HIPAA',
+      },
+      {
+        term: 'Jimmo v. Sebelius',
+        definition:
+          '2013 settlement clarifying Medicare covers skilled maintenance therapy — function need not be improving if skilled care is needed to maintain or prevent decline',
+      },
     ],
     sortOrder: 6,
   },
@@ -557,13 +716,41 @@ Evidence-Based Practice integrates three components:
 > **High-Yield:** "SnNout" (high Sensitivity, Negative result rules OUT) and "SpPin" (high Specificity, Positive result rules IN) are Praxis favorites.
 `,
     keyTerms: [
-      { term: 'EBP', definition: 'Evidence-Based Practice — integration of best research, clinical expertise, and client values/preferences in clinical decision-making' },
-      { term: 'RCT', definition: 'Randomized Controlled Trial — experimental design with random assignment to treatment/control groups; gold standard for causal inference' },
-      { term: 'Sensitivity', definition: 'True positive rate — ability of a test to correctly identify those WITH the condition; high sensitivity rules OUT (SnNout)' },
-      { term: 'Specificity', definition: 'True negative rate — ability of a test to correctly identify those WITHOUT the condition; high specificity rules IN (SpPin)' },
-      { term: 'Reliability', definition: 'Consistency/stability of measurement across time, raters, or items; necessary but not sufficient for validity' },
-      { term: 'Validity', definition: 'Degree to which a test measures what it claims to measure; requires reliability as a prerequisite' },
-      { term: 'Type I error', definition: 'False positive — concluding a treatment works when it does not (alpha error); controlled by significance level (p-value threshold)' },
+      {
+        term: 'EBP',
+        definition:
+          'Evidence-Based Practice — integration of best research, clinical expertise, and client values/preferences in clinical decision-making',
+      },
+      {
+        term: 'RCT',
+        definition:
+          'Randomized Controlled Trial — experimental design with random assignment to treatment/control groups; gold standard for causal inference',
+      },
+      {
+        term: 'Sensitivity',
+        definition:
+          'True positive rate — ability of a test to correctly identify those WITH the condition; high sensitivity rules OUT (SnNout)',
+      },
+      {
+        term: 'Specificity',
+        definition:
+          'True negative rate — ability of a test to correctly identify those WITHOUT the condition; high specificity rules IN (SpPin)',
+      },
+      {
+        term: 'Reliability',
+        definition:
+          'Consistency/stability of measurement across time, raters, or items; necessary but not sufficient for validity',
+      },
+      {
+        term: 'Validity',
+        definition:
+          'Degree to which a test measures what it claims to measure; requires reliability as a prerequisite',
+      },
+      {
+        term: 'Type I error',
+        definition:
+          'False positive — concluding a treatment works when it does not (alpha error); controlled by significance level (p-value threshold)',
+      },
     ],
     sortOrder: 7,
   },
@@ -654,13 +841,41 @@ Aphasia = acquired language disorder due to **brain damage** (most commonly left
 > **High-Yield:** MIT uses the **right hemisphere**'s musical processing to facilitate language in Broca's aphasia patients. It is NOT singing therapy — it uses specific melodic contours paired with tapping.
 `,
     keyTerms: [
-      { term: 'Broca\'s aphasia', definition: 'Non-fluent, agrammatic aphasia with relatively preserved comprehension; lesion in left posterior inferior frontal gyrus' },
-      { term: 'Wernicke\'s aphasia', definition: 'Fluent aphasia with severely impaired comprehension, paraphasias, and poor self-monitoring; lesion in left posterior superior temporal gyrus' },
-      { term: 'Conduction aphasia', definition: 'Fluent aphasia with disproportionately impaired repetition and conduite d\'approche; lesion in arcuate fasciculus' },
-      { term: 'Global aphasia', definition: 'Severe non-fluent aphasia with impairment across all language modalities; large left hemisphere lesion' },
-      { term: 'Conduite d\'approche', definition: 'Repeated self-correction attempts progressively approaching the target word; hallmark of conduction aphasia' },
-      { term: 'Paraphasia', definition: 'Unintended word/sound substitution — phonemic (sound-based), semantic (meaning-based), or neologistic (nonword)' },
-      { term: 'Transcortical aphasias', definition: 'Aphasia types characterized by PRESERVED repetition (motor, sensory, or mixed); lesions in watershed areas sparing perisylvian cortex' },
+      {
+        term: "Broca's aphasia",
+        definition:
+          'Non-fluent, agrammatic aphasia with relatively preserved comprehension; lesion in left posterior inferior frontal gyrus',
+      },
+      {
+        term: "Wernicke's aphasia",
+        definition:
+          'Fluent aphasia with severely impaired comprehension, paraphasias, and poor self-monitoring; lesion in left posterior superior temporal gyrus',
+      },
+      {
+        term: 'Conduction aphasia',
+        definition:
+          "Fluent aphasia with disproportionately impaired repetition and conduite d'approche; lesion in arcuate fasciculus",
+      },
+      {
+        term: 'Global aphasia',
+        definition:
+          'Severe non-fluent aphasia with impairment across all language modalities; large left hemisphere lesion',
+      },
+      {
+        term: "Conduite d'approche",
+        definition:
+          'Repeated self-correction attempts progressively approaching the target word; hallmark of conduction aphasia',
+      },
+      {
+        term: 'Paraphasia',
+        definition:
+          'Unintended word/sound substitution — phonemic (sound-based), semantic (meaning-based), or neologistic (nonword)',
+      },
+      {
+        term: 'Transcortical aphasias',
+        definition:
+          'Aphasia types characterized by PRESERVED repetition (motor, sensory, or mixed); lesions in watershed areas sparing perisylvian cortex',
+      },
     ],
     sortOrder: 8,
   },
@@ -738,13 +953,41 @@ Aphasia = acquired language disorder due to **brain damage** (most commonly left
 - **Prosodic training**: Contrastive stress drills for monotone speech
 `,
     keyTerms: [
-      { term: 'Apraxia of Speech (AOS)', definition: 'Motor speech planning/programming disorder characterized by inconsistent errors, groping, and prosodic disruption; NOT due to muscle weakness' },
-      { term: 'Flaccid dysarthria', definition: 'LMN damage causing hypotonia, breathy voice, hypernasality, nasal emission; seen in myasthenia gravis, bulbar palsy' },
-      { term: 'Spastic dysarthria', definition: 'Bilateral UMN damage causing hypertonia, strained-strangled voice, slow rate; seen in pseudobulbar palsy' },
-      { term: 'Ataxic dysarthria', definition: 'Cerebellar damage causing irregular articulatory breakdowns, excess and equal stress, "scanning speech"' },
-      { term: 'Hypokinetic dysarthria', definition: 'Basal ganglia damage (substantia nigra) causing monopitch, monoloudness, festinating speech; hallmark of Parkinson\'s disease' },
-      { term: 'CAS', definition: 'Childhood Apraxia of Speech — motor planning disorder with inconsistent errors, disrupted coarticulatory transitions, and inappropriate prosody' },
-      { term: 'DTTC', definition: 'Dynamic Temporal and Tactile Cueing — integral stimulation approach for CAS using multimodal cues and systematic cue reduction' },
+      {
+        term: 'Apraxia of Speech (AOS)',
+        definition:
+          'Motor speech planning/programming disorder characterized by inconsistent errors, groping, and prosodic disruption; NOT due to muscle weakness',
+      },
+      {
+        term: 'Flaccid dysarthria',
+        definition:
+          'LMN damage causing hypotonia, breathy voice, hypernasality, nasal emission; seen in myasthenia gravis, bulbar palsy',
+      },
+      {
+        term: 'Spastic dysarthria',
+        definition:
+          'Bilateral UMN damage causing hypertonia, strained-strangled voice, slow rate; seen in pseudobulbar palsy',
+      },
+      {
+        term: 'Ataxic dysarthria',
+        definition:
+          'Cerebellar damage causing irregular articulatory breakdowns, excess and equal stress, "scanning speech"',
+      },
+      {
+        term: 'Hypokinetic dysarthria',
+        definition:
+          "Basal ganglia damage (substantia nigra) causing monopitch, monoloudness, festinating speech; hallmark of Parkinson's disease",
+      },
+      {
+        term: 'CAS',
+        definition:
+          'Childhood Apraxia of Speech — motor planning disorder with inconsistent errors, disrupted coarticulatory transitions, and inappropriate prosody',
+      },
+      {
+        term: 'DTTC',
+        definition:
+          'Dynamic Temporal and Tactile Cueing — integral stimulation approach for CAS using multimodal cues and systematic cue reduction',
+      },
     ],
     sortOrder: 9,
   },
@@ -844,13 +1087,41 @@ Aphasia = acquired language disorder due to **brain damage** (most commonly left
 - Failure to progress with current diet recommendations
 `,
     keyTerms: [
-      { term: 'MBSS (Modified Barium Swallow Study)', definition: 'Fluoroscopic imaging of swallowing with barium-coated boluses; gold standard for dysphagia assessment; visualizes all phases' },
-      { term: 'FEES', definition: 'Fiberoptic Endoscopic Evaluation of Swallowing — endoscopic view of pharynx/larynx; portable, no radiation; limited by whiteout during swallow' },
-      { term: 'PAS', definition: 'Penetration-Aspiration Scale — 8-point ordinal scale rating airway invasion; 1 = no entry, 8 = silent aspiration' },
-      { term: 'Silent aspiration', definition: 'Aspiration without cough or overt signs; occurs in ~40% of aspirating patients; PAS score of 8' },
-      { term: 'Whiteout', definition: 'Loss of endoscopic visualization during FEES when pharyngeal walls contract around bolus; cannot see the exact moment of swallowing' },
-      { term: 'MBSImP', definition: 'Modified Barium Swallow Impairment Profile — standardized MBSS scoring system with 17 physiologic components' },
-      { term: 'Cervical auscultation', definition: 'Listening to swallow sounds at the neck with a stethoscope; adjunct screening tool, not diagnostic for aspiration' },
+      {
+        term: 'MBSS (Modified Barium Swallow Study)',
+        definition:
+          'Fluoroscopic imaging of swallowing with barium-coated boluses; gold standard for dysphagia assessment; visualizes all phases',
+      },
+      {
+        term: 'FEES',
+        definition:
+          'Fiberoptic Endoscopic Evaluation of Swallowing — endoscopic view of pharynx/larynx; portable, no radiation; limited by whiteout during swallow',
+      },
+      {
+        term: 'PAS',
+        definition:
+          'Penetration-Aspiration Scale — 8-point ordinal scale rating airway invasion; 1 = no entry, 8 = silent aspiration',
+      },
+      {
+        term: 'Silent aspiration',
+        definition:
+          'Aspiration without cough or overt signs; occurs in ~40% of aspirating patients; PAS score of 8',
+      },
+      {
+        term: 'Whiteout',
+        definition:
+          'Loss of endoscopic visualization during FEES when pharyngeal walls contract around bolus; cannot see the exact moment of swallowing',
+      },
+      {
+        term: 'MBSImP',
+        definition:
+          'Modified Barium Swallow Impairment Profile — standardized MBSS scoring system with 17 physiologic components',
+      },
+      {
+        term: 'Cervical auscultation',
+        definition:
+          'Listening to swallow sounds at the neck with a stethoscope; adjunct screening tool, not diagnostic for aspiration',
+      },
     ],
     sortOrder: 10,
   },
@@ -936,13 +1207,41 @@ All pediatric assessments should consider:
 > **High-Yield:** If errors appear in BOTH languages, suspect a disorder. If errors appear only in the newer language, suspect a difference/normal acquisition pattern.
 `,
     keyTerms: [
-      { term: 'Dynamic assessment', definition: 'Test-teach-retest paradigm measuring learning potential rather than static knowledge; gold standard for differentiating language difference from disorder in CLD children' },
-      { term: 'Language sample analysis', definition: 'Collection and analysis of spontaneous speech (50–100 utterances) examining MLU, TTR, grammatical accuracy, and pragmatic skills' },
-      { term: 'CELF-5', definition: 'Clinical Evaluation of Language Fundamentals — comprehensive standardized language test for ages 5–21 yielding Core Language Score' },
-      { term: 'PLS-5', definition: 'Preschool Language Scales — standardized test for birth through 7;11 measuring auditory comprehension and expressive communication' },
-      { term: 'Code-switching', definition: 'Alternating between two languages within a conversation; a normal bilingual behavior, NOT a sign of language disorder' },
-      { term: 'CLD', definition: 'Culturally and Linguistically Diverse — populations requiring assessment adaptations to avoid cultural/linguistic bias' },
-      { term: 'Norm-referenced test', definition: 'Standardized test comparing individual performance to a normative sample; yields standard scores, percentiles, and age equivalents' },
+      {
+        term: 'Dynamic assessment',
+        definition:
+          'Test-teach-retest paradigm measuring learning potential rather than static knowledge; gold standard for differentiating language difference from disorder in CLD children',
+      },
+      {
+        term: 'Language sample analysis',
+        definition:
+          'Collection and analysis of spontaneous speech (50–100 utterances) examining MLU, TTR, grammatical accuracy, and pragmatic skills',
+      },
+      {
+        term: 'CELF-5',
+        definition:
+          'Clinical Evaluation of Language Fundamentals — comprehensive standardized language test for ages 5–21 yielding Core Language Score',
+      },
+      {
+        term: 'PLS-5',
+        definition:
+          'Preschool Language Scales — standardized test for birth through 7;11 measuring auditory comprehension and expressive communication',
+      },
+      {
+        term: 'Code-switching',
+        definition:
+          'Alternating between two languages within a conversation; a normal bilingual behavior, NOT a sign of language disorder',
+      },
+      {
+        term: 'CLD',
+        definition:
+          'Culturally and Linguistically Diverse — populations requiring assessment adaptations to avoid cultural/linguistic bias',
+      },
+      {
+        term: 'Norm-referenced test',
+        definition:
+          'Standardized test comparing individual performance to a normative sample; yields standard scores, percentiles, and age equivalents',
+      },
     ],
     sortOrder: 11,
   },
@@ -1023,13 +1322,41 @@ All pediatric assessments should consider:
 > **High-Yield:** The 1-3-6 guideline is frequently tested. Also know that the **Joint Committee on Infant Hearing (JCIH)** publishes risk factors for hearing loss.
 `,
     keyTerms: [
-      { term: 'Conductive hearing loss', definition: 'Hearing loss due to outer/middle ear pathology; characterized by air-bone gap with normal bone conduction' },
-      { term: 'Sensorineural hearing loss', definition: 'Hearing loss due to inner ear (cochlea) or CN VIII damage; air and bone conduction equally impaired' },
-      { term: 'Tympanometry', definition: 'Objective test of middle ear function measuring compliance/admittance; Type A (normal), Type B (effusion), Type C (negative pressure)' },
-      { term: 'OAE', definition: 'Otoacoustic Emissions — sounds generated by outer hair cells; presence indicates cochlear function; used in newborn screening' },
-      { term: 'ABR', definition: 'Auditory Brainstem Response — electrophysiological test of auditory pathway from CN VIII to brainstem; objective threshold estimation' },
-      { term: 'SRT', definition: 'Speech Reception Threshold — softest level at which spondee words are repeated correctly 50% of the time; should agree with PTA ±10 dB' },
-      { term: '1-3-6 Guideline', definition: 'JCIH recommendation: screen hearing by 1 month, diagnose by 3 months, begin intervention by 6 months' },
+      {
+        term: 'Conductive hearing loss',
+        definition:
+          'Hearing loss due to outer/middle ear pathology; characterized by air-bone gap with normal bone conduction',
+      },
+      {
+        term: 'Sensorineural hearing loss',
+        definition:
+          'Hearing loss due to inner ear (cochlea) or CN VIII damage; air and bone conduction equally impaired',
+      },
+      {
+        term: 'Tympanometry',
+        definition:
+          'Objective test of middle ear function measuring compliance/admittance; Type A (normal), Type B (effusion), Type C (negative pressure)',
+      },
+      {
+        term: 'OAE',
+        definition:
+          'Otoacoustic Emissions — sounds generated by outer hair cells; presence indicates cochlear function; used in newborn screening',
+      },
+      {
+        term: 'ABR',
+        definition:
+          'Auditory Brainstem Response — electrophysiological test of auditory pathway from CN VIII to brainstem; objective threshold estimation',
+      },
+      {
+        term: 'SRT',
+        definition:
+          'Speech Reception Threshold — softest level at which spondee words are repeated correctly 50% of the time; should agree with PTA ±10 dB',
+      },
+      {
+        term: '1-3-6 Guideline',
+        definition:
+          'JCIH recommendation: screen hearing by 1 month, diagnose by 3 months, begin intervention by 6 months',
+      },
     ],
     sortOrder: 12,
   },
@@ -1125,12 +1452,36 @@ All pediatric assessments should consider:
 | **Fetal Alcohol Spectrum** | Language delays; pragmatic deficits; executive function impairment; behavioral issues |
 `,
     keyTerms: [
-      { term: 'Trisomy 21', definition: 'Down syndrome — extra chromosome 21; expressive language more impaired than receptive; hypotonia; high conductive hearing loss risk' },
-      { term: '22q11.2 Deletion', definition: 'Velocardiofacial/DiGeorge syndrome — most common genetic cause of VPI; cardiac anomalies; compensatory articulation' },
-      { term: 'Fragile X', definition: 'FMR1 gene mutation — most common inherited intellectual disability; cluttering-like speech, pragmatic deficits, 30% ASD overlap' },
-      { term: 'ASD', definition: 'Autism Spectrum Disorder — requires social communication deficits AND restricted/repetitive behaviors per DSM-5-TR' },
-      { term: 'Williams syndrome', definition: 'Chromosome 7 microdeletion — "cocktail party" personality; strong verbal skills relative to cognition; visuospatial weakness' },
-      { term: 'VPI', definition: 'Velopharyngeal Insufficiency — structural inadequacy of velopharyngeal mechanism; causes hypernasality and nasal emission' },
+      {
+        term: 'Trisomy 21',
+        definition:
+          'Down syndrome — extra chromosome 21; expressive language more impaired than receptive; hypotonia; high conductive hearing loss risk',
+      },
+      {
+        term: '22q11.2 Deletion',
+        definition:
+          'Velocardiofacial/DiGeorge syndrome — most common genetic cause of VPI; cardiac anomalies; compensatory articulation',
+      },
+      {
+        term: 'Fragile X',
+        definition:
+          'FMR1 gene mutation — most common inherited intellectual disability; cluttering-like speech, pragmatic deficits, 30% ASD overlap',
+      },
+      {
+        term: 'ASD',
+        definition:
+          'Autism Spectrum Disorder — requires social communication deficits AND restricted/repetitive behaviors per DSM-5-TR',
+      },
+      {
+        term: 'Williams syndrome',
+        definition:
+          'Chromosome 7 microdeletion — "cocktail party" personality; strong verbal skills relative to cognition; visuospatial weakness',
+      },
+      {
+        term: 'VPI',
+        definition:
+          'Velopharyngeal Insufficiency — structural inadequacy of velopharyngeal mechanism; causes hypernasality and nasal emission',
+      },
     ],
     sortOrder: 13,
   },
@@ -1231,13 +1582,41 @@ All pediatric assessments should consider:
 | Esophageal | CN X (vagus — esophageal plexus) |
 `,
     keyTerms: [
-      { term: 'Hyolaryngeal excursion', definition: 'Anterior-superior movement of hyoid bone and larynx during swallowing; critical for epiglottic deflection and UES opening' },
-      { term: 'UES (Upper Esophageal Sphincter)', definition: 'Cricopharyngeus muscle that must relax and open for bolus passage; opens via neural relaxation, hyolaryngeal pull, and bolus pressure' },
-      { term: 'Pharyngeal phase', definition: 'Involuntary swallow phase involving airway protection and pharyngeal bolus transport; duration ~1 second' },
-      { term: 'Epiglottic deflection', definition: 'Inversion of epiglottis over airway entrance during swallowing; occurs secondary to hyolaryngeal excursion and tongue base retraction' },
-      { term: 'True vocal fold adduction', definition: 'Closure of true vocal folds during swallowing; the MOST CRITICAL level of airway protection' },
-      { term: 'Valleculae', definition: 'Space between tongue base and epiglottis where food can collect; residue here suggests reduced tongue base retraction' },
-      { term: 'Pyriform sinuses', definition: 'Paired channels lateral to the larynx; residue here suggests reduced pharyngeal constriction or impaired UES opening' },
+      {
+        term: 'Hyolaryngeal excursion',
+        definition:
+          'Anterior-superior movement of hyoid bone and larynx during swallowing; critical for epiglottic deflection and UES opening',
+      },
+      {
+        term: 'UES (Upper Esophageal Sphincter)',
+        definition:
+          'Cricopharyngeus muscle that must relax and open for bolus passage; opens via neural relaxation, hyolaryngeal pull, and bolus pressure',
+      },
+      {
+        term: 'Pharyngeal phase',
+        definition:
+          'Involuntary swallow phase involving airway protection and pharyngeal bolus transport; duration ~1 second',
+      },
+      {
+        term: 'Epiglottic deflection',
+        definition:
+          'Inversion of epiglottis over airway entrance during swallowing; occurs secondary to hyolaryngeal excursion and tongue base retraction',
+      },
+      {
+        term: 'True vocal fold adduction',
+        definition:
+          'Closure of true vocal folds during swallowing; the MOST CRITICAL level of airway protection',
+      },
+      {
+        term: 'Valleculae',
+        definition:
+          'Space between tongue base and epiglottis where food can collect; residue here suggests reduced tongue base retraction',
+      },
+      {
+        term: 'Pyriform sinuses',
+        definition:
+          'Paired channels lateral to the larynx; residue here suggests reduced pharyngeal constriction or impaired UES opening',
+      },
     ],
     sortOrder: 14,
   },
@@ -1323,13 +1702,41 @@ All pediatric assessments should consider:
 > **High-Yield:** MIT = non-fluent aphasia + right hemisphere. LSVT LOUD = Parkinson's + "think loud." Lidcombe = preschool stuttering + parent-delivered. These three are the most commonly tested named approaches.
 `,
     keyTerms: [
-      { term: 'Milieu Teaching', definition: 'Naturalistic language intervention using child-led interaction with environmental arrangement, mand-model, and time delay strategies' },
-      { term: 'Lidcombe Program', definition: 'Parent-administered behavioral stuttering treatment for preschoolers using verbal contingencies (praise for fluency, acknowledgment of stuttering)' },
-      { term: 'LSVT LOUD', definition: 'Lee Silverman Voice Treatment — intensive 16-session program for hypokinetic dysarthria (Parkinson\'s); target is increased vocal loudness' },
-      { term: 'Minimal Pairs', definition: 'Phonological intervention contrasting target sound with child\'s error production to create communicative failure and motivate change' },
-      { term: 'Semantic Feature Analysis', definition: 'Word retrieval treatment generating semantic features (category, use, properties) to activate the semantic network around a target word' },
-      { term: 'MIT', definition: 'Melodic Intonation Therapy — uses melodic contour and rhythmic tapping to facilitate language production in non-fluent aphasia via right hemisphere engagement' },
-      { term: 'Cycles approach', definition: 'Hodson phonological intervention cycling through target patterns (2–6 hours per pattern); for highly unintelligible children with multiple process errors' },
+      {
+        term: 'Milieu Teaching',
+        definition:
+          'Naturalistic language intervention using child-led interaction with environmental arrangement, mand-model, and time delay strategies',
+      },
+      {
+        term: 'Lidcombe Program',
+        definition:
+          'Parent-administered behavioral stuttering treatment for preschoolers using verbal contingencies (praise for fluency, acknowledgment of stuttering)',
+      },
+      {
+        term: 'LSVT LOUD',
+        definition:
+          "Lee Silverman Voice Treatment — intensive 16-session program for hypokinetic dysarthria (Parkinson's); target is increased vocal loudness",
+      },
+      {
+        term: 'Minimal Pairs',
+        definition:
+          "Phonological intervention contrasting target sound with child's error production to create communicative failure and motivate change",
+      },
+      {
+        term: 'Semantic Feature Analysis',
+        definition:
+          'Word retrieval treatment generating semantic features (category, use, properties) to activate the semantic network around a target word',
+      },
+      {
+        term: 'MIT',
+        definition:
+          'Melodic Intonation Therapy — uses melodic contour and rhythmic tapping to facilitate language production in non-fluent aphasia via right hemisphere engagement',
+      },
+      {
+        term: 'Cycles approach',
+        definition:
+          'Hodson phonological intervention cycling through target patterns (2–6 hours per pattern); for highly unintelligible children with multiple process errors',
+      },
     ],
     sortOrder: 15,
   },
@@ -1426,13 +1833,41 @@ All pediatric assessments should consider:
 - SLPs recommend the route; physicians order it
 `,
     keyTerms: [
-      { term: 'Chin tuck', definition: 'Compensatory posture tucking chin toward chest; widens valleculae and narrows airway entrance; used for delayed swallow and reduced tongue base retraction' },
-      { term: 'IDDSI', definition: 'International Dysphagia Diet Standardisation Initiative — global framework with levels 0–7 for drink thickness and food texture' },
-      { term: 'Mendelsohn maneuver', definition: 'Volitionally prolonging laryngeal elevation during swallow to increase UES opening duration; both compensatory and rehabilitative' },
-      { term: 'Effortful swallow', definition: 'Swallowing with maximum effort to increase tongue base retraction and pharyngeal pressure generation' },
-      { term: 'Supraglottic swallow', definition: 'Voluntary airway closure technique: hold breath, swallow, cough; protects airway before and during swallow' },
-      { term: 'Shaker exercise', definition: 'Supine head-lift exercise (isometric + isokinetic) strengthening suprahyoid muscles to improve UES opening' },
-      { term: 'EMST', definition: 'Expiratory Muscle Strength Training — forceful exhalation against calibrated resistance; improves cough strength and subglottic pressure for swallow safety' },
+      {
+        term: 'Chin tuck',
+        definition:
+          'Compensatory posture tucking chin toward chest; widens valleculae and narrows airway entrance; used for delayed swallow and reduced tongue base retraction',
+      },
+      {
+        term: 'IDDSI',
+        definition:
+          'International Dysphagia Diet Standardisation Initiative — global framework with levels 0–7 for drink thickness and food texture',
+      },
+      {
+        term: 'Mendelsohn maneuver',
+        definition:
+          'Volitionally prolonging laryngeal elevation during swallow to increase UES opening duration; both compensatory and rehabilitative',
+      },
+      {
+        term: 'Effortful swallow',
+        definition:
+          'Swallowing with maximum effort to increase tongue base retraction and pharyngeal pressure generation',
+      },
+      {
+        term: 'Supraglottic swallow',
+        definition:
+          'Voluntary airway closure technique: hold breath, swallow, cough; protects airway before and during swallow',
+      },
+      {
+        term: 'Shaker exercise',
+        definition:
+          'Supine head-lift exercise (isometric + isokinetic) strengthening suprahyoid muscles to improve UES opening',
+      },
+      {
+        term: 'EMST',
+        definition:
+          'Expiratory Muscle Strength Training — forceful exhalation against calibrated resistance; improves cough strength and subglottic pressure for swallow safety',
+      },
     ],
     sortOrder: 16,
   },
@@ -1524,13 +1959,41 @@ All pediatric assessments should consider:
 - SLP must address the **whole person**, not just fluency counts
 `,
     keyTerms: [
-      { term: 'Stuttering', definition: 'Fluency disorder characterized by part-word repetitions, prolongations, blocks, secondary behaviors, and emotional reactions; onset typically 2–5 years' },
-      { term: 'Cluttering', definition: 'Fluency disorder with rapid/irregular rate, coalescing syllables, and excessive disfluencies; often with low self-awareness' },
-      { term: 'Lidcombe Program', definition: 'Parent-administered operant treatment for preschool stuttering using verbal contingencies — praise for fluency, acknowledgment of stuttering' },
-      { term: 'Stuttering Modification', definition: 'Van Riper\'s approach: identification → desensitization → modification (cancellations, pull-outs, preparatory sets) → stabilization' },
-      { term: 'Fluency Shaping', definition: 'Treatment targeting smooth continuous speech via gentle onset, light contact, continuous phonation, and controlled rate' },
-      { term: '%SS', definition: 'Percent Syllables Stuttered — primary fluency measure; stuttered syllables divided by total syllables times 100' },
-      { term: 'SSI-4', definition: 'Stuttering Severity Instrument — standardized assessment measuring frequency, duration, and physical concomitants of stuttering' },
+      {
+        term: 'Stuttering',
+        definition:
+          'Fluency disorder characterized by part-word repetitions, prolongations, blocks, secondary behaviors, and emotional reactions; onset typically 2–5 years',
+      },
+      {
+        term: 'Cluttering',
+        definition:
+          'Fluency disorder with rapid/irregular rate, coalescing syllables, and excessive disfluencies; often with low self-awareness',
+      },
+      {
+        term: 'Lidcombe Program',
+        definition:
+          'Parent-administered operant treatment for preschool stuttering using verbal contingencies — praise for fluency, acknowledgment of stuttering',
+      },
+      {
+        term: 'Stuttering Modification',
+        definition:
+          "Van Riper's approach: identification → desensitization → modification (cancellations, pull-outs, preparatory sets) → stabilization",
+      },
+      {
+        term: 'Fluency Shaping',
+        definition:
+          'Treatment targeting smooth continuous speech via gentle onset, light contact, continuous phonation, and controlled rate',
+      },
+      {
+        term: '%SS',
+        definition:
+          'Percent Syllables Stuttered — primary fluency measure; stuttered syllables divided by total syllables times 100',
+      },
+      {
+        term: 'SSI-4',
+        definition:
+          'Stuttering Severity Instrument — standardized assessment measuring frequency, duration, and physical concomitants of stuttering',
+      },
     ],
     sortOrder: 17,
   },
@@ -1634,13 +2097,41 @@ From most concrete/transparent to most abstract:
 - Do not limit AAC to requesting only — communication serves many functions
 `,
     keyTerms: [
-      { term: 'SGD', definition: 'Speech-Generating Device — high-tech AAC device that produces spoken output; includes dedicated devices and tablet-based apps' },
-      { term: 'PECS', definition: 'Picture Exchange Communication System — 6-phase protocol teaching functional communication through picture exchange; begins with physical exchange' },
-      { term: 'Core vocabulary', definition: 'Small set of high-frequency words (~200–400) that account for ~80% of daily communication; enables generative language in AAC' },
-      { term: 'Fringe vocabulary', definition: 'Person-specific, context-dependent words that supplement core vocabulary in AAC systems' },
-      { term: 'Aided Language Stimulation', definition: 'Communication partner models AAC use by pointing to symbols while speaking; the primary implementation strategy for AAC' },
-      { term: 'Feature matching', definition: 'AAC assessment process matching device features (access method, symbol type, output) to user\'s abilities and needs' },
-      { term: 'Scanning', definition: 'AAC access method where the system sequentially presents options and the user activates a switch to select; for severe motor impairment' },
+      {
+        term: 'SGD',
+        definition:
+          'Speech-Generating Device — high-tech AAC device that produces spoken output; includes dedicated devices and tablet-based apps',
+      },
+      {
+        term: 'PECS',
+        definition:
+          'Picture Exchange Communication System — 6-phase protocol teaching functional communication through picture exchange; begins with physical exchange',
+      },
+      {
+        term: 'Core vocabulary',
+        definition:
+          'Small set of high-frequency words (~200–400) that account for ~80% of daily communication; enables generative language in AAC',
+      },
+      {
+        term: 'Fringe vocabulary',
+        definition:
+          'Person-specific, context-dependent words that supplement core vocabulary in AAC systems',
+      },
+      {
+        term: 'Aided Language Stimulation',
+        definition:
+          'Communication partner models AAC use by pointing to symbols while speaking; the primary implementation strategy for AAC',
+      },
+      {
+        term: 'Feature matching',
+        definition:
+          "AAC assessment process matching device features (access method, symbol type, output) to user's abilities and needs",
+      },
+      {
+        term: 'Scanning',
+        definition:
+          'AAC access method where the system sequentially presents options and the user activates a switch to select; for severe motor impairment',
+      },
     ],
     sortOrder: 18,
   },
@@ -1734,13 +2225,41 @@ From most concrete/transparent to most abstract:
 > **High-Yield:** Vocal hygiene alone is rarely sufficient treatment — it should be combined with direct voice therapy. **Whispering is NOT recommended** — it increases laryngeal tension.
 `,
     keyTerms: [
-      { term: 'Vocal fold nodules', definition: 'Bilateral, symmetric callous-like lesions at anterior-posterior 1/3 junction caused by phonotrauma; treated with voice therapy first' },
-      { term: 'Spasmodic dysphonia', definition: 'Neurological voice disorder with involuntary laryngeal spasms; adductor (strained breaks) or abductor (breathy breaks); treated with botulinum toxin' },
-      { term: 'MTD', definition: 'Muscle Tension Dysphonia — excessive laryngeal tension without structural pathology; diagnosis of exclusion; responds to voice therapy' },
-      { term: 'CAPE-V', definition: 'Consensus Auditory-Perceptual Evaluation of Voice — standardized perceptual voice assessment using 100mm visual analog scales' },
-      { term: 's/z ratio', definition: 'Duration of sustained /s/ divided by sustained /z/; ratio >1.4 suggests vocal fold pathology affecting closure' },
-      { term: 'Resonant Voice Therapy', definition: 'Verdolini approach targeting anterior oral vibration during easy phonation; reduces vocal fold collision while maintaining voice quality' },
-      { term: 'Vocal Function Exercises', definition: 'Stemple\'s systematic vocal exercise program with warm-up, stretching, contracting, and power exercises performed 2x each, 2x daily' },
+      {
+        term: 'Vocal fold nodules',
+        definition:
+          'Bilateral, symmetric callous-like lesions at anterior-posterior 1/3 junction caused by phonotrauma; treated with voice therapy first',
+      },
+      {
+        term: 'Spasmodic dysphonia',
+        definition:
+          'Neurological voice disorder with involuntary laryngeal spasms; adductor (strained breaks) or abductor (breathy breaks); treated with botulinum toxin',
+      },
+      {
+        term: 'MTD',
+        definition:
+          'Muscle Tension Dysphonia — excessive laryngeal tension without structural pathology; diagnosis of exclusion; responds to voice therapy',
+      },
+      {
+        term: 'CAPE-V',
+        definition:
+          'Consensus Auditory-Perceptual Evaluation of Voice — standardized perceptual voice assessment using 100mm visual analog scales',
+      },
+      {
+        term: 's/z ratio',
+        definition:
+          'Duration of sustained /s/ divided by sustained /z/; ratio >1.4 suggests vocal fold pathology affecting closure',
+      },
+      {
+        term: 'Resonant Voice Therapy',
+        definition:
+          'Verdolini approach targeting anterior oral vibration during easy phonation; reduces vocal fold collision while maintaining voice quality',
+      },
+      {
+        term: 'Vocal Function Exercises',
+        definition:
+          "Stemple's systematic vocal exercise program with warm-up, stretching, contracting, and power exercises performed 2x each, 2x daily",
+      },
     ],
     sortOrder: 19,
   },
@@ -1854,13 +2373,41 @@ All treatment goals should be **SMART**:
 - Always document when a client declines recommended services (**informed refusal**)
 `,
     keyTerms: [
-      { term: 'SMART goals', definition: 'Goal-writing framework: Specific, Measurable, Achievable, Relevant, Time-bound; standard for SLP treatment planning' },
-      { term: 'SOAP note', definition: 'Medical documentation format: Subjective, Objective, Assessment, Plan; standard in healthcare settings' },
-      { term: 'Medical necessity', definition: 'Documentation requirement showing that services are needed to treat a medical condition and require the skill of a licensed professional' },
-      { term: 'CPT codes', definition: 'Current Procedural Terminology codes used for billing SLP services; 92507 (treatment), 92523 (speech-language eval), 92526 (dysphagia tx)' },
-      { term: 'Discharge planning', definition: 'Process of establishing criteria for ending services; should begin at the time of initial evaluation' },
-      { term: 'Informed refusal', definition: 'Client\'s documented decision to decline recommended services after being informed of risks and benefits' },
-      { term: 'Progress monitoring', definition: 'Systematic tracking of client performance data over time to determine treatment effectiveness and guide clinical decisions' },
+      {
+        term: 'SMART goals',
+        definition:
+          'Goal-writing framework: Specific, Measurable, Achievable, Relevant, Time-bound; standard for SLP treatment planning',
+      },
+      {
+        term: 'SOAP note',
+        definition:
+          'Medical documentation format: Subjective, Objective, Assessment, Plan; standard in healthcare settings',
+      },
+      {
+        term: 'Medical necessity',
+        definition:
+          'Documentation requirement showing that services are needed to treat a medical condition and require the skill of a licensed professional',
+      },
+      {
+        term: 'CPT codes',
+        definition:
+          'Current Procedural Terminology codes used for billing SLP services; 92507 (treatment), 92523 (speech-language eval), 92526 (dysphagia tx)',
+      },
+      {
+        term: 'Discharge planning',
+        definition:
+          'Process of establishing criteria for ending services; should begin at the time of initial evaluation',
+      },
+      {
+        term: 'Informed refusal',
+        definition:
+          "Client's documented decision to decline recommended services after being informed of risks and benefits",
+      },
+      {
+        term: 'Progress monitoring',
+        definition:
+          'Systematic tracking of client performance data over time to determine treatment effectiveness and guide clinical decisions',
+      },
     ],
     sortOrder: 20,
   },
@@ -1935,12 +2482,36 @@ Unlike aphasia, TBI cognitive-communication disorders involve:
 - **Environmental modification**: Reduce distractions, provide structure
 `,
     keyTerms: [
-      { term: 'GCS (Glasgow Coma Scale)', definition: 'Standardized scale (3–15) measuring eye opening, verbal response, and motor response to classify TBI severity' },
-      { term: 'PTA (Post-Traumatic Amnesia)', definition: 'Period after TBI during which the patient cannot form new continuous memories; duration predicts severity and outcome' },
-      { term: 'Diffuse Axonal Injury', definition: 'Widespread shearing of axons from rotational forces; causes attention, processing speed, and executive function deficits' },
-      { term: 'Rancho Los Amigos Scale', definition: '8-level scale describing cognitive/behavioral recovery after TBI; guides treatment approach at each level' },
-      { term: 'Cognitive-communication disorder', definition: 'Communication deficits arising from underlying cognitive impairments (attention, memory, executive function) rather than primary language disorder' },
-      { term: 'Executive function', definition: 'Higher-order cognitive processes including planning, organization, inhibition, flexibility, and self-monitoring; commonly impaired after frontal lobe TBI' },
+      {
+        term: 'GCS (Glasgow Coma Scale)',
+        definition:
+          'Standardized scale (3–15) measuring eye opening, verbal response, and motor response to classify TBI severity',
+      },
+      {
+        term: 'PTA (Post-Traumatic Amnesia)',
+        definition:
+          'Period after TBI during which the patient cannot form new continuous memories; duration predicts severity and outcome',
+      },
+      {
+        term: 'Diffuse Axonal Injury',
+        definition:
+          'Widespread shearing of axons from rotational forces; causes attention, processing speed, and executive function deficits',
+      },
+      {
+        term: 'Rancho Los Amigos Scale',
+        definition:
+          '8-level scale describing cognitive/behavioral recovery after TBI; guides treatment approach at each level',
+      },
+      {
+        term: 'Cognitive-communication disorder',
+        definition:
+          'Communication deficits arising from underlying cognitive impairments (attention, memory, executive function) rather than primary language disorder',
+      },
+      {
+        term: 'Executive function',
+        definition:
+          'Higher-order cognitive processes including planning, organization, inhibition, flexibility, and self-monitoring; commonly impaired after frontal lobe TBI',
+      },
     ],
     sortOrder: 21,
   },
@@ -2019,12 +2590,36 @@ Cleft palate requires a **multidisciplinary team**:
 - SLP role: assess/treat speech and resonance, VPI assessment, pre-surgical feeding support
 `,
     keyTerms: [
-      { term: 'VPI (Velopharyngeal Insufficiency)', definition: 'Structural inadequacy of the velopharyngeal mechanism to achieve complete closure; causes hypernasality and nasal emission' },
-      { term: 'Submucous cleft palate', definition: 'Cleft beneath intact mucosa; classic triad: bifid uvula, zona pellucida, notched hard palate; may be occult' },
-      { term: 'Compensatory articulation', definition: 'Maladaptive sound substitutions (glottal stops, pharyngeal fricatives) learned to compensate for VPI; treatable with speech therapy' },
-      { term: 'Obligatory errors', definition: 'Speech errors directly caused by structural deficit (VPI); cannot be corrected by speech therapy alone — require surgical/prosthetic management' },
-      { term: 'Hypernasality', definition: 'Excessive nasal resonance during oral sounds due to incomplete velopharyngeal closure' },
-      { term: 'Nasometry', definition: 'Instrumental measurement of nasalance (ratio of nasal to oral acoustic energy) using a Nasometer; objective VPI assessment' },
+      {
+        term: 'VPI (Velopharyngeal Insufficiency)',
+        definition:
+          'Structural inadequacy of the velopharyngeal mechanism to achieve complete closure; causes hypernasality and nasal emission',
+      },
+      {
+        term: 'Submucous cleft palate',
+        definition:
+          'Cleft beneath intact mucosa; classic triad: bifid uvula, zona pellucida, notched hard palate; may be occult',
+      },
+      {
+        term: 'Compensatory articulation',
+        definition:
+          'Maladaptive sound substitutions (glottal stops, pharyngeal fricatives) learned to compensate for VPI; treatable with speech therapy',
+      },
+      {
+        term: 'Obligatory errors',
+        definition:
+          'Speech errors directly caused by structural deficit (VPI); cannot be corrected by speech therapy alone — require surgical/prosthetic management',
+      },
+      {
+        term: 'Hypernasality',
+        definition:
+          'Excessive nasal resonance during oral sounds due to incomplete velopharyngeal closure',
+      },
+      {
+        term: 'Nasometry',
+        definition:
+          'Instrumental measurement of nasalance (ratio of nasal to oral acoustic energy) using a Nasometer; objective VPI assessment',
+      },
     ],
     sortOrder: 22,
   },
@@ -2110,12 +2705,36 @@ Cleft palate requires a **multidisciplinary team**:
 - **Awareness training**: Self-monitoring; self-evaluation; video review
 `,
     keyTerms: [
-      { term: 'Alzheimer\'s Disease', definition: 'Most common dementia; progressive; memory loss first, then language decline (word-finding → empty speech → echolalia → mutism)' },
-      { term: 'PPA', definition: 'Primary Progressive Aphasia — neurodegenerative disorder where language is the first and most prominent symptom; 3 variants: nonfluent, semantic, logopenic' },
-      { term: 'Spaced Retrieval Training', definition: 'Evidence-based intervention for dementia using progressively increasing recall intervals with errorless learning principles' },
-      { term: 'Left neglect', definition: 'Unilateral spatial neglect of the left visual field/body side after right hemisphere damage; patient is unaware of stimuli on the left' },
-      { term: 'Anosognosia', definition: 'Unawareness or denial of one\'s own deficits; common in right hemisphere damage and some types of dementia' },
-      { term: 'RHD', definition: 'Right Hemisphere Disorder — communication deficits including impaired pragmatics, prosody, figurative language, and left neglect following right brain damage' },
+      {
+        term: "Alzheimer's Disease",
+        definition:
+          'Most common dementia; progressive; memory loss first, then language decline (word-finding → empty speech → echolalia → mutism)',
+      },
+      {
+        term: 'PPA',
+        definition:
+          'Primary Progressive Aphasia — neurodegenerative disorder where language is the first and most prominent symptom; 3 variants: nonfluent, semantic, logopenic',
+      },
+      {
+        term: 'Spaced Retrieval Training',
+        definition:
+          'Evidence-based intervention for dementia using progressively increasing recall intervals with errorless learning principles',
+      },
+      {
+        term: 'Left neglect',
+        definition:
+          'Unilateral spatial neglect of the left visual field/body side after right hemisphere damage; patient is unaware of stimuli on the left',
+      },
+      {
+        term: 'Anosognosia',
+        definition:
+          "Unawareness or denial of one's own deficits; common in right hemisphere damage and some types of dementia",
+      },
+      {
+        term: 'RHD',
+        definition:
+          'Right Hemisphere Disorder — communication deficits including impaired pragmatics, prosody, figurative language, and left neglect following right brain damage',
+      },
     ],
     sortOrder: 23,
   },
@@ -2213,12 +2832,36 @@ Cleft palate requires a **multidisciplinary team**:
 > **High-Yield:** Echolalia in ASD can be **functional** — it may serve communicative purposes (requesting, turn-taking, self-regulation). Do NOT assume echolalia is meaningless. Analyze the context and function.
 `,
     keyTerms: [
-      { term: 'Joint attention', definition: 'Shared focus between two people on an object/event; includes gaze-following, pointing, and showing; early social communication skill deficient in ASD' },
-      { term: 'Echolalia', definition: 'Repetition of heard speech; immediate or delayed; may serve communicative functions in ASD (requesting, protesting, turn-taking)' },
-      { term: 'ADOS-2', definition: 'Autism Diagnostic Observation Schedule — gold standard semi-structured observational assessment for ASD' },
-      { term: 'NDBI', definition: 'Naturalistic Developmental Behavioral Interventions — evidence-based approaches combining developmental and behavioral principles in natural contexts; includes ESDM, PRT, JASPER' },
-      { term: 'Social Communication Disorder', definition: 'DSM-5-TR diagnosis for pragmatic language deficits WITHOUT restricted/repetitive behaviors; cannot co-occur with ASD' },
-      { term: 'Theory of Mind', definition: 'Ability to attribute mental states (beliefs, intentions, desires) to self and others; often impaired in ASD' },
+      {
+        term: 'Joint attention',
+        definition:
+          'Shared focus between two people on an object/event; includes gaze-following, pointing, and showing; early social communication skill deficient in ASD',
+      },
+      {
+        term: 'Echolalia',
+        definition:
+          'Repetition of heard speech; immediate or delayed; may serve communicative functions in ASD (requesting, protesting, turn-taking)',
+      },
+      {
+        term: 'ADOS-2',
+        definition:
+          'Autism Diagnostic Observation Schedule — gold standard semi-structured observational assessment for ASD',
+      },
+      {
+        term: 'NDBI',
+        definition:
+          'Naturalistic Developmental Behavioral Interventions — evidence-based approaches combining developmental and behavioral principles in natural contexts; includes ESDM, PRT, JASPER',
+      },
+      {
+        term: 'Social Communication Disorder',
+        definition:
+          'DSM-5-TR diagnosis for pragmatic language deficits WITHOUT restricted/repetitive behaviors; cannot co-occur with ASD',
+      },
+      {
+        term: 'Theory of Mind',
+        definition:
+          'Ability to attribute mental states (beliefs, intentions, desires) to self and others; often impaired in ASD',
+      },
     ],
     sortOrder: 24,
   },
@@ -2304,13 +2947,41 @@ From superficial to deep:
 > **High-Yield:** F1 relates to tongue HEIGHT (high F1 = low/open vowel like /a/). F2 relates to tongue ADVANCEMENT (high F2 = front vowel like /i/). This appears frequently on the Praxis.
 `,
     keyTerms: [
-      { term: 'PCA (Posterior Cricoarytenoid)', definition: 'The ONLY abductor of the vocal folds; opens the glottis for breathing; bilateral paralysis causes airway obstruction' },
-      { term: 'Cricothyroid (CT)', definition: 'Intrinsic laryngeal muscle that lengthens and tensions vocal folds to increase pitch; only intrinsic muscle innervated by the SLN' },
-      { term: 'Reinke\'s space', definition: 'Superficial lamina propria — the key vibrating layer of the vocal folds; site of most vocal pathology (nodules, polyps, edema)' },
-      { term: 'Myoelastic-aerodynamic theory', definition: 'Theory of phonation: subglottic pressure blows folds apart, then Bernoulli effect and tissue elasticity bring them back together in a cycle' },
-      { term: 'Source-Filter Theory', definition: 'Voice production model: vocal fold vibration (source) generates a complex tone filtered by the vocal tract (filter) to produce speech sounds' },
-      { term: 'Formants', definition: 'Resonant frequencies of the vocal tract; F1 relates to tongue height, F2 relates to tongue advancement; together they define vowel quality' },
-      { term: 'Mucosal wave', definition: 'Wave-like motion of the vocal fold cover over the body during phonation; disrupted in vocal fold pathology' },
+      {
+        term: 'PCA (Posterior Cricoarytenoid)',
+        definition:
+          'The ONLY abductor of the vocal folds; opens the glottis for breathing; bilateral paralysis causes airway obstruction',
+      },
+      {
+        term: 'Cricothyroid (CT)',
+        definition:
+          'Intrinsic laryngeal muscle that lengthens and tensions vocal folds to increase pitch; only intrinsic muscle innervated by the SLN',
+      },
+      {
+        term: "Reinke's space",
+        definition:
+          'Superficial lamina propria — the key vibrating layer of the vocal folds; site of most vocal pathology (nodules, polyps, edema)',
+      },
+      {
+        term: 'Myoelastic-aerodynamic theory',
+        definition:
+          'Theory of phonation: subglottic pressure blows folds apart, then Bernoulli effect and tissue elasticity bring them back together in a cycle',
+      },
+      {
+        term: 'Source-Filter Theory',
+        definition:
+          'Voice production model: vocal fold vibration (source) generates a complex tone filtered by the vocal tract (filter) to produce speech sounds',
+      },
+      {
+        term: 'Formants',
+        definition:
+          'Resonant frequencies of the vocal tract; F1 relates to tongue height, F2 relates to tongue advancement; together they define vowel quality',
+      },
+      {
+        term: 'Mucosal wave',
+        definition:
+          'Wave-like motion of the vocal fold cover over the body during phonation; disrupted in vocal fold pathology',
+      },
     ],
     sortOrder: 25,
   },

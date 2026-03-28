@@ -1,68 +1,92 @@
 import { Link } from 'react-router-dom'
-import { BookOpen } from 'lucide-react'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="border-t border-border bg-surface/30">
-      <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <Link to="/" className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
-                <BookOpen className="h-5 w-5 text-white" />
+    <footer className="border-t border-slate-200 bg-stone-50 pt-16 pb-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-4">
+          <div className="md:col-span-2">
+            <Link to="/" className="group mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded bg-teal-700 font-bold tracking-tighter text-white shadow-sm">
+                P
               </div>
-              <span className="font-display text-xl text-text-primary">PraxisPrep</span>
+              <span className="text-xl font-semibold tracking-tight text-slate-900">
+                PraxisPrep
+              </span>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-              The smartest way to pass the SLP Praxis 5331. Built by a CCC-SLP who codes.
+            <p className="mb-6 max-w-sm leading-relaxed text-slate-500">
+              The clinical, data-driven approach to passing the SLP Praxis 5331 exam. Stop guessing,
+              start preparing with confidence.
             </p>
           </div>
 
-          {/* Study */}
           <div>
-            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Study</h4>
+            <h4 className="mb-4 font-bold tracking-tight text-slate-900">Product</h4>
             <ul className="space-y-3">
-              <li><Link to="/study" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Practice Questions</Link></li>
-              <li><Link to="/exam" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Exam Simulation</Link></li>
-              <li><Link to="/flashcards" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Flashcards</Link></li>
-              <li><Link to="/review" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Study Content</Link></li>
+              <li>
+                <Link
+                  to="/quiz/diagnostic"
+                  className="text-slate-500 transition-colors hover:text-teal-700"
+                >
+                  Free Diagnostic
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  className="text-slate-500 transition-colors hover:text-teal-700"
+                >
+                  The System
+                </a>
+              </li>
+              <li>
+                <a href="#pricing" className="text-slate-500 transition-colors hover:text-teal-700">
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <Link to="/login" className="text-slate-500 transition-colors hover:text-teal-700">
+                  Log In
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Company</h4>
+            <h4 className="mb-4 font-bold tracking-tight text-slate-900">Legal</h4>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">About</a></li>
-              <li><a href="#pricing" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Pricing</a></li>
-              <li><Link to="/privacy" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Terms of Service</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Connect</h4>
-            <ul className="space-y-3">
-              <li><a href="mailto:hello@praxisprep.io" className="text-sm text-text-secondary transition-colors hover:text-text-primary">hello@praxisprep.io</a></li>
-              <li><a href="https://instagram.com/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Instagram</a></li>
-              <li><a href="https://linkedin.com/in/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">LinkedIn</a></li>
+              <li>
+                <Link to="/terms" className="text-slate-500 transition-colors hover:text-teal-700">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="text-slate-500 transition-colors hover:text-teal-700"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@praxisprep.com"
+                  className="text-slate-500 transition-colors hover:text-teal-700"
+                >
+                  Support
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 border-t border-border pt-8 text-center">
-          <p className="text-xs text-text-muted">
-            This product is not affiliated with, endorsed by, or sponsored by ETS.
-            &ldquo;Praxis&rdquo; is a registered trademark of Educational Testing Service.
-          </p>
-          <p className="mt-2 text-xs text-text-muted">
-            All practice questions, scenarios, and rationales are original educational content created for PraxisPrep.
-          </p>
-          <p className="mt-2 text-xs text-text-muted">
-            &copy; {new Date().getFullYear()} Tech SLP Studio. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 md:flex-row">
+          <p className="text-sm text-slate-400">© {currentYear} PraxisPrep. All rights reserved.</p>
+          <p className="max-w-2xl text-center text-xs text-slate-400 md:text-right">
+            Praxis® is a registered trademark of Educational Testing Service (ETS). This product is
+            not endorsed or approved by ETS.
           </p>
         </div>
       </div>

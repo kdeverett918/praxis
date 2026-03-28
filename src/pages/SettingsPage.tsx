@@ -1,7 +1,14 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {
-  Settings, UserRound, Target, ShieldCheck, RefreshCcw, Save, BookOpenText, Beaker,
+  Settings,
+  UserRound,
+  Target,
+  ShieldCheck,
+  RefreshCcw,
+  Save,
+  BookOpenText,
+  Beaker,
 } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import Card from '@/components/shared/Card'
@@ -64,7 +71,11 @@ export default function SettingsPage() {
     }
 
     if (nextBetaMode !== storedBetaModeEnabled) {
-      setNotice(nextBetaMode ? 'Beta mode enabled for this browser.' : 'Account mode enabled. Login is now required on protected pages.')
+      setNotice(
+        nextBetaMode
+          ? 'Beta mode enabled for this browser.'
+          : 'Account mode enabled. Login is now required on protected pages.',
+      )
       return
     }
 
@@ -100,16 +111,16 @@ export default function SettingsPage() {
         title="Settings"
         subtitle="Manage profile details, study defaults, and compliance links without leaving the app."
         badge={<Badge variant="secondary">{betaMode ? 'Local beta' : 'Account'}</Badge>}
-        actions={(
+        actions={
           <Button variant="primary" size="sm" onClick={handleSave}>
             <Save className="h-4 w-4" />
             Save changes
           </Button>
-        )}
+        }
       />
 
       {notice && (
-        <div className="mb-6 rounded-2xl border border-success/30 bg-success-light px-4 py-3 font-body text-sm text-text-primary">
+        <div className="border-success/30 bg-success-light font-body text-text-primary mb-6 rounded-2xl border px-4 py-3 text-sm">
           {notice}
         </div>
       )}
@@ -118,24 +129,29 @@ export default function SettingsPage() {
         <Card className="space-y-8">
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <UserRound className="h-5 w-5 text-primary" />
-              <h2 className="font-display text-xl text-text-primary">Profile</h2>
+              <UserRound className="text-primary h-5 w-5" />
+              <h2 className="font-display text-text-primary text-xl">Profile</h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <label className="space-y-2">
-                <span className="font-body text-sm font-medium text-text-secondary">Display name</span>
+                <span className="font-body text-text-secondary text-sm font-medium">
+                  Display name
+                </span>
                 <input
                   type="text"
                   value={displayName}
                   onChange={(event) => setDisplayName(event.target.value)}
                   placeholder="How you want the app to greet you"
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 font-body text-sm text-text-primary placeholder:text-text-muted/60 focus:border-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary placeholder:text-text-muted/60 focus:border-primary w-full rounded-xl border px-4 py-3 text-sm focus:outline-none"
                 />
               </label>
               <div className="space-y-2">
-                <span className="font-body text-sm font-medium text-text-secondary">Email</span>
-                <div className="rounded-xl border border-border bg-background px-4 py-3 font-body text-sm text-text-primary">
-                  {profile?.email || (betaMode ? 'No connected account in local beta mode' : 'Sign in to connect an account')}
+                <span className="font-body text-text-secondary text-sm font-medium">Email</span>
+                <div className="border-border bg-background font-body text-text-primary rounded-xl border px-4 py-3 text-sm">
+                  {profile?.email ||
+                    (betaMode
+                      ? 'No connected account in local beta mode'
+                      : 'Sign in to connect an account')}
                 </div>
               </div>
             </div>
@@ -143,23 +159,27 @@ export default function SettingsPage() {
 
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <Target className="h-5 w-5 text-secondary" />
-              <h2 className="font-display text-xl text-text-primary">Study defaults</h2>
+              <Target className="text-secondary h-5 w-5" />
+              <h2 className="font-display text-text-primary text-xl">Study defaults</h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <label className="space-y-2">
-                <span className="font-body text-sm font-medium text-text-secondary">Daily question goal</span>
+                <span className="font-body text-text-secondary text-sm font-medium">
+                  Daily question goal
+                </span>
                 <input
                   type="number"
                   min={5}
                   max={100}
                   value={dailyQuestionGoal}
                   onChange={(event) => setDailyQuestionGoal(Number(event.target.value))}
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 font-body text-sm text-text-primary focus:border-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary focus:border-primary w-full rounded-xl border px-4 py-3 text-sm focus:outline-none"
                 />
               </label>
               <label className="space-y-2">
-                <span className="font-body text-sm font-medium text-text-secondary">Daily XP goal</span>
+                <span className="font-body text-text-secondary text-sm font-medium">
+                  Daily XP goal
+                </span>
                 <input
                   type="number"
                   min={25}
@@ -167,13 +187,15 @@ export default function SettingsPage() {
                   step={25}
                   value={dailyXpGoal}
                   onChange={(event) => setDailyXpGoal(Number(event.target.value))}
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 font-body text-sm text-text-primary focus:border-primary focus:outline-none"
+                  className="border-border bg-background font-body text-text-primary focus:border-primary w-full rounded-xl border px-4 py-3 text-sm focus:outline-none"
                 />
               </label>
             </div>
 
             <div className="mt-5">
-              <p className="font-body text-sm font-medium text-text-secondary">Default custom quiz length</p>
+              <p className="font-body text-text-secondary text-sm font-medium">
+                Default custom quiz length
+              </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {QUIZ_LENGTH_OPTIONS.map((option) => (
                   <button
@@ -192,10 +214,12 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-between rounded-2xl border border-border bg-background px-4 py-4">
+            <div className="border-border bg-background mt-5 flex items-center justify-between rounded-2xl border px-4 py-4">
               <div>
-                <p className="font-body text-sm font-semibold text-text-primary">Exam timer warnings</p>
-                <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
+                <p className="font-body text-text-primary text-sm font-semibold">
+                  Exam timer warnings
+                </p>
+                <p className="font-body text-text-secondary mt-1 text-xs leading-6">
                   Keep low-time color and pulse warnings active during exam simulations.
                 </p>
               </div>
@@ -209,7 +233,7 @@ export default function SettingsPage() {
                 }`}
                 aria-pressed={timerWarnings}
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white font-body text-[11px] font-semibold text-background shadow">
+                <span className="font-body text-background inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[11px] font-semibold shadow">
                   {timerWarnings ? 'On' : 'Off'}
                 </span>
               </button>
@@ -221,14 +245,17 @@ export default function SettingsPage() {
           {BETA_MODE_AVAILABLE && (
             <Card>
               <div className="mb-4 flex items-center gap-3">
-                <Beaker className="h-5 w-5 text-secondary" />
-                <h2 className="font-display text-xl text-text-primary">Workspace mode</h2>
+                <Beaker className="text-secondary h-5 w-5" />
+                <h2 className="font-display text-text-primary text-xl">Workspace mode</h2>
               </div>
-              <p className="font-body text-sm leading-7 text-text-secondary">
-                Choose whether this browser should run the unlocked local beta workspace or the standard account-gated experience.
+              <p className="font-body text-text-secondary text-sm leading-7">
+                Choose whether this browser should run the unlocked local beta workspace or the
+                standard account-gated experience.
               </p>
               <div className="mt-5 grid gap-3">
-                <label className={`rounded-2xl border p-4 transition-colors ${betaWorkspaceEnabled ? 'border-secondary bg-secondary/10' : 'border-border bg-background'}`}>
+                <label
+                  className={`rounded-2xl border p-4 transition-colors ${betaWorkspaceEnabled ? 'border-secondary bg-secondary/10' : 'border-border bg-background'}`}
+                >
                   <input
                     type="radio"
                     name="workspace-mode"
@@ -238,8 +265,10 @@ export default function SettingsPage() {
                   />
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="font-body text-sm font-semibold text-text-primary">Beta workspace</p>
-                      <p className="mt-1 font-body text-sm leading-6 text-text-secondary">
+                      <p className="font-body text-text-primary text-sm font-semibold">
+                        Beta workspace
+                      </p>
+                      <p className="font-body text-text-secondary mt-1 text-sm leading-6">
                         Unlock all features locally and skip login requirements on protected pages.
                       </p>
                     </div>
@@ -247,7 +276,9 @@ export default function SettingsPage() {
                   </div>
                 </label>
 
-                <label className={`rounded-2xl border p-4 transition-colors ${!betaWorkspaceEnabled ? 'border-primary bg-primary/10' : 'border-border bg-background'}`}>
+                <label
+                  className={`rounded-2xl border p-4 transition-colors ${!betaWorkspaceEnabled ? 'border-primary bg-primary/10' : 'border-border bg-background'}`}
+                >
                   <input
                     type="radio"
                     name="workspace-mode"
@@ -257,9 +288,12 @@ export default function SettingsPage() {
                   />
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="font-body text-sm font-semibold text-text-primary">Account mode</p>
-                      <p className="mt-1 font-body text-sm leading-6 text-text-secondary">
-                        Require authentication for protected routes and use subscription-based access rules.
+                      <p className="font-body text-text-primary text-sm font-semibold">
+                        Account mode
+                      </p>
+                      <p className="font-body text-text-secondary mt-1 text-sm leading-6">
+                        Require authentication for protected routes and use subscription-based
+                        access rules.
                       </p>
                     </div>
                     <Badge variant="default">Auth</Badge>
@@ -271,26 +305,35 @@ export default function SettingsPage() {
 
           <Card>
             <div className="mb-4 flex items-center gap-3">
-              <BookOpenText className="h-5 w-5 text-success" />
-              <h2 className="font-display text-xl text-text-primary">Workspace snapshot</h2>
+              <BookOpenText className="text-success h-5 w-5" />
+              <h2 className="font-display text-text-primary text-xl">Workspace snapshot</h2>
             </div>
             <dl className="space-y-4">
               <div>
-                <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Mode</dt>
-                <dd className="mt-1 font-body text-sm text-text-primary">
-                  {betaMode ? 'Beta mode with local feature access' : 'Account mode with login and subscription checks'}
+                <dt className="font-body text-text-muted text-xs tracking-[0.24em] uppercase">
+                  Mode
+                </dt>
+                <dd className="font-body text-text-primary mt-1 text-sm">
+                  {betaMode
+                    ? 'Beta mode with local feature access'
+                    : 'Account mode with login and subscription checks'}
                 </dd>
               </div>
               <div>
-                <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Subscription</dt>
-                <dd className="mt-1 font-body text-sm text-text-primary">
+                <dt className="font-body text-text-muted text-xs tracking-[0.24em] uppercase">
+                  Subscription
+                </dt>
+                <dd className="font-body text-text-primary mt-1 text-sm">
                   {profile?.subscription_tier || (betaMode ? 'Beta workspace' : 'Not signed in')}
                 </dd>
               </div>
               <div>
-                <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Daily challenge</dt>
-                <dd className="mt-1 font-body text-sm text-text-primary">
-                  {dailyGoal.questionsCompleted}/{dailyGoal.questionsTarget} questions and {dailyGoal.xpEarned}/{dailyGoal.xpTarget} XP today
+                <dt className="font-body text-text-muted text-xs tracking-[0.24em] uppercase">
+                  Daily challenge
+                </dt>
+                <dd className="font-body text-text-primary mt-1 text-sm">
+                  {dailyGoal.questionsCompleted}/{dailyGoal.questionsTarget} questions and{' '}
+                  {dailyGoal.xpEarned}/{dailyGoal.xpTarget} XP today
                 </dd>
               </div>
             </dl>
@@ -298,34 +341,41 @@ export default function SettingsPage() {
 
           <Card>
             <div className="mb-4 flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-secondary" />
-              <h2 className="font-display text-xl text-text-primary">Legal and content standards</h2>
+              <ShieldCheck className="text-secondary h-5 w-5" />
+              <h2 className="font-display text-text-primary text-xl">
+                Legal and content standards
+              </h2>
             </div>
-            <div className="space-y-3 font-body text-sm leading-7 text-text-secondary">
+            <div className="font-body text-text-secondary space-y-3 text-sm leading-7">
               <p>This product is not affiliated with, endorsed by, or sponsored by ETS.</p>
               <p>
-                PraxisPrep uses original questions, references public-law materials like IDEA and Medicare,
-                and cites public professional frameworks such as ASHA and IDDSI where appropriate.
+                PraxisPrep uses original questions, references public-law materials like IDEA and
+                Medicare, and cites public professional frameworks such as ASHA and IDDSI where
+                appropriate.
               </p>
             </div>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link to="/terms">
-                <Button variant="outline" size="sm">Terms & Conditions</Button>
+                <Button variant="outline" size="sm">
+                  Terms & Conditions
+                </Button>
               </Link>
               <Link to="/privacy">
-                <Button variant="ghost" size="sm">Privacy Policy</Button>
+                <Button variant="ghost" size="sm">
+                  Privacy Policy
+                </Button>
               </Link>
             </div>
           </Card>
 
           <Card>
             <div className="mb-4 flex items-center gap-3">
-              <RefreshCcw className="h-5 w-5 text-warning" />
-              <h2 className="font-display text-xl text-text-primary">Reset controls</h2>
+              <RefreshCcw className="text-warning h-5 w-5" />
+              <h2 className="font-display text-text-primary text-xl">Reset controls</h2>
             </div>
-            <p className="font-body text-sm leading-7 text-text-secondary">
-              Use these controls when you want a fresh local workspace. Progress reset clears streaks, XP,
-              achievements, and daily challenge history from this browser.
+            <p className="font-body text-text-secondary text-sm leading-7">
+              Use these controls when you want a fresh local workspace. Progress reset clears
+              streaks, XP, achievements, and daily challenge history from this browser.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Button variant="outline" size="sm" onClick={handleResetProgress}>

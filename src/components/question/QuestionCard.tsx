@@ -48,7 +48,9 @@ export default function QuestionCard({
   onRequestAIRationale,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<string | null>(selectedOptionId)
-  const [showExplanation, setShowExplanation] = useState(mode === 'study' && selectedOptionId !== null)
+  const [showExplanation, setShowExplanation] = useState(
+    mode === 'study' && selectedOptionId !== null,
+  )
   const [shakeId, setShakeId] = useState<string | null>(null)
   const [glowId, setGlowId] = useState<string | null>(null)
   const explanationRef = useRef<HTMLDivElement>(null)
@@ -109,7 +111,8 @@ export default function QuestionCard({
         : 'border-border bg-surface hover:border-primary/50 hover:bg-surface-elevated'
     }
     if (option.isCorrect) return 'border-success bg-success-light text-text-primary'
-    if (selected === option.id && !option.isCorrect) return 'border-error bg-error-light text-text-primary'
+    if (selected === option.id && !option.isCorrect)
+      return 'border-error bg-error-light text-text-primary'
     return 'border-border bg-surface opacity-50'
   }
 
@@ -118,7 +121,7 @@ export default function QuestionCard({
       {/* Header bar */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="font-mono text-sm text-text-muted">
+          <span className="text-text-muted font-mono text-sm">
             {questionNumber} / {totalQuestions}
           </span>
           <Badge variant="primary">{CONTENT_CATEGORY_LABELS[contentCategory]}</Badge>
@@ -139,21 +142,21 @@ export default function QuestionCard({
 
       {/* Progress bar with gradient glow */}
       <div className="relative mb-8">
-        <div className="h-1.5 overflow-hidden rounded-full bg-surface-elevated">
+        <div className="bg-surface-elevated h-1.5 overflow-hidden rounded-full">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
+            className="from-primary to-secondary h-full rounded-full bg-gradient-to-r transition-all duration-500"
             style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
           />
         </div>
         <div
-          className="pointer-events-none absolute top-0 h-1.5 rounded-full bg-gradient-to-r from-primary to-secondary opacity-50 blur-[6px]"
+          className="from-primary to-secondary pointer-events-none absolute top-0 h-1.5 rounded-full bg-gradient-to-r opacity-50 blur-[6px]"
           style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
         />
       </div>
 
       {/* Question stem with left accent bar and inner glow */}
-      <div className="card-highlight mb-8 rounded-2xl border border-border border-l-[3px] border-l-primary bg-surface p-4 sm:p-6 md:p-8">
-        <p className="font-body text-base leading-relaxed text-text-primary sm:text-lg">{stem}</p>
+      <div className="card-highlight border-border border-l-primary bg-surface mb-8 rounded-2xl border border-l-[3px] p-4 sm:p-6 md:p-8">
+        <p className="font-body text-text-primary text-base leading-relaxed sm:text-lg">{stem}</p>
         {bigNine.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {bigNine.map((area) => (
@@ -176,7 +179,7 @@ export default function QuestionCard({
               shakeId === option.id ? 'qc-shake' : ''
             } ${glowId === option.id ? 'qc-glow-correct' : ''}`}
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-[#0b0722] font-mono text-sm font-bold transition-colors group-hover:border-primary/50">
+            <span className="border-border group-hover:border-primary/50 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border bg-[#0b0722] font-mono text-sm font-bold transition-colors">
               {String.fromCharCode(65 + idx)}
             </span>
             <span className="font-body text-sm leading-relaxed">{option.text}</span>
@@ -187,23 +190,27 @@ export default function QuestionCard({
       {/* Explanation (study mode) — slide-down reveal */}
       {showExplanation && isStudyMode && (
         <div ref={explanationRef} className="mt-6 overflow-hidden">
-          <div className="rounded-2xl border border-success/30 bg-success-light p-6">
-            <h4 className="mb-3 font-display text-lg text-text-primary">Explanation</h4>
-            <p className="font-body text-sm leading-relaxed text-text-secondary">{explanation}</p>
+          <div className="border-success/30 bg-success-light rounded-2xl border p-6">
+            <h4 className="font-display text-text-primary mb-3 text-lg">Explanation</h4>
+            <p className="font-body text-text-secondary text-sm leading-relaxed">{explanation}</p>
 
-            {incorrectExplanations && selected && !options.find((o) => o.id === selected)?.isCorrect && (
-              <div className="mt-4 border-t border-success/20 pt-4">
-                <h5 className="mb-2 font-body text-sm font-semibold text-error">Why your answer was incorrect:</h5>
-                <p className="font-body text-sm leading-relaxed text-text-secondary">
-                  {incorrectExplanations[selected]}
-                </p>
-              </div>
-            )}
+            {incorrectExplanations &&
+              selected &&
+              !options.find((o) => o.id === selected)?.isCorrect && (
+                <div className="border-success/20 mt-4 border-t pt-4">
+                  <h5 className="font-body text-error mb-2 text-sm font-semibold">
+                    Why your answer was incorrect:
+                  </h5>
+                  <p className="font-body text-text-secondary text-sm leading-relaxed">
+                    {incorrectExplanations[selected]}
+                  </p>
+                </div>
+              )}
 
             {onRequestAIRationale && (
               <button
                 onClick={onRequestAIRationale}
-                className="mt-4 flex items-center gap-2 font-body text-sm font-medium text-primary hover:text-primary-hover"
+                className="font-body text-primary hover:text-primary-hover mt-4 flex items-center gap-2 text-sm font-medium"
               >
                 <Sparkles className="h-4 w-4" />
                 Get AI-Powered Deep Dive
@@ -214,7 +221,7 @@ export default function QuestionCard({
       )}
 
       {/* Navigation — sticky at bottom with backdrop-blur */}
-      <div className="sticky bottom-16 z-20 mt-8 flex items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 py-3 backdrop-blur-md lg:bottom-0">
+      <div className="border-border/50 bg-background/80 sticky bottom-16 z-20 mt-8 flex items-center justify-between rounded-xl border px-4 py-3 backdrop-blur-md lg:bottom-0">
         <Button variant="ghost" size="sm" onClick={onPrev} disabled={questionNumber === 1}>
           <ChevronLeft className="h-4 w-4" />
           Previous

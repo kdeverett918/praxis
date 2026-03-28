@@ -10,11 +10,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchProfile = useCallback(async (userId: string) => {
     if (!supabase) return
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single()
+    const { data } = await supabase.from('profiles').select('*').eq('id', userId).single()
     if (data) setProfile(data)
   }, [])
 
@@ -31,7 +27,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false)
     })
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, s) => {
       setSession(s)
       setUser(s?.user ?? null)
       if (s?.user) fetchProfile(s.user.id)

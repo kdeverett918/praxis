@@ -73,7 +73,7 @@ export const category1Flashcards: FlashcardData[] = [
   // ─────────────────────────────────────────────────────────
   {
     id: 'fc1-008',
-    front: 'What are the MLU range and approximate age for Brown\'s Stage I?',
+    front: "What are the MLU range and approximate age for Brown's Stage I?",
     back: 'MLU: 1.0–2.0 morphemes. Age: approximately 12–26 months. Characterized by single words and early two-word combinations. Semantic relations include agent-action, action-object, and entity-locative.',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -81,7 +81,7 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-009',
-    front: 'What are the MLU range and approximate age for Brown\'s Stage II?',
+    front: "What are the MLU range and approximate age for Brown's Stage II?",
     back: 'MLU: 2.0–2.5 morphemes. Age: approximately 27–30 months. Marked by the emergence of grammatical morphemes, including present progressive (-ing), prepositions "in" and "on," and regular plural (-s).',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -89,7 +89,7 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-010',
-    front: 'What are the MLU range and approximate age for Brown\'s Stage III?',
+    front: "What are the MLU range and approximate age for Brown's Stage III?",
     back: 'MLU: 2.5–3.0 morphemes. Age: approximately 31–34 months. Characterized by simple sentence forms (subject-verb-object) and emergence of irregular past tense, possessive (-\'s), and the uncontractible copula ("he is big").',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -97,7 +97,7 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-011',
-    front: 'What are the MLU range and approximate age for Brown\'s Stage IV?',
+    front: "What are the MLU range and approximate age for Brown's Stage IV?",
     back: 'MLU: 3.0–3.75 morphemes. Age: approximately 35–40 months. Marked by embedding of sentences within sentences and emergence of regular third person (-s), articles (a, the), and the contractible copula ("he\'s big").',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -105,7 +105,7 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-012',
-    front: 'What are the MLU range and approximate age for Brown\'s Stage V?',
+    front: "What are the MLU range and approximate age for Brown's Stage V?",
     back: 'MLU: 3.75–4.5 morphemes. Age: approximately 41–46 months. Characterized by conjoining of sentences using conjunctions (and, but, because), the contractible auxiliary ("he\'s running"), and the uncontractible auxiliary ("he is running").',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -113,7 +113,7 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-013',
-    front: 'List Brown\'s 14 grammatical morphemes in order of acquisition.',
+    front: "List Brown's 14 grammatical morphemes in order of acquisition.",
     back: '1. Present progressive (-ing)\n2. Preposition "in"\n3. Preposition "on"\n4. Regular plural (-s)\n5. Irregular past tense (went, fell)\n6. Possessive (\'s)\n7. Uncontractible copula (is, are)\n8. Articles (a, the)\n9. Regular past tense (-ed)\n10. Regular third person (-s)\n11. Irregular third person (does, has)\n12. Uncontractible auxiliary (is, are)\n13. Contractible copula (he\'s big)\n14. Contractible auxiliary (she\'s running)',
     category: 'Foundations & Professional Practice',
     subcategory: 'Browns Stages',
@@ -181,7 +181,8 @@ export const category1Flashcards: FlashcardData[] = [
   },
   {
     id: 'fc1-021',
-    front: 'Name three phonological processes that are considered "atypical" or unusual at any age.',
+    front:
+      'Name three phonological processes that are considered "atypical" or unusual at any age.',
     back: '1. Backing — replacing anterior sounds with posterior sounds (e.g., "gog" for "dog")\n2. Initial consonant deletion — omitting the initial consonant of a word (e.g., "at" for "cat")\n3. Glottal replacement — substituting a glottal stop for a consonant (e.g., "baʔ" for "bat")\n\nThese processes are not part of typical phonological development and may indicate a more severe phonological disorder.',
     category: 'Foundations & Professional Practice',
     subcategory: 'Phonological Processes',
@@ -270,7 +271,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-031',
     front: 'ASHA Code of Ethics — Principle IV',
-    back: 'Individuals shall uphold the dignity and autonomy of the professions, maintain collaborative and harmonious interprofessional and intraprofessional relationships, and accept the professions\' self-imposed standards.\n\nKey rules: Do not engage in dishonesty, fraud, or deceit; report ethics violations to the Board of Ethics; comply with all ASHA policies.',
+    back: "Individuals shall uphold the dignity and autonomy of the professions, maintain collaborative and harmonious interprofessional and intraprofessional relationships, and accept the professions' self-imposed standards.\n\nKey rules: Do not engage in dishonesty, fraud, or deceit; report ethics violations to the Board of Ethics; comply with all ASHA policies.",
     category: 'Foundations & Professional Practice',
     subcategory: 'ASHA Code of Ethics',
     tags: ['ASHA-ethics', 'Principle-IV', 'professional-integrity'],
@@ -298,7 +299,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-034',
     front: 'What is HIPAA and how does it apply to SLPs?',
-    back: 'Health Insurance Portability and Accountability Act (HIPAA) — Protects the privacy of individuals\' health information (PHI) held by covered entities (healthcare providers, health plans, clearinghouses).\n\nSLP applications:\n• Medical/private practice SLPs must follow HIPAA\n• Requires patient consent for information release\n• Mandates secure storage of records\n• Limits disclosure to minimum necessary information\n• School-based SLPs are governed by FERPA instead',
+    back: "Health Insurance Portability and Accountability Act (HIPAA) — Protects the privacy of individuals' health information (PHI) held by covered entities (healthcare providers, health plans, clearinghouses).\n\nSLP applications:\n• Medical/private practice SLPs must follow HIPAA\n• Requires patient consent for information release\n• Mandates secure storage of records\n• Limits disclosure to minimum necessary information\n• School-based SLPs are governed by FERPA instead",
     category: 'Foundations & Professional Practice',
     subcategory: 'Legislation',
     tags: ['HIPAA', 'PHI', 'privacy', 'covered-entities'],
@@ -322,7 +323,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-037',
     front: 'What is the ADA and how does it relate to SLP practice?',
-    back: 'Americans with Disabilities Act (ADA) — Civil rights law prohibiting discrimination based on disability in employment, public services, public accommodations, and telecommunications.\n\nSLP relevance:\n• Ensures accessibility of clinical facilities\n• Requires reasonable accommodations for employees with disabilities\n• Protects patients\' rights to access services\n• Applies to private practice settings as public accommodations',
+    back: "Americans with Disabilities Act (ADA) — Civil rights law prohibiting discrimination based on disability in employment, public services, public accommodations, and telecommunications.\n\nSLP relevance:\n• Ensures accessibility of clinical facilities\n• Requires reasonable accommodations for employees with disabilities\n• Protects patients' rights to access services\n• Applies to private practice settings as public accommodations",
     category: 'Foundations & Professional Practice',
     subcategory: 'Legislation',
     tags: ['ADA', 'disability-rights', 'accessibility'],
@@ -334,7 +335,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-038',
     front: 'Define "sensitivity" and "specificity" in the context of diagnostic assessments.',
-    back: 'Sensitivity (true positive rate): The proportion of individuals WITH the condition who are correctly identified as positive by the test. High sensitivity = few missed cases (low false negatives).\n\nSpecificity (true negative rate): The proportion of individuals WITHOUT the condition who are correctly identified as negative. High specificity = few false alarms (low false positives).\n\nFor screening tools, high sensitivity is prioritized (don\'t miss true cases). For diagnostic tools, both are important.',
+    back: "Sensitivity (true positive rate): The proportion of individuals WITH the condition who are correctly identified as positive by the test. High sensitivity = few missed cases (low false negatives).\n\nSpecificity (true negative rate): The proportion of individuals WITHOUT the condition who are correctly identified as negative. High specificity = few false alarms (low false positives).\n\nFor screening tools, high sensitivity is prioritized (don't miss true cases). For diagnostic tools, both are important.",
     category: 'Foundations & Professional Practice',
     subcategory: 'Research Terminology',
     tags: ['sensitivity', 'specificity', 'assessment', 'psychometrics'],
@@ -342,7 +343,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-039',
     front: 'What are the three pillars of Evidence-Based Practice (EBP)?',
-    back: '1. Best available scientific evidence — research findings from systematic reviews, RCTs, and other study designs\n2. Clinical expertise — the clinician\'s knowledge, experience, and judgment\n3. Client/caregiver values and preferences — the unique needs, preferences, cultural values, and circumstances of the individual being served\n\nAll three pillars must be integrated for sound clinical decision-making.',
+    back: "1. Best available scientific evidence — research findings from systematic reviews, RCTs, and other study designs\n2. Clinical expertise — the clinician's knowledge, experience, and judgment\n3. Client/caregiver values and preferences — the unique needs, preferences, cultural values, and circumstances of the individual being served\n\nAll three pillars must be integrated for sound clinical decision-making.",
     category: 'Foundations & Professional Practice',
     subcategory: 'Research Terminology',
     tags: ['EBP', 'evidence-based-practice', 'clinical-decision-making'],
@@ -382,7 +383,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-044',
     front: 'What is effect size and why is it important?',
-    back: 'Effect size measures the magnitude of a treatment effect or the strength of a relationship between variables, independent of sample size.\n\nCommon measures:\n• Cohen\'s d: small (0.2), medium (0.5), large (0.8)\n• Eta-squared (η²): small (0.01), medium (0.06), large (0.14)\n• Pearson\'s r: small (0.1), medium (0.3), large (0.5)\n\nImportance: Statistical significance (p-value) can be achieved with trivially small effects if the sample is large enough. Effect size tells you whether the difference is clinically meaningful.',
+    back: "Effect size measures the magnitude of a treatment effect or the strength of a relationship between variables, independent of sample size.\n\nCommon measures:\n• Cohen's d: small (0.2), medium (0.5), large (0.8)\n• Eta-squared (η²): small (0.01), medium (0.06), large (0.14)\n• Pearson's r: small (0.1), medium (0.3), large (0.5)\n\nImportance: Statistical significance (p-value) can be achieved with trivially small effects if the sample is large enough. Effect size tells you whether the difference is clinically meaningful.",
     category: 'Foundations & Professional Practice',
     subcategory: 'Research Terminology',
     tags: ['effect-size', 'Cohens-d', 'clinical-significance', 'statistics'],
@@ -390,7 +391,7 @@ export const category1Flashcards: FlashcardData[] = [
   {
     id: 'fc1-045',
     front: 'What is a norm-referenced test vs. a criterion-referenced test?',
-    back: 'Norm-referenced: Compares an individual\'s performance to a normative sample. Produces standard scores, percentile ranks, etc. Used to determine how a child performs relative to same-age peers.\n\nCriterion-referenced: Measures performance against a predetermined standard or criterion. Determines what a child can and cannot do. Not compared to peers.\n\nExample: A standardized language test with norms (norm-referenced) vs. a curriculum-based assessment of specific vocabulary words (criterion-referenced).',
+    back: "Norm-referenced: Compares an individual's performance to a normative sample. Produces standard scores, percentile ranks, etc. Used to determine how a child performs relative to same-age peers.\n\nCriterion-referenced: Measures performance against a predetermined standard or criterion. Determines what a child can and cannot do. Not compared to peers.\n\nExample: A standardized language test with norms (norm-referenced) vs. a curriculum-based assessment of specific vocabulary words (criterion-referenced).",
     category: 'Foundations & Professional Practice',
     subcategory: 'Research Terminology',
     tags: ['norm-referenced', 'criterion-referenced', 'assessment-types'],

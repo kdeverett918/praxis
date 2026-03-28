@@ -24,10 +24,7 @@ export function useQuestions() {
     setLoading(true)
     setError(null)
 
-    let query = supabase
-      .from('questions')
-      .select('*')
-      .eq('is_published', true)
+    let query = supabase.from('questions').select('*').eq('is_published', true)
 
     if (filters.categories?.length) {
       query = query.in('content_category', filters.categories)
@@ -79,8 +76,8 @@ export function useQuestions() {
 
     // Shuffle
     for (let i = allQuestions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [allQuestions[i], allQuestions[j]] = [allQuestions[j]!, allQuestions[i]!]
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[allQuestions[i], allQuestions[j]] = [allQuestions[j]!, allQuestions[i]!]
     }
 
     setQuestions(allQuestions)

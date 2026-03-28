@@ -10,7 +10,7 @@ export default function BetaBanner() {
   if (!BETA_MODE_AVAILABLE || !settingsHydrated || !betaMode) return null
 
   return (
-    <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-secondary/20 to-primary/20 px-4 py-2 text-center font-body text-xs font-medium text-secondary">
+    <div className="from-secondary/20 to-primary/20 font-body text-secondary flex items-center justify-center gap-2 bg-gradient-to-r px-4 py-2 text-center text-xs font-medium">
       <Beaker className="h-3.5 w-3.5" />
       Beta Mode active — all features unlocked locally. Switch modes anytime in Settings.
     </div>

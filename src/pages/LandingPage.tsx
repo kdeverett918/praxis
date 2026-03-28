@@ -1,368 +1,194 @@
-import { useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
-  BookOpen, Brain, Sparkles, Trophy, BarChart3,
-  Layers, Zap, Check, ArrowRight, Star, Shield, Beaker,
+  CheckCircle2,
+  ArrowRight,
+  BrainCircuit,
+  Target,
+  BarChart3,
+  ShieldCheck,
+  Stethoscope,
 } from 'lucide-react'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import Button from '@/components/shared/Button'
-import Card from '@/components/shared/Card'
-import Badge from '@/components/shared/Badge'
-import { gsap, ScrollTrigger } from '@/lib/animations'
-import { useSettingsStore } from '@/stores/settingsStore'
-import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
-
-const FEATURES = [
-  { icon: Brain, title: 'Adaptive Engine', desc: 'Spaced repetition targets your weak areas automatically. The more you study, the smarter it gets.' },
-  { icon: Sparkles, title: 'AI Rationales', desc: 'Get Claude-powered explanations for every question — why the right answer works and why yours didn\'t.' },
-  { icon: BookOpen, title: 'Exam Simulation', desc: '132 questions, 150-minute timer. Experience realistic test conditions before the real thing.' },
-  { icon: Trophy, title: 'Track Progress', desc: 'Dashboard with Big Nine radar chart, study streaks, and personalized weak area recommendations.' },
-  { icon: Layers, title: 'Custom Quizzes', desc: 'Build quizzes by category, difficulty, or Big Nine area. Study exactly what you need.' },
-  { icon: Zap, title: 'Flashcard System', desc: 'Key terms, syndromes, cranial nerves, and milestones — all with spaced repetition built in.' },
-]
-
-const PRICING = [
-  { name: 'Free', price: '$0', period: 'forever', desc: 'Get started and see what PraxisPrep can do.', features: ['25 questions per day', '1 practice exam', 'Basic dashboard', 'Study content access'], cta: 'Start Free', highlighted: false },
-  { name: 'Pro', price: '$49', period: 'one-time', desc: 'Everything you need to pass the Praxis.', features: ['Unlimited questions', 'Unlimited exam simulations', 'AI-powered rationales', 'Full flashcard library', 'Performance analytics', 'Custom quiz builder', 'Priority support'], cta: 'Get Pro Access', highlighted: true },
-  { name: 'Institutional', price: 'Custom', period: 'per program', desc: 'For SLP programs and universities.', features: ['Everything in Pro', 'Bulk student accounts', 'Aggregate performance analytics', 'Program admin dashboard', 'Custom content integration'], cta: 'Contact Us', highlighted: false },
-]
-
-const STATS = [
-  { value: 450, suffix: '+', label: 'Practice Questions' },
-  { value: 132, suffix: '', label: 'Questions Per Exam' },
-  { value: 9, suffix: '', label: 'Big Nine Areas' },
-  { value: 3, suffix: '', label: 'Content Categories' },
-]
+import Navbar from '../components/layout/Navbar'
+import Footer from '../components/layout/Footer'
 
 export default function LandingPage() {
-  const navigate = useNavigate()
-  const statsRef = useRef<HTMLDivElement>(null)
-  const pageRef = useRef<HTMLDivElement>(null)
-  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
-  const updateSettings = useSettingsStore((s) => s.updateSettings)
-  const betaMode = resolveBetaMode(betaModeEnabled)
-
-  useEffect(() => {
-    if (!pageRef.current) return
-
-    // Animate sections on scroll — fade up from visible (not from opacity:0)
-    const sections = pageRef.current.querySelectorAll<HTMLElement>('.landing-animate')
-    sections.forEach((el) => {
-      gsap.fromTo(el,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' } }
-      )
-    })
-
-    // Stagger feature cards
-    gsap.fromTo('.feature-card',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.feature-card', start: 'top 88%', toggleActions: 'play none none none' } }
-    )
-
-    // Stagger pricing cards
-    gsap.fromTo('.pricing-card',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.pricing-card', start: 'top 88%', toggleActions: 'play none none none' } }
-    )
-
-    // Stat counter animation
-    if (statsRef.current) {
-      statsRef.current.querySelectorAll<HTMLElement>('.stat-number').forEach((el) => {
-        const target = parseInt(el.dataset.target ?? '0', 10)
-        const suffix = el.dataset.suffix ?? ''
-        const obj = { val: 0 }
-        gsap.to(obj, {
-          val: target, duration: 1.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
-          onUpdate() { el.textContent = Math.round(obj.val) + suffix },
-        })
-      })
-    }
-
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill())
-  }, [])
-
-  function handleContinueInBetaMode() {
-    updateSettings({ betaModeEnabled: true })
-    navigate('/dashboard')
-  }
-
   return (
-    <div ref={pageRef} className="min-h-screen bg-background text-text-primary">
+    <div className="min-h-screen bg-stone-50 font-sans text-slate-900 selection:bg-teal-100 selection:text-teal-900">
       <Navbar />
 
-      {/* ===== HERO ===== */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 text-center">
-        <div className="mesh-orb pointer-events-none absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" style={{ animationDelay: '0s' }} />
-        <div className="mesh-orb pointer-events-none absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-secondary/10 blur-[100px]" style={{ animationDelay: '-5s' }} />
-        <div className="mesh-orb pointer-events-none absolute top-1/3 left-1/4 h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[100px]" style={{ animationDelay: '-10s' }} />
+      <main>
+        {/* HERO SECTION */}
+        <section className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-32 pb-20 text-center sm:px-6 md:pt-48 md:pb-32 lg:px-8">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-sm font-medium text-teal-800">
+            <span className="flex h-2 w-2 animate-pulse rounded-full bg-teal-600"></span>
+            Updated for the latest Praxis® 5331 format
+          </div>
 
-        <div className="relative z-10">
-          <Badge variant="secondary" className="mb-8">
-            <Sparkles className="h-3.5 w-3.5" />
-            AI-Powered Praxis 5331 Prep
-          </Badge>
-
-          <h1 className="mx-auto max-w-5xl font-bold leading-[1.15] tracking-[-0.025em] text-[clamp(2.25rem,6vw,5.5rem)] py-1">
-            The smartest way to{' '}
-            <span className="bg-gradient-to-r from-secondary to-amber-400 bg-clip-text text-transparent">
-              pass the Praxis
-            </span>
+          <h1 className="mb-6 max-w-4xl text-4xl leading-[1.1] font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl">
+            Pass the SLP Praxis.
+            <br />
+            <span className="text-slate-500">Stop second-guessing.</span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            Adaptive study engine with AI-powered rationales and realistic exam simulations.
-            Built by a medical SLP who codes — not a textbook publisher.
+          <p className="mb-10 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
+            A focused, clinician-built prep system designed to eliminate study chaos. Know your
+            exact score risk across the Big Nine before test day.
           </p>
 
-          <div className="mt-12 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <Link to="/signup" className="w-full sm:w-auto">
-              <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Start Studying Free
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+          <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
+            <Link
+              to="/quiz/diagnostic"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-8 py-4 text-lg font-semibold text-white shadow-sm transition-all hover:bg-teal-800 hover:shadow-md sm:w-auto"
+            >
+              Take the Free Diagnostic
+              <ArrowRight className="h-5 w-5" />
             </Link>
-            <a href="#features" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                See How It Works
-              </Button>
+            <a
+              href="#pricing"
+              className="flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-8 py-4 text-lg font-semibold text-slate-700 shadow-sm transition-all hover:border-slate-300 sm:w-auto"
+            >
+              View the $49 Pass Pack
             </a>
           </div>
 
-          {BETA_MODE_AVAILABLE && (
-            <div
-              data-testid="landing-beta-cta"
-              className="mx-auto mt-5 flex max-w-2xl flex-col items-stretch gap-3 rounded-2xl border border-secondary/30 bg-secondary/8 p-4 text-left sm:flex-row sm:items-center sm:justify-between"
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondary">
-                  <Beaker className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-body text-sm font-semibold text-text-primary">
-                    {betaMode ? 'Beta Mode is active in this browser.' : 'Beta Mode is available in this browser.'}
-                  </p>
-                  <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
-                    Open the unlocked local workspace directly and bypass login on protected pages.
-                  </p>
-                </div>
-              </div>
-              <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode}>
-                {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
-              </Button>
+          {/* Social Proof Strip */}
+          <div className="mt-16 flex w-full max-w-3xl flex-col items-center justify-center gap-8 border-t border-slate-200 pt-8 text-sm font-medium text-slate-500 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-teal-600" />
+              Clinician-curated questions
             </div>
-          )}
-
-          <p className="mt-6 text-sm text-text-muted">
-            No credit card required &middot; 25 free questions daily
-          </p>
-        </div>
-
-        {/* Stats */}
-        <div
-          ref={statsRef}
-          data-testid="landing-stats"
-          className="relative z-10 mt-16 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm sm:p-8"
-        >
-          <div className="grid grid-cols-2 items-stretch gap-6 md:grid-cols-4">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                data-testid="landing-stat-item"
-                className="flex flex-col items-center justify-center text-center"
-              >
-                <div className="stat-number font-display text-3xl font-bold text-secondary md:text-4xl" data-target={stat.value} data-suffix={stat.suffix}>
-                  0{stat.suffix}
-                </div>
-                <div className="mt-1 font-body text-sm text-text-secondary">{stat.label}</div>
-              </div>
-            ))}
+            <div className="flex items-center gap-2">
+              <Target className="h-5 w-5 text-teal-600" />
+              Targeted Big Nine analytics
+            </div>
+            <div className="flex items-center gap-2">
+              <Stethoscope className="h-5 w-5 text-teal-600" />
+              Realistic clinical scenarios
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== FEATURES ===== */}
-      <section id="features" className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="landing-animate text-center">
-          <Badge variant="primary" className="mb-6">
-            <Zap className="h-3.5 w-3.5" />
-            Features
-          </Badge>
-          <h2 className="mx-auto max-w-3xl text-3xl font-bold md:text-5xl">
-            Everything you need to ace the Praxis
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl font-body text-lg text-text-secondary">
-            Designed by a CCC-SLP who knows exactly what the exam tests — and what trips students up.
-          </p>
-        </div>
+        {/* FEATURE STRUCTURE SECTION */}
+        <section id="features" className="border-y border-slate-200 bg-white py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+                Everything you need. Nothing you don't.
+              </h2>
+              <p className="text-lg text-slate-600">
+                Textbooks are for grad school. PraxisPrep is a targeted intervention designed
+                specifically for the format and rigor of the 5331 exam.
+              </p>
+            </div>
 
-        <div className="mt-16 grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-6">
-          {FEATURES.map((feature, idx) => {
-            const isWide = idx < 2
-            return (
-              <div key={feature.title} className={`flex ${isWide ? 'lg:col-span-3' : 'sm:col-span-1 lg:col-span-3'}`}>
-                <Card hover spotlight className={`feature-card flex h-full w-full flex-col hover-glow ${isWide ? 'lg:py-10' : ''}`}>
-                  <div className={`mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br from-secondary/15 to-secondary/5 ${isWide ? 'h-14 w-14' : 'h-12 w-12'}`}>
-                    <feature.icon className={`text-secondary ${isWide ? 'h-7 w-7' : 'h-6 w-6'}`} />
+            <div className="grid gap-8 md:grid-cols-3">
+              {/* Feature 1 */}
+              <div className="rounded-2xl border border-slate-100 bg-stone-50 p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
+                  <Target className="h-6 w-6 text-teal-700" />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-slate-900">Diagnostic Simulation</h3>
+                <p className="leading-relaxed text-slate-600">
+                  Start with a full-length baseline exam. We immediately identify your weakest "Big
+                  Nine" categories so you stop studying what you already know.
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="rounded-2xl border border-slate-100 bg-stone-50 p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
+                  <BrainCircuit className="h-6 w-6 text-teal-700" />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-slate-900">Smart Flashcards</h3>
+                <p className="leading-relaxed text-slate-600">
+                  Spaced-repetition flashcards mapped directly to ETS categories. Master
+                  differential diagnosis, cranial nerves, and milestones efficiently.
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="rounded-2xl border border-slate-100 bg-stone-50 p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
+                  <BarChart3 className="h-6 w-6 text-teal-700" />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-slate-900">Readiness Analytics</h3>
+                <p className="leading-relaxed text-slate-600">
+                  Our dashboard tracks your rolling accuracy. When all your Big Nine indicators turn
+                  green, you can walk into the testing center with confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PRICING / THE OFFER */}
+        <section id="pricing" className="bg-slate-900 py-24 text-white">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 sm:px-6 lg:flex-row lg:px-8">
+            <div className="max-w-2xl flex-1">
+              <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl">
+                One simple price.
+                <br /> Lifetime access.
+              </h2>
+              <p className="mb-8 text-lg leading-relaxed text-slate-300">
+                Most prep courses charge hundreds of dollars for bloated video libraries. We built a
+                streamlined, high-yield clinical engine for a fraction of the cost.
+              </p>
+              <div className="space-y-4">
+                {[
+                  'Full-length diagnostic & 3 practice exams',
+                  'Over 600+ high-yield clinical questions',
+                  'Smart Spaced-Repetition Flashcards',
+                  'Detailed rationales for every right & wrong answer',
+                  'Big Nine progress dashboard',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-6 w-6 shrink-0 text-teal-400" />
+                    <span className="text-lg text-slate-200">{item}</span>
                   </div>
-                  <h3 className={`mb-2 font-display ${isWide ? 'text-2xl' : 'text-xl'}`}>{feature.title}</h3>
-                  <p className="flex-1 font-body text-sm leading-relaxed text-text-secondary">{feature.desc}</p>
-                </Card>
+                ))}
               </div>
-            )
-          })}
-        </div>
-      </section>
+            </div>
 
-      {/* ===== HOW IT WORKS ===== */}
-      <section className="border-y border-border bg-surface/20 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="landing-animate text-center">
-            <Badge variant="default" className="mb-6">
-              <BarChart3 className="h-3.5 w-3.5" />
-              How It Works
-            </Badge>
-            <h2 className="text-3xl font-bold md:text-5xl">Study smarter in three steps</h2>
-          </div>
-
-          <div className="mt-16 grid items-stretch gap-12 md:grid-cols-3">
-            {[
-              { step: '01', title: 'Take a diagnostic quiz', desc: 'Answer questions across all three content categories and Big Nine areas. We\'ll map your strengths and weaknesses.', icon: BookOpen },
-              { step: '02', title: 'Study your weak areas', desc: 'Our adaptive engine serves you questions where you need the most practice. AI rationales explain the clinical reasoning.', icon: Brain },
-              { step: '03', title: 'Simulate the real exam', desc: 'Take full 132-question practice exams under timed conditions. Track your scores and watch them improve.', icon: Trophy },
-            ].map((item) => (
-              <div key={item.step} className="landing-animate flex flex-col text-center md:text-left">
-                <div className="mb-4 inline-flex items-center justify-center gap-3 md:justify-start">
-                  <span className="font-mono text-4xl font-bold text-secondary/30">{item.step}</span>
-                  <item.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="mb-3 font-display text-2xl">{item.title}</h3>
-                <p className="flex-1 font-body leading-relaxed text-text-secondary">{item.desc}</p>
+            {/* Pricing Card */}
+            <div className="w-full max-w-md rounded-3xl bg-white p-8 text-slate-900 shadow-2xl lg:-mt-12 lg:mb-12">
+              <div className="mb-2 text-sm font-bold tracking-wider text-teal-700 uppercase">
+                The Pass Pack
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="mb-6 flex items-baseline gap-2">
+                <span className="text-5xl font-extrabold tracking-tight">$49</span>
+                <span className="font-medium text-slate-500">one-time</span>
+              </div>
 
-      {/* ===== PRICING ===== */}
-      <section id="pricing" className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="landing-animate text-center">
-          <Badge variant="secondary" className="mb-6">
-            <Star className="h-3.5 w-3.5" />
-            Pricing
-          </Badge>
-          <h2 className="text-3xl font-bold md:text-5xl">Less than a textbook. More than a question bank.</h2>
-          <p className="mx-auto mt-6 max-w-2xl font-body text-lg text-text-secondary">
-            One payment. Full access. No recurring fees eating into your grad student budget.
-          </p>
-        </div>
-
-        <div className="landing-animate mx-auto mt-10 max-w-xl rounded-2xl border border-secondary/30 bg-secondary/5 p-5 text-center backdrop-blur-sm">
-          <p className="font-body text-sm font-semibold text-secondary">Save up to 60% vs. competitors</p>
-          <p className="mt-1 font-body text-xs text-text-secondary">
-            Most Praxis prep subscriptions charge $99&ndash;$149/year. PraxisPrep is a one-time $49 payment with more features.
-          </p>
-        </div>
-
-        <div className="mt-12 grid items-stretch gap-8 md:grid-cols-3">
-          {PRICING.map((plan) => (
-            <div key={plan.name} className="flex">
-              <Card
-                variant={plan.highlighted ? 'glass' : 'default'}
-                hover
-                spotlight
-                className={`pricing-card relative flex h-full w-full flex-col ${
-                  plan.highlighted ? 'animated-gradient-border pro-pricing-card md:scale-105' : ''
-                }`}
+              <Link
+                to="/checkout"
+                className="mb-4 block w-full rounded-xl bg-slate-900 px-6 py-4 text-center text-lg font-semibold text-white shadow-sm transition-all hover:bg-slate-800"
               >
-                {plan.highlighted && (
-                  <Badge variant="secondary" className="absolute -top-3 right-6">Most Popular</Badge>
-                )}
-                <h3 className="font-display text-2xl">{plan.name}</h3>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-bold text-text-primary">{plan.price}</span>
-                  <span className="font-body text-sm text-text-muted">/{plan.period}</span>
+                Get Instant Access
+              </Link>
+
+              <p className="mb-8 text-center text-sm text-slate-500">
+                Secure checkout. 7-day money-back guarantee.
+              </p>
+
+              <div className="rounded-xl border border-slate-100 bg-stone-50 p-6">
+                <p className="mb-4 text-sm font-medium text-slate-700 italic">
+                  "I was scoring 150s on my practice tests, used this system for 3 weeks, and passed
+                  with a 178. The analytics told me exactly what to study."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-slate-200 font-bold text-slate-600">
+                    S
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold">Sarah M., CCC-SLP</div>
+                    <div className="text-xs text-slate-500">Passed March 2025</div>
+                  </div>
                 </div>
-                <p className="mt-3 font-body text-sm text-text-secondary">{plan.desc}</p>
-
-                <ul className="mt-8 flex-1 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                      <span className="font-body text-sm text-text-secondary">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link to="/signup" className="mt-8 block">
-                  <Button variant={plan.highlighted ? 'primary' : 'outline'} size="lg" className="w-full">
-                    {plan.cta}
-                  </Button>
-                </Link>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== ABOUT ===== */}
-      <section id="about" className="border-t border-border bg-surface/20 py-20 md:py-28">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="landing-animate">
-            <Badge variant="primary" className="mb-6">
-              <Shield className="h-3.5 w-3.5" />
-              Built by a Clinician
-            </Badge>
-            <h2 className="text-3xl font-bold md:text-5xl">Why this is different</h2>
-          </div>
-
-          <Card spotlight className="landing-animate mt-12 text-left">
-            <p className="font-body text-lg leading-relaxed text-text-secondary">
-              I'm Kristine — a medical SLP with a CCC and a full-stack developer. I built PraxisPrep
-              because every study resource I found was either an overpriced textbook, a static PDF, or
-              a quiz app that couldn't explain <em>why</em> an answer was right.
-            </p>
-            <p className="mt-6 font-body text-lg leading-relaxed text-text-secondary">
-              This platform uses <strong className="text-text-primary">spaced repetition</strong> to target your
-              weak areas, <strong className="text-text-primary">AI-powered rationales</strong> to explain clinical
-              reasoning, and <strong className="text-text-primary">realistic exam simulations</strong> so you know
-              exactly what to expect. Every question is original, clinically accurate, and mapped to the
-              official ETS blueprint.
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20 font-display text-xl text-secondary">K</div>
-              <div>
-                <p className="font-body font-semibold text-text-primary">Kristine Everett</p>
-                <p className="font-body text-sm text-text-muted">M.A., CCC-SLP &middot; Tech SLP Studio</p>
               </div>
             </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* ===== FINAL CTA ===== */}
-      <section className="relative overflow-hidden py-20 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-        <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h2 className="landing-animate text-3xl font-bold md:text-5xl">Ready to study smarter?</h2>
-          <p className="landing-animate mx-auto mt-6 max-w-xl font-body text-lg text-text-secondary">
-            Join hundreds of SLP grad students who are using PraxisPrep to pass the Praxis with confidence.
-          </p>
-          <div className="landing-animate mt-10">
-            <Link to="/signup">
-              <Button variant="primary" size="lg">
-                Start Studying Free
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
     </div>

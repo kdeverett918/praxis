@@ -53,7 +53,10 @@ export type Database = {
           is_published: boolean
           created_at: string
         }
-        Insert: Omit<Database['public']['Tables']['questions']['Row'], 'id' | 'created_at' | 'is_published'> & {
+        Insert: Omit<
+          Database['public']['Tables']['questions']['Row'],
+          'id' | 'created_at' | 'is_published'
+        > & {
           id?: string
           is_published?: boolean
         }
@@ -134,12 +137,34 @@ export type Database = {
           sort_order: number
           is_published: boolean
         }
-        Insert: Omit<Database['public']['Tables']['study_content']['Row'], 'id' | 'is_published' | 'sort_order'> & {
+        Insert: Omit<
+          Database['public']['Tables']['study_content']['Row'],
+          'id' | 'is_published' | 'sort_order'
+        > & {
           id?: string
           is_published?: boolean
           sort_order?: number
         }
         Update: Partial<Database['public']['Tables']['study_content']['Insert']>
+      }
+      diagnostic_leads: {
+        Row: {
+          id: string
+          email: string
+          exam_date: string | null
+          source: string
+          diagnostic_score: number | null
+          readiness_band: string | null
+          weakest_area: string | null
+          created_at: string
+        }
+        Insert: Omit<
+          Database['public']['Tables']['diagnostic_leads']['Row'],
+          'id' | 'created_at'
+        > & {
+          id?: string
+        }
+        Update: Partial<Database['public']['Tables']['diagnostic_leads']['Insert']>
       }
     }
     Views: Record<string, never>
@@ -161,3 +186,4 @@ export type ExamSession = Database['public']['Tables']['exam_sessions']['Row']
 export type SRSCard = Database['public']['Tables']['srs_cards']['Row']
 export type Flashcard = Database['public']['Tables']['flashcards']['Row']
 export type StudyContent = Database['public']['Tables']['study_content']['Row']
+export type DiagnosticLead = Database['public']['Tables']['diagnostic_leads']['Row']
