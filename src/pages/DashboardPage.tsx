@@ -100,15 +100,15 @@ export default function DashboardPage() {
       </div>
 
       {/* XP Bar + Daily Challenge */}
-      <div className="mb-8 grid gap-4 lg:grid-cols-2">
+      <div className="mb-8 grid items-stretch gap-4 lg:grid-cols-2">
         <XPBar />
         <DailyChallenge />
       </div>
 
       {/* Stats Row */}
-      <div ref={statsRef} className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div ref={statsRef} className="mb-8 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {STAT_CARDS.map((stat) => (
-          <Card key={stat.key} className={`group relative flex items-center gap-4 overflow-hidden border-t-2 ${stat.accent}`}>
+          <Card key={stat.key} className={`group relative flex h-full items-center gap-4 overflow-hidden border-t-2 ${stat.accent}`}>
             <div className={`pointer-events-none absolute inset-0 bg-gradient-to-r ${stat.gradientHover} via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
             <div className={`shimmer-card flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
               <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
@@ -129,21 +129,21 @@ export default function DashboardPage() {
 
       {/* Quick Actions */}
       <h2 className="mb-4 font-display text-xl text-text-primary">Start Studying</h2>
-      <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-10 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {QUICK_ACTIONS.map((action) => (
-          <Link key={action.to} to={action.to}>
-            <Card hover className="group flex items-center gap-4">
-              <action.icon className={`h-8 w-8 ${action.color}`} />
-              <div className="flex-1">
+          <Link key={action.to} to={action.to} className="flex">
+            <Card hover className="group flex h-full w-full items-center gap-4">
+              <action.icon className={`h-8 w-8 shrink-0 ${action.color}`} />
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <p className="font-body font-semibold text-text-primary">{action.label}</p>
-                  <kbd className="hidden rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] text-text-muted sm:inline-block">
+                  <kbd className="hidden shrink-0 rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] text-text-muted sm:inline-block">
                     {action.shortcut}
                   </kbd>
                 </div>
                 <p className="font-body text-xs text-text-muted">{action.desc}</p>
               </div>
-              <ArrowRight className="h-4 w-4 text-text-muted transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 shrink-0 text-text-muted transition-transform group-hover:translate-x-1" />
             </Card>
           </Link>
         ))}
@@ -151,9 +151,9 @@ export default function DashboardPage() {
 
       {/* Games Section */}
       <h2 className="mb-4 font-display text-xl text-text-primary">Games</h2>
-      <div className="mb-10 grid gap-4 sm:grid-cols-2">
-        <Link to="/speed-round">
-          <Card hover className="group relative flex items-center gap-4 overflow-hidden">
+      <div className="mb-10 grid items-stretch gap-4 sm:grid-cols-2">
+        <Link to="/speed-round" className="flex">
+          <Card hover className="group relative flex h-full w-full items-center gap-4 overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-amber-400 shadow-md shadow-secondary/20">
               <Gamepad2 className="h-6 w-6 text-white" />
@@ -165,8 +165,8 @@ export default function DashboardPage() {
             <ArrowRight className="h-4 w-4 text-text-muted transition-transform group-hover:translate-x-1" />
           </Card>
         </Link>
-        <Link to="/clinical-scenario">
-          <Card hover className="group relative flex items-center gap-4 overflow-hidden">
+        <Link to="/clinical-scenario" className="flex">
+          <Card hover className="group relative flex h-full w-full items-center gap-4 overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-indigo-400 shadow-md shadow-primary/20">
               <Stethoscope className="h-6 w-6 text-white" />
@@ -181,9 +181,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Weak Areas + Category Scores */}
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid items-stretch gap-8 lg:grid-cols-2">
         {/* Weak Areas */}
-        <Card>
+        <Card className="flex h-full flex-col">
           <div className="mb-6 flex items-center justify-between">
             <h3 className="font-display text-xl text-text-primary">Focus Areas</h3>
             <Link to="/analytics">
@@ -210,7 +210,7 @@ export default function DashboardPage() {
         </Card>
 
         {/* Category Breakdown */}
-        <Card>
+        <Card className="flex h-full flex-col">
           <h3 className="mb-6 font-display text-xl text-text-primary">Category Scores</h3>
           <div className="space-y-6">
             {[

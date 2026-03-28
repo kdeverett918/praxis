@@ -357,21 +357,21 @@ export default function SpeedRoundPage() {
       {phase === 'playing' && currentQuestion && (
         <div>
           {/* Top bar: timer + score + combo */}
-          <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center gap-4">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className={`flex items-center gap-2 ${timerColor}`}>
-                <Clock className="h-5 w-5" />
-                <span className="font-mono text-2xl font-bold">{timeLeft}s</span>
+                <Clock className="h-5 w-5 shrink-0" />
+                <span className="font-mono text-xl font-bold sm:text-2xl">{timeLeft}s</span>
               </div>
               {combo > 1 && (
-                <div className="flex items-center gap-1 rounded-full bg-secondary/15 px-3 py-1">
+                <div className="flex items-center gap-1 rounded-full bg-secondary/15 px-2.5 py-1 sm:px-3">
                   <Flame className="h-4 w-4 text-secondary" />
-                  <span className="font-mono text-sm font-bold text-secondary">{combo}x Combo</span>
+                  <span className="font-mono text-xs font-bold text-secondary sm:text-sm">{combo}x</span>
                 </div>
               )}
             </div>
             <div className="text-right">
-              <p className="font-mono text-2xl font-bold text-text-primary">{score}</p>
+              <p className="font-mono text-xl font-bold text-text-primary sm:text-2xl">{score}</p>
               <p className="font-body text-xs text-text-muted">points</p>
             </div>
           </div>
@@ -398,7 +398,7 @@ export default function SpeedRoundPage() {
               <p className="font-body text-xs text-text-muted">
                 Question {currentIdx + 1} of {questions.length}
               </p>
-              <h2 className="mt-2 font-display text-xl text-text-primary md:text-2xl">
+              <h2 className="mt-2 font-display text-lg leading-snug text-text-primary sm:text-xl md:text-2xl">
                 {currentQuestion.question}
               </h2>
             </Card>

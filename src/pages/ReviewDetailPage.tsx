@@ -171,14 +171,14 @@ export default function ReviewDetailPage() {
   const next = currentIdx < sameCat.length - 1 ? sameCat[currentIdx + 1] : null
 
   return (
-    <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
+    <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
       {/* Breadcrumb */}
       <Link to="/review" className="mb-6 inline-flex items-center gap-2 font-body text-sm text-text-muted transition-colors hover:text-text-secondary">
         <ArrowLeft className="h-4 w-4" /> Back to Review
       </Link>
 
       {/* Topic Header */}
-      <div className={`mb-8 rounded-2xl border ${catConfig.badgeColor.includes('purple') ? 'border-purple-500/20' : catConfig.badgeColor.includes('amber') ? 'border-amber-500/20' : 'border-emerald-500/20'} bg-gradient-to-r ${catConfig.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 p-6 md:p-8`}>
+      <div className={`mb-8 rounded-2xl border ${catConfig.badgeColor.includes('purple') ? 'border-purple-500/20' : catConfig.badgeColor.includes('amber') ? 'border-amber-500/20' : 'border-emerald-500/20'} bg-gradient-to-r ${catConfig.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 p-4 sm:p-6 md:p-8`}>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${catConfig.badgeColor}`}>
             Category {topic.contentCategory}
@@ -189,7 +189,7 @@ export default function ReviewDetailPage() {
         </div>
         <div className="flex items-start gap-3">
           <BookOpen className={`mt-1 h-6 w-6 shrink-0 ${catConfig.accentColor}`} />
-          <h1 className="font-display text-2xl text-text-primary md:text-3xl">{topic.title}</h1>
+          <h1 className="font-display text-xl text-text-primary sm:text-2xl md:text-3xl">{topic.title}</h1>
         </div>
         {topic.bigNine.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-1.5">
@@ -201,7 +201,7 @@ export default function ReviewDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="mb-10 rounded-2xl border border-border bg-surface p-6 md:p-8">
+      <div className="mb-10 rounded-2xl border border-border bg-surface p-4 sm:p-6 md:p-8">
         {renderMarkdown(topic.contentMarkdown)}
       </div>
 

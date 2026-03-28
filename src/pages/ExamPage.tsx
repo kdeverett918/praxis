@@ -58,13 +58,13 @@ export default function ExamPage() {
           </ul>
         </Card>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid items-stretch gap-6 sm:grid-cols-3">
           {[
             { label: 'Questions', value: '132', sub: 'selected-response' },
             { label: 'Time Limit', value: '150', sub: 'minutes' },
             { label: 'Passing Score', value: '162', sub: 'out of 200' },
           ].map((stat) => (
-            <Card key={stat.label} className="text-center">
+            <Card key={stat.label} className="flex flex-col items-center justify-center text-center">
               <p className="font-mono text-3xl font-bold text-secondary">{stat.value}</p>
               <p className="mt-1 font-body text-sm font-semibold text-text-primary">{stat.label}</p>
               <p className="font-body text-xs text-text-muted">{stat.sub}</p>
@@ -85,22 +85,22 @@ export default function ExamPage() {
   return (
     <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
       {/* Timer bar */}
-      <div className="mb-8 flex items-center justify-between rounded-xl border border-border bg-surface p-4">
-        <div className="flex items-center gap-3">
-          <Clock className={`h-5 w-5 ${isLow ? 'animate-pulse text-error' : 'text-primary'}`} />
-          <span className={`font-mono text-xl font-bold ${isLow ? 'text-error' : 'text-text-primary'}`}>
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border bg-surface p-3 sm:p-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Clock className={`h-5 w-5 shrink-0 ${isLow ? 'animate-pulse text-error' : 'text-primary'}`} />
+          <span className={`font-mono text-lg font-bold sm:text-xl ${isLow ? 'text-error' : 'text-text-primary'}`}>
             {formatTime(timeRemaining)}
           </span>
         </div>
         <Badge variant="default">
-          Question {currentQuestion + 1} of {totalQuestions}
+          Q {currentQuestion + 1}/{totalQuestions}
         </Badge>
       </div>
 
       {/* Question navigation grid */}
       <Card className="mb-8">
         <h3 className="mb-4 font-body text-sm font-semibold text-text-muted">Question Navigator</h3>
-        <div className="grid grid-cols-11 gap-1.5 sm:grid-cols-22">
+        <div className="grid grid-cols-8 gap-1.5 sm:grid-cols-11 md:grid-cols-16 lg:grid-cols-22">
           {Array.from({ length: totalQuestions }).map((_, i) => (
             <button
               key={i}

@@ -652,15 +652,15 @@ export default function ClinicalScenarioPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid items-stretch gap-6 md:grid-cols-3">
             {SCENARIOS.map((scenario) => (
-              <Card key={scenario.id} hover className="group cursor-pointer" onClick={() => startScenario(scenario)}>
+              <Card key={scenario.id} hover className="group flex h-full cursor-pointer flex-col" onClick={() => startScenario(scenario)}>
                 <Badge variant={scenario.category === 'Dysphagia' ? 'error' : scenario.category === 'Language' ? 'primary' : 'secondary'}>
                   {scenario.category}
                 </Badge>
                 <h3 className="mt-4 font-display text-xl text-text-primary">{scenario.title}</h3>
                 <p className="mt-1 font-body text-sm text-text-muted">{scenario.subtitle}</p>
-                <p className="mt-3 font-body text-sm leading-relaxed text-text-secondary line-clamp-3">
+                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-text-secondary line-clamp-3">
                   {scenario.description}
                 </p>
                 <div className="mt-4 flex items-center justify-between">

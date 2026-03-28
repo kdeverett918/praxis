@@ -112,8 +112,8 @@ export default function QuestionCard({
   return (
     <div className="mx-auto max-w-3xl">
       {/* Header bar */}
-      <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="font-mono text-sm text-text-muted">
             {questionNumber} / {totalQuestions}
           </span>
@@ -148,8 +148,8 @@ export default function QuestionCard({
       </div>
 
       {/* Question stem with left accent bar and inner glow */}
-      <div className="card-highlight mb-8 rounded-2xl border border-border border-l-[3px] border-l-primary bg-surface p-6 md:p-8">
-        <p className="font-body text-lg leading-relaxed text-text-primary">{stem}</p>
+      <div className="card-highlight mb-8 rounded-2xl border border-border border-l-[3px] border-l-primary bg-surface p-4 sm:p-6 md:p-8">
+        <p className="font-body text-base leading-relaxed text-text-primary sm:text-lg">{stem}</p>
         {bigNine.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {bigNine.map((area) => (
@@ -210,7 +210,7 @@ export default function QuestionCard({
       )}
 
       {/* Navigation — sticky at bottom with backdrop-blur */}
-      <div className="sticky bottom-0 z-20 mt-8 flex items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 py-3 backdrop-blur-md">
+      <div className="sticky bottom-16 z-20 mt-8 flex items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 py-3 backdrop-blur-md lg:bottom-0">
         <Button variant="ghost" size="sm" onClick={onPrev} disabled={questionNumber === 1}>
           <ChevronLeft className="h-4 w-4" />
           Previous

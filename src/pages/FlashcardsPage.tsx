@@ -76,7 +76,7 @@ export default function FlashcardsPage() {
         <div className="pointer-events-none absolute inset-0 z-0">
           <Card
             variant="glass"
-            className="min-h-[320px] translate-y-4 scale-[0.94] opacity-30"
+            className="min-h-[280px] translate-y-4 scale-[0.94] opacity-30 sm:min-h-[320px]"
           >
             <div />
           </Card>
@@ -84,7 +84,7 @@ export default function FlashcardsPage() {
         <div className="pointer-events-none absolute inset-0 z-[1]">
           <Card
             variant="glass"
-            className="min-h-[320px] translate-y-2 scale-[0.97] opacity-50"
+            className="min-h-[280px] translate-y-2 scale-[0.97] opacity-50 sm:min-h-[320px]"
           >
             <div />
           </Card>
@@ -111,11 +111,11 @@ export default function FlashcardsPage() {
             <div className="fc-flip-face" style={{ backfaceVisibility: 'hidden' }}>
               <Card
                 variant="glass"
-                className="relative min-h-[320px]"
+                className="relative min-h-[280px] sm:min-h-[320px]"
               >
                 <Badge variant="default" className="mb-4">{card.category}</Badge>
-                <div className="flex min-h-[240px] flex-col items-center justify-center text-center">
-                  <p className="font-display text-2xl text-text-primary md:text-3xl">{card.front}</p>
+                <div className="flex min-h-[200px] flex-col items-center justify-center text-center sm:min-h-[240px]">
+                  <p className="font-display text-xl text-text-primary sm:text-2xl md:text-3xl">{card.front}</p>
                   <p className="mt-6 font-body text-sm text-text-muted">Tap to reveal answer</p>
                 </div>
               </Card>
@@ -131,10 +131,10 @@ export default function FlashcardsPage() {
             >
               <Card
                 variant="glass"
-                className="relative min-h-[320px] bg-surface-elevated"
+                className="relative min-h-[280px] bg-surface-elevated sm:min-h-[320px]"
               >
                 <Badge variant="default" className="mb-4">{card.category}</Badge>
-                <div className="flex min-h-[240px] flex-col justify-center">
+                <div className="flex min-h-[200px] flex-col justify-center sm:min-h-[240px]">
                   <p className="mb-2 font-body text-sm font-semibold text-secondary">{card.front}</p>
                   <p className="font-body leading-relaxed text-text-secondary">{card.back}</p>
                 </div>
@@ -146,16 +146,16 @@ export default function FlashcardsPage() {
 
       {/* Rating buttons */}
       {isFlipped && !flyDirection && (
-        <div className="mt-6 flex justify-center gap-4">
-          <Button variant="outline" size="md" onClick={() => handleRate('hard')}>
+        <div className="mt-6 grid grid-cols-3 gap-3 sm:flex sm:justify-center sm:gap-4">
+          <Button variant="outline" size="md" onClick={() => handleRate('hard')} className="w-full sm:w-auto">
             <ThumbsDown className="h-4 w-4 text-error" />
             Hard
           </Button>
-          <Button variant="outline" size="md" onClick={() => handleRate('medium')}>
+          <Button variant="outline" size="md" onClick={() => handleRate('medium')} className="w-full sm:w-auto">
             <Minus className="h-4 w-4 text-warning" />
             Medium
           </Button>
-          <Button variant="outline" size="md" onClick={() => handleRate('easy')}>
+          <Button variant="outline" size="md" onClick={() => handleRate('easy')} className="w-full sm:w-auto">
             <ThumbsUp className="h-4 w-4 text-success" />
             Easy
           </Button>

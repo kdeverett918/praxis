@@ -15,11 +15,11 @@ import { initScrollReveals, staggerReveal, gsap } from '@/lib/animations'
 function DashboardMockup() {
   return (
     <div
-      className="gsap-reveal relative z-10 mx-auto mt-16 w-full max-w-4xl"
+      className="gsap-reveal relative z-10 mx-auto mt-12 w-full max-w-4xl px-2 sm:mt-16 sm:px-0"
       style={{ perspective: '1200px' }}
     >
       <div
-        className="rounded-2xl border border-border bg-surface/70 p-6 shadow-2xl shadow-primary/10 backdrop-blur-sm"
+        className="rounded-2xl border border-border bg-surface/70 p-4 shadow-2xl shadow-primary/10 backdrop-blur-sm sm:p-6"
         style={{ transform: 'rotateX(8deg)' }}
       >
         {/* Mini stat cards row */}
@@ -201,7 +201,7 @@ export default function LandingPage() {
             AI-Powered Praxis 5331 Prep
           </Badge>
 
-          <h1 className="gsap-reveal mx-auto max-w-5xl font-bold leading-[1.08] tracking-[-0.035em] text-[clamp(3rem,6vw,5.5rem)]">
+          <h1 className="gsap-reveal mx-auto max-w-5xl font-bold leading-[1.08] tracking-[-0.035em] text-[clamp(2.25rem,6vw,5.5rem)]">
             The smartest way to{' '}
             <span className="bg-gradient-to-r from-secondary to-amber-400 bg-clip-text text-transparent">
               pass the Praxis
@@ -213,15 +213,15 @@ export default function LandingPage() {
             Built by a medical SLP who codes — not a textbook publisher.
           </p>
 
-          <div className="gsap-reveal mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link to="/signup">
-              <Button variant="primary" size="lg">
+          <div className="gsap-reveal mt-12 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
+            <Link to="/signup" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto">
                 Start Studying Free
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <a href="#features">
-              <Button variant="outline" size="lg">
+            <a href="#features" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 See How It Works
               </Button>
             </a>
@@ -237,9 +237,9 @@ export default function LandingPage() {
 
         {/* Stats bar with count-up */}
         <div ref={statsRef} className="gsap-reveal relative z-10 mt-16 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-8 backdrop-blur-sm">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="grid grid-cols-2 items-stretch gap-6 md:grid-cols-4">
             {STATS.map((stat) => (
-              <div key={stat.label} className="stat-item gsap-reveal text-center">
+              <div key={stat.label} className="stat-item gsap-reveal flex flex-col items-center justify-center text-center">
                 <div
                   className="stat-number font-display text-3xl font-bold text-secondary md:text-4xl"
                   data-target={stat.value}
@@ -270,23 +270,29 @@ export default function LandingPage() {
         </div>
 
         {/* Bento grid: 6-column layout — first row 2 wide, second row 2x2 compact */}
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="mt-16 grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-6">
           {FEATURES.map((feature, idx) => {
             const isWide = idx < 2
             return (
-              <Card
+              <div
                 key={feature.title}
-                hover
-                className={`feature-card gsap-reveal hover-glow ${
-                  isWide ? 'lg:col-span-3 lg:py-10' : 'sm:col-span-1 lg:col-span-3'
+                className={`flex ${
+                  isWide ? 'lg:col-span-3' : 'sm:col-span-1 lg:col-span-3'
                 }`}
               >
-                <div className={`mb-4 flex items-center justify-center rounded-xl bg-secondary/10 ${isWide ? 'h-14 w-14' : 'h-12 w-12'}`}>
-                  <feature.icon className={`text-secondary ${isWide ? 'h-7 w-7' : 'h-6 w-6'}`} />
-                </div>
-                <h3 className={`mb-2 font-display ${isWide ? 'text-2xl' : 'text-xl'}`}>{feature.title}</h3>
-                <p className="font-body text-sm leading-relaxed text-text-secondary">{feature.desc}</p>
-              </Card>
+                <Card
+                  hover
+                  className={`feature-card gsap-reveal hover-glow flex h-full flex-col ${
+                    isWide ? 'lg:py-10' : ''
+                  }`}
+                >
+                  <div className={`mb-4 flex items-center justify-center rounded-xl bg-secondary/10 ${isWide ? 'h-14 w-14' : 'h-12 w-12'}`}>
+                    <feature.icon className={`text-secondary ${isWide ? 'h-7 w-7' : 'h-6 w-6'}`} />
+                  </div>
+                  <h3 className={`mb-2 font-display ${isWide ? 'text-2xl' : 'text-xl'}`}>{feature.title}</h3>
+                  <p className="flex-1 font-body text-sm leading-relaxed text-text-secondary">{feature.desc}</p>
+                </Card>
+              </div>
             )
           })}
         </div>
@@ -303,7 +309,7 @@ export default function LandingPage() {
             <h2 className="text-4xl font-bold md:text-5xl">Study smarter in three steps</h2>
           </div>
 
-          <div className="mt-16 grid gap-12 md:grid-cols-3">
+          <div className="mt-16 grid items-stretch gap-12 md:grid-cols-3">
             {[
               {
                 step: '01',
@@ -324,13 +330,13 @@ export default function LandingPage() {
                 icon: Trophy,
               },
             ].map((item) => (
-              <div key={item.step} className="gsap-reveal text-center md:text-left">
+              <div key={item.step} className="gsap-reveal flex flex-col text-center md:text-left">
                 <div className="mb-4 inline-flex items-center gap-3">
                   <span className="font-mono text-4xl font-bold text-secondary/30">{item.step}</span>
                   <item.icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="mb-3 font-display text-2xl">{item.title}</h3>
-                <p className="font-body leading-relaxed text-text-secondary">{item.desc}</p>
+                <p className="flex-1 font-body leading-relaxed text-text-secondary">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -360,47 +366,48 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid items-stretch gap-8 md:grid-cols-3">
           {PRICING.map((plan) => (
-            <Card
-              key={plan.name}
-              variant={plan.highlighted ? 'glass' : 'default'}
-              hover
-              className={`pricing-card gsap-reveal relative ${
-                plan.highlighted
-                  ? 'animated-gradient-border pro-pricing-card md:scale-105'
-                  : ''
-              }`}
-            >
-              {plan.highlighted && (
-                <Badge variant="secondary" className="absolute -top-3 right-6">Most Popular</Badge>
-              )}
-              <h3 className="font-display text-2xl">{plan.name}</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-bold text-text-primary">{plan.price}</span>
-                <span className="font-body text-sm text-text-muted">/{plan.period}</span>
-              </div>
-              <p className="mt-3 font-body text-sm text-text-secondary">{plan.desc}</p>
+            <div key={plan.name} className="flex">
+              <Card
+                variant={plan.highlighted ? 'glass' : 'default'}
+                hover
+                className={`pricing-card gsap-reveal relative flex h-full flex-col ${
+                  plan.highlighted
+                    ? 'animated-gradient-border pro-pricing-card md:scale-105'
+                    : ''
+                }`}
+              >
+                {plan.highlighted && (
+                  <Badge variant="secondary" className="absolute -top-3 right-6">Most Popular</Badge>
+                )}
+                <h3 className="font-display text-2xl">{plan.name}</h3>
+                <div className="mt-4 flex items-baseline gap-1">
+                  <span className="font-display text-5xl font-bold text-text-primary">{plan.price}</span>
+                  <span className="font-body text-sm text-text-muted">/{plan.period}</span>
+                </div>
+                <p className="mt-3 font-body text-sm text-text-secondary">{plan.desc}</p>
 
-              <ul className="mt-8 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                    <span className="font-body text-sm text-text-secondary">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-8 flex-1 space-y-3">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                      <span className="font-body text-sm text-text-secondary">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <Link to="/signup" className="mt-8 block">
-                <Button
-                  variant={plan.highlighted ? 'primary' : 'outline'}
-                  size="lg"
-                  className="w-full"
-                >
-                  {plan.cta}
-                </Button>
-              </Link>
-            </Card>
+                <Link to="/signup" className="mt-8 block">
+                  <Button
+                    variant={plan.highlighted ? 'primary' : 'outline'}
+                    size="lg"
+                    className="w-full"
+                  >
+                    {plan.cta}
+                  </Button>
+                </Link>
+              </Card>
+            </div>
           ))}
         </div>
       </section>
