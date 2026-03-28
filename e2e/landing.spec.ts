@@ -36,11 +36,10 @@ test.describe('Landing Page', () => {
   })
 
   test('stats bar shows 4 stat items', async ({ page }) => {
-    const statItems = page.locator('.stat-item')
+    const statsBar = page.getByTestId('landing-stats')
+    const statItems = page.getByTestId('landing-stat-item')
     await expect(statItems).toHaveCount(4)
 
-    // Check stat labels are present within the stats bar
-    const statsBar = page.locator('.stat-item').first().locator('..')
     await expect(statsBar.getByText('Practice Questions')).toBeVisible()
     await expect(statsBar.getByText('Questions Per Exam')).toBeVisible()
     await expect(statsBar.getByText('Big Nine Areas')).toBeVisible()

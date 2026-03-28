@@ -20,7 +20,7 @@ test.describe('Responsive Design — Landing Page', () => {
     await expect(desktopNav).toBeHidden()
 
     // Stats bar should still be visible
-    const statsBar = page.locator('.stat-item').first().locator('..')
+    const statsBar = page.getByTestId('landing-stats')
     await expect(statsBar.getByText('Practice Questions')).toBeVisible()
 
     await context.close()

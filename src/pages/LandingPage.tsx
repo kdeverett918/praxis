@@ -178,10 +178,18 @@ export default function LandingPage() {
         <DashboardMockup />
 
         {/* Stats */}
-        <div ref={statsRef} className="relative z-10 mt-16 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm sm:p-8">
+        <div
+          ref={statsRef}
+          data-testid="landing-stats"
+          className="relative z-10 mt-16 w-full max-w-4xl rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm sm:p-8"
+        >
           <div className="grid grid-cols-2 items-stretch gap-6 md:grid-cols-4">
             {STATS.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center justify-center text-center">
+              <div
+                key={stat.label}
+                data-testid="landing-stat-item"
+                className="flex flex-col items-center justify-center text-center"
+              >
                 <div className="stat-number font-display text-3xl font-bold text-secondary md:text-4xl" data-target={stat.value} data-suffix={stat.suffix}>
                   0{stat.suffix}
                 </div>
