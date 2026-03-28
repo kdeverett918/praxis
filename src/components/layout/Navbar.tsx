@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { BookOpen, Menu, X } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Beaker, BookOpen, Menu, X } from 'lucide-react'
 import Button from '@/components/shared/Button'
+import { useSettingsStore } from '@/stores/settingsStore'
+import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
+  const updateSettings = useSettingsStore((s) => s.updateSettings)
+  const betaMode = resolveBetaMode(betaModeEnabled)
   const isLanding = location.pathname === '/'
 
   useEffect(() => {
@@ -14,6 +20,12 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  function handleContinueInBetaMode() {
+    updateSettings({ betaModeEnabled: true })
+    setMobileOpen(false)
+    navigate('/dashboard')
+  }
 
   return (
     <nav
@@ -47,6 +59,12 @@ export default function Navbar() {
               </a>
             </>
           )}
+          {BETA_MODE_AVAILABLE && (
+            <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode}>
+              <Beaker className="h-4 w-4" />
+              {betaMode ? 'Open Beta' : 'Beta Mode'}
+            </Button>
+          )}
           <Link to="/login">
             <Button variant="ghost" size="sm">Log In</Button>
           </Link>
@@ -75,6 +93,12 @@ export default function Navbar() {
                 <a href="#pricing" className="text-text-secondary" onClick={() => setMobileOpen(false)}>Pricing</a>
                 <a href="#about" className="text-text-secondary" onClick={() => setMobileOpen(false)}>About</a>
               </>
+            )}
+            {BETA_MODE_AVAILABLE && (
+              <Button variant={betaMode ? 'outline' : 'secondary'} size="md" className="w-full" onClick={handleContinueInBetaMode}>
+                <Beaker className="h-4 w-4" />
+                {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
+              </Button>
             )}
             <Link to="/login" onClick={() => setMobileOpen(false)}>
               <Button variant="outline" size="md" className="w-full">Log In</Button>

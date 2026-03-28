@@ -123,14 +123,18 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {BETA_MODE_AVAILABLE && !betaMode && (
+          {BETA_MODE_AVAILABLE && (
             <div className="mt-5 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
-              <p className="font-body text-sm text-text-primary">Need the unlocked local workspace instead?</p>
+              <p className="font-body text-sm text-text-primary">
+                {betaMode ? 'Beta Mode is already active in this browser.' : 'Need the unlocked local workspace instead?'}
+              </p>
               <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
-                Re-enable beta mode for this browser and continue without signing in.
+                {betaMode
+                  ? 'Open the beta workspace directly and bypass login on protected pages.'
+                  : 'Enable beta mode for this browser and continue without signing in.'}
               </p>
               <Button variant="ghost" size="sm" className="mt-3" onClick={handleContinueInBetaMode}>
-                Continue in Beta Mode
+                {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
               </Button>
             </div>
           )}

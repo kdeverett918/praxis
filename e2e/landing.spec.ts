@@ -83,6 +83,17 @@ test.describe('Landing Page', () => {
     await expect(ctaLink.first()).toBeVisible()
     await expect(ctaLink.first()).toHaveAttribute('href', '/signup')
   })
+
+  test('beta mode CTA is visible and opens the app without login', async ({ page }) => {
+    const betaCta = page.getByTestId('landing-beta-cta')
+    await expect(betaCta).toBeVisible()
+
+    await betaCta.getByRole('button').click()
+    await page.waitForLoadState('networkidle')
+
+    await expect(page).toHaveURL(/\/dashboard$/)
+    await expect(page.getByText('Beta Mode active')).toBeVisible()
+  })
 })
 
 test.describe('Landing Page — Mobile', () => {

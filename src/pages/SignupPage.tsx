@@ -145,14 +145,18 @@ export default function SignupPage() {
             </p>
           </form>
 
-          {BETA_MODE_AVAILABLE && !betaMode && (
+          {BETA_MODE_AVAILABLE && (
             <div className="mt-5 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
-              <p className="font-body text-sm text-text-primary">Want to explore the product first?</p>
+              <p className="font-body text-sm text-text-primary">
+                {betaMode ? 'Beta Mode is already active in this browser.' : 'Want to explore the product first?'}
+              </p>
               <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
-                Switch this browser back into beta mode and use the full local workspace without creating an account yet.
+                {betaMode
+                  ? 'Open the beta workspace directly and bypass signup on protected pages.'
+                  : 'Switch this browser into beta mode and use the full local workspace without creating an account yet.'}
               </p>
               <Button variant="ghost" size="sm" className="mt-3" onClick={handleContinueInBetaMode}>
-                Continue in Beta Mode
+                {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
               </Button>
             </div>
           )}

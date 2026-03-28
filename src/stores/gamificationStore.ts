@@ -184,6 +184,7 @@ interface GamificationState {
   speedRoundsCompleted: number
   scenariosCompleted: number
   totalQuestionsAnswered: number
+  totalCorrectAnswers: number
   dailyGoal: DailyGoal
   pendingAchievements: Achievement[]
 
@@ -194,6 +195,7 @@ interface GamificationState {
   completeSpeedRound: () => void
   completeScenario: () => void
   addQuestionsAnswered: (count: number) => void
+  addCorrectAnswer: () => void
   resetDailyGoal: () => void
   updateDailyGoalTargets: (questionsTarget: number, xpTarget: number) => void
   resetProgress: () => void
@@ -231,6 +233,7 @@ export const useGamificationStore = create<GamificationState>()(
       speedRoundsCompleted: 0,
       scenariosCompleted: 0,
       totalQuestionsAnswered: 0,
+      totalCorrectAnswers: 0,
       dailyGoal: createDailyGoal(),
       pendingAchievements: [],
 
@@ -358,6 +361,12 @@ export const useGamificationStore = create<GamificationState>()(
         get().checkAchievements()
       },
 
+      addCorrectAnswer: () => {
+        set((state) => ({
+          totalCorrectAnswers: state.totalCorrectAnswers + 1,
+        }))
+      },
+
       resetDailyGoal: () => {
         set((state) => ({
           dailyGoal: createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
@@ -387,6 +396,7 @@ export const useGamificationStore = create<GamificationState>()(
           speedRoundsCompleted: 0,
           scenariosCompleted: 0,
           totalQuestionsAnswered: 0,
+          totalCorrectAnswers: 0,
           dailyGoal: createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
           pendingAchievements: [],
         }))
@@ -418,6 +428,7 @@ export const useGamificationStore = create<GamificationState>()(
         speedRoundsCompleted: state.speedRoundsCompleted,
         scenariosCompleted: state.scenariosCompleted,
         totalQuestionsAnswered: state.totalQuestionsAnswered,
+        totalCorrectAnswers: state.totalCorrectAnswers,
         dailyGoal: state.dailyGoal,
       }),
     },

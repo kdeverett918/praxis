@@ -86,15 +86,15 @@ export default function AnalyticsPage() {
       {/* Radar Chart + Big Nine Breakdown */}
       <div className="mb-8 grid items-stretch gap-8 lg:grid-cols-2">
         {/* Radar Chart */}
-        <Card className="flex h-full flex-col">
+        <Card className="flex h-full min-w-0 flex-col overflow-hidden">
           <h2 className="mb-4 font-display text-xl text-text-primary">Big Nine Radar</h2>
           <div className="min-h-0 flex-1">
             <ResponsiveContainer width="100%" height={320}>
-              <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="65%">
+              <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="54%">
               <PolarGrid stroke="rgba(99, 102, 241, 0.15)" />
               <PolarAngleAxis
                 dataKey="area"
-                tick={{ fill: '#a5b4fc', fontSize: 10 }}
+                tick={{ fill: '#a5b4fc', fontSize: 9 }}
               />
               <Radar
                 name="Score"
@@ -110,7 +110,7 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Big Nine bar breakdown */}
-        <Card className="flex h-full flex-col">
+        <Card className="flex h-full min-w-0 flex-col">
           <h2 className="mb-6 font-display text-xl text-text-primary">Big Nine Performance</h2>
           <div ref={barsRef} className="space-y-4">
             {sortedAreas.map(([area, score]) => {

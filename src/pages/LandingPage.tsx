@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   BookOpen, Brain, Sparkles, Trophy, BarChart3,
-  Layers, Zap, Check, ArrowRight, Star, Shield,
+  Layers, Zap, Check, ArrowRight, Star, Shield, Beaker,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -10,6 +10,8 @@ import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
 import { gsap, ScrollTrigger } from '@/lib/animations'
+import { useSettingsStore } from '@/stores/settingsStore'
+import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 const FEATURES = [
   { icon: Brain, title: 'Adaptive Engine', desc: 'Spaced repetition targets your weak areas automatically. The more you study, the smarter it gets.' },
@@ -34,8 +36,12 @@ const STATS = [
 ]
 
 export default function LandingPage() {
+  const navigate = useNavigate()
   const statsRef = useRef<HTMLDivElement>(null)
   const pageRef = useRef<HTMLDivElement>(null)
+  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
+  const updateSettings = useSettingsStore((s) => s.updateSettings)
+  const betaMode = resolveBetaMode(betaModeEnabled)
 
   useEffect(() => {
     if (!pageRef.current) return
@@ -81,6 +87,11 @@ export default function LandingPage() {
     return () => ScrollTrigger.getAll().forEach((t) => t.kill())
   }, [])
 
+  function handleContinueInBetaMode() {
+    updateSettings({ betaModeEnabled: true })
+    navigate('/dashboard')
+  }
+
   return (
     <div ref={pageRef} className="min-h-screen bg-background text-text-primary">
       <Navbar />
@@ -122,6 +133,30 @@ export default function LandingPage() {
               </Button>
             </a>
           </div>
+
+          {BETA_MODE_AVAILABLE && (
+            <div
+              data-testid="landing-beta-cta"
+              className="mx-auto mt-5 flex max-w-2xl flex-col items-stretch gap-3 rounded-2xl border border-secondary/30 bg-secondary/8 p-4 text-left sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondary">
+                  <Beaker className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-body text-sm font-semibold text-text-primary">
+                    {betaMode ? 'Beta Mode is active in this browser.' : 'Beta Mode is available in this browser.'}
+                  </p>
+                  <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
+                    Open the unlocked local workspace directly and bypass login on protected pages.
+                  </p>
+                </div>
+              </div>
+              <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode}>
+                {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
+              </Button>
+            </div>
+          )}
 
           <p className="mt-6 text-sm text-text-muted">
             No credit card required &middot; 25 free questions daily

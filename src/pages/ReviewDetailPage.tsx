@@ -223,25 +223,25 @@ export default function ReviewDetailPage() {
       )}
 
       {/* Prev / Next Navigation */}
-      <div className="flex items-stretch gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
         {prev ? (
-          <Link to={`/review/${prev.id}`} className="group flex flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
+          <Link to={`/review/${prev.id}`} className="group flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
             <ArrowLeft className="h-4 w-4 shrink-0 text-text-muted transition-transform group-hover:-translate-x-1" />
             <div className="min-w-0">
               <p className="font-body text-[10px] uppercase tracking-wider text-text-muted">Previous</p>
               <p className="truncate font-body text-sm font-medium text-text-primary">{prev.title}</p>
             </div>
           </Link>
-        ) : <div className="flex-1" />}
+        ) : <div className="hidden flex-1 sm:block" />}
         {next ? (
-          <Link to={`/review/${next.id}`} className="group flex flex-1 items-center justify-end gap-3 rounded-xl border border-border bg-surface p-4 text-right transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
+          <Link to={`/review/${next.id}`} className="group flex min-w-0 flex-1 items-center justify-end gap-3 rounded-xl border border-border bg-surface p-4 text-right transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
             <div className="min-w-0">
               <p className="font-body text-[10px] uppercase tracking-wider text-text-muted">Next</p>
               <p className="truncate font-body text-sm font-medium text-text-primary">{next.title}</p>
             </div>
             <ChevronRight className="h-4 w-4 shrink-0 text-text-muted transition-transform group-hover:translate-x-1" />
           </Link>
-        ) : <div className="flex-1" />}
+        ) : <div className="hidden flex-1 sm:block" />}
       </div>
     </div>
   )
