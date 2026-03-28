@@ -26,3 +26,9 @@ services:
         sync: false
       - key: VITE_SUPABASE_ANON_KEY
         sync: false
+      - key: VITE_STRIPE_PAYMENT_LINK_PRO
+        sync: false
+      - key: VITE_STRIPE_PAYMENT_LINK_PRO_AI
+        sync: false
+      - key: VITE_LEAD_CAPTURE_URL
+        sync: false

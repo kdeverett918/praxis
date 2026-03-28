@@ -21,18 +21,19 @@ test.describe('Landing Page', () => {
       return
     }
 
-    await expect(nav.getByText('Features', { exact: true })).toBeVisible()
-    await expect(nav.getByText('Pricing', { exact: true })).toBeVisible()
-    await expect(nav.getByText('About', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Product', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Offer', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Founder', { exact: true })).toBeVisible()
+    await expect(nav.getByText('FAQ', { exact: true })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Log In' })).toBeVisible()
-    await expect(nav.getByRole('link', { name: 'Start Free' })).toBeVisible()
+    await expect(nav.getByRole('link', { name: 'Take Free Diagnostic' })).toBeVisible()
   })
 
   test('hero section has headline', async ({ page }) => {
     await expect(
-      page.locator('h1').filter({ hasText: 'The smartest way to' }),
+      page.locator('h1').filter({ hasText: 'Pass the Praxis without' }),
     ).toBeVisible()
-    await expect(page.locator('h1').filter({ hasText: 'pass the Praxis' })).toBeVisible()
+    await expect(page.locator('h1').filter({ hasText: 'five different study tools' })).toBeVisible()
   })
 
   test('stats bar shows 4 stat items', async ({ page }) => {
@@ -40,10 +41,10 @@ test.describe('Landing Page', () => {
     const statItems = page.getByTestId('landing-stat-item')
     await expect(statItems).toHaveCount(4)
 
-    await expect(statsBar.getByText('Practice Questions')).toBeVisible()
+    await expect(statsBar.getByText('Original Questions')).toBeVisible()
     await expect(statsBar.getByText('Questions Per Exam')).toBeVisible()
-    await expect(statsBar.getByText('Big Nine Areas')).toBeVisible()
-    await expect(statsBar.getByText('Content Categories')).toBeVisible()
+    await expect(statsBar.getByText('Months of Access')).toBeVisible()
+    await expect(statsBar.getByText('Hero Offer Price')).toBeVisible()
   })
 
   test('features section has 6 feature cards', async ({ page }) => {
@@ -51,8 +52,8 @@ test.describe('Landing Page', () => {
     await expect(featureCards).toHaveCount(6)
 
     // Verify some feature titles
-    await expect(page.getByRole('heading', { name: 'Adaptive Engine' })).toBeVisible()
-    await expect(page.getByRole('heading', { name: 'AI Rationales' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Diagnostic-First Flow' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Higher-Support Path' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Exam Simulation' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Track Progress' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Custom Quizzes' })).toBeVisible()
@@ -63,11 +64,10 @@ test.describe('Landing Page', () => {
     const pricingCards = page.locator('.pricing-card')
     await expect(pricingCards).toHaveCount(3)
 
-    // Check tier names within pricing cards
     const pricingSection = page.locator('#pricing')
-    await expect(pricingSection.getByRole('heading', { name: 'Free' })).toBeVisible()
-    await expect(pricingSection.getByRole('heading', { name: 'Pro' })).toBeVisible()
-    await expect(pricingSection.getByRole('heading', { name: 'Institutional' })).toBeVisible()
+    await expect(pricingSection.getByRole('heading', { name: 'Free Diagnostic' })).toBeVisible()
+    await expect(pricingSection.getByRole('heading', { name: 'Praxis Pass Pack' })).toBeVisible()
+    await expect(pricingSection.getByRole('heading', { name: 'Program Licensing' })).toBeVisible()
   })
 
   test('footer has ETS disclaimer text', async ({ page }) => {
@@ -76,12 +76,12 @@ test.describe('Landing Page', () => {
     ).toBeVisible()
   })
 
-  test('"Start Studying Free" button links to /signup', async ({ page }) => {
-    const ctaLink = page.locator('a[href="/signup"]').filter({
-      has: page.locator('button', { hasText: 'Start Studying Free' }),
+  test('"Take the Free Diagnostic Quiz" button links to /quiz/diagnostic', async ({ page }) => {
+    const ctaLink = page.locator('a[href="/quiz/diagnostic"]').filter({
+      has: page.locator('button', { hasText: 'Take the Free Diagnostic Quiz' }),
     })
     await expect(ctaLink.first()).toBeVisible()
-    await expect(ctaLink.first()).toHaveAttribute('href', '/signup')
+    await expect(ctaLink.first()).toHaveAttribute('href', '/quiz/diagnostic')
   })
 
   test('beta mode CTA is visible and opens the app without login', async ({ page }) => {
@@ -118,8 +118,8 @@ test.describe('Landing Page — Mobile', () => {
     // Mobile menu links should now be visible in the mobile dropdown
     // The mobile menu is inside a div with md:hidden class
     const mobileMenu = page.locator('nav .border-t')
-    await expect(mobileMenu.getByText('Features', { exact: true })).toBeVisible()
-    await expect(mobileMenu.getByText('Pricing', { exact: true })).toBeVisible()
-    await expect(mobileMenu.getByText('About', { exact: true })).toBeVisible()
+    await expect(mobileMenu.getByText('Product', { exact: true })).toBeVisible()
+    await expect(mobileMenu.getByText('Offer', { exact: true })).toBeVisible()
+    await expect(mobileMenu.getByText('Founder', { exact: true })).toBeVisible()
   })
 })

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS profiles (
   id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
   display_name TEXT,
   email TEXT,
-  subscription_tier TEXT NOT NULL DEFAULT 'free' CHECK (subscription_tier IN ('free', 'starter', 'pro', 'institutional')),
+  subscription_tier TEXT NOT NULL DEFAULT 'free' CHECK (subscription_tier IN ('free', 'starter', 'pro', 'pro_ai', 'institutional')),
   subscription_status TEXT NOT NULL DEFAULT 'active' CHECK (subscription_status IN ('active', 'cancelled', 'expired', 'trialing')),
   stripe_customer_id TEXT,
   study_streak INTEGER NOT NULL DEFAULT 0,
@@ -185,6 +185,22 @@ CREATE TABLE IF NOT EXISTS payments (
 CREATE INDEX idx_payments_user ON payments (user_id);
 
 -- ============================================
+-- DIAGNOSTIC LEADS
+-- ============================================
+CREATE TABLE IF NOT EXISTS diagnostic_leads (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT NOT NULL,
+  exam_date DATE,
+  source TEXT NOT NULL DEFAULT 'diagnostic_quiz',
+  diagnostic_score INTEGER,
+  readiness_band TEXT,
+  weakest_area TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_diagnostic_leads_email ON diagnostic_leads (email);
+
+-- ============================================
 -- ROW-LEVEL SECURITY
 -- ============================================
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
@@ -193,6 +209,7 @@ ALTER TABLE exam_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE srs_cards ENABLE ROW LEVEL SECURITY;
 ALTER TABLE flashcard_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE diagnostic_leads ENABLE ROW LEVEL SECURITY;
 
 -- Users can read and update their own profile
 CREATE POLICY "Users read own profile" ON profiles FOR SELECT USING (auth.uid() = id);
@@ -215,6 +232,12 @@ CREATE POLICY "Users manage own flashcard progress" ON flashcard_progress FOR AL
 
 -- Users read own payments
 CREATE POLICY "Users read own payments" ON payments FOR SELECT USING (auth.uid() = user_id);
+
+-- Diagnostic leads can be created before signup
+CREATE POLICY "Public insert diagnostic leads"
+  ON diagnostic_leads
+  FOR INSERT
+  WITH CHECK (true);
 
 -- Questions, flashcards, and study content are readable by all authenticated users
 ALTER TABLE questions ENABLE ROW LEVEL SECURITY;

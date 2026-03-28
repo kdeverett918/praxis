@@ -9,8 +9,7 @@ test.describe('Responsive Design — Landing Page', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Hero headline should be visible
-    await expect(page.locator('h1').filter({ hasText: 'pass the Praxis' })).toBeVisible()
+    await expect(page.locator('h1').filter({ hasText: 'Pass the Praxis without' })).toBeVisible()
 
     // Hamburger menu should be visible instead of desktop nav
     await expect(page.getByLabel('Open menu')).toBeVisible()
@@ -21,7 +20,7 @@ test.describe('Responsive Design — Landing Page', () => {
 
     // Stats bar should still be visible
     const statsBar = page.getByTestId('landing-stats')
-    await expect(statsBar.getByText('Practice Questions')).toBeVisible()
+    await expect(statsBar.getByText('Original Questions')).toBeVisible()
 
     await context.close()
   })
@@ -34,15 +33,13 @@ test.describe('Responsive Design — Landing Page', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Hero headline should be visible
-    await expect(page.locator('h1').filter({ hasText: 'pass the Praxis' })).toBeVisible()
+    await expect(page.locator('h1').filter({ hasText: 'Pass the Praxis without' })).toBeVisible()
 
     // At 768px (md breakpoint), desktop nav should be visible
     const desktopNav = page.locator('nav .hidden.md\\:flex')
     await expect(desktopNav).toBeVisible()
 
-    // Features section should be visible
-    await expect(page.getByRole('heading', { name: 'Adaptive Engine' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Diagnostic-First Flow' })).toBeVisible()
 
     await context.close()
   })
@@ -55,14 +52,13 @@ test.describe('Responsive Design — Landing Page', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Hero headline should be visible
-    await expect(page.locator('h1').filter({ hasText: 'pass the Praxis' })).toBeVisible()
+    await expect(page.locator('h1').filter({ hasText: 'Pass the Praxis without' })).toBeVisible()
 
     // Desktop nav should be fully visible
     const nav = page.locator('nav')
-    await expect(nav.getByText('Features', { exact: true })).toBeVisible()
-    await expect(nav.getByText('Pricing', { exact: true })).toBeVisible()
-    await expect(nav.getByText('About', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Product', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Offer', { exact: true })).toBeVisible()
+    await expect(nav.getByText('Founder', { exact: true })).toBeVisible()
 
     // All pricing cards should be visible
     const pricingCards = page.locator('.pricing-card')
