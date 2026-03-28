@@ -9,16 +9,8 @@ import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import XPBar from '@/components/dashboard/XPBar'
 import DailyChallenge from '@/components/dashboard/DailyChallenge'
+import { useGamificationStore } from '@/stores/gamificationStore'
 import { gsap } from '@/lib/animations'
-
-const MOCK_STATS = {
-  streak: 7,
-  questionsToday: 18,
-  totalAnswered: 342,
-  accuracy: 72,
-  weakAreas: ['Fluency', 'AAC', 'Cognitive Communication'],
-  strongAreas: ['Feeding & Swallowing', 'Voice & Resonance'],
-}
 
 const QUICK_ACTIONS = [
   { to: '/study', icon: BookOpen, label: 'Study Mode', desc: 'Practice with rationales', color: 'text-primary', shortcut: 'S' },
@@ -52,15 +44,25 @@ function getDailyMotivation(): string {
   return MOTIVATIONAL_COPY[dayOfYear % MOTIVATIONAL_COPY.length] ?? MOTIVATIONAL_COPY[0]!
 }
 
-const STAT_CARDS = [
-  { key: 'streak', icon: Flame, value: MOCK_STATS.streak, suffix: '', label: 'Day Streak', accent: 'border-t-secondary', iconColor: 'text-secondary', iconBg: 'bg-secondary/10', gradientHover: 'from-secondary/5' },
-  { key: 'today', icon: BookOpen, value: MOCK_STATS.questionsToday, suffix: '', label: 'Questions Today', accent: 'border-t-primary', iconColor: 'text-primary', iconBg: 'bg-primary/10', gradientHover: 'from-primary/5' },
-  { key: 'accuracy', icon: TrendingUp, value: MOCK_STATS.accuracy, suffix: '%', label: 'Accuracy', accent: 'border-t-success', iconColor: 'text-success', iconBg: 'bg-success/10', gradientHover: 'from-success/5' },
-  { key: 'total', icon: Target, value: MOCK_STATS.totalAnswered, suffix: '', label: 'Total Answered', accent: 'border-t-warning', iconColor: 'text-warning', iconBg: 'bg-warning/10', gradientHover: 'from-warning/5' },
-] as const
-
 export default function DashboardPage() {
   const statsRef = useRef<HTMLDivElement>(null)
+
+  const streak = useGamificationStore((s) => s.streak)
+  const questionsToday = useGamificationStore((s) => s.dailyGoal.questionsCompleted)
+  const totalAnswered = useGamificationStore((s) => s.totalQuestionsAnswered)
+  const totalCorrect = useGamificationStore((s) => s.totalCorrectAnswers)
+  const xp = useGamificationStore((s) => s.xp)
+  const level = useGamificationStore((s) => s.level)
+  const getLevelName = useGamificationStore((s) => s.getLevelName)
+
+  const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0
+
+  const STAT_CARDS = [
+    { key: 'streak', icon: Flame, value: streak, suffix: '', label: 'Day Streak', accent: 'border-t-secondary', iconColor: 'text-secondary', iconBg: 'bg-secondary/10', gradientHover: 'from-secondary/5' },
+    { key: 'today', icon: BookOpen, value: questionsToday, suffix: '', label: 'Questions Today', accent: 'border-t-primary', iconColor: 'text-primary', iconBg: 'bg-primary/10', gradientHover: 'from-primary/5' },
+    { key: 'accuracy', icon: TrendingUp, value: accuracy, suffix: '%', label: 'Accuracy', accent: 'border-t-success', iconColor: 'text-success', iconBg: 'bg-success/10', gradientHover: 'from-success/5' },
+    { key: 'total', icon: Target, value: totalAnswered, suffix: '', label: 'Total Answered', accent: 'border-t-warning', iconColor: 'text-warning', iconBg: 'bg-warning/10', gradientHover: 'from-warning/5' },
+  ] as const
 
   useEffect(() => {
     if (!statsRef.current) return
@@ -80,7 +82,7 @@ export default function DashboardPage() {
         },
       })
     })
-  }, [])
+  }, [streak, questionsToday, accuracy, totalAnswered])
 
   return (
     <div className="mx-auto max-w-6xl pb-24 lg:pb-0">
@@ -180,12 +182,12 @@ export default function DashboardPage() {
         </Link>
       </div>
 
-      {/* Weak Areas + Category Scores */}
+      {/* Progress Summary + Level Info */}
       <div className="grid items-stretch gap-8 lg:grid-cols-2">
-        {/* Weak Areas */}
+        {/* Progress Summary */}
         <Card className="flex h-full flex-col">
           <div className="mb-6 flex items-center justify-between">
-            <h3 className="font-display text-xl text-text-primary">Focus Areas</h3>
+            <h3 className="font-display text-xl text-text-primary">Your Progress</h3>
             <Link to="/analytics">
               <Badge variant="primary">
                 <BarChart3 className="h-3 w-3" />
@@ -194,43 +196,56 @@ export default function DashboardPage() {
             </Link>
           </div>
           <div className="space-y-4">
-            {MOCK_STATS.weakAreas.map((area) => (
-              <div key={area} className="flex items-center justify-between rounded-xl bg-error-light p-4">
-                <span className="font-body text-sm font-medium text-text-primary">{area}</span>
-                <Badge variant="error">Needs Work</Badge>
+            {totalAnswered > 0 ? (
+              <>
+                <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+                  <span className="font-body text-sm font-medium text-text-primary">Total Questions</span>
+                  <span className="font-mono text-sm font-bold text-text-primary">{totalAnswered}</span>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+                  <span className="font-body text-sm font-medium text-text-primary">Correct Answers</span>
+                  <span className="font-mono text-sm font-bold text-success">{totalCorrect}</span>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+                  <span className="font-body text-sm font-medium text-text-primary">Accuracy</span>
+                  <Badge variant={accuracy >= 70 ? 'success' : accuracy >= 50 ? 'warning' : 'error'}>
+                    {accuracy}%
+                  </Badge>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+                  <span className="font-body text-sm font-medium text-text-primary">Total XP</span>
+                  <span className="font-mono text-sm font-bold text-secondary">{xp} XP</span>
+                </div>
+              </>
+            ) : (
+              <div className="rounded-xl bg-surface-elevated p-6 text-center">
+                <p className="font-body text-sm text-text-muted">
+                  Start studying to see your progress here!
+                </p>
               </div>
-            ))}
-            {MOCK_STATS.strongAreas.map((area) => (
-              <div key={area} className="flex items-center justify-between rounded-xl bg-success-light p-4">
-                <span className="font-body text-sm font-medium text-text-primary">{area}</span>
-                <Badge variant="success">Strong</Badge>
-              </div>
-            ))}
+            )}
           </div>
         </Card>
 
-        {/* Category Breakdown */}
+        {/* Level Info */}
         <Card className="flex h-full flex-col">
-          <h3 className="mb-6 font-display text-xl text-text-primary">Category Scores</h3>
+          <h3 className="mb-6 font-display text-xl text-text-primary">Level Progress</h3>
           <div className="flex-1 space-y-6">
-            {[
-              { cat: 'I. Foundations & Professional Practice', score: 78, color: 'bg-primary' },
-              { cat: 'II. Screening, Assessment, Eval & Dx', score: 65, color: 'bg-secondary' },
-              { cat: 'III. Treatment Planning & Implementation', score: 71, color: 'bg-success' },
-            ].map((item) => (
-              <div key={item.cat}>
-                <div className="mb-2 flex items-center justify-between gap-2">
-                  <span className="min-w-0 truncate font-body text-sm text-text-secondary">{item.cat}</span>
-                  <span className="shrink-0 font-mono text-sm font-bold text-text-primary">{item.score}%</span>
-                </div>
-                <div className="h-2.5 overflow-hidden rounded-full bg-surface-elevated">
-                  <div
-                    className={`h-full rounded-full ${item.color} transition-all duration-700`}
-                    style={{ width: `${item.score}%` }}
-                  />
-                </div>
+            <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+              <span className="font-body text-sm font-medium text-text-primary">Current Level</span>
+              <span className="font-mono text-sm font-bold text-primary">Lv. {level} - {getLevelName()}</span>
+            </div>
+            <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+              <span className="font-body text-sm font-medium text-text-primary">Study Streak</span>
+              <div className="flex items-center gap-2">
+                <Flame className="h-4 w-4 text-secondary" />
+                <span className="font-mono text-sm font-bold text-text-primary">{streak} days</span>
               </div>
-            ))}
+            </div>
+            <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
+              <span className="font-body text-sm font-medium text-text-primary">Today&apos;s Questions</span>
+              <span className="font-mono text-sm font-bold text-text-primary">{questionsToday}</span>
+            </div>
           </div>
           <Link to="/analytics" className="mt-6 block">
             <Button variant="outline" size="sm" className="w-full">

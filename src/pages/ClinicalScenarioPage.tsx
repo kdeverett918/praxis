@@ -192,45 +192,45 @@ const SCENARIOS: Scenario[] = [
   },
   {
     id: 'peds-language',
-    title: 'Pediatric Language',
-    subtitle: 'Late Talker Evaluation',
+    title: 'Pediatric Language Evaluation',
+    subtitle: 'Bilingual Late Talker',
     description:
-      'An 18-month-old bilingual (Spanish-English) child is referred to your outpatient clinic by the pediatrician for "not talking yet." Parents are concerned.',
+      'A bilingual (Spanish-English) 2.5-year-old, Sofia, is referred to your outpatient clinic by her pediatrician for "late talking." Her parents report she uses fewer words than her older brother did at the same age.',
     category: 'Language',
     maxPoints: 50,
     nodes: [
       {
         id: 'node1',
         narrative:
-          'The parents report that Marco produces about 5 words total — 3 in Spanish ("mama," "agua," "no") and 2 in English ("bye," "uh-oh"). He uses pointing and reaching to communicate. He understands simple commands in both languages. The parents speak primarily Spanish at home but use English at daycare.',
-        question: 'What is the most important first step in your assessment?',
+          'Sofia arrives with both parents. They speak Spanish at home; she attends an English-speaking daycare 3 days per week. Her mother reports Sofia says about 30 words — a mix of Spanish and English — and is not yet combining words. She follows simple directions in both languages and uses gestures frequently. Her developmental history is unremarkable.',
+        question: 'What is your initial assessment approach?',
         options: [
           {
-            text: 'Gather a comprehensive case history including developmental milestones, bilingual language exposure, and family history',
+            text: 'Begin with a detailed parent interview in the family\'s preferred language (Spanish) to gather communication history, language exposure patterns, and developmental milestones',
             points: 10,
             feedback:
-              'Correct. A thorough case history is essential, especially for bilingual children. Understanding language exposure patterns, developmental milestones, and family history helps differentiate a language difference from a disorder.',
+              'Excellent. Starting with a parent interview in L1 (Spanish) establishes rapport, yields the most accurate information about the child\'s full communicative profile, and is culturally responsive. Understanding language exposure is essential for bilingual assessment.',
             nextNode: 'node2',
           },
           {
-            text: 'Administer a standardized English-only vocabulary test',
+            text: 'Administer a standardized English-only assessment to establish a baseline',
             points: 0,
             feedback:
-              'Assessing only in English would underrepresent this child\'s abilities. Bilingual children must be assessed in both languages. A single-language test would be biased and could lead to overidentification.',
+              'An English-only standardized test would significantly underestimate Sofia\'s abilities. Bilingual children distribute their vocabulary across languages, so testing in only one language gives an incomplete and biased picture.',
             nextNode: 'node2',
           },
           {
-            text: 'Recommend speech therapy immediately — 5 words at 18 months is significantly delayed',
-            points: 2,
+            text: 'Use dynamic assessment to evaluate her learning potential across both languages',
+            points: 7,
             feedback:
-              'While 5 words at 18 months is below the typical 50-word benchmark, you must count words across BOTH languages (conceptual vocabulary) and complete a full assessment before making eligibility decisions.',
+              'Dynamic assessment is a valuable tool for bilingual children and can help differentiate disorder from difference. However, starting with a thorough parent interview in L1 provides essential context that should inform your dynamic assessment approach.',
             nextNode: 'node2',
           },
           {
-            text: 'Tell the parents to speak only English at home to reduce confusion',
-            points: 0,
+            text: 'Conduct a bilingual assessment using standardized tools normed on bilingual populations',
+            points: 5,
             feedback:
-              'This is a harmful myth. Bilingualism does NOT cause language delay. Advising parents to drop their native language can damage family communication, cultural identity, and the child\'s overall language development.',
+              'A bilingual assessment approach is appropriate, but jumping straight to standardized tools without first gathering a thorough case history and understanding her language exposure patterns means you lack critical context for interpreting results.',
             nextNode: 'node2',
           },
         ],
@@ -238,35 +238,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node2',
         narrative:
-          'Your case history reveals: normal birth history, sitting at 6 months, walking at 13 months. Hearing screening passed at birth. Babbling noted at 7 months. Older sibling was also a "late talker" who caught up by age 3. Spanish is used ~70% of the time, English ~30%. Marco uses about 8 gestures (pointing, showing, waving, etc.).',
-        question: 'Which assessment approach is most appropriate?',
+          'Your parent interview reveals Sofia\'s language exposure is approximately 65% Spanish, 35% English. She says about 20 words in Spanish and 15 in English, with 5 of those being translation equivalents (e.g., "agua" and "water"). She uses pointing, reaching, and showing to communicate. No concerns about hearing, play skills, or social interaction.',
+        question: 'How do you measure Sofia\'s vocabulary most accurately?',
         options: [
           {
-            text: 'Use a conceptual vocabulary approach — count total concepts across both languages, use parent report tools in both languages (e.g., bilingual CDI)',
+            text: 'Use conceptual scoring across both languages — count each unique concept once, regardless of which language it is expressed in',
             points: 10,
             feedback:
-              'Excellent. A conceptual scoring approach counts each concept once regardless of language, giving the most accurate picture. Parent report tools like the MacArthur-Bates CDI have bilingual adaptations that are culturally appropriate.',
+              'Correct. Conceptual scoring is the gold standard for bilingual vocabulary assessment. Sofia knows "agua" and "water" — that is one concept, not two. Her conceptual vocabulary is approximately 30 words (20 + 15 - 5 translation equivalents), which gives the truest picture of her lexical knowledge.',
             nextNode: 'node3',
           },
           {
-            text: 'Use standardized English norm-referenced tests with a Spanish interpreter present',
-            points: 3,
+            text: 'Administer the English MacArthur-Bates CDI only, since English is the language of education',
+            points: 0,
             feedback:
-              'Using English norm-referenced tests with an interpreter is insufficient. The norms were established on English-speaking monolinguals and do not account for bilingual development patterns. Interpreting does not make a test bilingual.',
+              'The English CDI alone would show only 15 words, dramatically underestimating Sofia\'s abilities. Bilingual children\'s vocabulary must be measured across both languages. Using a single-language measure leads to over-identification of language disorders.',
             nextNode: 'node3',
           },
           {
-            text: 'Conduct a play-based language sample in English only since the child attends English daycare',
-            points: 4,
-            feedback:
-              'A language sample is a good idea, but it must be done in both languages (or at minimum in the dominant language, Spanish). English-only sampling underrepresents a bilingual child\'s abilities.',
-            nextNode: 'node3',
-          },
-          {
-            text: 'Defer assessment for 6 months — many late talkers catch up',
+            text: 'Administer a standardized English vocabulary test and adjust the score by adding 30% for the "bilingual factor"',
             points: 2,
             feedback:
-              'While some late talkers do catch up, a "wait and see" approach at 18 months is not best practice. Early intervention is more effective, and the assessment itself can determine if monitoring vs. therapy is appropriate.',
+              'There is no valid "bilingual adjustment factor" for standardized tests. Norms were established on monolingual populations, and arbitrary score adjustments lack empirical support. Conceptual scoring across both languages is the evidence-based approach.',
+            nextNode: 'node3',
+          },
+          {
+            text: 'Rely on informal observation during a play session to estimate vocabulary size',
+            points: 4,
+            feedback:
+              'Play-based observation provides useful qualitative data, but it underestimates total vocabulary — children do not produce all their words in a single session. Combining parent report with conceptual scoring provides a more accurate and comprehensive measure.',
             nextNode: 'node3',
           },
         ],
@@ -274,35 +274,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node3',
         narrative:
-          'Your assessment reveals: conceptual vocabulary of ~12 words across both languages (below the 10th percentile for 18 months). Receptive language is within functional limits in Spanish. He demonstrates symbolic play (feeding a doll, pretending to talk on phone). Gesture use is age-appropriate. No red flags for autism.',
-        question: 'What is your clinical decision?',
+          'Your full assessment shows: conceptual vocabulary of approximately 30 words at age 2.5 (expected: 200-300+ words). Receptive language is age-appropriate in Spanish and slightly below in English. She demonstrates symbolic play, joint attention, and age-appropriate social skills. Language sample shows single words only, no word combinations in either language. Her skills are distributed across both languages — stronger in Spanish for home routines, stronger in English for daycare vocabulary.',
+        question: 'Given these results showing distributed competence across languages, what is your clinical interpretation?',
         options: [
           {
-            text: 'Qualify for early intervention services with a family-centered, bilingual approach targeting both languages',
+            text: 'Language disorder — expressive vocabulary is significantly below expectations even with conceptual scoring, despite adequate receptive skills and normal development in other areas',
             points: 10,
             feedback:
-              'Correct. With expressive vocabulary below the 10th percentile despite adequate receptive skills, early intervention is warranted. A bilingual approach supports development in both languages and respects family culture.',
+              'Correct. Even with conceptual scoring giving Sofia credit for all unique concepts across both languages, 30 words at 2.5 years is significantly below expectations (expected 200-300+). The distributed competence across languages is a normal bilingual pattern, but the overall vocabulary size indicates a true language disorder, not a language difference.',
             nextNode: 'node4',
           },
           {
-            text: 'Qualify for English-only therapy since that is the language of education',
+            text: 'Language difference, not disorder — her skills are distributed across two languages, which explains the lower numbers in each individual language',
             points: 3,
             feedback:
-              'English-only therapy ignores the child\'s dominant language and home environment. Research shows bilingual intervention is more effective and does not slow progress. ASHA supports intervention in both languages.',
+              'Distributed competence IS a normal bilingual pattern, but even when you combine her vocabularies using conceptual scoring, 30 words at 2.5 years is far below the expected 200-300+ words. This goes beyond a typical bilingual difference — it suggests a true disorder.',
             nextNode: 'node4',
           },
           {
-            text: 'Recommend monitoring only — he has good receptive language and gestures',
+            text: 'Recommend monitoring and re-evaluation in 6 months — she may be a late bloomer',
+            points: 4,
+            feedback:
+              'While some late talkers catch up, Sofia\'s expressive vocabulary at 2.5 is significantly delayed (30 vs. 200-300+ expected). A "wait and see" approach at this level of delay risks missing the critical window for early intervention. The evidence supports beginning services now.',
+            nextNode: 'node4',
+          },
+          {
+            text: 'Refer for a comprehensive hearing evaluation before making any determination',
             points: 5,
             feedback:
-              'The strong receptive skills and gesture use are positive prognostic indicators, but the expressive vocabulary is significantly below expectations. A combination of direct services and monitoring is more appropriate than monitoring alone.',
-            nextNode: 'node4',
-          },
-          {
-            text: 'Refer for an autism evaluation before making any recommendations',
-            points: 2,
-            feedback:
-              'You noted no red flags for autism, and the child demonstrates symbolic play, joint attention, and gestures. An autism evaluation is not indicated at this time. Delaying intervention for unnecessary referrals is not appropriate.',
+              'A hearing evaluation is always part of a thorough workup, and it is reasonable to confirm hearing status. However, Sofia passed her newborn hearing screening, her receptive language in Spanish is age-appropriate, and no hearing concerns were reported. This alone should not delay your clinical determination.',
             nextNode: 'node4',
           },
         ],
@@ -310,35 +310,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node4',
         narrative:
-          'The parents express concern: "My mother-in-law says we should stop speaking Spanish at home. She thinks that\'s why Marco isn\'t talking." The father looks unsure.',
-        question: 'How do you counsel this family?',
+          'You share your findings with Sofia\'s parents. Her mother becomes tearful and says, "My mother told me this would happen if we spoke two languages. Should we just switch to English at home so she can catch up?" Her father adds, "We want to do whatever is best for her."',
+        question: 'What do you tell the parents about bilingualism and Sofia\'s language development?',
         options: [
           {
-            text: 'Educate that bilingualism does NOT cause language delays, encourage maintaining Spanish at home, and explain that strong L1 skills support L2 acquisition',
+            text: 'Explain that bilingualism did NOT cause the delay, encourage maintaining both Spanish and English, and share that strong L1 skills actually support L2 development',
             points: 10,
             feedback:
-              'Perfect response. Research clearly shows bilingualism does not cause language delay. Supporting the home language strengthens the child\'s overall linguistic foundation and family connections. This is evidence-based, culturally responsive counseling.',
+              'Perfect response. Research conclusively shows bilingualism does not cause language disorders. Maintaining the home language (Spanish) preserves family bonds, cultural identity, and actually supports the acquisition of the second language. Dropping Spanish would harm family communication without helping Sofia\'s language development.',
             nextNode: 'node5',
           },
           {
-            text: 'Suggest reducing Spanish to 50/50 to give English more exposure',
-            points: 3,
-            feedback:
-              'Artificially manipulating language exposure is not recommended. The home language should be maintained naturally. The focus should be on enriching communication in both languages, not restricting either one.',
-            nextNode: 'node5',
-          },
-          {
-            text: 'Agree that focusing on one language might help initially',
+            text: 'Recommend they reduce Spanish input and increase English exposure at home to prepare for school',
             points: 0,
             feedback:
-              'This reinforces a harmful myth. There is no evidence that dropping a language helps a child with language delay. This advice can damage family dynamics and the child\'s cultural identity.',
+              'This is harmful advice. Reducing L1 input disrupts family communication, damages cultural identity, and does NOT accelerate L2 development. Children with language disorders have difficulty with ALL languages — restricting input in one language does not help the other.',
             nextNode: 'node5',
           },
           {
-            text: 'Say it is not your place to comment on family language choices',
-            points: 2,
+            text: 'Suggest they speak only English at home since that is the language she will need for school',
+            points: 0,
             feedback:
-              'As the SLP, it IS your place to provide evidence-based guidance about language development. Failing to address this misconception is a missed opportunity to support the family and the child\'s development.',
+              'Advising parents to abandon their home language is one of the most harmful recommendations an SLP can make. It severs family communication (grandparents, extended family), damages cultural identity, and has NO evidence of improving outcomes. ASHA\'s position is clear: support both languages.',
+            nextNode: 'node5',
+          },
+          {
+            text: 'Tell them language choice doesn\'t matter much either way — they should do whatever feels comfortable',
+            points: 3,
+            feedback:
+              'While being supportive of family comfort is good, this response misses a critical opportunity to provide evidence-based guidance. The family specifically asked for direction, and research clearly supports maintaining both languages. An SLP has a responsibility to share this evidence.',
             nextNode: 'node5',
           },
         ],
@@ -346,35 +346,35 @@ const SCENARIOS: Scenario[] = [
       {
         id: 'node5',
         narrative:
-          'You begin early intervention services. After 3 months, Marco\'s conceptual vocabulary has grown to 45 words. His parents report he is combining two words in Spanish ("mas agua," "mama ven"). He is beginning to combine in English as well ("more juice").',
-        question: 'What is your recommended next step?',
+          'Sofia qualifies for early intervention services. You are developing the treatment plan. The family lives in an area with limited bilingual SLP services. The closest bilingual (Spanish-English) SLP has a 4-month waitlist.',
+        question: 'What is the most appropriate treatment approach?',
         options: [
           {
-            text: 'Continue services with updated goals reflecting his progress; shift focus to word combinations and early morphology in both languages',
+            text: 'Begin parent training in L1 (Spanish) now — coach parents to use language facilitation strategies at home — while also providing direct therapy and pursuing the bilingual SLP referral',
             points: 10,
             feedback:
-              'Excellent. Marco is making great progress but has not yet caught up to age expectations. Updating goals to target emerging skills (word combinations, early morphology) while continuing bilingual support is best practice.',
+              'Excellent. Parent training in the home language provides immediate intervention through the child\'s most natural communication partners. Parents can implement strategies throughout daily routines, maximizing language input. Combining this with direct therapy and pursuing bilingual services creates a comprehensive approach.',
             nextNode: null,
           },
           {
-            text: 'Discharge from services — he is making excellent progress',
+            text: 'Provide English-only therapy yourself and skip the bilingual SLP referral since the waitlist is too long',
             points: 3,
             feedback:
-              'While progress is encouraging, 45 words at 21 months is still below age expectations (should be approaching 200+ words). Premature discharge could lead to regression or widening gaps.',
+              'English-only therapy ignores 65% of Sofia\'s language environment. While you should begin services, providing therapy in only one language is insufficient. Parent coaching in Spanish and pursuing bilingual services are essential components of an equitable treatment plan.',
             nextNode: null,
           },
           {
-            text: 'Increase therapy to 3x per week to accelerate progress',
-            points: 5,
+            text: 'Place Sofia on the bilingual SLP waitlist and delay all services until that appointment is available',
+            points: 2,
             feedback:
-              'Increasing frequency is worth considering, but the current rate of progress is strong. The focus should be on updating goals and ensuring parent coaching is effective. More is not always better if family burden increases.',
+              'Waiting 4 months for the "ideal" provider delays critical early intervention. Research supports beginning services immediately. You can provide effective intervention through parent coaching in L1 and direct therapy while waiting for the bilingual SLP.',
             nextNode: null,
           },
           {
-            text: 'Transition to English-only services since he will start preschool soon',
-            points: 0,
+            text: 'Refer to a bilingual SLP only and do not provide services yourself since you do not speak Spanish',
+            points: 4,
             feedback:
-              'Dropping Spanish from therapy as preschool approaches goes against evidence-based practice. Bilingual support should continue. The home language remains critical for family communication and overall language development.',
+              'Referring to a bilingual SLP is appropriate, but withholding all services in the meantime is not. You can provide effective intervention using trained interpreters, parent coaching models, and culturally responsive strategies even without speaking Spanish yourself. Collaboration is key.',
             nextNode: null,
           },
         ],
