@@ -3,13 +3,14 @@ import { RotateCcw, ThumbsUp, ThumbsDown, Minus, Brain } from 'lucide-react'
 import Card from '@/components/shared/Card'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
+import { category1Flashcards } from '@/data/flashcards-category-1'
+import { category2Flashcards } from '@/data/flashcards-category-2'
+import { category3Flashcards } from '@/data/flashcards-category-3'
 
-const DEMO_CARDS = [
-  { id: '1', front: 'CN X (Vagus Nerve)', back: 'Pharyngeal/laryngeal sensation + motor. Damage causes dysphagia + dysphonia. Innervates levator veli palatini, pharyngeal constrictors, intrinsic laryngeal muscles.', category: 'Anatomy' },
-  { id: '2', front: 'IDDSI Level 4', back: 'Pureed — smooth, no lumps, not sticky, does not require chewing. Falls off spoon in a single spoonful when tilted.', category: 'Dysphagia' },
-  { id: '3', front: 'Shaker Exercise', back: 'Head-lifting exercise targeting UES opening via suprahyoid muscle strengthening. Patient lies supine, lifts head to see toes without lifting shoulders. Isometric and isokinetic variations.', category: 'Treatment' },
-  { id: '4', front: 'Penetration-Aspiration Scale (PAS)', back: '8-point scale: 1 = no entry, 2 = enters airway/above VFs/ejected, 3-5 = various penetration levels, 6-7 = aspiration with response, 8 = silent aspiration (no cough response).', category: 'Assessment' },
-  { id: '5', front: 'Broca\'s vs Wernicke\'s Aphasia', back: 'Broca\'s: nonfluent, effortful, agrammatic, relatively preserved comprehension, anterior lesion. Wernicke\'s: fluent, empty speech, neologisms, poor comprehension, posterior lesion.', category: 'Neurogenic' },
+const ALL_FLASHCARDS = [
+  ...category1Flashcards,
+  ...category2Flashcards,
+  ...category3Flashcards,
 ]
 
 export default function FlashcardsPage() {
@@ -17,14 +18,14 @@ export default function FlashcardsPage() {
   const [isFlipped, setIsFlipped] = useState(false)
   const [reviewed, setReviewed] = useState(0)
 
-  const card = DEMO_CARDS[currentIndex]
+  const card = ALL_FLASHCARDS[currentIndex]
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleRate = (_rating: 'easy' | 'medium' | 'hard') => {
     setIsFlipped(false)
     setReviewed((r) => r + 1)
     setTimeout(() => {
-      setCurrentIndex((i) => (i + 1) % DEMO_CARDS.length)
+      setCurrentIndex((i) => (i + 1) % ALL_FLASHCARDS.length)
     }, 200)
   }
 
@@ -42,7 +43,7 @@ export default function FlashcardsPage() {
       <div className="mb-6 h-1 overflow-hidden rounded-full bg-surface-elevated">
         <div
           className="h-full rounded-full bg-gradient-to-r from-warning to-secondary transition-all duration-500"
-          style={{ width: `${((currentIndex + 1) / DEMO_CARDS.length) * 100}%` }}
+          style={{ width: `${((currentIndex + 1) / ALL_FLASHCARDS.length) * 100}%` }}
         />
       </div>
 

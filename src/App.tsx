@@ -13,6 +13,7 @@ const QuizPage = lazy(() => import('@/pages/QuizPage'))
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage'))
 const AnalyticsPage = lazy(() => import('@/pages/AnalyticsPage'))
 const ReviewPage = lazy(() => import('@/pages/ReviewPage'))
+const ReviewDetailPage = lazy(() => import('@/pages/ReviewDetailPage'))
 const SpeedRoundPage = lazy(() => import('@/pages/SpeedRoundPage'))
 const ClinicalScenarioPage = lazy(() => import('@/pages/ClinicalScenarioPage'))
 const AppShell = lazy(() => import('@/components/layout/AppShell'))
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/flashcards" element={<FlashcardsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/review/:topicId" element={<ReviewDetailPage />} />
           <Route path="/speed-round" element={<SpeedRoundPage />} />
           <Route path="/clinical-scenario" element={<ClinicalScenarioPage />} />
         </Route>
