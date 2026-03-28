@@ -6,8 +6,9 @@ import {
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useGamificationStore, LEVEL_NAMES } from '@/stores/gamificationStore'
+import { useSettingsStore } from '@/stores/settingsStore'
 import BetaBanner from '@/components/layout/BetaBanner'
-import { BETA_MODE } from '@/lib/beta'
+import { resolveBetaMode } from '@/lib/beta'
 
 const NAV_ITEMS = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -71,9 +72,11 @@ function NavLink({
 export default function AppShell() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { signOut } = useAuth()
+  const { user, signOut } = useAuth()
   const level = useGamificationStore((s) => s.level)
   const levelName = LEVEL_NAMES[Math.min(level - 1, LEVEL_NAMES.length - 1)]
+  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
+  const betaMode = resolveBetaMode(betaModeEnabled)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -152,7 +155,7 @@ export default function AppShell() {
               label="Settings"
               active={location.pathname === '/settings'}
             />
-            {!BETA_MODE && (
+            {user && (
               <button
                 onClick={async () => {
                   await signOut()
@@ -278,7 +281,7 @@ export default function AppShell() {
                 })}
               </nav>
 
-              {!BETA_MODE && (
+              {user && (
                 <div className="mt-6 border-t border-border pt-4">
                   <button
                     onClick={async () => {
@@ -289,7 +292,7 @@ export default function AppShell() {
                     className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all duration-200 hover:bg-background hover:text-text-primary"
                   >
                     <LogOut className="h-5 w-5" />
-                    Log Out
+                    {betaMode ? 'Log Out of account' : 'Log Out'}
                   </button>
                 </div>
               )}

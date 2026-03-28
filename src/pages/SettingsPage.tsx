@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
-  Settings, UserRound, Target, ShieldCheck, RefreshCcw, Save, BookOpenText,
+  Settings, UserRound, Target, ShieldCheck, RefreshCcw, Save, BookOpenText, Beaker,
 } from 'lucide-react'
 import PageHeader from '@/components/shared/PageHeader'
 import Card from '@/components/shared/Card'
@@ -9,13 +9,19 @@ import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import { useAuth } from '@/hooks/useAuth'
 import { useGamificationStore } from '@/stores/gamificationStore'
-import { DEFAULT_DISPLAY_NAME, DEFAULT_QUIZ_LENGTH, useSettingsStore } from '@/stores/settingsStore'
-import { BETA_MODE } from '@/lib/beta'
+import {
+  DEFAULT_BETA_MODE_ENABLED,
+  DEFAULT_DISPLAY_NAME,
+  DEFAULT_QUIZ_LENGTH,
+  useSettingsStore,
+} from '@/stores/settingsStore'
+import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 const QUIZ_LENGTH_OPTIONS = [10, 20, 30, 50]
 
 export default function SettingsPage() {
-  const { profile } = useAuth()
+  const navigate = useNavigate()
+  const { user, profile } = useAuth()
   const dailyGoal = useGamificationStore((s) => s.dailyGoal)
   const updateDailyGoalTargets = useGamificationStore((s) => s.updateDailyGoalTargets)
   const resetProgress = useGamificationStore((s) => s.resetProgress)
@@ -23,26 +29,45 @@ export default function SettingsPage() {
   const storedDisplayName = useSettingsStore((s) => s.displayName)
   const defaultQuizLength = useSettingsStore((s) => s.defaultQuizLength)
   const examTimerWarnings = useSettingsStore((s) => s.examTimerWarnings)
+  const storedBetaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
   const updateSettings = useSettingsStore((s) => s.updateSettings)
   const resetSettings = useSettingsStore((s) => s.resetSettings)
+  const betaMode = resolveBetaMode(storedBetaModeEnabled)
 
   const [displayName, setDisplayName] = useState(storedDisplayName || profile?.display_name || '')
   const [dailyQuestionGoal, setDailyQuestionGoal] = useState(dailyGoal.questionsTarget)
   const [dailyXpGoal, setDailyXpGoal] = useState(dailyGoal.xpTarget)
   const [quizLength, setQuizLength] = useState(defaultQuizLength)
   const [timerWarnings, setTimerWarnings] = useState(examTimerWarnings)
+  const [betaWorkspaceEnabled, setBetaWorkspaceEnabled] = useState(storedBetaModeEnabled)
   const [notice, setNotice] = useState<string | null>(null)
 
   function handleSave() {
+    const nextBetaMode = BETA_MODE_AVAILABLE && betaWorkspaceEnabled
+
     updateSettings({
       displayName: displayName.trim(),
       defaultQuizLength: quizLength,
       examTimerWarnings: timerWarnings,
+      betaModeEnabled: nextBetaMode,
     })
     updateDailyGoalTargets(
       Math.min(Math.max(dailyQuestionGoal, 5), 100),
       Math.min(Math.max(dailyXpGoal, 25), 500),
     )
+    if (!nextBetaMode && !user) {
+      navigate('/login', {
+        replace: true,
+        state: { from: { pathname: '/dashboard' } },
+      })
+      return
+    }
+
+    if (nextBetaMode !== storedBetaModeEnabled) {
+      setNotice(nextBetaMode ? 'Beta mode enabled for this browser.' : 'Account mode enabled. Login is now required on protected pages.')
+      return
+    }
+
     setNotice('Settings saved locally for this workspace.')
   }
 
@@ -57,6 +82,7 @@ export default function SettingsPage() {
     setDailyXpGoal(100)
     setQuizLength(DEFAULT_QUIZ_LENGTH)
     setTimerWarnings(true)
+    setBetaWorkspaceEnabled(DEFAULT_BETA_MODE_ENABLED)
     setNotice('Preferences reset to defaults.')
   }
 
@@ -73,7 +99,7 @@ export default function SettingsPage() {
         icon={Settings}
         title="Settings"
         subtitle="Manage profile details, study defaults, and compliance links without leaving the app."
-        badge={<Badge variant="secondary">{BETA_MODE ? 'Local beta' : 'Account'}</Badge>}
+        badge={<Badge variant="secondary">{betaMode ? 'Local beta' : 'Account'}</Badge>}
         actions={(
           <Button variant="primary" size="sm" onClick={handleSave}>
             <Save className="h-4 w-4" />
@@ -201,7 +227,7 @@ export default function SettingsPage() {
               <div>
                 <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Mode</dt>
                 <dd className="mt-1 font-body text-sm text-text-primary">
-                  {BETA_MODE ? 'Beta mode with local feature access' : 'Connected account'}
+                  {BETA_MODE_AVAILABLE ? 'Beta mode with local feature access' : 'Connected account'}
                 </dd>
               </div>
               <div>
