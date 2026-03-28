@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import ProtectedRoute from '@/components/layout/ProtectedRoute'
+import AchievementToast from '@/components/shared/AchievementToast'
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'))
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
@@ -12,6 +13,8 @@ const QuizPage = lazy(() => import('@/pages/QuizPage'))
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage'))
 const AnalyticsPage = lazy(() => import('@/pages/AnalyticsPage'))
 const ReviewPage = lazy(() => import('@/pages/ReviewPage'))
+const SpeedRoundPage = lazy(() => import('@/pages/SpeedRoundPage'))
+const ClinicalScenarioPage = lazy(() => import('@/pages/ClinicalScenarioPage'))
 const AppShell = lazy(() => import('@/components/layout/AppShell'))
 
 function LoadingFallback() {
@@ -25,6 +28,7 @@ function LoadingFallback() {
 export default function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
+      <AchievementToast />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<LandingPage />} />
@@ -46,6 +50,8 @@ export default function App() {
           <Route path="/flashcards" element={<FlashcardsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/speed-round" element={<SpeedRoundPage />} />
+          <Route path="/clinical-scenario" element={<ClinicalScenarioPage />} />
         </Route>
       </Routes>
     </Suspense>

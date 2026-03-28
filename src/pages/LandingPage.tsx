@@ -109,9 +109,11 @@ export default function LandingPage() {
 
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 text-center">
-        {/* Background gradient orb */}
+        {/* Gradient mesh background */}
         <div className="pointer-events-none absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" />
         <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-secondary/10 blur-[100px]" />
+        <div className="pointer-events-none absolute top-1/3 left-1/4 h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[100px]" />
+        <div className="pointer-events-none absolute bottom-1/3 right-1/3 h-[250px] w-[250px] rounded-full bg-primary/15 blur-[90px]" />
 
         <div className="relative z-10">
           <Badge variant="secondary" className="mb-8 gsap-reveal">
@@ -180,7 +182,7 @@ export default function LandingPage() {
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature) => (
-            <Card key={feature.title} hover className="feature-card gsap-reveal">
+            <Card key={feature.title} hover className="feature-card gsap-reveal hover-glow">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/10">
                 <feature.icon className="h-6 w-6 text-secondary" />
               </div>
@@ -256,7 +258,7 @@ export default function LandingPage() {
               variant={plan.highlighted ? 'glass' : 'default'}
               hover
               className={`pricing-card gsap-reveal relative ${
-                plan.highlighted ? 'ring-2 ring-secondary/50 md:scale-105' : ''
+                plan.highlighted ? 'animated-gradient-border md:scale-105' : ''
               }`}
             >
               {plan.highlighted && (

@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   BookOpen, LayoutDashboard, GraduationCap, Clock,
-  Layers, BarChart3, FileText, Settings, LogOut,
+  Layers, BarChart3, FileText, Settings, LogOut, Gamepad2,
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import BetaBanner from '@/components/layout/BetaBanner'
@@ -15,6 +15,10 @@ const NAV_ITEMS = [
   { to: '/flashcards', icon: FileText, label: 'Flashcards' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
   { to: '/review', icon: BookOpen, label: 'Review' },
+]
+
+const GAMES_ITEMS = [
+  { to: '/speed-round', icon: Gamepad2, label: 'Games' },
 ]
 
 export default function AppShell() {
@@ -46,6 +50,28 @@ export default function AppShell() {
                   className={`flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm transition-all ${
                     active
                       ? 'bg-primary/10 font-medium text-primary'
+                      : 'text-text-secondary hover:bg-surface hover:text-text-primary'
+                  }`}
+                >
+                  <item.icon className="h-5 w-5" />
+                  {item.label}
+                </Link>
+              )
+            })}
+
+            {/* Games section divider */}
+            <div className="pt-4 pb-2 px-4">
+              <span className="font-body text-[10px] font-semibold uppercase tracking-widest text-text-muted">Games</span>
+            </div>
+            {GAMES_ITEMS.map((item) => {
+              const active = location.pathname === item.to || location.pathname.startsWith(item.to + '/') || location.pathname === '/clinical-scenario'
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`flex items-center gap-3 rounded-xl px-4 py-3 font-body text-sm transition-all ${
+                    active
+                      ? 'bg-secondary/10 font-medium text-secondary'
                       : 'text-text-secondary hover:bg-surface hover:text-text-primary'
                   }`}
                 >
