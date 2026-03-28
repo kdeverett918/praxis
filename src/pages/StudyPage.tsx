@@ -3,13 +3,30 @@ import { GraduationCap } from 'lucide-react'
 import QuestionCard from '@/components/question/QuestionCard'
 import Badge from '@/components/shared/Badge'
 import { ALL_QUESTIONS } from '@/lib/questionBank'
+import { useGamificationStore } from '@/stores/gamificationStore'
 
 export default function StudyPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
 
+  const addXP = useGamificationStore((s) => s.addXP)
+  const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
+  const addCorrectAnswer = useGamificationStore((s) => s.addCorrectAnswer)
+  const updateStreak = useGamificationStore((s) => s.updateStreak)
+
   const question = ALL_QUESTIONS[currentIndex]
   if (!question) return null
+
+  const handleAnswer = (optionId: string) => {
+    if (answers[question.id]) return
+    setAnswers({ ...answers, [question.id]: optionId })
+
+    const isCorrect = question.options.find((o) => o.id === optionId)?.isCorrect ?? false
+    addXP(isCorrect ? 10 : 5)
+    addQuestionsAnswered(1)
+    if (isCorrect) addCorrectAnswer()
+    updateStreak()
+  }
 
   return (
     <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
@@ -33,7 +50,7 @@ export default function StudyPage() {
         totalQuestions={ALL_QUESTIONS.length}
         mode="study"
         selectedOptionId={answers[question.id] ?? null}
-        onAnswer={(optionId) => setAnswers({ ...answers, [question.id]: optionId })}
+        onAnswer={handleAnswer}
         onNext={() => setCurrentIndex(Math.min(currentIndex + 1, ALL_QUESTIONS.length - 1))}
         onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
         onRequestAIRationale={() => {/* Claude API call */}}
