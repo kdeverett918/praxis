@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import { useAuth } from '@/hooks/useAuth'
+import { useSettingsStore } from '@/stores/settingsStore'
+import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -11,6 +13,9 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const { signIn } = useAuth()
+  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
+  const updateSettings = useSettingsStore((s) => s.updateSettings)
+  const betaMode = resolveBetaMode(betaModeEnabled)
   const navigate = useNavigate()
   const location = useLocation()
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname ?? '/dashboard'
@@ -26,6 +31,11 @@ export default function LoginPage() {
     } else {
       navigate(from, { replace: true })
     }
+  }
+
+  function handleContinueInBetaMode() {
+    updateSettings({ betaModeEnabled: true })
+    navigate('/dashboard', { replace: true })
   }
 
   return (
@@ -112,6 +122,18 @@ export default function LoginPage() {
               {loading ? 'Logging in...' : 'Log In'}
             </Button>
           </form>
+
+          {BETA_MODE_AVAILABLE && !betaMode && (
+            <div className="mt-5 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
+              <p className="font-body text-sm text-text-primary">Need the unlocked local workspace instead?</p>
+              <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
+                Re-enable beta mode for this browser and continue without signing in.
+              </p>
+              <Button variant="ghost" size="sm" className="mt-3" onClick={handleContinueInBetaMode}>
+                Continue in Beta Mode
+              </Button>
+            </div>
+          )}
         </div>
 
         <p className="mt-6 text-center font-body text-sm text-text-secondary">

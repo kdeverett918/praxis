@@ -135,7 +135,7 @@ export default function SettingsPage() {
               <div className="space-y-2">
                 <span className="font-body text-sm font-medium text-text-secondary">Email</span>
                 <div className="rounded-xl border border-border bg-background px-4 py-3 font-body text-sm text-text-primary">
-                  {profile?.email || 'No connected account in local beta mode'}
+                  {profile?.email || (betaMode ? 'No connected account in local beta mode' : 'Sign in to connect an account')}
                 </div>
               </div>
             </div>
@@ -218,6 +218,57 @@ export default function SettingsPage() {
         </Card>
 
         <div className="space-y-6">
+          {BETA_MODE_AVAILABLE && (
+            <Card>
+              <div className="mb-4 flex items-center gap-3">
+                <Beaker className="h-5 w-5 text-secondary" />
+                <h2 className="font-display text-xl text-text-primary">Workspace mode</h2>
+              </div>
+              <p className="font-body text-sm leading-7 text-text-secondary">
+                Choose whether this browser should run the unlocked local beta workspace or the standard account-gated experience.
+              </p>
+              <div className="mt-5 grid gap-3">
+                <label className={`rounded-2xl border p-4 transition-colors ${betaWorkspaceEnabled ? 'border-secondary bg-secondary/10' : 'border-border bg-background'}`}>
+                  <input
+                    type="radio"
+                    name="workspace-mode"
+                    className="sr-only"
+                    checked={betaWorkspaceEnabled}
+                    onChange={() => setBetaWorkspaceEnabled(true)}
+                  />
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-body text-sm font-semibold text-text-primary">Beta workspace</p>
+                      <p className="mt-1 font-body text-sm leading-6 text-text-secondary">
+                        Unlock all features locally and skip login requirements on protected pages.
+                      </p>
+                    </div>
+                    <Badge variant="secondary">Local</Badge>
+                  </div>
+                </label>
+
+                <label className={`rounded-2xl border p-4 transition-colors ${!betaWorkspaceEnabled ? 'border-primary bg-primary/10' : 'border-border bg-background'}`}>
+                  <input
+                    type="radio"
+                    name="workspace-mode"
+                    className="sr-only"
+                    checked={!betaWorkspaceEnabled}
+                    onChange={() => setBetaWorkspaceEnabled(false)}
+                  />
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-body text-sm font-semibold text-text-primary">Account mode</p>
+                      <p className="mt-1 font-body text-sm leading-6 text-text-secondary">
+                        Require authentication for protected routes and use subscription-based access rules.
+                      </p>
+                    </div>
+                    <Badge variant="default">Auth</Badge>
+                  </div>
+                </label>
+              </div>
+            </Card>
+          )}
+
           <Card>
             <div className="mb-4 flex items-center gap-3">
               <BookOpenText className="h-5 w-5 text-success" />
@@ -227,13 +278,13 @@ export default function SettingsPage() {
               <div>
                 <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Mode</dt>
                 <dd className="mt-1 font-body text-sm text-text-primary">
-                  {BETA_MODE_AVAILABLE ? 'Beta mode with local feature access' : 'Connected account'}
+                  {betaMode ? 'Beta mode with local feature access' : 'Account mode with login and subscription checks'}
                 </dd>
               </div>
               <div>
                 <dt className="font-body text-xs uppercase tracking-[0.24em] text-text-muted">Subscription</dt>
                 <dd className="mt-1 font-body text-sm text-text-primary">
-                  {profile?.subscription_tier || 'Beta workspace'}
+                  {profile?.subscription_tier || (betaMode ? 'Beta workspace' : 'Not signed in')}
                 </dd>
               </div>
               <div>

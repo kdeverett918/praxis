@@ -34,4 +34,19 @@ test.describe('Legal Pages', () => {
     await page.waitForLoadState('networkidle')
     await expect(page.getByText('Saved default: 30')).toBeVisible()
   })
+
+  test('beta mode option can switch to account mode and back', async ({ page }) => {
+    await page.goto('/settings')
+    await page.waitForLoadState('networkidle')
+
+    await page.getByText('Account mode', { exact: true }).click()
+    await page.getByRole('button', { name: 'Save changes' }).click()
+
+    await page.waitForURL(/\/login$/)
+    await expect(page.getByRole('button', { name: 'Continue in Beta Mode' })).toBeVisible()
+
+    await page.getByRole('button', { name: 'Continue in Beta Mode' }).click()
+    await page.waitForURL(/\/dashboard$/)
+    await expect(page.getByText('Beta Mode active')).toBeVisible()
+  })
 })

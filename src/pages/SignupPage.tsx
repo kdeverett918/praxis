@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { BookOpen, Mail, Lock, User, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import { useAuth } from '@/hooks/useAuth'
+import { useSettingsStore } from '@/stores/settingsStore'
+import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 export default function SignupPage() {
   const [name, setName] = useState('')
@@ -13,6 +15,9 @@ export default function SignupPage() {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
   const { signUp } = useAuth()
+  const betaModeEnabled = useSettingsStore((s) => s.betaModeEnabled)
+  const updateSettings = useSettingsStore((s) => s.updateSettings)
+  const betaMode = resolveBetaMode(betaModeEnabled)
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,6 +32,11 @@ export default function SignupPage() {
       setSuccess(true)
       setTimeout(() => navigate('/dashboard'), 2000)
     }
+  }
+
+  function handleContinueInBetaMode() {
+    updateSettings({ betaModeEnabled: true })
+    navigate('/dashboard', { replace: true })
   }
 
   return (
@@ -134,6 +144,18 @@ export default function SignupPage() {
               <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
             </p>
           </form>
+
+          {BETA_MODE_AVAILABLE && !betaMode && (
+            <div className="mt-5 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
+              <p className="font-body text-sm text-text-primary">Want to explore the product first?</p>
+              <p className="mt-1 font-body text-xs leading-6 text-text-secondary">
+                Switch this browser back into beta mode and use the full local workspace without creating an account yet.
+              </p>
+              <Button variant="ghost" size="sm" className="mt-3" onClick={handleContinueInBetaMode}>
+                Continue in Beta Mode
+              </Button>
+            </div>
+          )}
         </div>
 
         <p className="mt-6 text-center font-body text-sm text-text-secondary">
