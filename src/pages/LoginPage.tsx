@@ -1,19 +1,31 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { BookOpen, Mail, Lock, Eye, EyeOff } from 'lucide-react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react'
 import Button from '@/components/shared/Button'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname ?? '/dashboard'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Supabase auth integration will go here
-    setTimeout(() => setLoading(false), 1000)
+    setError(null)
+    const { error: authError } = await signIn(email, password)
+    if (authError) {
+      setError(authError)
+      setLoading(false)
+    } else {
+      navigate(from, { replace: true })
+    }
   }
 
   return (
@@ -33,6 +45,13 @@ export default function LoginPage() {
           <p className="mt-2 font-body text-sm text-text-secondary">
             Log in to continue studying for the Praxis.
           </p>
+
+          {error && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl bg-error-light p-3 text-sm text-error">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>

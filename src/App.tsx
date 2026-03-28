@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
+import ProtectedRoute from '@/components/layout/ProtectedRoute'
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'))
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
@@ -30,8 +31,14 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        {/* App routes (inside shell) */}
-        <Route element={<AppShell />}>
+        {/* Protected app routes (inside shell) */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <AppShell />
+            </ProtectedRoute>
+          }
+        >
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/study" element={<StudyPage />} />
           <Route path="/exam" element={<ExamPage />} />

@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { BookOpen, Mail, Lock, User, Eye, EyeOff } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { BookOpen, Mail, Lock, User, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react'
 import Button from '@/components/shared/Button'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function SignupPage() {
   const [name, setName] = useState('')
@@ -9,11 +10,23 @@ export default function SignupPage() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+  const { signUp } = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => setLoading(false), 1000)
+    setError(null)
+    const { error: authError } = await signUp(email, password, name)
+    if (authError) {
+      setError(authError)
+      setLoading(false)
+    } else {
+      setSuccess(true)
+      setTimeout(() => navigate('/dashboard'), 2000)
+    }
   }
 
   return (
@@ -31,6 +44,20 @@ export default function SignupPage() {
           <p className="mt-2 font-body text-sm text-text-secondary">
             Start studying for the Praxis 5331 — free.
           </p>
+
+          {error && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl bg-error-light p-3 text-sm text-error">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              {error}
+            </div>
+          )}
+
+          {success && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl bg-success-light p-3 text-sm text-success">
+              <CheckCircle className="h-4 w-4 shrink-0" />
+              Account created! Check your email to confirm, then we'll redirect you.
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>

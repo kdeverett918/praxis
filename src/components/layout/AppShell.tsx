@@ -1,8 +1,9 @@
-import { Outlet, Link, useLocation } from 'react-router-dom'
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   BookOpen, LayoutDashboard, GraduationCap, Clock,
   Layers, BarChart3, FileText, Settings, LogOut,
 } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
 
 const NAV_ITEMS = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -16,6 +17,8 @@ const NAV_ITEMS = [
 
 export default function AppShell() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { signOut } = useAuth()
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,7 +63,13 @@ export default function AppShell() {
               <Settings className="h-5 w-5" />
               Settings
             </Link>
-            <button className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary">
+            <button
+              onClick={async () => {
+                await signOut()
+                navigate('/login')
+              }}
+              className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary"
+            >
               <LogOut className="h-5 w-5" />
               Log Out
             </button>
