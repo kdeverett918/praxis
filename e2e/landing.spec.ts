@@ -11,18 +11,21 @@ test.describe('Landing Page', () => {
   })
 
   test('navbar has logo, nav links, and action buttons', async ({ page }) => {
-    // Logo
-    await expect(page.locator('nav').getByText('PraxisPrep')).toBeVisible()
+    const nav = page.locator('nav').first()
+    const isMobile = (page.viewportSize()?.width ?? 1280) < 768
 
-    // Desktop nav links (Features, Pricing, About)
-    const nav = page.locator('nav')
+    await expect(nav.getByRole('link', { name: 'PraxisPrep' })).toBeVisible()
+
+    if (isMobile) {
+      await expect(page.getByLabel('Open menu')).toBeVisible()
+      return
+    }
+
     await expect(nav.getByText('Features', { exact: true })).toBeVisible()
     await expect(nav.getByText('Pricing', { exact: true })).toBeVisible()
     await expect(nav.getByText('About', { exact: true })).toBeVisible()
-
-    // Action buttons
-    await expect(nav.getByText('Log In')).toBeVisible()
-    await expect(nav.getByText('Start Free')).toBeVisible()
+    await expect(nav.getByRole('link', { name: 'Log In' })).toBeVisible()
+    await expect(nav.getByRole('link', { name: 'Start Free' })).toBeVisible()
   })
 
   test('hero section has headline', async ({ page }) => {
@@ -70,7 +73,7 @@ test.describe('Landing Page', () => {
 
   test('footer has ETS disclaimer text', async ({ page }) => {
     await expect(
-      page.getByText('PraxisPrep is not affiliated with, endorsed by, or sponsored by ETS'),
+      page.getByText('This product is not affiliated with, endorsed by, or sponsored by ETS.'),
     ).toBeVisible()
   })
 

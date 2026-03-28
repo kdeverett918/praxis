@@ -5,12 +5,14 @@ import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
 import { CONTENT_CATEGORY_LABELS, BIG_NINE_LABELS, DIFFICULTY_LABELS } from '@/types/question'
 import type { ContentCategory, BigNineArea, Difficulty } from '@/types/question'
+import { useSettingsStore } from '@/stores/settingsStore'
 
 export default function QuizPage() {
+  const defaultQuizLength = useSettingsStore((s) => s.defaultQuizLength)
   const [selectedCategories, setSelectedCategories] = useState<Set<ContentCategory>>(new Set())
   const [selectedBigNine, setSelectedBigNine] = useState<Set<BigNineArea>>(new Set())
   const [selectedDifficulty, setSelectedDifficulty] = useState<Set<Difficulty>>(new Set())
-  const [questionCount, setQuestionCount] = useState(20)
+  const [questionCount, setQuestionCount] = useState(defaultQuizLength)
 
   const toggleSet = <T,>(set: Set<T>, value: T): Set<T> => {
     const next = new Set(set)
@@ -88,7 +90,10 @@ export default function QuizPage() {
 
       {/* Question Count */}
       <Card className="mb-8">
-        <h2 className="mb-4 font-display text-lg text-text-primary">Number of Questions</h2>
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h2 className="font-display text-lg text-text-primary">Number of Questions</h2>
+          <span className="font-body text-xs text-text-muted">Saved default: {defaultQuizLength}</span>
+        </div>
         <div className="flex items-center gap-4">
           {[10, 20, 30, 50].map((count) => (
             <button

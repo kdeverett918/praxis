@@ -25,6 +25,8 @@ export const LEVEL_NAMES = [
 ] as const
 
 export type LevelName = (typeof LEVEL_NAMES)[number]
+export const DEFAULT_DAILY_QUESTION_GOAL = 20
+export const DEFAULT_DAILY_XP_GOAL = 100
 
 function xpForLevel(level: number): number {
   return level * 200 + (level - 1) * 50
@@ -193,6 +195,8 @@ interface GamificationState {
   completeScenario: () => void
   addQuestionsAnswered: (count: number) => void
   resetDailyGoal: () => void
+  updateDailyGoalTargets: (questionsTarget: number, xpTarget: number) => void
+  resetProgress: () => void
   dismissAchievement: (id: string) => void
   getXPProgress: () => { current: number; needed: number }
   getLevelName: () => LevelName
@@ -200,6 +204,20 @@ interface GamificationState {
 
 function todayString(): string {
   return new Date().toISOString().split('T')[0]!
+}
+
+function createDailyGoal(
+  questionsTarget = DEFAULT_DAILY_QUESTION_GOAL,
+  xpTarget = DEFAULT_DAILY_XP_GOAL,
+): DailyGoal {
+  return {
+    date: todayString(),
+    questionsTarget,
+    questionsCompleted: 0,
+    xpTarget,
+    xpEarned: 0,
+    completed: false,
+  }
 }
 
 export const useGamificationStore = create<GamificationState>()(
@@ -213,14 +231,7 @@ export const useGamificationStore = create<GamificationState>()(
       speedRoundsCompleted: 0,
       scenariosCompleted: 0,
       totalQuestionsAnswered: 0,
-      dailyGoal: {
-        date: todayString(),
-        questionsTarget: 20,
-        questionsCompleted: 0,
-        xpTarget: 100,
-        xpEarned: 0,
-        completed: false,
-      },
+      dailyGoal: createDailyGoal(),
       pendingAchievements: [],
 
       addXP: (amount) => {
@@ -238,12 +249,9 @@ export const useGamificationStore = create<GamificationState>()(
                     state.dailyGoal.questionsCompleted >= state.dailyGoal.questionsTarget,
                 }
               : {
+                  ...createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
                   date: today,
-                  questionsTarget: 20,
-                  questionsCompleted: 0,
-                  xpTarget: 100,
                   xpEarned: amount,
-                  completed: false,
                 }
 
           return { xp: newXP, level: newLevel, dailyGoal }
@@ -337,12 +345,9 @@ export const useGamificationStore = create<GamificationState>()(
                     state.dailyGoal.xpEarned >= state.dailyGoal.xpTarget,
                 }
               : {
+                  ...createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
                   date: today,
-                  questionsTarget: 20,
                   questionsCompleted: count,
-                  xpTarget: 100,
-                  xpEarned: 0,
-                  completed: false,
                 }
 
           return {
@@ -354,16 +359,37 @@ export const useGamificationStore = create<GamificationState>()(
       },
 
       resetDailyGoal: () => {
-        set({
+        set((state) => ({
+          dailyGoal: createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
+        }))
+      },
+
+      updateDailyGoalTargets: (questionsTarget, xpTarget) => {
+        set((state) => ({
           dailyGoal: {
-            date: todayString(),
-            questionsTarget: 20,
-            questionsCompleted: 0,
-            xpTarget: 100,
-            xpEarned: 0,
-            completed: false,
+            ...state.dailyGoal,
+            questionsTarget,
+            xpTarget,
+            completed:
+              state.dailyGoal.questionsCompleted >= questionsTarget &&
+              state.dailyGoal.xpEarned >= xpTarget,
           },
-        })
+        }))
+      },
+
+      resetProgress: () => {
+        set((state) => ({
+          xp: 0,
+          level: 1,
+          achievements: [...DEFAULT_ACHIEVEMENTS],
+          streak: 0,
+          lastStudyDate: null,
+          speedRoundsCompleted: 0,
+          scenariosCompleted: 0,
+          totalQuestionsAnswered: 0,
+          dailyGoal: createDailyGoal(state.dailyGoal.questionsTarget, state.dailyGoal.xpTarget),
+          pendingAchievements: [],
+        }))
       },
 
       dismissAchievement: (id) => {

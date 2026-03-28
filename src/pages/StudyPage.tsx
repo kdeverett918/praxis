@@ -2,15 +2,7 @@ import { useState } from 'react'
 import { GraduationCap } from 'lucide-react'
 import QuestionCard from '@/components/question/QuestionCard'
 import Badge from '@/components/shared/Badge'
-import { category1Questions } from '@/data/questions-category-1'
-import { category2Questions } from '@/data/questions-category-2'
-import { category3Questions } from '@/data/questions-category-3'
-
-const ALL_QUESTIONS = [
-  ...category1Questions,
-  ...category2Questions,
-  ...category3Questions,
-]
+import { ALL_QUESTIONS } from '@/lib/questionBank'
 
 export default function StudyPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -28,6 +20,8 @@ export default function StudyPage() {
       </div>
 
       <QuestionCard
+        key={question.id}
+        questionId={question.id}
         stem={question.stem}
         options={question.options}
         explanation={question.explanation}
@@ -38,6 +32,7 @@ export default function StudyPage() {
         questionNumber={currentIndex + 1}
         totalQuestions={ALL_QUESTIONS.length}
         mode="study"
+        selectedOptionId={answers[question.id] ?? null}
         onAnswer={(optionId) => setAnswers({ ...answers, [question.id]: optionId })}
         onNext={() => setCurrentIndex(Math.min(currentIndex + 1, ALL_QUESTIONS.length - 1))}
         onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}

@@ -1,8 +1,17 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Clock, AlertTriangle, Play, BarChart3 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import {
+  Clock, AlertTriangle, Play, BarChart3, Flag, Trophy, RotateCcw,
+} from 'lucide-react'
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
+import QuestionCard from '@/components/question/QuestionCard'
+import type { QuestionOption } from '@/types/database'
+import { buildBalancedExamQuestions } from '@/lib/questionBank'
+import { useSettingsStore } from '@/stores/settingsStore'
+
+type ExamPhase = 'ready' | 'active' | 'results'
 
 function formatTime(seconds: number) {
   const hrs = Math.floor(seconds / 3600)
@@ -12,27 +21,69 @@ function formatTime(seconds: number) {
 }
 
 export default function ExamPage() {
-  const [started, setStarted] = useState(false)
-  const [timeRemaining, setTimeRemaining] = useState(150 * 60) // 150 minutes
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const examTimerWarnings = useSettingsStore((s) => s.examTimerWarnings)
   const totalQuestions = 132
+  const [phase, setPhase] = useState<ExamPhase>('ready')
+  const [questions, setQuestions] = useState(() => buildBalancedExamQuestions(totalQuestions))
+  const [timeRemaining, setTimeRemaining] = useState(150 * 60)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [flagged, setFlagged] = useState<Set<string>>(new Set())
+  const [finishedDueToTime, setFinishedDueToTime] = useState(false)
 
   const tick = useCallback(() => {
-    setTimeRemaining((t) => {
-      if (t <= 0) return 0
-      return t - 1
+    setTimeRemaining((remaining) => {
+      if (remaining <= 1) {
+        setFinishedDueToTime(true)
+        setPhase('results')
+        return 0
+      }
+      return remaining - 1
     })
   }, [])
 
   useEffect(() => {
-    if (!started) return
+    if (phase !== 'active') return
     const interval = setInterval(tick, 1000)
     return () => clearInterval(interval)
-  }, [started, tick])
+  }, [phase, tick])
 
-  const isLow = timeRemaining < 600 // under 10 min
+  const current = questions[currentQuestion]
+  const answeredCount = Object.keys(answers).length
+  const correctCount = questions.reduce((count, question) => {
+    const selected = answers[question.id]
+    const correctOption = (question.options as QuestionOption[]).find((option) => option.isCorrect)
+    return count + (selected && correctOption?.id === selected ? 1 : 0)
+  }, 0)
+  const scaledScore = Math.round((correctCount / questions.length) * 200)
+  const passing = scaledScore >= 162
+  const isLowTime = examTimerWarnings && timeRemaining < 600
 
-  if (!started) {
+  function startExam() {
+    setQuestions(buildBalancedExamQuestions(totalQuestions))
+    setTimeRemaining(150 * 60)
+    setCurrentQuestion(0)
+    setAnswers({})
+    setFlagged(new Set())
+    setFinishedDueToTime(false)
+    setPhase('active')
+  }
+
+  function finishExam(reason: 'complete' | 'time' = 'complete') {
+    setFinishedDueToTime(reason === 'time')
+    setPhase('results')
+  }
+
+  function toggleFlag(questionId: string) {
+    setFlagged((currentFlags) => {
+      const next = new Set(currentFlags)
+      if (next.has(questionId)) next.delete(questionId)
+      else next.add(questionId)
+      return next
+    })
+  }
+
+  if (phase === 'ready') {
     return (
       <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
         <h1 className="mb-2 font-display text-3xl text-text-primary">Exam Simulation</h1>
@@ -49,11 +100,11 @@ export default function ExamPage() {
             </li>
             <li className="flex items-start gap-3">
               <BarChart3 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              Questions are drawn from all three content categories and Big Nine areas
+              Questions are balanced across all three content categories
             </li>
             <li className="flex items-start gap-3">
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
-              There is no penalty for guessing — answer every question
+              Flag questions you want to revisit before finishing the exam
             </li>
           </ul>
         </Card>
@@ -73,7 +124,7 @@ export default function ExamPage() {
         </div>
 
         <div className="mt-10 text-center">
-          <Button variant="primary" size="lg" onClick={() => setStarted(true)}>
+          <Button variant="primary" size="lg" onClick={startExam}>
             <Play className="h-5 w-5" />
             Begin Exam Simulation
           </Button>
@@ -82,66 +133,143 @@ export default function ExamPage() {
     )
   }
 
+  if (phase === 'results') {
+    return (
+      <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
+        <div className="rounded-3xl border border-border bg-surface/50 p-8 text-center backdrop-blur-sm">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/20">
+            <Trophy className="h-10 w-10 text-white" />
+          </div>
+          <h1 className="mt-6 font-display text-4xl text-text-primary md:text-5xl">Exam complete</h1>
+          <p className="mt-3 font-body text-base leading-7 text-text-secondary">
+            {finishedDueToTime
+              ? 'Time expired before you reached the end of the simulation.'
+              : 'You reached the end of the exam simulation.'}
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-4">
+            <Card className="text-center">
+              <p className="font-mono text-3xl font-bold text-secondary">{scaledScore}</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Scaled score</p>
+            </Card>
+            <Card className="text-center">
+              <p className="font-mono text-3xl font-bold text-primary">{correctCount}</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Correct</p>
+            </Card>
+            <Card className="text-center">
+              <p className="font-mono text-3xl font-bold text-success">{answeredCount}</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Answered</p>
+            </Card>
+            <Card className="text-center">
+              <p className="font-mono text-3xl font-bold text-warning">{flagged.size}</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Flagged</p>
+            </Card>
+          </div>
+
+          <div className={`mt-6 rounded-2xl px-4 py-3 font-body text-sm ${
+            passing ? 'bg-success-light text-text-primary' : 'bg-warning-light text-text-primary'
+          }`}>
+            {passing
+              ? 'Projected outcome: above the 162 passing benchmark.'
+              : 'Projected outcome: below the 162 passing benchmark. Review weak areas and retake another simulation.'}
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button variant="primary" onClick={startExam}>
+              <RotateCcw className="h-4 w-4" />
+              Retake exam
+            </Button>
+            <Link to="/review">
+              <Button variant="outline">Open review library</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
-      {/* Timer bar */}
       <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border bg-surface p-3 sm:p-4">
         <div className="flex items-center gap-2 sm:gap-3">
-          <Clock className={`h-5 w-5 shrink-0 ${isLow ? 'animate-pulse text-error' : 'text-primary'}`} />
-          <span className={`font-mono text-lg font-bold sm:text-xl ${isLow ? 'text-error' : 'text-text-primary'}`}>
+          <Clock className={`h-5 w-5 shrink-0 ${isLowTime ? 'animate-pulse text-error' : 'text-primary'}`} />
+          <span className={`font-mono text-lg font-bold sm:text-xl ${isLowTime ? 'text-error' : 'text-text-primary'}`}>
             {formatTime(timeRemaining)}
           </span>
         </div>
-        <Badge variant="default">
-          Q {currentQuestion + 1}/{totalQuestions}
-        </Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="default">Q {currentQuestion + 1}/{totalQuestions}</Badge>
+          <Badge variant="primary">{answeredCount} answered</Badge>
+          <Badge variant="secondary">{flagged.size} flagged</Badge>
+        </div>
       </div>
 
-      {/* Question navigation grid */}
       <Card className="mb-8">
-        <h3 className="mb-4 font-body text-sm font-semibold text-text-muted">Question Navigator</h3>
+        <h2 className="mb-4 font-display text-lg text-text-primary">Question Navigator</h2>
         <div className="grid grid-cols-8 gap-1.5 sm:grid-cols-11 md:grid-cols-16 lg:grid-cols-22">
-          {Array.from({ length: totalQuestions }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentQuestion(i)}
-              className={`flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs transition-colors ${
-                i === currentQuestion
-                  ? 'bg-primary text-white'
-                  : 'bg-surface-elevated text-text-muted hover:bg-primary/20'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {questions.map((question, index) => {
+            const active = index === currentQuestion
+            const answered = question.id in answers
+            const isFlagged = flagged.has(question.id)
+            const classes = active
+              ? 'border-primary bg-primary text-white'
+              : answered
+                ? 'border-secondary/30 bg-secondary/10 text-secondary'
+                : isFlagged
+                  ? 'border-warning/40 bg-warning/10 text-warning'
+                  : 'border-border bg-surface-elevated text-text-muted hover:bg-primary/20'
+
+            return (
+              <button
+                key={question.id}
+                onClick={() => setCurrentQuestion(index)}
+                className={`flex h-8 w-8 items-center justify-center rounded-lg border font-mono text-xs transition-colors ${classes}`}
+                aria-label={`Question ${index + 1}`}
+              >
+                {index + 1}
+              </button>
+            )
+          })}
         </div>
       </Card>
 
-      {/* Placeholder question */}
-      <Card className="text-center">
-        <p className="font-body text-text-secondary">
-          Question {currentQuestion + 1} content will load from the question bank.
-        </p>
-        <p className="mt-2 font-body text-sm text-text-muted">
-          Connect Supabase to load real questions.
-        </p>
-        <div className="mt-6 flex justify-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => setCurrentQuestion(Math.min(totalQuestions - 1, currentQuestion + 1))}
-          >
-            Next
-          </Button>
+      {current && (
+        <QuestionCard
+          key={current.id}
+          questionId={current.id}
+          stem={current.stem}
+          options={current.options}
+          explanation={current.explanation}
+          incorrectExplanations={current.incorrectExplanations}
+          contentCategory={current.contentCategory}
+          difficulty={current.difficulty}
+          bigNine={current.bigNine}
+          questionNumber={currentQuestion + 1}
+          totalQuestions={questions.length}
+          mode="exam"
+          selectedOptionId={answers[current.id] ?? null}
+          isFlagged={flagged.has(current.id)}
+          onAnswer={(optionId) => {
+            setAnswers((currentAnswers) => ({ ...currentAnswers, [current.id]: optionId }))
+          }}
+          onFlag={() => toggleFlag(current.id)}
+          onPrev={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
+          onNext={() => {
+            if (currentQuestion === questions.length - 1) finishExam('complete')
+            else setCurrentQuestion(Math.min(questions.length - 1, currentQuestion + 1))
+          }}
+        />
+      )}
+
+      <div className="mt-6 flex items-center justify-between rounded-2xl border border-border bg-surface/40 px-4 py-4">
+        <div className="flex items-center gap-2 font-body text-sm text-text-secondary">
+          <Flag className="h-4 w-4 text-warning" />
+          Flag questions to revisit before finishing the simulation.
         </div>
-      </Card>
+        <Button variant="outline" size="sm" onClick={() => finishExam('complete')}>
+          Finish exam
+        </Button>
+      </div>
     </div>
   )
 }

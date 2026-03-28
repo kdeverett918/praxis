@@ -34,27 +34,31 @@ test.describe('Exam Simulation', () => {
     await expect(page.getByText(/\d:\d{2}:\d{2}/)).toBeVisible({ timeout: 10000 })
 
     // Question navigator grid should be visible
-    await expect(page.getByText('Question Navigator')).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Question Navigator' })).toBeVisible()
 
-    // Timer bar should have question/total info visible
-    // The Badge component renders as a span with the question counter
-    const timerBar = page.locator('.flex.items-center.justify-between').filter({
-      has: page.getByText(/\d:\d{2}:\d{2}/),
-    })
-    await expect(timerBar).toBeVisible()
+    // Live exam should render an actual question stem instead of placeholder text
+    await expect(page.locator('.border-l-primary p').first()).toHaveText(/.+/)
+    await expect(page.getByText('Flag questions to revisit before finishing the simulation.')).toBeVisible()
   })
 
   test('question navigator grid is visible after starting', async ({ page }) => {
     await page.getByRole('button', { name: 'Begin Exam Simulation' }).click()
     await page.waitForLoadState('networkidle')
 
-    // The grid should have 132 numbered buttons
-    const navButtons = page.locator('.grid button')
-    // Count should be at least 132 (the grid buttons)
+    const navButtons = page.locator('button[aria-label^="Question "]')
     const count = await navButtons.count()
-    expect(count).toBeGreaterThanOrEqual(132)
+    expect(count).toBe(132)
 
     // First button should show "1"
     await expect(navButtons.first()).toContainText('1')
+  })
+
+  test('finishing the exam shows the results summary', async ({ page }) => {
+    await page.getByRole('button', { name: 'Begin Exam Simulation' }).click()
+    await page.getByRole('button', { name: 'Finish exam' }).click()
+
+    await expect(page.getByRole('heading', { name: 'Exam complete' })).toBeVisible()
+    await expect(page.getByText('Scaled score')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Retake exam' })).toBeVisible()
   })
 })

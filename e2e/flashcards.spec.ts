@@ -7,7 +7,7 @@ test.describe('Flashcards', () => {
   })
 
   test('flashcards page loads with heading', async ({ page }) => {
-    await expect(page.getByText('Flashcards', { exact: true }).first()).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Flashcards' })).toBeVisible()
   })
 
   test('card front text is visible', async ({ page }) => {

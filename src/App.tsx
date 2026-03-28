@@ -6,6 +6,8 @@ import AchievementToast from '@/components/shared/AchievementToast'
 const LandingPage = lazy(() => import('@/pages/LandingPage'))
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/pages/SignupPage'))
+const TermsPage = lazy(() => import('@/pages/TermsPage'))
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'))
 const DashboardPage = lazy(() => import('@/pages/DashboardPage'))
 const StudyPage = lazy(() => import('@/pages/StudyPage'))
 const ExamPage = lazy(() => import('@/pages/ExamPage'))
@@ -17,6 +19,7 @@ const ReviewDetailPage = lazy(() => import('@/pages/ReviewDetailPage'))
 const SpeedRoundPage = lazy(() => import('@/pages/SpeedRoundPage'))
 const ClinicalScenarioPage = lazy(() => import('@/pages/ClinicalScenarioPage'))
 const FeedbackPage = lazy(() => import('@/pages/FeedbackPage'))
+const SettingsPage = lazy(() => import('@/pages/SettingsPage'))
 const AppShell = lazy(() => import('@/components/layout/AppShell'))
 
 function LoadingFallback() {
@@ -36,6 +39,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
 
         {/* Protected app routes (inside shell) */}
         <Route
@@ -56,6 +61,7 @@ export default function App() {
           <Route path="/speed-round" element={<SpeedRoundPage />} />
           <Route path="/clinical-scenario" element={<ClinicalScenarioPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </Suspense>

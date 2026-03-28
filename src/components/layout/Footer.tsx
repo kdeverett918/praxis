@@ -55,8 +55,11 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-12 border-t border-border pt-8 text-center">
           <p className="text-xs text-text-muted">
-            PraxisPrep is not affiliated with, endorsed by, or sponsored by ETS.
+            This product is not affiliated with, endorsed by, or sponsored by ETS.
             &ldquo;Praxis&rdquo; is a registered trademark of Educational Testing Service.
+          </p>
+          <p className="mt-2 text-xs text-text-muted">
+            All practice questions, scenarios, and rationales are original educational content created for PraxisPrep.
           </p>
           <p className="mt-2 text-xs text-text-muted">
             &copy; {new Date().getFullYear()} Tech SLP Studio. All rights reserved.

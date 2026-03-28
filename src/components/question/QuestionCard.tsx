@@ -7,6 +7,7 @@ import { CONTENT_CATEGORY_LABELS, DIFFICULTY_LABELS } from '@/types/question'
 import type { ContentCategory, Difficulty } from '@/types/question'
 
 interface QuestionCardProps {
+  questionId: string
   stem: string
   options: QuestionOption[]
   explanation: string
@@ -17,6 +18,7 @@ interface QuestionCardProps {
   questionNumber: number
   totalQuestions: number
   mode: 'study' | 'exam' | 'quiz'
+  selectedOptionId?: string | null
   isFlagged?: boolean
   onAnswer: (optionId: string) => void
   onFlag?: () => void
@@ -26,6 +28,7 @@ interface QuestionCardProps {
 }
 
 export default function QuestionCard({
+  questionId,
   stem,
   options,
   explanation,
@@ -36,6 +39,7 @@ export default function QuestionCard({
   questionNumber,
   totalQuestions,
   mode,
+  selectedOptionId = null,
   isFlagged = false,
   onAnswer,
   onFlag,
@@ -43,8 +47,8 @@ export default function QuestionCard({
   onPrev,
   onRequestAIRationale,
 }: QuestionCardProps) {
-  const [selected, setSelected] = useState<string | null>(null)
-  const [showExplanation, setShowExplanation] = useState(false)
+  const [selected, setSelected] = useState<string | null>(selectedOptionId)
+  const [showExplanation, setShowExplanation] = useState(mode === 'study' && selectedOptionId !== null)
   const [shakeId, setShakeId] = useState<string | null>(null)
   const [glowId, setGlowId] = useState<string | null>(null)
   const explanationRef = useRef<HTMLDivElement>(null)
@@ -110,7 +114,7 @@ export default function QuestionCard({
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-3xl" data-question-id={questionId}>
       {/* Header bar */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
