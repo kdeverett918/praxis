@@ -1,9 +1,12 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { BETA_MODE } from '@/lib/beta'
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
   const location = useLocation()
+
+  if (BETA_MODE) return <>{children}</>
 
   if (loading) {
     return (

@@ -38,7 +38,12 @@ export async function createCheckoutSession(_params: {
 }
 
 export function isProUser(subscriptionTier: string | undefined): boolean {
-  return subscriptionTier === 'pro' || subscriptionTier === 'institutional'
+  const { BETA_MODE } = await_beta()
+  return BETA_MODE || subscriptionTier === 'pro' || subscriptionTier === 'institutional'
+}
+
+function await_beta() {
+  return { BETA_MODE: (import.meta.env.VITE_BETA_MODE === 'true') }
 }
 
 export function canAccessFeature(
@@ -46,6 +51,8 @@ export function canAccessFeature(
   subscriptionTier: string,
   questionsToday: number = 0,
 ): boolean {
+  const { BETA_MODE } = await_beta()
+  if (BETA_MODE) return true
   if (subscriptionTier === 'pro' || subscriptionTier === 'institutional') return true
 
   switch (feature) {

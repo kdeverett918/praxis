@@ -4,6 +4,8 @@ import {
   Layers, BarChart3, FileText, Settings, LogOut,
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import BetaBanner from '@/components/layout/BetaBanner'
+import { BETA_MODE } from '@/lib/beta'
 
 const NAV_ITEMS = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -63,22 +65,25 @@ export default function AppShell() {
               <Settings className="h-5 w-5" />
               Settings
             </Link>
-            <button
-              onClick={async () => {
-                await signOut()
-                navigate('/login')
-              }}
-              className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary"
-            >
-              <LogOut className="h-5 w-5" />
-              Log Out
-            </button>
+            {!BETA_MODE && (
+              <button
+                onClick={async () => {
+                  await signOut()
+                  navigate('/login')
+                }}
+                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-body text-sm text-text-secondary transition-all hover:bg-surface hover:text-text-primary"
+              >
+                <LogOut className="h-5 w-5" />
+                Log Out
+              </button>
+            )}
           </div>
         </div>
       </aside>
 
       {/* Main content */}
       <main className="lg:pl-64">
+        <BetaBanner />
         <div className="min-h-screen px-6 py-8 lg:px-10">
           <Outlet />
         </div>
