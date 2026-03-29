@@ -57,7 +57,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to="/" className="flex shrink-0 items-center gap-2.5">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <BookOpen className="h-5 w-5 text-white" />
           </div>

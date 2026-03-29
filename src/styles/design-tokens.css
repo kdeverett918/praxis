@@ -46,8 +46,8 @@
   --color-info-light: rgba(37, 99, 235, 0.08);
 
   /* === Typography === */
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   /* === Spacing Scale === */
