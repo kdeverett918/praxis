@@ -209,7 +209,7 @@ export default function SettingsPage() {
                 }`}
                 aria-pressed={timerWarnings}
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white font-body text-[11px] font-semibold text-background shadow">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-text-primary font-body text-[11px] font-semibold text-background shadow">
                   {timerWarnings ? 'On' : 'Off'}
                 </span>
               </button>

@@ -131,7 +131,7 @@ export default function StudyPage() {
           <button
             onClick={() => setStudyMode('smart')}
             className={`rounded-xl border-2 p-5 text-left transition-all ${
-              studyMode === 'smart' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+              studyMode === 'smart' ? 'border-primary bg-primary-light' : 'border-border bg-surface hover:border-primary/30'
             }`}
           >
             <div className="mb-2 flex items-center gap-2">
@@ -143,7 +143,7 @@ export default function StudyPage() {
           <button
             onClick={() => setStudyMode('free')}
             className={`rounded-xl border-2 p-5 text-left transition-all ${
-              studyMode === 'free' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+              studyMode === 'free' ? 'border-primary bg-primary-light' : 'border-border bg-surface hover:border-primary/30'
             }`}
           >
             <div className="mb-2 flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function StudyPage() {
                 className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-all ${
                   categoryFilters.has(cat)
                     ? 'border-primary bg-primary text-white'
-                    : 'border-border bg-white text-text-secondary hover:border-primary/40'
+                    : 'border-border bg-surface text-text-secondary hover:border-primary/40'
                 }`}
               >
                 {CONTENT_CATEGORY_LABELS[cat]}
@@ -184,7 +184,7 @@ export default function StudyPage() {
                 className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
                   bigNineFilters.has(area)
                     ? 'border-primary bg-primary text-white'
-                    : 'border-border bg-white text-text-secondary hover:border-primary/40'
+                    : 'border-border bg-surface text-text-secondary hover:border-primary/40'
                 }`}
               >
                 {BIG_NINE_LABELS[area]}
@@ -204,7 +204,7 @@ export default function StudyPage() {
                 className={`rounded-lg border px-4 py-2 text-sm font-semibold transition-all ${
                   sessionLength === len
                     ? 'border-primary bg-primary text-white'
-                    : 'border-border bg-white text-text-secondary hover:border-primary/40'
+                    : 'border-border bg-surface text-text-secondary hover:border-primary/40'
                 }`}
               >
                 {len} Questions

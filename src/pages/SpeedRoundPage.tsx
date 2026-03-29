@@ -182,7 +182,7 @@ function ConfettiBurst({ particles }: { particles: Particle[] }) {
           style={{
             left: p.x,
             top: p.y,
-            backgroundColor: ['#f59e0b', '#4338ca', '#22c55e', '#ef4444', '#a855f7', '#ec4899'][p.id % 6],
+            backgroundColor: ['#f59e0b', '#7C3AED', '#22c55e', '#ef4444', '#a855f7', '#ec4899'][p.id % 6],
           }}
         />
       ))}

@@ -99,7 +99,7 @@ export default function ExamPage() {
           <button
             onClick={() => setExamType('full')}
             className={`rounded-xl border-2 p-5 text-left transition-all ${
-              examType === 'full' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+              examType === 'full' ? 'border-primary bg-primary-light' : 'border-border bg-surface hover:border-primary/30'
             }`}
           >
             <p className="font-body text-base font-semibold text-text-primary">Full Exam</p>
@@ -108,7 +108,7 @@ export default function ExamPage() {
           <button
             onClick={() => setExamType('half')}
             className={`rounded-xl border-2 p-5 text-left transition-all ${
-              examType === 'half' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+              examType === 'half' ? 'border-primary bg-primary-light' : 'border-border bg-surface hover:border-primary/30'
             }`}
           >
             <p className="font-body text-base font-semibold text-text-primary">Half Exam</p>

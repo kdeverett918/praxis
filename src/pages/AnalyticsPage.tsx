@@ -109,16 +109,16 @@ export default function AnalyticsPage() {
             <div data-testid="radar-chart" className="min-h-0 flex-1">
               <ResponsiveContainer width="100%" height={320}>
                 <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="54%">
-                <PolarGrid stroke="rgba(99, 102, 241, 0.15)" />
+                <PolarGrid stroke="rgba(124, 58, 237, 0.15)" />
                 <PolarAngleAxis
                   dataKey="area"
-                  tick={{ fill: '#a5b4fc', fontSize: 9 }}
+                  tick={{ fill: '#94A3B8', fontSize: 9 }}
                 />
                 <Radar
                   name="Score"
                   dataKey="score"
-                  stroke="#f59e0b"
-                  fill="#f59e0b"
+                  stroke="#7C3AED"
+                  fill="#7C3AED"
                   fillOpacity={0.2}
                   strokeWidth={2}
                 />

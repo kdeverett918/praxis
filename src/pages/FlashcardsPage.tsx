@@ -108,7 +108,7 @@ export default function FlashcardsPage() {
               key={opt.key}
               onClick={() => setDeckChoice(opt.key)}
               className={`rounded-xl border-2 p-5 text-left transition-all ${
-                deckChoice === opt.key ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+                deckChoice === opt.key ? 'border-primary bg-primary-light' : 'border-border bg-surface hover:border-primary/30'
               }`}
             >
               <div className="flex items-center justify-between">
