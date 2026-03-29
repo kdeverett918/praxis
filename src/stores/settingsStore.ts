@@ -6,14 +6,21 @@ export const DEFAULT_DISPLAY_NAME = ''
 export const DEFAULT_QUIZ_LENGTH = 20
 export const DEFAULT_BETA_MODE_ENABLED = BETA_MODE_AVAILABLE
 
+type SwipeMode = 'swipe' | 'classic' | 'auto'
+type SwipeSensitivity = 'low' | 'medium' | 'high'
+
 interface SettingsState {
   hasHydrated: boolean
   displayName: string
   defaultQuizLength: number
   examTimerWarnings: boolean
   betaModeEnabled: boolean
+  swipeMode: SwipeMode
+  swipeSensitivity: SwipeSensitivity
+  hapticFeedback: boolean
+  reducedMotion: boolean | undefined
   setHasHydrated: (hasHydrated: boolean) => void
-  updateSettings: (updates: Partial<Pick<SettingsState, 'displayName' | 'defaultQuizLength' | 'examTimerWarnings' | 'betaModeEnabled'>>) => void
+  updateSettings: (updates: Partial<Pick<SettingsState, 'displayName' | 'defaultQuizLength' | 'examTimerWarnings' | 'betaModeEnabled' | 'swipeMode' | 'swipeSensitivity' | 'hapticFeedback' | 'reducedMotion'>>) => void
   resetSettings: () => void
 }
 
@@ -22,6 +29,10 @@ const initialState = {
   defaultQuizLength: DEFAULT_QUIZ_LENGTH,
   examTimerWarnings: true,
   betaModeEnabled: DEFAULT_BETA_MODE_ENABLED,
+  swipeMode: 'auto' as SwipeMode,
+  swipeSensitivity: 'medium' as SwipeSensitivity,
+  hapticFeedback: true,
+  reducedMotion: undefined as boolean | undefined,
 }
 
 export const useSettingsStore = create<SettingsState>()(
@@ -40,6 +51,10 @@ export const useSettingsStore = create<SettingsState>()(
         defaultQuizLength: state.defaultQuizLength,
         examTimerWarnings: state.examTimerWarnings,
         betaModeEnabled: state.betaModeEnabled,
+        swipeMode: state.swipeMode,
+        swipeSensitivity: state.swipeSensitivity,
+        hapticFeedback: state.hapticFeedback,
+        reducedMotion: state.reducedMotion,
       }),
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true)

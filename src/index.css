@@ -55,6 +55,27 @@
 
   --shadow-card: var(--shadow-card);
   --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-glow-primary: var(--shadow-glow-primary);
+  --shadow-glow-secondary: var(--shadow-glow-secondary);
+  --shadow-glow-cyan: var(--shadow-glow-cyan);
+  --shadow-glow-pink: var(--shadow-glow-pink);
+  --shadow-neon-primary: var(--shadow-neon-primary);
+  --shadow-neon-secondary: var(--shadow-neon-secondary);
+  --shadow-neon-pink: var(--shadow-neon-pink);
+
+  --color-accent-cyan: var(--color-accent-cyan);
+  --color-accent-cyan-hover: var(--color-accent-cyan-hover);
+  --color-accent-cyan-light: var(--color-accent-cyan-light);
+  --color-accent-cyan-medium: var(--color-accent-cyan-medium);
+  --color-accent-pink: var(--color-accent-pink);
+  --color-accent-pink-hover: var(--color-accent-pink-hover);
+  --color-accent-pink-light: var(--color-accent-pink-light);
+  --color-accent-pink-medium: var(--color-accent-pink-medium);
+  --color-accent-lime: var(--color-accent-lime);
+  --color-accent-lime-light: var(--color-accent-lime-light);
+
+  --radius-3xl: var(--radius-3xl);
+  --radius-4xl: var(--radius-4xl);
 }
 
 /* ===== Base resets ===== */
@@ -323,6 +344,207 @@
 
   .fc-fly-up {
     animation: fc-fly-up-anim 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* ===== Text gradient: hero (multi-accent) ===== */
+@layer components {
+  .text-gradient-hero {
+    background: linear-gradient(135deg, #c4b5fd 0%, #EC4899 40%, #EA580C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-streak {
+    background: linear-gradient(90deg, #EA580C 0%, #EC4899 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-celebration {
+    background: linear-gradient(135deg, #EC4899 0%, #F59E0B 50%, #84CC16 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===== Holographic shimmer effect ===== */
+@keyframes holographic-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@layer components {
+  .holographic-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .holographic-shimmer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(124, 58, 237, 0.06) 45%,
+      rgba(6, 182, 212, 0.06) 50%,
+      rgba(236, 72, 153, 0.06) 55%,
+      transparent 60%
+    );
+    background-size: 200% 100%;
+    animation: holographic-sweep 3s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+/* ===== Animated mesh drift (hero backgrounds) ===== */
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@layer components {
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-mesh::before {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    background:
+      radial-gradient(ellipse at 25% 40%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+    animation: mesh-drift 20s ease-in-out infinite;
+  }
+
+  .mesh-orb-slow {
+    animation: mesh-drift 25s ease-in-out infinite;
+  }
+
+  .mesh-orb-medium {
+    animation: mesh-drift 18s ease-in-out infinite reverse;
+  }
+}
+
+/* ===== Streak flame animation ===== */
+@keyframes flame-dance {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(234, 88, 12, 0.4)); transform: scaleY(1); }
+  50% { filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.5)); transform: scaleY(1.05); }
+}
+
+@layer components {
+  .streak-flame {
+    animation: flame-dance 1.5s ease-in-out infinite;
+  }
+
+  .streak-flame-hot {
+    animation: flame-dance 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(234, 88, 12, 0.6));
+  }
+}
+
+/* ===== Progress bar spark ===== */
+@keyframes progress-spark {
+  0% { left: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@layer components {
+  .progress-spark {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-spark::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 12px;
+    height: calc(100% + 4px);
+    background: white;
+    border-radius: 9999px;
+    filter: blur(3px);
+    animation: progress-spark 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* ===== Swipe card utilities ===== */
+@layer components {
+  .swipe-card-active {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    cursor: grab;
+  }
+
+  .swipe-card-active:active {
+    cursor: grabbing;
+  }
+
+  .swipe-card-stack {
+    contain: layout style;
+  }
+}
+
+/* ===== Immersive mode body lock ===== */
+@layer utilities {
+  .immersive-lock {
+    overflow: hidden;
+  }
+}
+
+/* ===== Combo counter glow pulse ===== */
+@keyframes combo-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(234, 88, 12, 0); }
+  50% { box-shadow: 0 0 24px rgba(234, 88, 12, 0.4); }
+}
+
+@layer components {
+  .combo-glow {
+    animation: combo-pulse 1s ease-in-out infinite;
+  }
+}
+
+/* ===== Badge pulse animation ===== */
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@layer components {
+  .badge-pulse {
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* ===== Story progress bar segment fill ===== */
+@keyframes segment-fill {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@layer components {
+  .story-segment-fill {
+    transform-origin: left;
+    animation: segment-fill 300ms var(--ease-snappy) forwards;
   }
 }
 

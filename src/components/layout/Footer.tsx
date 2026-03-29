@@ -27,6 +27,7 @@ export default function Footer() {
               <li><Link to="/exam" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Exam Simulation</Link></li>
               <li><Link to="/flashcards" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Flashcards</Link></li>
               <li><Link to="/review" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Study Content</Link></li>
+              <li><Link to="/videos" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Study Videos</Link></li>
             </ul>
           </div>
 
@@ -47,6 +48,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><a href="mailto:hello@praxisprep.io" className="text-sm text-text-secondary transition-colors hover:text-text-primary">hello@praxisprep.io</a></li>
               <li><a href="https://instagram.com/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Instagram</a></li>
+              <li><a href="https://tiktok.com/@thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">TikTok</a></li>
               <li><a href="https://linkedin.com/in/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">LinkedIn</a></li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
   BookOpen, Brain, Sparkles, Trophy,
   Layers, Zap, Check, ArrowRight, Shield, Beaker,
-  ChevronDown, FileText,
+  ChevronDown, FileText, Video,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -157,16 +157,17 @@ export default function LandingPage() {
         id="hero"
         className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 pt-28 pb-20 text-center md:pt-36 md:pb-24"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(124,58,237,0.08)_0%,_transparent_60%)]" />
+        {/* Animated gradient mesh background */}
+        <div className="hero-mesh" />
 
         <div className="relative z-10 mx-auto max-w-4xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-text-secondary">
+          <span className="animated-gradient-border inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-text-secondary">
             <Shield className="h-3.5 w-3.5" />
             Built by a CCC-SLP, not a publisher
           </span>
 
           <h1 className="mx-auto mt-8 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] text-text-primary">
-            Pass the Praxis on your first try.
+            Pass the Praxis on your <span className="text-gradient-hero">first try.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
@@ -260,7 +261,7 @@ export default function LandingPage() {
         {/* Tier 1: Two hero features */}
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {tier1.map((feature, i) => (
-            <div key={feature.title} className="scroll-reveal rounded-xl border border-border bg-surface p-8 shadow-card" data-testid="feature-card" data-delay={i * 80}>
+            <div key={feature.title} className="scroll-reveal holographic-shimmer rounded-xl border border-border bg-surface p-8 shadow-card" data-testid="feature-card" data-delay={i * 80}>
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-light">
                 <feature.icon className="h-7 w-7 text-primary" />
               </div>
@@ -368,7 +369,7 @@ export default function LandingPage() {
         </div>
 
         {/* Main offer card */}
-        <div className="scroll-reveal mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/40 bg-surface p-8 shadow-glow-primary md:p-10" data-testid="pricing-card" data-delay={200}>
+        <div className="scroll-reveal animated-gradient-border mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/40 bg-surface p-8 shadow-glow-primary md:p-10" data-testid="pricing-card" data-delay={200}>
           <h3 className="text-center text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.02em]">Praxis Pass Pack</h3>
           <div className="mt-4 flex items-baseline justify-center gap-1">
             <span className="font-body text-5xl font-bold text-text-primary">$49</span>
@@ -438,6 +439,27 @@ export default function LandingPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== VIDEOS CTA ===== */}
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+        <div className="scroll-reveal mx-auto max-w-2xl">
+          <Link
+            to="/videos"
+            className="group flex items-center gap-6 rounded-2xl border border-accent-pink/20 bg-accent-pink-light p-6 transition-all hover:border-accent-pink/40 hover:shadow-glow-pink md:p-8"
+          >
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent-pink/20 transition-transform group-hover:scale-110">
+              <Video className="h-7 w-7 text-accent-pink" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-body text-lg font-semibold text-text-primary">Watch SLP students study smarter</h3>
+              <p className="mt-1 font-body text-sm text-text-secondary">
+                Curated study tips, clinical reviews, and motivation from top SLP creators.
+              </p>
+            </div>
+            <ArrowRight className="hidden h-5 w-5 shrink-0 text-accent-pink transition-transform group-hover:translate-x-1 md:block" />
+          </Link>
         </div>
       </section>
 

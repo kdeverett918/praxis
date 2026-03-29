@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'glow-primary' | 'glow-secondary' | 'gradient'
 type Size = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,19 +12,25 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    'bg-secondary text-white shadow-sm hover:bg-secondary-hover hover:shadow-md',
+    'bg-secondary text-white shadow-sm hover:bg-secondary-hover hover:shadow-[0_0_20px_rgba(234,88,12,0.3)]',
   secondary:
-    'bg-primary text-white shadow-sm hover:bg-primary-hover hover:shadow-md',
+    'bg-primary text-white shadow-sm hover:bg-primary-hover hover:shadow-[0_0_20px_rgba(124,58,237,0.3)]',
   outline:
     'border border-border bg-transparent text-text-primary hover:bg-surface-elevated hover:border-text-muted',
   ghost:
     'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface-elevated',
+  'glow-primary':
+    'bg-primary text-white shadow-neon-primary hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]',
+  'glow-secondary':
+    'bg-secondary text-white shadow-neon-secondary hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]',
+  gradient:
+    'bg-gradient-to-r from-primary to-accent-pink text-white shadow-md hover:shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]',
 }
 
 const sizeStyles: Record<Size, string> = {
-  sm: 'px-4 py-2 text-sm rounded-lg',
-  md: 'px-5 py-2.5 text-sm rounded-lg',
-  lg: 'px-8 py-3.5 text-base rounded-lg',
+  sm: 'px-5 py-2 text-sm rounded-full',
+  md: 'px-6 py-2.5 text-sm rounded-full',
+  lg: 'px-8 py-3.5 text-base rounded-full',
 }
 
 export default function Button({

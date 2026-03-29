@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'elevated'
+  variant?: 'default' | 'elevated' | 'glass' | 'neon' | 'gradient' | 'interactive'
   hover?: boolean
   spotlight?: boolean
   children: ReactNode
@@ -10,6 +10,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 const variantStyles = {
   default: 'bg-surface border border-border shadow-card',
   elevated: 'bg-surface-elevated border border-border shadow-md',
+  glass: 'bg-surface-glass backdrop-blur-xl border border-white/[0.06] shadow-lg',
+  neon: 'bg-surface border border-primary/30 shadow-glow-primary',
+  gradient: 'bg-gradient-to-br from-surface to-surface-elevated border border-border/50 shadow-md',
+  interactive: 'bg-surface border border-border shadow-card cursor-pointer',
 }
 
 export default function Card({

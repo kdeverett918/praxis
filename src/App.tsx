@@ -21,6 +21,7 @@ const SpeedRoundPage = lazy(() => import('@/pages/SpeedRoundPage'))
 const ClinicalScenarioPage = lazy(() => import('@/pages/ClinicalScenarioPage'))
 const FeedbackPage = lazy(() => import('@/pages/FeedbackPage'))
 const SettingsPage = lazy(() => import('@/pages/SettingsPage'))
+const VideosPage = lazy(() => import('@/pages/VideosPage'))
 const AppShell = lazy(() => import('@/components/layout/AppShell'))
 
 function LoadingFallback() {
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/diagnostic" element={<DiagnosticQuizPage />} />
+        <Route path="/videos" element={<VideosPage />} />
 
         {/* Protected app routes (inside shell) */}
         <Route

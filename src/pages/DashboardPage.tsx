@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Flame, BookOpen, Clock, BarChart3, Brain, ArrowRight,
-  TrendingUp, Target, Zap, Gamepad2, Stethoscope,
+  TrendingUp, Target, Zap, Gamepad2, Stethoscope, Video,
 } from 'lucide-react'
 import Card from '@/components/shared/Card'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
+import StreakFlame from '@/components/shared/StreakFlame'
 import XPBar from '@/components/dashboard/XPBar'
 import DailyChallenge from '@/components/dashboard/DailyChallenge'
 import { useGamificationStore } from '@/stores/gamificationStore'
@@ -86,31 +87,38 @@ export default function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-6xl pb-24 lg:pb-0">
-      {/* Hero area with gradient mesh */}
+      {/* Hero area with animated gradient mesh */}
       <div className="relative mb-10 overflow-hidden rounded-3xl border border-border bg-surface/30 p-8 backdrop-blur-sm">
-        {/* Gradient mesh background */}
-        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-[100px]" />
-        <div className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-secondary/15 blur-[80px]" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[60px]" />
+        {/* Animated gradient mesh background */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-[100px] mesh-orb-slow" />
+        <div className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-secondary/15 blur-[80px] mesh-orb-medium" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-pink/10 blur-[60px] mesh-orb-slow" />
 
         <div className="relative z-10">
-          <h1 className="font-display text-3xl text-text-primary md:text-4xl">{getGreeting()}!</h1>
+          <div className="flex items-center gap-3">
+            <h1 className="font-display text-3xl text-text-primary md:text-4xl">{getGreeting()}!</h1>
+            {streak > 0 && <StreakFlame streak={streak} size="lg" />}
+          </div>
           <p className="mt-2 font-body text-text-secondary">
             {getDailyMotivation()}
           </p>
         </div>
       </div>
 
-      {/* XP Bar + Daily Challenge */}
-      <div className="mb-8 grid items-stretch gap-4 lg:grid-cols-2">
-        <XPBar />
-        <DailyChallenge />
+      {/* XP Bar + Daily Challenge — horizontal snap scroll on mobile */}
+      <div className="mb-8 flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory lg:grid lg:grid-cols-2 lg:overflow-visible lg:pb-0">
+        <div className="min-w-[85vw] snap-start sm:min-w-0 lg:min-w-0">
+          <XPBar />
+        </div>
+        <div className="min-w-[85vw] snap-start sm:min-w-0 lg:min-w-0">
+          <DailyChallenge />
+        </div>
       </div>
 
-      {/* Stats Row */}
-      <div ref={statsRef} className="mb-8 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Stats Row — horizontal scroll on mobile */}
+      <div ref={statsRef} className="mb-8 flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
         {STAT_CARDS.map((stat) => (
-          <Card key={stat.key} className={`group relative flex h-full items-center gap-4 overflow-hidden border-t-2 ${stat.accent}`}>
+          <Card key={stat.key} className={`group relative flex h-full min-w-[70vw] snap-start items-center gap-4 overflow-hidden border-t-2 sm:min-w-0 ${stat.accent}`}>
             <div className={`pointer-events-none absolute inset-0 bg-gradient-to-r ${stat.gradientHover} via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
             <div className={`shimmer-card flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
               <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
@@ -129,11 +137,11 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Quick Actions */}
-      <h2 className="mb-4 font-display text-xl text-text-primary">Start Studying</h2>
-      <div className="mb-10 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Quick Actions — horizontal scroll on mobile */}
+      <h2 className="mb-4 font-body text-lg font-bold text-text-primary">Start Studying</h2>
+      <div className="mb-10 flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
         {QUICK_ACTIONS.map((action) => (
-          <Link key={action.to} to={action.to} className="flex">
+          <Link key={action.to} to={action.to} className="flex min-w-[75vw] snap-start sm:min-w-0">
             <Card hover className="group flex h-full w-full items-center gap-4">
               <action.icon className={`h-8 w-8 shrink-0 ${action.color}`} />
               <div className="min-w-0 flex-1">
@@ -151,9 +159,9 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Games Section */}
-      <h2 className="mb-4 font-display text-xl text-text-primary">Games</h2>
-      <div className="mb-10 grid items-stretch gap-4 sm:grid-cols-2">
+      {/* Games & More */}
+      <h2 className="mb-4 font-body text-lg font-bold text-text-primary">Games & More</h2>
+      <div className="mb-10 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Link to="/speed-round" className="flex">
           <Card hover className="group relative flex h-full w-full items-center gap-4 overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -176,6 +184,19 @@ export default function DashboardPage() {
             <div className="flex-1">
               <p className="font-body font-semibold text-text-primary">Clinical Scenarios</p>
               <p className="font-body text-xs text-text-muted">Branching case simulations with decision scoring</p>
+            </div>
+            <ArrowRight className="h-4 w-4 text-text-muted transition-transform group-hover:translate-x-1" />
+          </Card>
+        </Link>
+        <Link to="/videos" className="flex">
+          <Card hover className="group relative flex h-full w-full items-center gap-4 overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-pink/5 via-transparent to-accent-cyan/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-pink to-accent-cyan shadow-md shadow-accent-pink/20">
+              <Video className="h-6 w-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="font-body font-semibold text-text-primary">Study Videos</p>
+              <p className="font-body text-xs text-text-muted">Curated tips from SLP creators</p>
             </div>
             <ArrowRight className="h-4 w-4 text-text-muted transition-transform group-hover:translate-x-1" />
           </Card>
@@ -237,10 +258,11 @@ export default function DashboardPage() {
             </div>
             <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
               <span className="font-body text-sm font-medium text-text-primary">Study Streak</span>
-              <div className="flex items-center gap-2">
-                <Flame className="h-4 w-4 text-secondary" />
-                <span className="font-mono text-sm font-bold text-text-primary">{streak} days</span>
-              </div>
+              {streak > 0 ? (
+                <StreakFlame streak={streak} size="sm" />
+              ) : (
+                <span className="font-mono text-sm text-text-muted">0 days</span>
+              )}
             </div>
             <div className="flex items-center justify-between rounded-xl bg-surface-elevated p-4">
               <span className="font-body text-sm font-medium text-text-primary">Today&apos;s Questions</span>

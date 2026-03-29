@@ -82,6 +82,37 @@
   --shadow-glow-secondary-lg: 0 0 0 1px rgba(234, 88, 12, 0.4), 0 8px 40px rgba(234, 88, 12, 0.2);
   --shadow-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
+  /* === Accent Colors: Neon Scholar Expansion === */
+  --color-accent-cyan: #06B6D4;
+  --color-accent-cyan-hover: #0891B2;
+  --color-accent-cyan-light: rgba(6, 182, 212, 0.12);
+  --color-accent-cyan-medium: rgba(6, 182, 212, 0.2);
+
+  --color-accent-pink: #EC4899;
+  --color-accent-pink-hover: #DB2777;
+  --color-accent-pink-light: rgba(236, 72, 153, 0.12);
+  --color-accent-pink-medium: rgba(236, 72, 153, 0.2);
+
+  --color-accent-lime: #84CC16;
+  --color-accent-lime-light: rgba(132, 204, 22, 0.12);
+
+  /* === Named Gradients === */
+  --gradient-hero: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #EA580C 100%);
+  --gradient-xp: linear-gradient(90deg, #7C3AED 0%, #EA580C 50%, #F59E0B 100%);
+  --gradient-streak: linear-gradient(90deg, #EA580C 0%, #EC4899 50%, #F59E0B 100%);
+  --gradient-knowledge: linear-gradient(135deg, #06B6D4 0%, #7C3AED 100%);
+  --gradient-celebration: linear-gradient(135deg, #EC4899 0%, #F59E0B 50%, #84CC16 100%);
+  --gradient-mesh-1: radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
+  --gradient-mesh-2: radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+  --gradient-mesh-3: radial-gradient(ellipse at 50% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+
+  /* === Neon Glow Shadows === */
+  --shadow-glow-cyan: 0 0 0 1px rgba(6, 182, 212, 0.4), 0 4px 20px rgba(6, 182, 212, 0.15);
+  --shadow-glow-pink: 0 0 0 1px rgba(236, 72, 153, 0.4), 0 4px 20px rgba(236, 72, 153, 0.15);
+  --shadow-neon-primary: 0 0 20px rgba(124, 58, 237, 0.4), 0 0 40px rgba(124, 58, 237, 0.1);
+  --shadow-neon-secondary: 0 0 20px rgba(234, 88, 12, 0.4), 0 0 40px rgba(234, 88, 12, 0.1);
+  --shadow-neon-pink: 0 0 20px rgba(236, 72, 153, 0.4), 0 0 40px rgba(236, 72, 153, 0.1);
+
   /* === Easing Curves === */
   --ease-snappy: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-sweep: cubic-bezier(0.22, 1, 0.36, 1);
@@ -93,9 +124,29 @@
   --text-hero: clamp(2.5rem, 5.5vw, 4.5rem);
   --tracking-hero: -0.03em;
 
+  /* === Enhanced Border Radius === */
+  --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
+
   /* === Transitions === */
   --transition-fast: 150ms var(--ease-snappy);
   --transition-normal: 200ms ease-out;
   --transition-slow: 400ms var(--ease-sweep);
   --transition-cinematic: 600ms var(--ease-sweep);
+
+  /* === Animation Durations === */
+  --duration-instant: 100ms;
+  --duration-swipe: 250ms;
+  --duration-snap-back: 200ms;
+  --duration-card-enter: 300ms;
+  --duration-dramatic: 600ms;
+
+  /* === Z-Index Scale (card stack) === */
+  --z-card-behind-2: 0;
+  --z-card-behind-1: 1;
+  --z-card-current: 10;
+  --z-card-overlay: 20;
+  --z-immersive-header: 30;
+  --z-bottom-sheet: 40;
+  --z-xp-popup: 50;
 }

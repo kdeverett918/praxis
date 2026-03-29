@@ -25,6 +25,7 @@ interface QuestionCardProps {
   onNext: () => void
   onPrev: () => void
   onRequestAIRationale?: () => void
+  hideNav?: boolean
 }
 
 export default function QuestionCard({
@@ -46,6 +47,7 @@ export default function QuestionCard({
   onNext,
   onPrev,
   onRequestAIRationale,
+  hideNav = false,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<string | null>(selectedOptionId)
   const [showExplanation, setShowExplanation] = useState(mode === 'study' && selectedOptionId !== null)
@@ -215,17 +217,19 @@ export default function QuestionCard({
         </div>
       )}
 
-      {/* Navigation — sticky at bottom with backdrop-blur */}
-      <div className="sticky bottom-16 z-20 mt-8 flex items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 py-3 backdrop-blur-md lg:bottom-0">
-        <Button variant="ghost" size="sm" onClick={onPrev} disabled={questionNumber === 1}>
-          <ChevronLeft className="h-4 w-4" />
-          Previous
-        </Button>
-        <Button variant="primary" size="sm" onClick={onNext}>
-          {questionNumber === totalQuestions ? 'Finish' : 'Next'}
-          <ChevronRight className="h-4 w-4" />
-        </Button>
-      </div>
+      {/* Navigation — sticky at bottom with backdrop-blur (hidden in swipe mode) */}
+      {!hideNav && (
+        <div className="sticky bottom-16 z-20 mt-8 flex items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 py-3 backdrop-blur-md lg:bottom-0">
+          <Button variant="ghost" size="sm" onClick={onPrev} disabled={questionNumber === 1}>
+            <ChevronLeft className="h-4 w-4" />
+            Previous
+          </Button>
+          <Button variant="primary" size="sm" onClick={onNext}>
+            {questionNumber === totalQuestions ? 'Finish' : 'Next'}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

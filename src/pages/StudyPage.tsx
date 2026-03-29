@@ -1,11 +1,14 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { GraduationCap, Brain, BookOpen, ArrowRight, Target, Zap, RotateCcw } from 'lucide-react'
 import QuestionCard from '@/components/question/QuestionCard'
+import { SwipeableCardStack, SwipeKeyboardHints, SwipeHint } from '@/components/swipe'
+import StoryProgressBar from '@/components/shared/StoryProgressBar'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import Card from '@/components/shared/Card'
 import { ALL_QUESTIONS } from '@/lib/questionBank'
 import { useGamificationStore } from '@/stores/gamificationStore'
+import { useSettingsStore } from '@/stores/settingsStore'
 import type { ContentCategory, BigNineArea } from '@/types/question'
 import { CONTENT_CATEGORY_LABELS, BIG_NINE_LABELS } from '@/types/question'
 
@@ -265,6 +268,34 @@ export default function StudyPage() {
     )
   }
 
+  const swipeMode = useSettingsStore((s) => s.swipeMode)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024
+  const useSwipe = swipeMode === 'swipe' || (swipeMode === 'auto' && isMobile)
+
+  const handleSwipeAdvance = useCallback(() => {
+    if (currentIndex + 1 >= sessionQuestions.length) {
+      setPhase('summary')
+    } else {
+      setCurrentIndex(currentIndex + 1)
+    }
+  }, [currentIndex, sessionQuestions.length])
+
+  const answeredSet = useMemo(() => new Set(
+    Object.keys(answers).map((qId) => sessionQuestions.findIndex((q) => q.id === qId)).filter((i) => i >= 0),
+  ), [answers, sessionQuestions])
+
+  const correctMap = useMemo(() => {
+    const map = new Map<number, boolean>()
+    Object.entries(answers).forEach(([qId, optId]) => {
+      const idx = sessionQuestions.findIndex((q) => q.id === qId)
+      if (idx >= 0) {
+        const q = sessionQuestions[idx]
+        map.set(idx, q?.options.find((o) => o.id === optId)?.isCorrect ?? false)
+      }
+    })
+    return map
+  }, [answers, sessionQuestions])
+
   /* ===== PHASE 2: ACTIVE STUDY ===== */
   if (!question) {
     setPhase('summary')
@@ -285,31 +316,85 @@ export default function StudyPage() {
         </div>
       </div>
 
-      <QuestionCard
-        key={question.id}
-        questionId={question.id}
-        stem={question.stem}
-        options={question.options}
-        explanation={question.explanation}
-        incorrectExplanations={question.incorrectExplanations}
-        contentCategory={question.contentCategory}
-        difficulty={question.difficulty}
-        bigNine={question.bigNine}
-        questionNumber={currentIndex + 1}
-        totalQuestions={sessionQuestions.length}
-        mode="study"
-        selectedOptionId={answers[question.id] ?? null}
-        onAnswer={handleAnswer}
-        onNext={() => {
-          if (currentIndex + 1 >= sessionQuestions.length) {
-            setPhase('summary')
-          } else {
-            setCurrentIndex(currentIndex + 1)
-          }
-        }}
-        onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
-        onRequestAIRationale={() => {/* Claude API call */}}
+      {/* Stories-style progress bar */}
+      <StoryProgressBar
+        total={sessionQuestions.length}
+        currentIndex={currentIndex}
+        answered={answeredSet}
+        correctMap={correctMap}
+        className="mb-6"
       />
+
+      {useSwipe ? (
+        <div className="relative">
+          <SwipeableCardStack
+            items={sessionQuestions}
+            currentIndex={currentIndex}
+            disabled={!answers[question.id]}
+            onSwipeRight={handleSwipeAdvance}
+            onSwipeLeft={handleSwipeAdvance}
+            rightLabel="Next"
+            leftLabel="Skip"
+            onCardChange={(idx) => {
+              if (idx >= sessionQuestions.length) {
+                setPhase('summary')
+              } else {
+                setCurrentIndex(idx)
+              }
+            }}
+            renderCard={(q, idx) => (
+              <QuestionCard
+                key={q.id}
+                questionId={q.id}
+                stem={q.stem}
+                options={q.options}
+                explanation={q.explanation}
+                incorrectExplanations={q.incorrectExplanations}
+                contentCategory={q.contentCategory}
+                difficulty={q.difficulty}
+                bigNine={q.bigNine}
+                questionNumber={idx + 1}
+                totalQuestions={sessionQuestions.length}
+                mode="study"
+                selectedOptionId={answers[q.id] ?? null}
+                onAnswer={handleAnswer}
+                onNext={handleSwipeAdvance}
+                onPrev={() => setCurrentIndex(Math.max(idx - 1, 0))}
+                onRequestAIRationale={() => {/* Claude API call */}}
+                hideNav
+              />
+            )}
+          />
+          <SwipeHint />
+          <SwipeKeyboardHints className="mt-4" />
+        </div>
+      ) : (
+        <QuestionCard
+          key={question.id}
+          questionId={question.id}
+          stem={question.stem}
+          options={question.options}
+          explanation={question.explanation}
+          incorrectExplanations={question.incorrectExplanations}
+          contentCategory={question.contentCategory}
+          difficulty={question.difficulty}
+          bigNine={question.bigNine}
+          questionNumber={currentIndex + 1}
+          totalQuestions={sessionQuestions.length}
+          mode="study"
+          selectedOptionId={answers[question.id] ?? null}
+          onAnswer={handleAnswer}
+          onNext={() => {
+            if (currentIndex + 1 >= sessionQuestions.length) {
+              setPhase('summary')
+            } else {
+              setCurrentIndex(currentIndex + 1)
+            }
+          }}
+          onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
+          onRequestAIRationale={() => {/* Claude API call */}}
+        />
+      )}
     </div>
   )
 }

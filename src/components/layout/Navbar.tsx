@@ -81,6 +81,9 @@ export default function Navbar() {
               </a>
             </>
           )}
+          <Link to="/videos" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+            Videos
+          </Link>
           {BETA_MODE_AVAILABLE && (
             <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode}>
               <Beaker className="h-4 w-4" />
@@ -116,6 +119,7 @@ export default function Navbar() {
                 <a href="#about" className="text-text-secondary" onClick={() => setMobileOpen(false)}>About</a>
               </>
             )}
+            <Link to="/videos" className="text-text-secondary" onClick={() => setMobileOpen(false)}>Videos</Link>
             {BETA_MODE_AVAILABLE && (
               <Button variant={betaMode ? 'outline' : 'secondary'} size="md" className="w-full" onClick={handleContinueInBetaMode}>
                 <Beaker className="h-4 w-4" />
