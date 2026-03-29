@@ -47,6 +47,14 @@ export default function QuizPage() {
     return next
   }
 
+  const matchingCount = useMemo(() => {
+    let pool = ALL_QUESTIONS
+    if (selectedCategories.size > 0) pool = pool.filter((q) => selectedCategories.has(q.contentCategory))
+    if (selectedBigNine.size > 0) pool = pool.filter((q) => q.bigNine.some((a) => selectedBigNine.has(a as BigNineArea)))
+    if (selectedDifficulty.size > 0) pool = pool.filter((q) => selectedDifficulty.has(q.difficulty))
+    return pool.length
+  }, [selectedCategories, selectedBigNine, selectedDifficulty])
+
   const handleStartQuiz = () => {
     let filtered = [...ALL_QUESTIONS]
 
@@ -132,7 +140,7 @@ export default function QuizPage() {
 
     return (
       <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
-        <Card variant="glass" className="text-center">
+        <Card variant="elevated" className="text-center">
           <Trophy className="mx-auto mb-4 h-16 w-16 text-secondary" />
           <h1 className="mb-2 font-display text-3xl text-text-primary">Quiz Complete!</h1>
           <p className={`mb-6 font-display text-xl ${gradeColor}`}>{grade}</p>
@@ -303,13 +311,14 @@ export default function QuizPage() {
       </Card>
 
       {/* Summary + Start */}
-      <Card variant="glass" className="text-center">
-        <div className="mb-4 flex flex-wrap justify-center gap-2 sm:gap-3">
+      <Card variant="elevated" className="text-center">
+        <div className="mb-3 flex flex-wrap justify-center gap-2 sm:gap-3">
           <Badge variant="primary">{selectedCategories.size || 3} Categories</Badge>
           <Badge variant="secondary">{selectedBigNine.size || 9} Big Nine</Badge>
           <Badge variant="success">{questionCount} Questions</Badge>
         </div>
-        <Button variant="primary" size="lg" onClick={handleStartQuiz}>
+        <p className="mb-4 font-body text-xs text-text-muted">{matchingCount} questions match your filters</p>
+        <Button variant="primary" size="lg" onClick={handleStartQuiz} disabled={matchingCount === 0}>
           <Play className="h-5 w-5" />
           Start Quiz
         </Button>

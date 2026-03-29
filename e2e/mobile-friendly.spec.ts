@@ -19,6 +19,7 @@ const CORE_ROUTES = [
   '/clinical-scenario',
   '/feedback',
   '/settings',
+  '/diagnostic',
 ]
 
 async function assertMobileFriendly(page: Page, route: string) {

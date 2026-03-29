@@ -106,7 +106,7 @@ export default function AnalyticsPage() {
         <Card className="flex h-full min-w-0 flex-col overflow-hidden">
           <h2 className="mb-4 font-display text-xl text-text-primary">Big Nine Radar</h2>
           {hasData ? (
-            <div className="min-h-0 flex-1">
+            <div data-testid="radar-chart" className="min-h-0 flex-1">
               <ResponsiveContainer width="100%" height={320}>
                 <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="54%">
                 <PolarGrid stroke="rgba(99, 102, 241, 0.15)" />
@@ -161,6 +161,7 @@ export default function AnalyticsPage() {
                     <div className="relative h-3 overflow-hidden rounded-full bg-surface-elevated">
                       <div
                         className={`analytics-bar-fill h-full rounded-full ${barColor}`}
+                        data-testid="analytics-bar-fill"
                         data-width={score}
                         style={{ width: '0%' }}
                       />

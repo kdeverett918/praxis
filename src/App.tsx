@@ -4,6 +4,7 @@ import ProtectedRoute from '@/components/layout/ProtectedRoute'
 import AchievementToast from '@/components/shared/AchievementToast'
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'))
+const DiagnosticQuizPage = lazy(() => import('@/pages/DiagnosticQuizPage'))
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/pages/SignupPage'))
 const TermsPage = lazy(() => import('@/pages/TermsPage'))
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/diagnostic" element={<DiagnosticQuizPage />} />
 
         {/* Protected app routes (inside shell) */}
         <Route

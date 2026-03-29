@@ -6,15 +6,19 @@ test.describe('Flashcards', () => {
     await page.waitForLoadState('networkidle')
   })
 
-  test('flashcards page loads with heading', async ({ page }) => {
+  test('flashcards page loads with deck selector', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Flashcards' })).toBeVisible()
+    await expect(page.getByText('All Cards')).toBeVisible()
+    await expect(page.getByText('Category I', { exact: true })).toBeVisible()
+    await expect(page.getByRole('button', { name: /Start Deck/ })).toBeVisible()
   })
 
-  test('card front text is visible', async ({ page }) => {
-    // The front of the card has a "Tap to reveal answer" hint
+  test('starting a deck shows card front text', async ({ page }) => {
+    await page.getByRole('button', { name: /Start Deck/ }).click()
+    await page.waitForLoadState('networkidle')
+
     await expect(page.getByText('Tap to reveal answer')).toBeVisible()
 
-    // The front text should be present in the first fc-flip-face
     const frontFace = page.locator('.fc-flip-face').first()
     const frontText = await frontFace.locator('p').first().textContent()
     expect(frontText).toBeTruthy()
@@ -22,64 +26,63 @@ test.describe('Flashcards', () => {
   })
 
   test('clicking card flips it (back content becomes visible)', async ({ page }) => {
-    // Before flipping, check the flip-inner has rotateY(0deg) in its style
+    await page.getByRole('button', { name: /Start Deck/ }).click()
+    await page.waitForLoadState('networkidle')
+
     const flipInner = page.locator('.fc-flip-inner')
     await expect(flipInner).toHaveAttribute('style', /rotateY\(0deg\)/)
 
-    // Click the card to flip
     const flipContainer = page.locator('.fc-flip-container')
     await flipContainer.click()
 
-    // After flipping, transform should change to rotateY(180deg)
     await expect(flipInner).toHaveAttribute('style', /rotateY\(180deg\)/)
   })
 
   test('rating buttons appear after flip', async ({ page }) => {
-    // Flip the card
+    await page.getByRole('button', { name: /Start Deck/ }).click()
+    await page.waitForLoadState('networkidle')
+
     const flipContainer = page.locator('.fc-flip-container')
     await flipContainer.click()
 
-    // Rating buttons should be visible
     await expect(page.getByRole('button', { name: /Hard/ })).toBeVisible()
     await expect(page.getByRole('button', { name: /Medium/ })).toBeVisible()
     await expect(page.getByRole('button', { name: /Easy/ })).toBeVisible()
   })
 
   test('clicking a rating advances to next card', async ({ page }) => {
-    // Get initial front text
+    await page.getByRole('button', { name: /Start Deck/ }).click()
+    await page.waitForLoadState('networkidle')
+
     const frontFace = page.locator('.fc-flip-face').first()
     const initialText = await frontFace.locator('p').first().textContent()
 
-    // Flip and rate
     const flipContainer = page.locator('.fc-flip-container')
     await flipContainer.click()
     await page.getByRole('button', { name: /Easy/ }).click()
 
-    // Wait for the card transition (400ms animation)
     await page.waitForTimeout(500)
 
-    // The reviewed count badge should show "1 reviewed"
     await expect(page.getByText('1 reviewed')).toBeVisible()
 
-    // Front text should change (new card)
     const newText = await frontFace.locator('p').first().textContent()
     expect(newText).not.toEqual(initialText)
   })
 
   test('reset deck button works', async ({ page }) => {
-    // Flip and rate a card to advance
+    await page.getByRole('button', { name: /Start Deck/ }).click()
+    await page.waitForLoadState('networkidle')
+
     const flipContainer = page.locator('.fc-flip-container')
     await flipContainer.click()
     await page.getByRole('button', { name: /Easy/ }).click()
     await page.waitForTimeout(500)
 
-    // Badge should show "1 reviewed"
     await expect(page.getByText('1 reviewed')).toBeVisible()
 
-    // Click reset
     await page.getByText('Reset deck').click()
 
-    // Badge should reset to "0 reviewed"
-    await expect(page.getByText('0 reviewed')).toBeVisible()
+    // Should go back to deck selector
+    await expect(page.getByRole('button', { name: /Start Deck/ })).toBeVisible()
   })
 })

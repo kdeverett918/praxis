@@ -43,7 +43,7 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="w-full max-w-md">
         <Link to="/" className="mb-10 flex items-center justify-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
             <BookOpen className="h-5 w-5 text-white" />
           </div>
           <span className="font-display text-2xl text-text-primary">PraxisPrep</span>

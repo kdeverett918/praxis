@@ -30,9 +30,8 @@ test.describe('Landing Page', () => {
 
   test('hero section has headline', async ({ page }) => {
     await expect(
-      page.locator('h1').filter({ hasText: 'The smartest way to' }),
+      page.locator('h1').filter({ hasText: 'Pass the Praxis' }),
     ).toBeVisible()
-    await expect(page.locator('h1').filter({ hasText: 'pass the Praxis' })).toBeVisible()
   })
 
   test('stats bar shows 4 stat items', async ({ page }) => {
@@ -47,10 +46,9 @@ test.describe('Landing Page', () => {
   })
 
   test('features section has 6 feature cards', async ({ page }) => {
-    const featureCards = page.locator('.feature-card')
+    const featureCards = page.getByTestId('feature-card')
     await expect(featureCards).toHaveCount(6)
 
-    // Verify some feature titles
     await expect(page.getByRole('heading', { name: 'Adaptive Engine' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'AI Rationales' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Exam Simulation' })).toBeVisible()
@@ -59,15 +57,18 @@ test.describe('Landing Page', () => {
     await expect(page.getByRole('heading', { name: 'Flashcard System' })).toBeVisible()
   })
 
-  test('pricing section has 3 pricing tiers', async ({ page }) => {
-    const pricingCards = page.locator('.pricing-card')
-    await expect(pricingCards).toHaveCount(3)
+  test('pricing section has offer card', async ({ page }) => {
+    const pricingCard = page.getByTestId('pricing-card')
+    await expect(pricingCard).toHaveCount(1)
 
-    // Check tier names within pricing cards
     const pricingSection = page.locator('#pricing')
-    await expect(pricingSection.getByRole('heading', { name: 'Free' })).toBeVisible()
-    await expect(pricingSection.getByRole('heading', { name: 'Pro' })).toBeVisible()
-    await expect(pricingSection.getByRole('heading', { name: 'Institutional' })).toBeVisible()
+    await expect(pricingSection.getByText('Praxis Pass Pack')).toBeVisible()
+    await expect(pricingSection.getByText('$49', { exact: true })).toBeVisible()
+  })
+
+  test('FAQ section exists with questions', async ({ page }) => {
+    await expect(page.getByText('Frequently asked questions')).toBeVisible()
+    await expect(page.getByText('What exactly do I get for $49?')).toBeVisible()
   })
 
   test('footer has ETS disclaimer text', async ({ page }) => {
@@ -103,21 +104,15 @@ test.describe('Landing Page — Mobile', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Hamburger button should be visible
     const menuButton = page.getByLabel('Open menu')
     await expect(menuButton).toBeVisible()
 
-    // Desktop Log In button should not be visible at mobile width
-    // (it is inside the hidden desktop nav container)
-    const desktopLogIn = page.locator('nav >> .hidden >> text=Log In')
-    await expect(desktopLogIn).toBeHidden()
+    const desktopNav = page.getByTestId('desktop-nav')
+    await expect(desktopNav).toBeHidden()
 
-    // Click hamburger to open mobile menu
     await menuButton.click()
 
-    // Mobile menu links should now be visible in the mobile dropdown
-    // The mobile menu is inside a div with md:hidden class
-    const mobileMenu = page.locator('nav .border-t')
+    const mobileMenu = page.getByTestId('mobile-nav-menu')
     await expect(mobileMenu.getByText('Features', { exact: true })).toBeVisible()
     await expect(mobileMenu.getByText('Pricing', { exact: true })).toBeVisible()
     await expect(mobileMenu.getByText('About', { exact: true })).toBeVisible()

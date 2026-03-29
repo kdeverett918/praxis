@@ -138,9 +138,10 @@ export default function QuestionCard({
       </div>
 
       {/* Progress bar with gradient glow */}
-      <div className="relative mb-8">
+      <div data-testid="question-progress" className="relative mb-8">
         <div className="h-1.5 overflow-hidden rounded-full bg-surface-elevated">
           <div
+            data-testid="question-progress-fill"
             className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
             style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
           />
@@ -152,7 +153,7 @@ export default function QuestionCard({
       </div>
 
       {/* Question stem with left accent bar and inner glow */}
-      <div className="card-highlight mb-8 rounded-2xl border border-border border-l-[3px] border-l-primary bg-surface p-4 sm:p-6 md:p-8">
+      <div data-testid="question-stem" className="card-highlight mb-8 rounded-2xl border border-border border-l-[3px] border-l-primary bg-surface p-4 sm:p-6 md:p-8">
         <p className="font-body text-base leading-relaxed text-text-primary sm:text-lg">{stem}</p>
         {bigNine.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
@@ -166,17 +167,18 @@ export default function QuestionCard({
       </div>
 
       {/* Options */}
-      <div className="space-y-3">
+      <div data-testid="answer-options" className="space-y-3">
         {options.map((option, idx) => (
           <button
             key={option.id}
             onClick={() => handleSelect(option.id)}
             disabled={hasAnswered && isStudyMode}
+            data-testid="answer-option"
             className={`group flex w-full items-start gap-4 rounded-xl border p-5 text-left transition-all duration-200 ${getOptionStyle(option)} ${
               shakeId === option.id ? 'qc-shake' : ''
             } ${glowId === option.id ? 'qc-glow-correct' : ''}`}
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-[#0b0722] font-mono text-sm font-bold transition-colors group-hover:border-primary/50">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface-elevated font-mono text-sm font-bold transition-colors group-hover:border-primary/50">
               {String.fromCharCode(65 + idx)}
             </span>
             <span className="font-body text-sm leading-relaxed">{option.text}</span>
@@ -187,7 +189,7 @@ export default function QuestionCard({
       {/* Explanation (study mode) — slide-down reveal */}
       {showExplanation && isStudyMode && (
         <div ref={explanationRef} className="mt-6 overflow-hidden">
-          <div className="rounded-2xl border border-success/30 bg-success-light p-6">
+          <div data-testid="explanation-panel" className="rounded-2xl border border-success/30 bg-success-light p-6">
             <h4 className="mb-3 font-display text-lg text-text-primary">Explanation</h4>
             <p className="font-body text-sm leading-relaxed text-text-secondary">{explanation}</p>
 

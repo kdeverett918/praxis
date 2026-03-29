@@ -16,28 +16,35 @@ test.describe('App Navigation', () => {
 
   test('sidebar has all nav items', async ({ page }) => {
     test.skip(!isDesktopViewport(page.viewportSize()?.width), 'Desktop sidebar only')
-    const sidebarNav = page.locator('aside nav')
+    const sidebar = page.getByTestId('desktop-sidebar')
 
-    await expect(sidebarNav.getByRole('link', { name: 'Dashboard' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Study' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Exam Sim' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Quiz' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Flashcards' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Analytics' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Review' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Speed Round' })).toBeVisible()
-    await expect(sidebarNav.getByRole('link', { name: 'Clinical Scenarios' })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'Settings' })).toBeVisible()
+    // Learn section
+    await expect(sidebar.getByRole('link', { name: 'Dashboard' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Study' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Flashcards' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Review' })).toBeVisible()
+
+    // Test section
+    await expect(sidebar.getByRole('link', { name: 'Quick Quiz' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Exam Sim' })).toBeVisible()
+
+    // Play section
+    await expect(sidebar.getByRole('link', { name: 'Speed Round' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Clinical Scenarios' })).toBeVisible()
+
+    // Bottom
+    await expect(sidebar.getByRole('link', { name: 'Analytics' })).toBeVisible()
+    await expect(sidebar.getByRole('link', { name: 'Settings' })).toBeVisible()
   })
 
   test('clicking each nav item navigates to correct URL', async ({ page }) => {
     test.skip(!isDesktopViewport(page.viewportSize()?.width), 'Desktop sidebar only')
-    const sidebarNav = page.locator('aside nav')
+    const sidebar = page.getByTestId('desktop-sidebar')
 
     const navTargets = [
       { label: 'Study', url: '/study' },
       { label: 'Exam Sim', url: '/exam' },
-      { label: 'Quiz', url: '/quiz' },
+      { label: 'Quick Quiz', url: '/quiz' },
       { label: 'Flashcards', url: '/flashcards' },
       { label: 'Analytics', url: '/analytics' },
       { label: 'Review', url: '/review' },
@@ -47,7 +54,7 @@ test.describe('App Navigation', () => {
     ]
 
     for (const { label, url } of navTargets) {
-      await sidebarNav.getByRole('link', { name: label }).click()
+      await sidebar.getByRole('link', { name: label }).click()
       await page.waitForLoadState('networkidle')
       await expect(page).toHaveURL(new RegExp(`${url}$`))
     }
@@ -62,15 +69,15 @@ test.describe('App Navigation', () => {
 
   test('active nav item is highlighted', async ({ page }) => {
     test.skip(!isDesktopViewport(page.viewportSize()?.width), 'Desktop sidebar only')
-    // On /dashboard, the Dashboard nav link should have active styling (bg-primary/10)
-    const dashboardLink = page.locator('aside nav a[href="/dashboard"]')
+    const sidebar = page.getByTestId('desktop-sidebar')
+
+    const dashboardLink = sidebar.locator('nav a[href="/dashboard"]')
     await expect(dashboardLink).toHaveClass(/bg-primary/)
 
-    // Navigate to study
-    await page.locator('aside nav').getByRole('link', { name: 'Study' }).click()
+    await sidebar.getByRole('link', { name: 'Study' }).click()
     await page.waitForLoadState('networkidle')
 
-    const studyLink = page.locator('aside nav a[href="/study"]')
+    const studyLink = sidebar.locator('nav a[href="/study"]')
     await expect(studyLink).toHaveClass(/bg-primary/)
   })
 })
@@ -82,11 +89,9 @@ test.describe('App Navigation — Mobile', () => {
     await page.goto('/dashboard')
     await page.waitForLoadState('networkidle')
 
-    // Mobile bottom nav is the <nav> at the bottom (not the sidebar)
-    const bottomNav = page.locator('nav.fixed.bottom-0')
+    const bottomNav = page.getByTestId('bottom-nav')
     await expect(bottomNav).toBeVisible()
 
-    // Should have exactly 5 links (Dashboard, Study, Exam Sim, Quiz, Flashcards)
     const navLinks = bottomNav.locator('a')
     await expect(navLinks).toHaveCount(5)
 

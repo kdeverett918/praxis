@@ -28,6 +28,35 @@ function shuffle<T>(items: T[]): T[] {
   return next
 }
 
+/**
+ * Build a diagnostic quiz: 6 per category (18 total), covering as many Big Nine areas as possible.
+ */
+export function buildDiagnosticQuestions(total = 18): QuestionBankItem[] {
+  const perCategory = Math.floor(total / 3)
+  const categories = Object.entries(QUESTIONS_BY_CATEGORY) as Array<
+    [keyof typeof QUESTIONS_BY_CATEGORY, QuestionBankItem[]]
+  >
+
+  const selected = categories.flatMap(([, questions]) => {
+    const shuffled = shuffle(questions)
+    // Try to cover unique Big Nine areas first
+    const picked: QuestionBankItem[] = []
+    const seenAreas = new Set<string>()
+
+    for (const q of shuffled) {
+      if (picked.length >= perCategory) break
+      const hasNewArea = q.bigNine.some((a) => !seenAreas.has(a))
+      if (hasNewArea || picked.length < perCategory) {
+        picked.push(q)
+        q.bigNine.forEach((a) => seenAreas.add(a))
+      }
+    }
+    return picked
+  })
+
+  return shuffle(selected).slice(0, total)
+}
+
 export function buildBalancedExamQuestions(total = 132): QuestionBankItem[] {
   const basePerCategory = Math.floor(total / 3)
   const remainder = total % 3

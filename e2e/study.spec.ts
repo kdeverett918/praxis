@@ -6,28 +6,40 @@ test.describe('Study Mode', () => {
     await page.waitForLoadState('networkidle')
   })
 
-  test('study page loads with "Study Mode" heading', async ({ page }) => {
+  test('study page loads with setup phase', async ({ page }) => {
     await expect(page.getByText('Study Mode')).toBeVisible()
+    await expect(page.getByText('Smart Practice')).toBeVisible()
+    await expect(page.getByText('Free Study')).toBeVisible()
+    await expect(page.getByRole('button', { name: /Start Session/ })).toBeVisible()
   })
 
-  test('first question displays with stem text', async ({ page }) => {
-    // The question stem is inside a bordered card with the question text
-    const stemCard = page.locator('.border-l-primary')
+  test('session setup shows filter options', async ({ page }) => {
+    await expect(page.getByText('Content Categories')).toBeVisible()
+    await expect(page.getByText('Big Nine Areas')).toBeVisible()
+    await expect(page.getByText('Session Length')).toBeVisible()
+    await expect(page.getByText(/questions match your filters/)).toBeVisible()
+  })
+
+  test('starting a session shows questions', async ({ page }) => {
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
+
+    // Should now be in active study phase
+    const stemCard = page.getByTestId('question-stem')
     await expect(stemCard).toBeVisible()
 
-    // Stem should contain actual text (not be empty)
     const stemText = await stemCard.locator('p').first().textContent()
     expect(stemText).toBeTruthy()
     expect(stemText!.length).toBeGreaterThan(10)
   })
 
-  test('4 answer options are visible', async ({ page }) => {
-    // Options are buttons inside a space-y-3 container
-    // Each option starts with a letter (A, B, C, D)
-    const options = page.locator('.space-y-3 > button')
+  test('4 answer options are visible after starting', async ({ page }) => {
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
+
+    const options = page.getByTestId('answer-option')
     await expect(options).toHaveCount(4)
 
-    // Verify option letters
     await expect(options.nth(0)).toContainText('A')
     await expect(options.nth(1)).toContainText('B')
     await expect(options.nth(2)).toContainText('C')
@@ -35,22 +47,24 @@ test.describe('Study Mode', () => {
   })
 
   test('clicking an option selects it and shows explanation', async ({ page }) => {
-    const options = page.locator('.space-y-3 > button')
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
 
-    // Click first option
+    const options = page.getByTestId('answer-option')
     await options.nth(0).click()
 
-    // In study mode, explanation panel should appear after selecting
     const explanation = page.getByText('Explanation')
     await expect(explanation).toBeVisible({ timeout: 3000 })
   })
 
   test('after selecting, explanation panel appears with text', async ({ page }) => {
-    const options = page.locator('.space-y-3 > button')
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
+
+    const options = page.getByTestId('answer-option')
     await options.nth(0).click()
 
-    // Explanation section should have content
-    const explanationPanel = page.locator('.border-success\\/30')
+    const explanationPanel = page.getByTestId('explanation-panel')
     await expect(explanationPanel).toBeVisible({ timeout: 3000 })
 
     const explanationText = await explanationPanel.locator('p').first().textContent()
@@ -58,34 +72,41 @@ test.describe('Study Mode', () => {
   })
 
   test('Next and Previous buttons work', async ({ page }) => {
-    // Should show "1 / " at the beginning
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
+
     await expect(page.getByText(/^1 \//)).toBeVisible()
 
-    // Click Next
     await page.getByRole('button', { name: 'Next' }).click()
     await page.waitForLoadState('networkidle')
 
-    // Should now show "2 / "
     await expect(page.getByText(/^2 \//)).toBeVisible()
 
-    // Click Previous
     await page.getByRole('button', { name: 'Previous' }).click()
     await page.waitForLoadState('networkidle')
 
-    // Should be back to "1 / "
     await expect(page.getByText(/^1 \//)).toBeVisible()
   })
 
   test('progress bar updates when navigating', async ({ page }) => {
-    const progressBar = page.locator('.bg-gradient-to-r.from-primary.to-secondary').first()
-    const initialWidth = await progressBar.getAttribute('style')
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
 
-    // Navigate to next question
+    const progressFill = page.getByTestId('question-progress-fill')
+    const initialWidth = await progressFill.getAttribute('style')
+
     await page.getByRole('button', { name: 'Next' }).click()
     await page.waitForLoadState('networkidle')
 
-    const newWidth = await progressBar.getAttribute('style')
-    // Width should have changed (progressed forward)
+    const newWidth = await progressFill.getAttribute('style')
     expect(newWidth).not.toEqual(initialWidth)
+  })
+
+  test('session accuracy is displayed during study', async ({ page }) => {
+    await page.getByRole('button', { name: /Start Session/ }).click()
+    await page.waitForLoadState('networkidle')
+
+    await expect(page.getByText(/Accuracy:/)).toBeVisible()
+    await expect(page.getByText(/answered/)).toBeVisible()
   })
 })

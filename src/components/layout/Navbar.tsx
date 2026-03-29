@@ -7,6 +7,7 @@ import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [overDark, setOverDark] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
@@ -21,52 +22,75 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Detect whether navbar is over the dark hero section
+  useEffect(() => {
+    if (!isLanding) {
+      setOverDark(false)
+      return
+    }
+    const hero = document.getElementById('hero')
+    if (!hero) { setOverDark(false); return }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setOverDark(entry!.isIntersecting),
+      { threshold: 0.05 },
+    )
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [isLanding])
+
   function handleContinueInBetaMode() {
     updateSettings({ betaModeEnabled: true })
     setMobileOpen(false)
     navigate('/dashboard')
   }
 
+  const isDark = isLanding && overDark && !scrolled
+
   return (
     <nav
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'border-b border-border bg-background/80 py-3 backdrop-blur-xl'
-          : 'bg-transparent py-5'
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+        isDark
+          ? 'bg-transparent py-5'
+          : 'border-b border-border bg-white/90 py-3 backdrop-blur-lg'
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <BookOpen className="h-5 w-5 text-white" />
           </div>
-          <span className="font-display text-xl text-text-primary">PraxisPrep</span>
+          <span className={`font-display text-xl ${isDark ? 'text-text-on-dark' : 'text-text-primary'}`}>
+            PraxisPrep
+          </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div data-testid="desktop-nav" className="hidden items-center gap-8 md:flex">
           {isLanding && (
             <>
-              <a href="#features" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+              <a href="#features" className={`text-sm transition-colors ${isDark ? 'text-text-on-dark-secondary hover:text-text-on-dark' : 'text-text-secondary hover:text-text-primary'}`}>
                 Features
               </a>
-              <a href="#pricing" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+              <a href="#pricing" className={`text-sm transition-colors ${isDark ? 'text-text-on-dark-secondary hover:text-text-on-dark' : 'text-text-secondary hover:text-text-primary'}`}>
                 Pricing
               </a>
-              <a href="#about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+              <a href="#about" className={`text-sm transition-colors ${isDark ? 'text-text-on-dark-secondary hover:text-text-on-dark' : 'text-text-secondary hover:text-text-primary'}`}>
                 About
               </a>
             </>
           )}
           {BETA_MODE_AVAILABLE && (
-            <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode}>
+            <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode} className={isDark && betaMode ? 'border-border-dark text-text-on-dark-secondary' : ''}>
               <Beaker className="h-4 w-4" />
               {betaMode ? 'Open Beta' : 'Beta Mode'}
             </Button>
           )}
           <Link to="/login">
-            <Button variant="ghost" size="sm">Log In</Button>
+            <Button variant="ghost" size="sm" className={isDark ? 'text-text-on-dark-secondary hover:text-text-on-dark hover:bg-white/10' : ''}>
+              Log In
+            </Button>
           </Link>
           <Link to="/signup">
             <Button variant="primary" size="sm">Start Free</Button>
@@ -75,7 +99,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="text-text-primary md:hidden"
+          className={`md:hidden ${isDark ? 'text-text-on-dark' : 'text-text-primary'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
@@ -85,7 +109,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden">
+        <div data-testid="mobile-nav-menu" className="border-t border-border bg-white md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
             {isLanding && (
               <>

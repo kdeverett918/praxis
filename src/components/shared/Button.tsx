@@ -12,19 +12,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-r from-secondary via-amber-400 to-secondary text-white shadow-md card-highlight hover:shadow-glow-secondary',
+    'bg-secondary text-white shadow-sm hover:bg-secondary-hover hover:shadow-md',
   secondary:
-    'bg-primary text-white hover:bg-primary-hover shadow-md hover:shadow-glow-primary',
+    'bg-primary text-white shadow-sm hover:bg-primary-hover hover:shadow-md',
   outline:
-    'border border-border bg-transparent text-text-primary hover:bg-surface hover:border-primary/50',
+    'border border-border bg-transparent text-text-primary hover:bg-surface-elevated hover:border-text-muted',
   ghost:
-    'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface',
+    'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface-elevated',
 }
 
 const sizeStyles: Record<Size, string> = {
   sm: 'px-4 py-2 text-sm rounded-lg',
-  md: 'px-6 py-3 text-base rounded-xl',
-  lg: 'px-8 py-4 text-lg rounded-xl',
+  md: 'px-5 py-2.5 text-sm rounded-lg',
+  lg: 'px-8 py-3.5 text-base rounded-lg',
 }
 
 export default function Button({
@@ -38,7 +38,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-200 hover:-translate-y-px hover:shadow-lg active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       disabled={disabled || loading}
       {...props}
     >

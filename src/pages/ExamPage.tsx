@@ -22,10 +22,12 @@ function formatTime(seconds: number) {
 
 export default function ExamPage() {
   const examTimerWarnings = useSettingsStore((s) => s.examTimerWarnings)
-  const totalQuestions = 132
+  const [examType, setExamType] = useState<'full' | 'half'>('full')
+  const totalQuestions = examType === 'full' ? 132 : 66
+  const totalTime = examType === 'full' ? 150 * 60 : 75 * 60
   const [phase, setPhase] = useState<ExamPhase>('ready')
   const [questions, setQuestions] = useState(() => buildBalancedExamQuestions(totalQuestions))
-  const [timeRemaining, setTimeRemaining] = useState(150 * 60)
+  const [timeRemaining, setTimeRemaining] = useState(totalTime)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [flagged, setFlagged] = useState<Set<string>>(new Set())
@@ -60,8 +62,9 @@ export default function ExamPage() {
   const isLowTime = examTimerWarnings && timeRemaining < 600
 
   function startExam() {
-    setQuestions(buildBalancedExamQuestions(totalQuestions))
-    setTimeRemaining(150 * 60)
+    const qCount = examType === 'full' ? 132 : 66
+    setQuestions(buildBalancedExamQuestions(qCount))
+    setTimeRemaining(examType === 'full' ? 150 * 60 : 75 * 60)
     setCurrentQuestion(0)
     setAnswers({})
     setFlagged(new Set())
@@ -91,8 +94,30 @@ export default function ExamPage() {
           Experience realistic test conditions. 132 questions. 150 minutes. Just like the real Praxis 5331.
         </p>
 
+        {/* Exam type selector */}
+        <div className="mb-8 grid gap-4 sm:grid-cols-2">
+          <button
+            onClick={() => setExamType('full')}
+            className={`rounded-xl border-2 p-5 text-left transition-all ${
+              examType === 'full' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+            }`}
+          >
+            <p className="font-body text-base font-semibold text-text-primary">Full Exam</p>
+            <p className="mt-1 font-body text-sm text-text-secondary">132 questions &middot; 150 minutes</p>
+          </button>
+          <button
+            onClick={() => setExamType('half')}
+            className={`rounded-xl border-2 p-5 text-left transition-all ${
+              examType === 'half' ? 'border-primary bg-primary-light' : 'border-border bg-white hover:border-primary/30'
+            }`}
+          >
+            <p className="font-body text-base font-semibold text-text-primary">Half Exam</p>
+            <p className="mt-1 font-body text-sm text-text-secondary">66 questions &middot; 75 minutes</p>
+          </button>
+        </div>
+
         <Card className="mb-8">
-          <h2 className="mb-4 font-display text-xl text-text-primary">Before You Begin</h2>
+          <h2 className="mb-4 font-body text-lg font-semibold text-text-primary">Before You Begin</h2>
           <ul className="space-y-3 font-body text-sm text-text-secondary">
             <li className="flex items-start gap-3">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -111,8 +136,8 @@ export default function ExamPage() {
 
         <div className="grid items-stretch gap-6 sm:grid-cols-3">
           {[
-            { label: 'Questions', value: '132', sub: 'selected-response' },
-            { label: 'Time Limit', value: '150', sub: 'minutes' },
+            { label: 'Questions', value: examType === 'full' ? '132' : '66', sub: 'selected-response' },
+            { label: 'Time Limit', value: examType === 'full' ? '150' : '75', sub: 'minutes' },
             { label: 'Passing Score', value: '162', sub: 'out of 200' },
           ].map((stat) => (
             <Card key={stat.label} className="flex flex-col items-center justify-center text-center">

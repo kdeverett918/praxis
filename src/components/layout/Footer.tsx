@@ -3,13 +3,13 @@ import { BookOpen } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-surface/30">
+    <footer className="border-t border-border bg-surface-elevated">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <BookOpen className="h-5 w-5 text-white" />
               </div>
               <span className="font-display text-xl text-text-primary">PraxisPrep</span>
