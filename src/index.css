@@ -84,8 +84,8 @@
   }
 
   ::selection {
-    background: rgba(124, 58, 237, 0.2);
-    color: #1C1917;
+    background: rgba(124, 58, 237, 0.4);
+    color: white;
   }
 
   :focus-visible {

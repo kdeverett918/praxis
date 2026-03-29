@@ -152,24 +152,24 @@ export default function LandingPage() {
     <div ref={pageRef} className="min-h-screen bg-background text-text-primary">
       <Navbar />
 
-      {/* ===== HERO (dark section) ===== */}
+      {/* ===== HERO ===== */}
       <section
         id="hero"
-        className="relative flex min-h-[90vh] flex-col items-center justify-center bg-background-dark px-6 pt-28 pb-20 text-center md:pt-36 md:pb-24"
+        className="relative flex min-h-[90vh] flex-col items-center justify-center px-6 pt-28 pb-20 text-center md:pt-36 md:pb-24"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-background-dark-elevated)_0%,_var(--color-background-dark)_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(124,58,237,0.08)_0%,_transparent_60%)]" />
 
         <div className="relative z-10 mx-auto max-w-4xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border-dark bg-background-dark-elevated px-4 py-1.5 text-xs font-medium text-text-on-dark-secondary">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-text-secondary">
             <Shield className="h-3.5 w-3.5" />
             Built by a CCC-SLP, not a publisher
           </span>
 
-          <h1 className="mx-auto mt-8 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] text-text-on-dark">
+          <h1 className="mx-auto mt-8 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] text-text-primary">
             Pass the Praxis on your first try.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-on-dark-secondary md:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
             AI-powered adaptive study with 450+ original questions, exam simulations, and instant rationales — built by a medical SLP who actually took the test.
           </p>
 
@@ -181,7 +181,7 @@ export default function LandingPage() {
               </Button>
             </Link>
             <a href="#features" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full border-border-dark text-text-on-dark-secondary hover:bg-background-dark-elevated hover:text-text-on-dark sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full border-border text-text-secondary hover:bg-background-dark-elevated hover:text-text-primary sm:w-auto">
                 See What's Inside
               </Button>
             </a>
@@ -190,28 +190,28 @@ export default function LandingPage() {
           {BETA_MODE_AVAILABLE && (
             <div
               data-testid="landing-beta-cta"
-              className="mx-auto mt-6 flex max-w-2xl flex-col items-stretch gap-3 rounded-xl border border-border-dark bg-background-dark-elevated p-4 text-left sm:flex-row sm:items-center sm:justify-between"
+              className="mx-auto mt-6 flex max-w-2xl flex-col items-stretch gap-3 rounded-xl border border-border bg-surface p-4 text-left sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
                   <Beaker className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-body text-sm font-semibold text-text-on-dark">
+                  <p className="font-body text-sm font-semibold text-text-primary">
                     {betaMode ? 'Beta Mode is active.' : 'Beta Mode available.'}
                   </p>
-                  <p className="mt-0.5 font-body text-xs text-text-on-dark-muted">
+                  <p className="mt-0.5 font-body text-xs text-text-muted">
                     Open the workspace directly — bypass login.
                   </p>
                 </div>
               </div>
-              <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode} className={betaMode ? 'border-border-dark text-text-on-dark-secondary' : ''}>
+              <Button variant={betaMode ? 'outline' : 'secondary'} size="sm" onClick={handleContinueInBetaMode} className={betaMode ? 'border-border text-text-secondary' : ''}>
                 {betaMode ? 'Open Beta Workspace' : 'Continue in Beta Mode'}
               </Button>
             </div>
           )}
 
-          <p className="mt-6 font-body text-sm text-text-on-dark-muted">
+          <p className="mt-6 font-body text-sm text-text-muted">
             No credit card required &middot; 25 free questions daily
           </p>
         </div>
@@ -221,7 +221,7 @@ export default function LandingPage() {
       <section
         ref={statsRef}
         data-testid="landing-stats"
-        className="border-b border-border bg-white"
+        className="border-y border-border bg-surface/50"
       >
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 py-10 md:grid-cols-4 md:py-12">
           {STATS.map((stat) => (
@@ -260,7 +260,7 @@ export default function LandingPage() {
         {/* Tier 1: Two hero features */}
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {tier1.map((feature, i) => (
-            <div key={feature.title} className="scroll-reveal rounded-xl border border-border bg-white p-8 shadow-card" data-testid="feature-card" data-delay={i * 80}>
+            <div key={feature.title} className="scroll-reveal rounded-xl border border-border bg-surface p-8 shadow-card" data-testid="feature-card" data-delay={i * 80}>
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-light">
                 <feature.icon className="h-7 w-7 text-primary" />
               </div>
@@ -273,7 +273,7 @@ export default function LandingPage() {
         {/* Tier 2: Three medium features */}
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {tier2.map((feature, i) => (
-            <div key={feature.title} className="scroll-reveal rounded-xl border border-border bg-white p-6 shadow-card" data-testid="feature-card" data-delay={(i + 2) * 80}>
+            <div key={feature.title} className="scroll-reveal rounded-xl border border-border bg-surface p-6 shadow-card" data-testid="feature-card" data-delay={(i + 2) * 80}>
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-light">
                 <feature.icon className="h-5 w-5 text-primary" />
               </div>
@@ -295,9 +295,9 @@ export default function LandingPage() {
             </div>
             {/* Stylized card stack */}
             <div className="relative ml-auto hidden h-40 w-56 md:block">
-              <div className="absolute top-3 left-3 h-full w-full rounded-lg border border-border bg-white opacity-40" />
-              <div className="absolute top-1.5 left-1.5 h-full w-full rounded-lg border border-border bg-white opacity-70" />
-              <div className="relative flex h-full w-full flex-col items-center justify-center rounded-lg border border-border bg-white p-4 shadow-sm">
+              <div className="absolute top-3 left-3 h-full w-full rounded-lg border border-border bg-surface opacity-40" />
+              <div className="absolute top-1.5 left-1.5 h-full w-full rounded-lg border border-border bg-surface opacity-70" />
+              <div className="relative flex h-full w-full flex-col items-center justify-center rounded-lg border border-border bg-surface p-4 shadow-sm">
                 <FileText className="mb-2 h-8 w-8 text-primary/40" />
                 <span className="font-body text-xs font-medium text-text-muted">Tap to reveal</span>
               </div>
@@ -315,10 +315,10 @@ export default function LandingPage() {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="bg-surface-elevated py-20 md:py-24">
+      <section className="border-y border-border bg-surface/30 py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="scroll-reveal mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-text-secondary">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">
               How It Works
             </span>
             <h2 className="mt-4 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
@@ -368,7 +368,7 @@ export default function LandingPage() {
         </div>
 
         {/* Main offer card */}
-        <div className="scroll-reveal mx-auto mt-10 max-w-2xl rounded-2xl border-2 border-primary bg-white p-8 shadow-xl md:p-10" data-testid="pricing-card" data-delay={200}>
+        <div className="scroll-reveal mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/40 bg-surface p-8 shadow-glow-primary md:p-10" data-testid="pricing-card" data-delay={200}>
           <h3 className="text-center text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.02em]">Praxis Pass Pack</h3>
           <div className="mt-4 flex items-baseline justify-center gap-1">
             <span className="font-body text-5xl font-bold text-text-primary">$49</span>
@@ -407,7 +407,7 @@ export default function LandingPage() {
       </section>
 
       {/* ===== ABOUT / FOUNDER (2-column) ===== */}
-      <section id="about" className="bg-surface-elevated py-20 md:py-24">
+      <section id="about" className="border-y border-border bg-surface/30 py-20 md:py-24">
         <div className="mx-auto max-w-5xl px-6">
           <div className="scroll-reveal grid gap-10 md:grid-cols-5">
             {/* Left: Credentials */}
@@ -419,9 +419,9 @@ export default function LandingPage() {
               <p className="font-body text-sm text-text-muted">M.A., CCC-SLP</p>
               <p className="font-body text-sm text-text-muted">Medical SLP & Full-Stack Developer</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-text-secondary">ASHA Certified</span>
-                <span className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-text-secondary">500+ Clinical Hours</span>
-                <span className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-text-secondary">SLP + Engineer</span>
+                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">ASHA Certified</span>
+                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">500+ Clinical Hours</span>
+                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">SLP + Engineer</span>
               </div>
             </div>
 
@@ -456,12 +456,12 @@ export default function LandingPage() {
       </section>
 
       {/* ===== FINAL CTA (dark bookend) ===== */}
-      <section className="bg-background-dark py-20 md:py-24">
+      <section className="border-t border-border bg-surface/50 py-20 md:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="scroll-reveal text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em] text-text-on-dark">
+          <h2 className="scroll-reveal text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em] text-text-primary">
             Your Praxis date isn't waiting.
           </h2>
-          <p className="scroll-reveal mt-4 font-body text-lg text-text-on-dark-secondary" data-delay={80}>
+          <p className="scroll-reveal mt-4 font-body text-lg text-text-secondary" data-delay={80}>
             Start studying now and feel ready on test day.
           </p>
           <div className="scroll-reveal mt-8" data-delay={160}>
@@ -471,8 +471,8 @@ export default function LandingPage() {
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <p className="mt-4 font-body text-sm text-text-on-dark-muted">
-              Already have an account? <Link to="/login" className="text-text-on-dark-secondary underline hover:text-text-on-dark">Log in</Link>
+            <p className="mt-4 font-body text-sm text-text-muted">
+              Already have an account? <Link to="/login" className="text-text-secondary underline hover:text-text-primary">Log in</Link>
             </p>
           </div>
         </div>

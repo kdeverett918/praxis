@@ -93,7 +93,7 @@ export default function AppShell() {
   return (
     <div className="min-h-screen bg-background">
       {/* Desktop Sidebar */}
-      <aside data-testid="desktop-sidebar" className="fixed top-0 bottom-0 left-0 z-40 hidden w-64 border-r border-border bg-white lg:block">
+      <aside data-testid="desktop-sidebar" className="fixed top-0 bottom-0 left-0 z-40 hidden w-64 border-r border-border bg-surface lg:block">
         <div className="flex h-full flex-col">
           <div className="border-b border-border px-4 py-4">
             <Link to="/dashboard" className="flex items-center gap-2.5">
@@ -150,7 +150,7 @@ export default function AppShell() {
         <BetaBanner />
 
         {/* Mobile Header */}
-        <div className="sticky top-0 z-30 border-b border-border bg-white/90 backdrop-blur-lg lg:hidden">
+        <div className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-xl lg:hidden">
           <div className="flex items-center justify-between px-4 py-3 sm:px-6">
             <Link to="/dashboard" className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
@@ -167,7 +167,7 @@ export default function AppShell() {
               type="button"
               onClick={() => setMobileMenuOpen((c) => !c)}
               aria-label={mobileMenuOpen ? 'Close app menu' : 'Open app menu'}
-              className="rounded-lg border border-border bg-white p-2 text-text-primary transition-colors hover:border-primary/40"
+              className="rounded-lg border border-border bg-surface p-2 text-text-primary transition-colors hover:border-primary/40"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -183,7 +183,7 @@ export default function AppShell() {
               aria-label="Close navigation overlay"
               className="absolute inset-0 bg-background/60 backdrop-blur-sm"
             />
-            <div data-testid="mobile-menu-overlay" className="absolute top-0 right-0 h-full w-[min(24rem,92vw)] border-l border-border bg-white px-4 py-5 shadow-xl">
+            <div data-testid="mobile-menu-overlay" className="absolute top-0 right-0 h-full w-[min(24rem,92vw)] border-l border-border bg-surface px-4 py-5 shadow-xl">
               <div className="mb-5 flex items-center justify-between border-b border-border pb-4">
                 <div>
                   <p className="font-body text-lg font-semibold text-text-primary">Navigate</p>
@@ -245,7 +245,7 @@ export default function AppShell() {
       </main>
 
       {/* Bottom Nav (mobile) */}
-      <nav data-testid="bottom-nav" className="fixed right-0 bottom-0 left-0 z-40 border-t border-border bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-lg lg:hidden">
+      <nav data-testid="bottom-nav" className="fixed right-0 bottom-0 left-0 z-40 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
         <div className="flex items-center justify-around px-1 py-1.5">
           {BOTTOM_NAV_ITEMS.map((item) => {
             const active = isActive(item.to)

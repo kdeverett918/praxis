@@ -1,49 +1,49 @@
 :root {
-  /* === Color System: Warm Authority === */
+  /* === Color System: Dark Slate === */
   --color-primary: #7C3AED;
   --color-primary-hover: #6D28D9;
-  --color-primary-light: rgba(124, 58, 237, 0.08);
-  --color-primary-medium: rgba(124, 58, 237, 0.15);
+  --color-primary-light: rgba(124, 58, 237, 0.12);
+  --color-primary-medium: rgba(124, 58, 237, 0.2);
   --color-secondary: #EA580C;
   --color-secondary-hover: #C2410C;
-  --color-secondary-light: rgba(234, 88, 12, 0.06);
-  --color-secondary-medium: rgba(234, 88, 12, 0.12);
+  --color-secondary-light: rgba(234, 88, 12, 0.1);
+  --color-secondary-medium: rgba(234, 88, 12, 0.15);
 
-  /* Backgrounds */
-  --color-background: #FAF9F7;
-  --color-background-dark: #1C1917;
-  --color-background-dark-elevated: #292524;
-  --color-surface: #FFFFFF;
-  --color-surface-elevated: #F5F3F0;
-  --color-surface-glass: rgba(255, 255, 255, 0.8);
-  --color-surface-hover: #FAFAF9;
-  --color-surface-sunken: #F0EEEB;
+  /* Backgrounds — deep navy-slate throughout */
+  --color-background: #0B1121;
+  --color-background-dark: #060D19;
+  --color-background-dark-elevated: #0F1A2E;
+  --color-surface: #131D30;
+  --color-surface-elevated: #192640;
+  --color-surface-glass: rgba(19, 29, 48, 0.7);
+  --color-surface-hover: #1A2A45;
+  --color-surface-sunken: #080E1A;
 
-  /* Text (light backgrounds) */
-  --color-text-primary: #1C1917;
-  --color-text-secondary: #57534E;
-  --color-text-muted: #A8A29E;
+  /* Text — cool whites on dark */
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
 
-  /* Text (dark backgrounds) */
-  --color-text-on-dark: #FAFAF9;
-  --color-text-on-dark-secondary: #D6D3D1;
-  --color-text-on-dark-muted: #78716C;
+  /* Text (on darker sections like hero) */
+  --color-text-on-dark: #F8FAFC;
+  --color-text-on-dark-secondary: #CBD5E1;
+  --color-text-on-dark-muted: #64748B;
 
   /* Borders */
-  --color-border: #E7E5E4;
-  --color-border-subtle: #F5F5F4;
+  --color-border: #1E293B;
+  --color-border-subtle: rgba(30, 41, 59, 0.6);
   --color-border-focus: rgba(124, 58, 237, 0.5);
-  --color-border-dark: #44403C;
+  --color-border-dark: #172033;
 
   /* Status */
-  --color-success: #16A34A;
-  --color-success-light: rgba(22, 163, 74, 0.08);
-  --color-error: #DC2626;
-  --color-error-light: rgba(220, 38, 38, 0.08);
-  --color-warning: #D97706;
-  --color-warning-light: rgba(217, 119, 6, 0.08);
-  --color-info: #2563EB;
-  --color-info-light: rgba(37, 99, 235, 0.08);
+  --color-success: #22C55E;
+  --color-success-light: rgba(34, 197, 94, 0.12);
+  --color-error: #EF4444;
+  --color-error-light: rgba(239, 68, 68, 0.12);
+  --color-warning: #F59E0B;
+  --color-warning-light: rgba(245, 158, 11, 0.12);
+  --color-info: #3B82F6;
+  --color-info-light: rgba(59, 130, 246, 0.12);
 
   /* === Typography === */
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
@@ -68,19 +68,19 @@
   --radius-2xl: 1.5rem;
   --radius-pill: 9999px;
 
-  /* === Shadows (warm-toned) === */
-  --shadow-xs: 0 1px 2px rgba(28, 25, 23, 0.04);
-  --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(28, 25, 23, 0.06), 0 2px 4px -2px rgba(28, 25, 23, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(28, 25, 23, 0.08), 0 4px 6px -4px rgba(28, 25, 23, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(28, 25, 23, 0.08), 0 8px 10px -6px rgba(28, 25, 23, 0.04);
-  --shadow-card: 0 1px 3px rgba(28, 25, 23, 0.04), 0 0 0 1px rgba(231, 229, 228, 0.5);
-  --shadow-card-hover: 0 8px 24px rgba(28, 25, 23, 0.08), 0 0 0 1px rgba(231, 229, 228, 0.8);
-  --shadow-glow-primary: 0 0 0 1px rgba(124, 58, 237, 0.3), 0 4px 16px rgba(124, 58, 237, 0.12);
-  --shadow-glow-secondary: 0 0 0 1px rgba(234, 88, 12, 0.3), 0 4px 16px rgba(234, 88, 12, 0.12);
-  --shadow-glow-primary-lg: 0 0 0 1px rgba(124, 58, 237, 0.3), 0 8px 32px rgba(124, 58, 237, 0.15);
-  --shadow-glow-secondary-lg: 0 0 0 1px rgba(234, 88, 12, 0.3), 0 8px 32px rgba(234, 88, 12, 0.15);
-  --shadow-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  /* === Shadows (dark-mode optimized) === */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(30, 41, 59, 0.5);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.3);
+  --shadow-glow-primary: 0 0 0 1px rgba(124, 58, 237, 0.4), 0 4px 20px rgba(124, 58, 237, 0.15);
+  --shadow-glow-secondary: 0 0 0 1px rgba(234, 88, 12, 0.4), 0 4px 20px rgba(234, 88, 12, 0.15);
+  --shadow-glow-primary-lg: 0 0 0 1px rgba(124, 58, 237, 0.4), 0 8px 40px rgba(124, 58, 237, 0.2);
+  --shadow-glow-secondary-lg: 0 0 0 1px rgba(234, 88, 12, 0.4), 0 8px 40px rgba(234, 88, 12, 0.2);
+  --shadow-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
   /* === Easing Curves === */
   --ease-snappy: cubic-bezier(0.25, 0.46, 0.45, 0.94);

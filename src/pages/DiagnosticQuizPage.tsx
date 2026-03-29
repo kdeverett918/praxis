@@ -212,7 +212,7 @@ export default function DiagnosticQuizPage() {
                   className={`flex w-full items-start gap-4 rounded-xl border p-4 text-left transition-all duration-200 ${
                     isSelected
                       ? 'border-primary bg-primary-light text-text-primary'
-                      : 'border-border bg-white text-text-secondary hover:border-primary/40 hover:bg-surface-elevated'
+                      : 'border-border bg-surface text-text-secondary hover:border-primary/40 hover:bg-surface-elevated'
                   } ${selectedOption && !isSelected ? 'opacity-50' : ''}`}
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border bg-surface-elevated font-mono text-sm font-bold">
@@ -303,7 +303,7 @@ export default function DiagnosticQuizPage() {
         )}
 
         {/* The Offer */}
-        <div className="rounded-2xl border-2 border-primary bg-white p-8 text-center shadow-xl md:p-10">
+        <div className="rounded-2xl border border-primary/40 bg-surface p-8 text-center shadow-glow-primary md:p-10">
           <h2 className="font-display text-2xl text-text-primary md:text-3xl">
             You know where you're weak. Now fix it.
           </h2>

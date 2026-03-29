@@ -3,7 +3,7 @@ import { BookOpen } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-surface-elevated">
+    <footer className="border-t border-border bg-surface/50">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           {/* Brand */}
