@@ -139,7 +139,7 @@ export default function VideosPage() {
         <div className="mx-auto max-w-7xl px-6 text-center">
           <p className="font-body text-xs text-text-muted">
             Videos are curated from public content by independent SLP creators.
-            PraxisPrep is not affiliated with or endorsed by these creators.
+            SLP Study Hub is not affiliated with or endorsed by these creators.
           </p>
         </div>
       </div>

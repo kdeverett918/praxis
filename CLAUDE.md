@@ -1,4 +1,4 @@
-# PraxisPrep.io — SLP Praxis 5331 Study Platform
+# SLP Study Hub — SLP Praxis 5331 Study Platform
 
 ## Project Overview
 AI-powered adaptive study platform for SLP grad students preparing for the Praxis 5331 exam. Built by Tech SLP Studio (Kristine, M.A., CCC-SLP).

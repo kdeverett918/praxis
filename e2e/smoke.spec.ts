@@ -2,5 +2,5 @@ import { test, expect } from '@playwright/test'
 
 test('homepage loads without errors', async ({ page }) => {
   await page.goto('/')
-  await expect(page).toHaveTitle(/PraxisPrep/)
+  await expect(page).toHaveTitle(/SLP Study Hub/)
 })

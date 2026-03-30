@@ -8,7 +8,7 @@ test.describe('Legal Pages', () => {
     await expect(page.getByRole('heading', { name: 'Terms & Conditions' })).toBeVisible()
     await expect(page.getByRole('heading', { name: '17. Legal Considerations' })).toBeVisible()
     await expect(page.getByText('This product is not affiliated with, endorsed by, or sponsored by ETS.', { exact: true }).first()).toBeVisible()
-    await expect(page.getByText('Question content must be 100% original. PraxisPrep does not reproduce ETS questions.')).toBeVisible()
+    await expect(page.getByText('Question content must be 100% original. SLP Study Hub does not reproduce ETS questions.')).toBeVisible()
   })
 
   test('privacy page explains local browser storage', async ({ page }) => {
@@ -17,7 +17,7 @@ test.describe('Legal Pages', () => {
 
     await expect(page.getByRole('heading', { name: 'Privacy Policy' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Browser Storage and Beta Data' })).toBeVisible()
-    await expect(page.getByText('In beta or offline modes, PraxisPrep may store settings, progress, and gamification data in your browser using local storage.')).toBeVisible()
+    await expect(page.getByText('In beta or offline modes, SLP Study Hub may store settings, progress, and gamification data in your browser using local storage.')).toBeVisible()
   })
 
   test('settings page saves quiz defaults for the session', async ({ page }) => {

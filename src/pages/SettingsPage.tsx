@@ -304,7 +304,7 @@ export default function SettingsPage() {
             <div className="space-y-3 font-body text-sm leading-7 text-text-secondary">
               <p>This product is not affiliated with, endorsed by, or sponsored by ETS.</p>
               <p>
-                PraxisPrep uses original questions, references public-law materials like IDEA and Medicare,
+                SLP Study Hub uses original questions, references public-law materials like IDEA and Medicare,
                 and cites public professional frameworks such as ASHA and IDDSI where appropriate.
               </p>
             </div>

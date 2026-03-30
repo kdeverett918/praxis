@@ -14,7 +14,7 @@ const PRIVACY_SECTIONS = [
   {
     title: 'Browser Storage and Beta Data',
     body: [
-      'In beta or offline modes, PraxisPrep may store settings, progress, and gamification data in your browser using local storage.',
+      'In beta or offline modes, SLP Study Hub may store settings, progress, and gamification data in your browser using local storage.',
       'Local browser data stays on your device unless a connected backend feature sends it to our services.',
     ],
   },
@@ -28,7 +28,7 @@ const PRIVACY_SECTIONS = [
   {
     title: 'Third-Party Processors',
     body: [
-      'PraxisPrep may rely on third-party providers such as Supabase for authentication and data storage, Stripe for payments, and AI providers for rationale generation.',
+      'SLP Study Hub may rely on third-party providers such as Supabase for authentication and data storage, Stripe for payments, and AI providers for rationale generation.',
       'Those services process data according to their own terms and privacy notices.',
     ],
   },
@@ -56,7 +56,7 @@ const PRIVACY_SECTIONS = [
   {
     title: 'Contact',
     body: [
-      'Questions about privacy can be sent to hello@praxisprep.io.',
+      'Questions about privacy can be sent to kristine@slpstudyhub.com.',
     ],
   },
 ]
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
     <LegalPageLayout
       eyebrow="Privacy"
       title="Privacy Policy"
-      summary="This page explains what PraxisPrep stores, how that information is used, and where beta-mode browser storage fits into the current product."
+      summary="This page explains what SLP Study Hub stores, how that information is used, and where beta-mode browser storage fits into the current product."
       updatedOn={LAST_UPDATED}
     >
       {PRIVACY_SECTIONS.map((section) => (

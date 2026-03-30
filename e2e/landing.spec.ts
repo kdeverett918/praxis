@@ -7,14 +7,14 @@ test.describe('Landing Page', () => {
   })
 
   test('page loads with correct title', async ({ page }) => {
-    await expect(page).toHaveTitle(/PraxisPrep/)
+    await expect(page).toHaveTitle(/SLP Study Hub/)
   })
 
   test('navbar has logo, nav links, and action buttons', async ({ page }) => {
     const nav = page.locator('nav').first()
     const isMobile = (page.viewportSize()?.width ?? 1280) < 768
 
-    await expect(nav.getByRole('link', { name: 'PraxisPrep' })).toBeVisible()
+    await expect(nav.getByRole('link', { name: 'SLP Study Hub' })).toBeVisible()
 
     if (isMobile) {
       await expect(page.getByLabel('Open menu')).toBeVisible()
@@ -62,7 +62,7 @@ test.describe('Landing Page', () => {
     await expect(pricingCard).toHaveCount(1)
 
     const pricingSection = page.locator('#pricing')
-    await expect(pricingSection.getByText('Praxis Pass Pack')).toBeVisible()
+    await expect(pricingSection.getByText('SLP Study Hub Pro')).toBeVisible()
     await expect(pricingSection.getByText('$49', { exact: true })).toBeVisible()
   })
 

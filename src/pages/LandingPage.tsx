@@ -21,8 +21,8 @@ const FEATURES = [
 ]
 
 const STATS = [
-  { value: 450, suffix: '+', label: 'Practice Questions' },
-  { value: 132, suffix: '', label: 'Questions Per Exam' },
+  { value: 660, suffix: '+', label: 'Practice Questions' },
+  { value: 5, suffix: '', label: 'Full Practice Exams' },
   { value: 9, suffix: '', label: 'Big Nine Areas' },
   { value: 3, suffix: '', label: 'Content Categories' },
 ]
@@ -41,10 +41,10 @@ const PRO_FEATURES = [
 const FAQ_ITEMS = [
   { q: 'What exactly do I get for $49?', a: 'Full access for 6 months: unlimited questions, unlimited exam simulations, AI-powered rationales for every question, the complete flashcard library, performance analytics, and the custom quiz builder. No restrictions.' },
   { q: 'Is this aligned with the actual Praxis 5331?', a: 'Yes. Every question is mapped to the official ETS content categories and Big Nine areas. The exam simulation mirrors the real test format: 132 questions, 150 minutes, scaled scoring.' },
-  { q: 'How is this different from TherapEd or ETS practice tests?', a: 'PraxisPrep is adaptive — it learns your weak areas and prioritizes them. You also get AI explanations for every question, not just an answer key. And it costs a fraction of what competitors charge.' },
-  { q: 'Who wrote these questions?', a: 'All questions are written by Kristine Everett, M.A., CCC-SLP — a practicing medical SLP and full-stack developer. Every question is original, clinically accurate, and reviewed against the ETS blueprint.' },
+  { q: 'How is this different from TherapEd or ETS practice tests?', a: 'SLP Study Hub is adaptive — it learns your weak areas and prioritizes them. You also get AI explanations for every question, not just an answer key. And it costs a fraction of what competitors charge.' },
+  { q: 'Who wrote these questions?', a: 'All questions are written by a practicing medical SLP and reviewed against the official ETS blueprint. Every question is original and clinically accurate.' },
   { q: 'What if I already passed the Praxis?', a: 'The platform is also useful as a clinical refresher and study tool for CFY clinicians. But it\'s primarily designed for students preparing for their first attempt.' },
-  { q: 'Is there a money-back guarantee?', a: 'Yes — 30-day money-back guarantee. If PraxisPrep doesn\'t help you study more effectively, email us for a full refund.' },
+  { q: 'Is there a money-back guarantee?', a: 'Yes — 30-day money-back guarantee. If SLP Study Hub doesn\'t help you study more effectively, email us for a full refund.' },
   { q: 'Can I try it before paying?', a: 'Absolutely. The free tier gives you 25 questions per day, basic dashboard access, and the study content library. No credit card required.' },
 ]
 
@@ -171,7 +171,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            AI-powered adaptive study with 450+ original questions, exam simulations, and instant rationales — built by a medical SLP who actually took the test.
+            AI-powered adaptive study with 660+ original questions, 5 full practice exams, and instant rationales — built by an SLP, for SLPs.
           </p>
 
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
@@ -248,7 +248,7 @@ export default function LandingPage() {
       <section id="features" className="mx-auto max-w-7xl px-6 py-20 md:py-24">
         <div className="scroll-reveal mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-light px-3 py-1 text-xs font-medium text-primary">
-            Why PraxisPrep
+            Why SLP Study Hub
           </span>
           <h2 className="mt-4 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
             Built different from your textbook's question bank
@@ -364,13 +364,13 @@ export default function LandingPage() {
             <span className="line-through">TherapEd $149/yr</span> &middot; <span className="line-through">ETS Materials $99</span> &middot; <span className="line-through">Pocket Prep $79/yr</span>
           </p>
           <p className="mt-1 font-body text-sm font-semibold text-text-primary">
-            PraxisPrep: $49 once. Full access. Done.
+            SLP Study Hub: $49 once. Full access. Done.
           </p>
         </div>
 
         {/* Main offer card */}
         <div className="scroll-reveal animated-gradient-border mx-auto mt-10 max-w-2xl rounded-2xl border border-primary/40 bg-surface p-8 shadow-glow-primary md:p-10" data-testid="pricing-card" data-delay={200}>
-          <h3 className="text-center text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.02em]">Praxis Pass Pack</h3>
+          <h3 className="text-center text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.02em]">SLP Study Hub Pro</h3>
           <div className="mt-4 flex items-baseline justify-center gap-1">
             <span className="font-body text-5xl font-bold text-text-primary">$49</span>
             <span className="font-body text-sm text-text-muted">one-time payment</span>
@@ -387,7 +387,7 @@ export default function LandingPage() {
 
           <Link to="/signup" className="mt-8 block">
             <Button variant="primary" size="lg" className="w-full">
-              Get the Pass Pack
+              Get SLP Study Hub Pro
               <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
@@ -403,41 +403,27 @@ export default function LandingPage() {
         </div>
 
         <p className="mt-6 text-center font-body text-xs text-text-muted">
-          SLP programs: <a href="mailto:kristine@praxisprep.io" className="text-primary underline hover:text-primary-hover">contact us</a> for bulk pricing.
+          SLP programs: <a href="mailto:kristine@slpstudyhub.com" className="text-primary underline hover:text-primary-hover">contact us</a> for bulk pricing.
         </p>
       </section>
 
-      {/* ===== ABOUT / FOUNDER (2-column) ===== */}
+      {/* ===== ABOUT ===== */}
       <section id="about" className="border-y border-border bg-surface/30 py-20 md:py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="scroll-reveal grid gap-10 md:grid-cols-5">
-            {/* Left: Credentials */}
-            <div className="flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 ring-4 ring-primary/20">
-                <span className="font-display text-3xl text-primary">K</span>
-              </div>
-              <h3 className="mt-4 font-body text-lg font-semibold text-text-primary">Kristine Everett</h3>
-              <p className="font-body text-sm text-text-muted">M.A., CCC-SLP</p>
-              <p className="font-body text-sm text-text-muted">Medical SLP & Full-Stack Developer</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">ASHA Certified</span>
-                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">500+ Clinical Hours</span>
-                <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">SLP + Engineer</span>
-              </div>
-            </div>
-
-            {/* Right: Story */}
-            <div className="md:col-span-3">
-              <p className="font-display text-xl leading-snug text-text-primary md:text-2xl">
-                "I built PraxisPrep because every study resource I found was either an overpriced textbook, a static PDF, or a quiz app that couldn't explain why an answer was right."
-              </p>
-              <p className="mt-6 font-body leading-relaxed text-text-secondary">
-                This platform uses <strong className="text-text-primary">spaced repetition</strong> to target your weak areas, <strong className="text-text-primary">AI-powered rationales</strong> to explain clinical reasoning, and <strong className="text-text-primary">realistic exam simulations</strong> so you know exactly what to expect.
-              </p>
-              <p className="mt-4 font-body font-semibold text-text-primary">
-                Every question is original, clinically accurate, and mapped to the official ETS blueprint.
-              </p>
-            </div>
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <div className="scroll-reveal">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">
+              <Shield className="h-3.5 w-3.5" />
+              Built by an SLP, for SLPs
+            </span>
+            <h2 className="mt-6 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
+              Study smarter, not harder
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary">
+              This platform uses <strong className="text-text-primary">spaced repetition</strong> to target your weak areas, <strong className="text-text-primary">AI-powered rationales</strong> to explain clinical reasoning, and <strong className="text-text-primary">realistic exam simulations</strong> so you know exactly what to expect on test day.
+            </p>
+            <p className="mt-6 font-body font-semibold text-text-primary">
+              Every question is original, clinically accurate, and mapped to the official ETS blueprint.
+            </p>
           </div>
         </div>
       </section>

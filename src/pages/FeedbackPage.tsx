@@ -108,7 +108,7 @@ export default function FeedbackPage() {
           </div>
           <h1 className="font-display text-3xl text-text-primary">Thank you!</h1>
           <p className="mt-4 max-w-md font-body text-text-secondary">
-            Your feedback helps make PraxisPrep better for every SLP student.
+            Your feedback helps make SLP Study Hub better for every SLP student.
             We read every response.
           </p>
           <div className="mt-8 flex gap-4">
@@ -145,7 +145,7 @@ export default function FeedbackPage() {
         {/* 1. Overall Rating */}
         <Card spotlight className="border-pink-500/20">
           <h2 className="mb-2 font-display text-lg text-text-primary">
-            How helpful has PraxisPrep been for your study prep?
+            How helpful has SLP Study Hub been for your study prep?
           </h2>
           <p className="mb-5 font-body text-sm text-text-muted">Rate your overall experience</p>
 
@@ -307,7 +307,7 @@ export default function FeedbackPage() {
         {/* Submit */}
         <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface/50 p-8 text-center">
           <p className="font-body text-sm text-text-muted">
-            {rating ? `You rated PraxisPrep ${rating}/5` : 'Select a rating above to submit'}
+            {rating ? `You rated SLP Study Hub ${rating}/5` : 'Select a rating above to submit'}
             {helpfulFeatures.size > 0 ? ` · ${helpfulFeatures.size} helpful features` : ''}
             {improvements.size > 0 ? ` · ${improvements.size} improvement ideas` : ''}
           </p>

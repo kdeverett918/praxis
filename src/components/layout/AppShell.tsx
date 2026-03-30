@@ -100,7 +100,7 @@ export default function AppShell() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <BookOpen className="h-5 w-5 text-white" />
               </div>
-              <span className="font-display text-xl text-text-primary">PraxisPrep</span>
+              <span className="font-display text-xl text-text-primary">SLP Study Hub</span>
             </Link>
             <div className="mt-3 flex items-center gap-2 overflow-hidden">
               <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary-light px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
@@ -157,7 +157,7 @@ export default function AppShell() {
                 <BookOpen className="h-5 w-5 text-white" />
               </div>
               <div>
-                <p className="font-display text-lg text-text-primary">PraxisPrep</p>
+                <p className="font-display text-lg text-text-primary">SLP Study Hub</p>
                 <p className="font-body text-[11px] uppercase tracking-[0.2em] text-text-muted">
                   Lv {level} {levelName}
                 </p>

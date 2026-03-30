@@ -12,10 +12,10 @@ export default function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <BookOpen className="h-5 w-5 text-white" />
               </div>
-              <span className="font-display text-xl text-text-primary">PraxisPrep</span>
+              <span className="font-display text-xl text-text-primary">SLP Study Hub</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-              The smartest way to pass the SLP Praxis 5331. Built by a CCC-SLP who codes.
+              The smartest way to pass the SLP Praxis 5331. Built by an SLP, for SLPs.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Connect</h4>
             <ul className="space-y-3">
-              <li><a href="mailto:hello@praxisprep.io" className="text-sm text-text-secondary transition-colors hover:text-text-primary">hello@praxisprep.io</a></li>
+              <li><a href="mailto:kristine@slpstudyhub.com" className="text-sm text-text-secondary transition-colors hover:text-text-primary">kristine@slpstudyhub.com</a></li>
               <li><a href="https://instagram.com/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Instagram</a></li>
               <li><a href="https://tiktok.com/@thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">TikTok</a></li>
               <li><a href="https://linkedin.com/in/thetechslp" target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary transition-colors hover:text-text-primary">LinkedIn</a></li>
@@ -61,7 +61,7 @@ export default function Footer() {
             &ldquo;Praxis&rdquo; is a registered trademark of Educational Testing Service.
           </p>
           <p className="mt-2 text-xs text-text-muted">
-            All practice questions, scenarios, and rationales are original educational content created for PraxisPrep.
+            All practice questions, scenarios, and rationales are original educational content created for SLP Study Hub.
           </p>
           <p className="mt-2 text-xs text-text-muted">
             &copy; {new Date().getFullYear()} Tech SLP Studio. All rights reserved.

@@ -62,7 +62,7 @@ export default function Navbar() {
             <BookOpen className="h-5 w-5 text-white" />
           </div>
           <span className="font-display text-xl text-text-primary">
-            PraxisPrep
+            SLP Study Hub
           </span>
         </Link>
 

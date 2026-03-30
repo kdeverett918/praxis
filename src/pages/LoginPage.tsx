@@ -46,7 +46,7 @@ export default function LoginPage() {
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
             <BookOpen className="h-5 w-5 text-white" />
           </div>
-          <span className="font-display text-2xl text-text-primary">PraxisPrep</span>
+          <span className="font-display text-2xl text-text-primary">SLP Study Hub</span>
         </Link>
 
         {/* Card */}
