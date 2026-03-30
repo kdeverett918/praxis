@@ -22,8 +22,8 @@ const FEATURES = [
 ]
 
 const STATS = [
-  { value: 430, suffix: '+', label: 'Practice Questions' },
-  { value: 3, suffix: '+', label: 'Full Practice Exams' },
+  { value: 600, suffix: '+', label: 'Practice Questions' },
+  { value: 4, suffix: '+', label: 'Full Practice Exams' },
   { value: 9, suffix: '', label: 'Big Nine Areas' },
   { value: 3, suffix: '', label: 'Content Categories' },
 ]
@@ -172,7 +172,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            AI-powered adaptive study with 430+ original questions, full practice exams, and instant rationales — built by an SLP, for SLPs.
+            AI-powered adaptive study with 600+ original questions, full practice exams, and instant rationales — built by an SLP, for SLPs.
           </p>
 
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
