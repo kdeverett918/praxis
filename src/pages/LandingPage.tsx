@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
   BookOpen, Brain, Sparkles, Trophy,
   Layers, Zap, Check, ArrowRight, Shield, Beaker,
-  ChevronDown, FileText, Video,
+  ChevronDown, FileText,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Button from '@/components/shared/Button'
+import VideoSlider from '@/components/shared/VideoSlider'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
 
@@ -21,8 +22,8 @@ const FEATURES = [
 ]
 
 const STATS = [
-  { value: 660, suffix: '+', label: 'Practice Questions' },
-  { value: 5, suffix: '', label: 'Full Practice Exams' },
+  { value: 430, suffix: '+', label: 'Practice Questions' },
+  { value: 3, suffix: '+', label: 'Full Practice Exams' },
   { value: 9, suffix: '', label: 'Big Nine Areas' },
   { value: 3, suffix: '', label: 'Content Categories' },
 ]
@@ -171,7 +172,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            AI-powered adaptive study with 660+ original questions, 5 full practice exams, and instant rationales — built by an SLP, for SLPs.
+            AI-powered adaptive study with 430+ original questions, full practice exams, and instant rationales — built by an SLP, for SLPs.
           </p>
 
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
@@ -428,26 +429,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== VIDEOS CTA ===== */}
-      <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="scroll-reveal mx-auto max-w-2xl">
-          <Link
-            to="/videos"
-            className="group flex items-center gap-6 rounded-2xl border border-accent-pink/20 bg-accent-pink-light p-6 transition-all hover:border-accent-pink/40 hover:shadow-glow-pink md:p-8"
-          >
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent-pink/20 transition-transform group-hover:scale-110">
-              <Video className="h-7 w-7 text-accent-pink" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-body text-lg font-semibold text-text-primary">Watch SLP students study smarter</h3>
-              <p className="mt-1 font-body text-sm text-text-secondary">
-                Curated study tips, clinical reviews, and motivation from top SLP creators.
-              </p>
-            </div>
-            <ArrowRight className="hidden h-5 w-5 shrink-0 text-accent-pink transition-transform group-hover:translate-x-1 md:block" />
-          </Link>
-        </div>
-      </section>
+      {/* ===== FREE VIDEO RESOURCES (slider) ===== */}
+      <VideoSlider />
 
       {/* ===== FAQ ===== */}
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-24">

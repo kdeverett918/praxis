@@ -387,4 +387,484 @@ export const category2Flashcards: FlashcardData[] = [
     subcategory: 'Perceptual Evaluation',
     tags: ['CAPE-V', 'voice', 'perceptual-evaluation', 'ASHA'],
   },
+
+  // ─── ADDITIONAL STANDARDIZED ASSESSMENTS ─────────────────────────────
+  {
+    id: 'c2-fc046',
+    front: 'EVT-3 (Expressive Vocabulary Test, 3rd Edition)',
+    back: 'Measures: Expressive (naming) vocabulary — single-word level. Ages: 2;6 to 90+ years. Patient labels pictures or provides synonyms. Quick to administer (~15 min). Co-normed with the PPVT-5 for receptive/expressive comparison. Not a comprehensive language measure — expressive vocabulary only.',
+    category: 'Standardized Assessments',
+    subcategory: 'Expressive Vocabulary',
+    tags: ['EVT-3', 'expressive-vocabulary', 'naming'],
+  },
+  {
+    id: 'c2-fc047',
+    front: 'TOLD-P:5 (Test of Language Development — Primary, 5th Edition)',
+    back: 'Measures: Receptive and expressive spoken language. Ages: 4;0 to 8;11. Nine subtests across three composites: Listening (receptive), Organizing (integrative), Speaking (expressive). Subtests include Picture Vocabulary, Relational Vocabulary, Oral Vocabulary, Syntactic Understanding, Sentence Imitation, Morphological Completion, Word Discrimination, Word Analysis, Word Articulation.',
+    category: 'Standardized Assessments',
+    subcategory: 'Language — Pediatric',
+    tags: ['TOLD-P:5', 'language-assessment', 'pediatric'],
+  },
+  {
+    id: 'c2-fc048',
+    front: 'ROWPVT-4 (Receptive One-Word Picture Vocabulary Test, 4th Edition)',
+    back: 'Measures: Single-word receptive vocabulary. Ages: 2;0 to 80+ years. Child selects one of four pictures matching a spoken word. Similar format to PPVT-5 but different normative sample. Quick screen. Available in bilingual (English-Spanish) edition. Co-normed with EOWPVT-4 (expressive counterpart).',
+    category: 'Standardized Assessments',
+    subcategory: 'Receptive Vocabulary',
+    tags: ['ROWPVT-4', 'receptive-vocabulary', 'bilingual'],
+  },
+  {
+    id: 'c2-fc049',
+    front: 'CAAP-2 (Clinical Assessment of Articulation and Phonology, 2nd Edition)',
+    back: 'Measures: Articulation and phonological processes. Ages: 2;6 to 11;11. Two sections: (1) Consonant Inventory — tests all English consonants in all word positions. (2) Phonological Process Checklist — identifies active phonological processes. Yields standard scores for articulation and process analysis. Quick administration (~15–20 min).',
+    category: 'Standardized Assessments',
+    subcategory: 'Speech Sound Production',
+    tags: ['CAAP-2', 'articulation', 'phonological-processes'],
+  },
+  {
+    id: 'c2-fc050',
+    front: 'KLPA-3 (Khan-Lewis Phonological Analysis, 3rd Edition)',
+    back: 'Measures: Phonological processes from GFTA-3 responses. Ages: 2;0 to 21+. Analyzes errors from GFTA-3 to identify phonological process patterns. Must administer GFTA-3 first. Identifies 10 phonological processes: deletion of final consonants, syllable reduction, stopping, palatal fronting, velar fronting, deaffrication, cluster simplification, liquid simplification, initial voicing, final devoicing.',
+    category: 'Standardized Assessments',
+    subcategory: 'Speech Sound Production',
+    tags: ['KLPA-3', 'phonological-analysis', 'GFTA-3'],
+  },
+  {
+    id: 'c2-fc051',
+    front: 'REEL-4 (Receptive-Expressive Emergent Language Test, 4th Edition)',
+    back: 'Measures: Receptive and expressive language abilities. Ages: Birth to 3 years. Based on caregiver interview, direct observation, and developmental history. Yields Receptive Language Ability, Expressive Language Ability, and Combined Language Ability standard scores. Useful for early intervention eligibility determination.',
+    category: 'Standardized Assessments',
+    subcategory: 'Early Intervention',
+    tags: ['REEL-4', 'early-intervention', 'birth-to-3'],
+  },
+  {
+    id: 'c2-fc052',
+    front: 'Bayley-4 (Bayley Scales of Infant and Toddler Development, 4th Edition)',
+    back: 'Measures: Cognitive, Language (receptive/expressive), Motor (fine/gross), Social-Emotional, Adaptive Behavior. Ages: 1–42 months. Gold standard for developmental assessment in early intervention. Language scale evaluates preverbal communication, vocabulary, and morphosyntax. Administered by trained professionals. Yields scaled scores and composite scores.',
+    category: 'Standardized Assessments',
+    subcategory: 'Early Intervention',
+    tags: ['Bayley-4', 'infant-development', 'early-intervention'],
+  },
+  {
+    id: 'c2-fc053',
+    front: 'MacArthur-Bates CDI (Communicative Development Inventories)',
+    back: 'Measures: Parent-report of child\'s vocabulary and communicative gestures. Two forms: (1) Words and Gestures (8–18 months) — comprehension and production. (2) Words and Sentences (16–30 months) — production and early grammar. Norm-referenced. Widely used in research. Available in multiple languages. Quick to complete. Useful for identifying late talkers. Not a diagnostic tool alone — best as part of a comprehensive assessment.',
+    category: 'Standardized Assessments',
+    subcategory: 'Early Intervention',
+    tags: ['MBCDI', 'MacArthur-Bates', 'parent-report', 'vocabulary'],
+  },
+
+  // ─── SCORING TERMINOLOGY ─────────────────────────────────────────────
+  {
+    id: 'c2-fc054',
+    front: 'Standard Score — What does it mean and what is the typical distribution?',
+    back: 'A standard score compares an individual\'s performance to a normative sample. Most common distribution: Mean = 100, SD = 15. One SD below the mean = 85. Two SDs below = 70. Interpretation: 85–115 = average range. 78–84 = below average. 71–77 = borderline. ≤70 = significantly below average. Many tests use -1.25 to -1.5 SD as a cutoff for clinical significance in SLP.',
+    category: 'Scoring & Interpretation',
+    subcategory: 'Standard Scores',
+    tags: ['standard-score', 'mean', 'standard-deviation', 'normative'],
+  },
+  {
+    id: 'c2-fc055',
+    front: 'Scaled Score vs. Standard Score — What is the difference?',
+    back: 'Scaled score: Subtest-level score with Mean = 10, SD = 3. Range: 1–19. Average range: 7–13. Used in tests like CELF-5, WISC-V.\n\nStandard score: Composite or index-level score with Mean = 100, SD = 15. Average range: 85–115.\n\nBoth are derived from the normative sample, but they use different scales. Multiple scaled scores (subtests) combine to form a standard score (composite).',
+    category: 'Scoring & Interpretation',
+    subcategory: 'Score Types',
+    tags: ['scaled-score', 'standard-score', 'subtest', 'composite'],
+  },
+  {
+    id: 'c2-fc056',
+    front: 'Percentile Rank — Interpretation and common misconception',
+    back: 'A percentile rank indicates the percentage of individuals in the normative sample who scored at or below a given score. Example: 25th percentile means the child scored as well as or better than 25% of same-age peers. Average range: 16th–84th percentile.\n\nCommon misconception: Percentile is NOT the same as percent correct. A child at the 50th percentile did not get 50% of items correct — they performed at the median of the normative sample. Percentile ranks are not equal intervals (the difference between the 50th and 60th percentile is much smaller than between the 90th and 99th).',
+    category: 'Scoring & Interpretation',
+    subcategory: 'Score Types',
+    tags: ['percentile-rank', 'normative-interpretation'],
+  },
+  {
+    id: 'c2-fc057',
+    front: 'Age Equivalent Scores — Why are they problematic?',
+    back: 'An age equivalent indicates the age at which a child\'s raw score equals the average raw score. Example: An age equivalent of 3;6 means the child performed like the average 3;6-year-old.\n\nProblems: (1) Unequal intervals — a 6-month delay at age 2 is more significant than at age 10. (2) Overly simplistic — masks the range of normal variation. (3) Misleading to parents (suggests the child performs "like" a younger child). (4) Cannot be used for eligibility (no standard deviation). ASHA discourages use as a primary metric. Use standard scores and percentile ranks instead.',
+    category: 'Scoring & Interpretation',
+    subcategory: 'Score Types',
+    tags: ['age-equivalent', 'scoring-limitations', 'ASHA-position'],
+  },
+  {
+    id: 'c2-fc058',
+    front: 'Confidence Interval — What it means and how to use it',
+    back: 'A confidence interval (CI) is the range around an obtained score within which the true score is likely to fall. Based on the standard error of measurement (SEM).\n\n95% CI = Obtained score ± 1.96 × SEM.\n90% CI = Obtained score ± 1.65 × SEM.\n\nClinical use: If a child scores 82 with a 95% CI of 77–87, the true score likely falls within that range. If the CI overlaps the average range (85+), interpret cautiously. Always report CIs to reflect measurement uncertainty.',
+    category: 'Scoring & Interpretation',
+    subcategory: 'Score Types',
+    tags: ['confidence-interval', 'SEM', 'measurement-error'],
+  },
+
+  // ─── IDDSI LEVELS (EXPANDED) ─────────────────────────────────────────
+  {
+    id: 'c2-fc059',
+    front: 'IDDSI Level 1 (Slightly Thick) — Characteristics',
+    back: 'Slightly thicker than water. Flows through a straw. Can be sipped from a cup. Syringe flow test: 1–4 mL remaining after 10 seconds. Example: anti-reflux infant formula, some commercial nutritional supplements. Requires slightly more effort to control than thin liquids.',
+    category: 'IDDSI Framework',
+    subcategory: 'IDDSI Levels',
+    tags: ['IDDSI', 'Level-1', 'slightly-thick'],
+  },
+  {
+    id: 'c2-fc060',
+    front: 'IDDSI Level 2 (Mildly Thick) — Characteristics',
+    back: 'Flows off a spoon. Sippable from a cup. Effort required to drink through a standard straw. Syringe flow test: 4–8 mL remaining after 10 seconds. Easier to control orally than thin liquids. Used for patients who aspirate thin liquids. Examples: some smoothies, tomato juice. Formerly "nectar thick" in the NDD system.',
+    category: 'IDDSI Framework',
+    subcategory: 'IDDSI Levels',
+    tags: ['IDDSI', 'Level-2', 'mildly-thick', 'nectar-thick'],
+  },
+  {
+    id: 'c2-fc061',
+    front: 'IDDSI Level 3 (Moderately Thick / Liquidised) — Characteristics',
+    back: 'Drinks: Moderately thick — can be sipped from a cup. Cannot be sucked through a standard straw. Syringe flow test: 8+ mL remaining after 10 seconds. Formerly "honey thick."\n\nFoods: Liquidised — smooth texture with no lumps. Pourable like a thick liquid. Cannot be eaten with a fork (drips through prongs). Level 3 is where the drinks and foods triangles overlap in the IDDSI framework.',
+    category: 'IDDSI Framework',
+    subcategory: 'IDDSI Levels',
+    tags: ['IDDSI', 'Level-3', 'moderately-thick', 'liquidised', 'honey-thick'],
+  },
+  {
+    id: 'c2-fc062',
+    front: 'IDDSI Level 5 (Minced & Moist) — Characteristics',
+    back: 'Soft and moist with no separate thin liquid. Lumps are small enough to not require biting (≤4 mm for adults, ≤2 mm for children). Can be mashed with fork pressure. Finely minced and moist throughout. Fork pressure test: particles spread apart with minimal pressure but do not hold together. Tongue can mash food without needing teeth. Examples: finely minced meat with gravy, mashed soft fruits.',
+    category: 'IDDSI Framework',
+    subcategory: 'IDDSI Levels',
+    tags: ['IDDSI', 'Level-5', 'minced-and-moist'],
+  },
+  {
+    id: 'c2-fc063',
+    front: 'IDDSI Level 6 (Soft & Bite-Sized) — Characteristics',
+    back: 'Soft, tender, moist throughout. Can be mashed with a fork. No hard, tough, chewy, fibrous, stringy, or crunchy elements. Pieces ≤15 mm (1.5 cm) for adults, ≤8 mm for pediatric. Must be chewed before swallowing. Fork pressure test: can be cut into pieces with the side of a fork. Examples: soft-cooked vegetables, ripe banana, tender meat in small pieces with sauce.',
+    category: 'IDDSI Framework',
+    subcategory: 'IDDSI Levels',
+    tags: ['IDDSI', 'Level-6', 'soft-and-bite-sized'],
+  },
+
+  // ─── TYMPANOGRAM TYPES ───────────────────────────────────────────────
+  {
+    id: 'c2-fc064',
+    front: 'Tympanogram Type A — What does it indicate?',
+    back: 'Normal tympanogram. Peak compliance at or near 0 daPa (normal middle ear pressure). Normal static admittance. Indicates: Normal middle ear function — TM and ossicular chain are mobile. Air pressure in the middle ear is equalized with atmospheric pressure via the Eustachian tube.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Tympanometry',
+    tags: ['tympanogram', 'Type-A', 'normal', 'middle-ear'],
+  },
+  {
+    id: 'c2-fc065',
+    front: 'Tympanogram Type As — What does it indicate?',
+    back: 'Peak at or near 0 daPa (normal pressure) but with REDUCED compliance (low/shallow peak). The "s" stands for "stiffness" or "shallow." Indicates: Stiffened middle ear system. Causes: Otosclerosis (fixation of stapes), thickened TM, early cholesteatoma. The middle ear has normal pressure but limited mobility.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Tympanometry',
+    tags: ['tympanogram', 'Type-As', 'stiffness', 'otosclerosis'],
+  },
+  {
+    id: 'c2-fc066',
+    front: 'Tympanogram Type Ad — What does it indicate?',
+    back: 'Peak at or near 0 daPa (normal pressure) but with EXCESSIVE compliance (very tall/sharp peak). The "d" stands for "deep" or "discontinuity." Indicates: Hypermobile TM or ossicular chain discontinuity. Causes: Flaccid TM, ossicular disarticulation, healed TM perforation (thin scar). The middle ear moves too freely.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Tympanometry',
+    tags: ['tympanogram', 'Type-Ad', 'hypermobility', 'ossicular-discontinuity'],
+  },
+  {
+    id: 'c2-fc067',
+    front: 'Tympanogram Type B — What does it indicate?',
+    back: 'Flat tracing with NO identifiable peak. No point of maximum compliance. Indicates: The TM is not moving. Most common cause: Middle ear effusion (fluid behind the TM, as in otitis media with effusion — OME). Other causes: Cerumen occluding the ear canal, TM perforation (with large ear canal volume), PE tube (patent). Important: Check ear canal volume — large volume + flat = perforation; small/normal volume + flat = effusion.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Tympanometry',
+    tags: ['tympanogram', 'Type-B', 'effusion', 'otitis-media'],
+  },
+  {
+    id: 'c2-fc068',
+    front: 'Tympanogram Type C — What does it indicate?',
+    back: 'Peak compliance present but shifted to NEGATIVE pressure (typically more negative than -100 daPa). Normal or near-normal peak height. Indicates: Negative middle ear pressure due to Eustachian tube dysfunction. The Eustachian tube is not equalizing air pressure effectively. Common in early otitis media or resolving OME. May indicate developing middle ear pathology. Often seen in children with recurrent ear infections.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Tympanometry',
+    tags: ['tympanogram', 'Type-C', 'negative-pressure', 'Eustachian-tube'],
+  },
+
+  // ─── DIFFERENTIAL DIAGNOSIS ──────────────────────────────────────────
+  {
+    id: 'c2-fc069',
+    front: 'CAS vs. Phonological Disorder — Key differentiating features',
+    back: 'CAS: INCONSISTENT errors on consonants AND vowels. Groping/searching behaviors. Disrupted coarticulatory transitions. Prosodic errors (stress, rate, rhythm). Errors INCREASE with word length/complexity. Difficulty with volitional over automatic speech. Slow rate with effort.\n\nPhonological Disorder: CONSISTENT, PREDICTABLE error patterns. Errors follow identifiable processes (fronting, stopping). No vowel errors typically. No groping. Normal prosody. Errors do NOT increase with word length in the same way. Normal rate and effort.',
+    category: 'Differential Diagnosis',
+    subcategory: 'CAS vs. Phonological',
+    tags: ['CAS', 'phonological-disorder', 'differential-diagnosis'],
+  },
+  {
+    id: 'c2-fc070',
+    front: 'Language Difference vs. Language Disorder in bilingual children — How to distinguish',
+    back: 'Language difference: Errors reflect influence from L1 on L2 (transfer patterns). Performance varies by language. Typical development in L1. Culturally appropriate pragmatic skills. Normal learning rate with exposure.\n\nLanguage disorder: Deficits present in BOTH languages. Slower rate of learning across both. Difficulty with tasks that do not depend on specific language knowledge (e.g., nonword repetition, dynamic assessment learning tasks, narrative macrostructure). Family history may be positive.\n\nTools: Dynamic assessment, language sampling in both languages, parent interview about L1 development, nonword repetition tasks.',
+    category: 'Differential Diagnosis',
+    subcategory: 'Difference vs. Disorder',
+    tags: ['bilingual', 'language-difference', 'language-disorder', 'dynamic-assessment'],
+  },
+  {
+    id: 'c2-fc071',
+    front: 'Broca Aphasia vs. Wernicke Aphasia — Quick comparison chart',
+    back: 'Broca: Nonfluent, effortful, short phrases, agrammatic. Comprehension relatively preserved. Repetition impaired. Naming impaired. Aware of deficits (frustrated). Left frontal lesion.\n\nWernicke: Fluent, excessive output, jargon/paraphasias. Comprehension severely impaired. Repetition impaired. Naming impaired (paraphasic). Often UNAWARE of deficits (anosognosia). Left posterior temporal lesion.\n\nBoth have impaired repetition (distinguishing them from transcortical types).',
+    category: 'Differential Diagnosis',
+    subcategory: 'Aphasia Comparison',
+    tags: ['Broca', 'Wernicke', 'aphasia-comparison', 'differential-diagnosis'],
+  },
+  {
+    id: 'c2-fc072',
+    front: 'How do you determine aphasia type using fluency, comprehension, and repetition?',
+    back: 'Decision tree: Step 1 — Is output fluent or nonfluent?\nFluent + poor comprehension + poor repetition = Wernicke\nFluent + poor comprehension + good repetition = Transcortical Sensory\nFluent + good comprehension + poor repetition = Conduction\nFluent + good comprehension + good repetition = Anomic\n\nNonfluent + good comprehension + poor repetition = Broca\nNonfluent + good comprehension + good repetition = Transcortical Motor\nNonfluent + poor comprehension + poor repetition = Global\nNonfluent + poor comprehension + good repetition = Mixed Transcortical',
+    category: 'Differential Diagnosis',
+    subcategory: 'Aphasia Classification',
+    tags: ['aphasia', 'classification', 'decision-tree', 'fluency'],
+  },
+
+  // ─── VOICE ASSESSMENT (EXPANDED) ─────────────────────────────────────
+  {
+    id: 'c2-fc073',
+    front: 'GRBAS Scale — What does each letter stand for?',
+    back: 'G — Grade (overall severity of voice abnormality)\nR — Roughness (irregular vocal fold vibration)\nB — Breathiness (air escape through the glottis)\nA — Asthenia (weakness of the voice)\nS — Strain (hyperfunction/effort)\n\nEach rated on a 4-point scale: 0 = normal, 1 = slight, 2 = moderate, 3 = severe. Developed in Japan. Widely used internationally. Simpler than CAPE-V but less sensitive due to ordinal scale.',
+    category: 'Voice Assessment',
+    subcategory: 'Perceptual Scales',
+    tags: ['GRBAS', 'voice', 'perceptual-evaluation'],
+  },
+  {
+    id: 'c2-fc074',
+    front: 'Stroboscopy — What does it assess and how does it work?',
+    back: 'Stroboscopy uses a strobe light synchronized to the fundamental frequency of vocal fold vibration to create a slow-motion illusion of vocal fold movement. Assesses: Mucosal wave, vocal fold symmetry, glottal closure pattern, amplitude of vibration, periodicity, presence of lesions, supraglottic activity.\n\nKey findings: Absent mucosal wave = stiffness (scar, sulcus, carcinoma). Asymmetric vibration = unilateral pathology. Incomplete closure = paralysis, atrophy, gap. Not a true real-time recording — it is a composite image across multiple cycles.',
+    category: 'Instrumental Assessment',
+    subcategory: 'Voice — Stroboscopy',
+    tags: ['stroboscopy', 'mucosal-wave', 'vocal-fold-vibration'],
+  },
+
+  // ─── RIGHT HEMISPHERE DAMAGE ─────────────────────────────────────────
+  {
+    id: 'c2-fc075',
+    front: 'Right Hemisphere Damage (RHD) — Communication deficits',
+    back: 'Pragmatics: Difficulty with turn-taking, topic maintenance, reading social cues, eye contact.\nProsody: Flat/monotone affect (aprosodia). Difficulty interpreting emotional tone.\nDiscourse: Tangential, verbose, disorganized narratives. Difficulty with main idea extraction.\nFigurative language: Difficulty with metaphor, humor, sarcasm, idioms (overly literal interpretation).\nVisual-spatial: Left neglect (ignoring left side of space), prosopagnosia.\nAwareness: Anosognosia (denial of deficits).\nNote: Auditory comprehension and repetition are typically preserved. Language form is intact but language USE is impaired.',
+    category: 'Adult Neurogenic',
+    subcategory: 'Right Hemisphere Damage',
+    tags: ['RHD', 'pragmatics', 'prosody', 'left-neglect'],
+  },
+  {
+    id: 'c2-fc076',
+    front: 'TBI Communication Profile — Key cognitive-communication deficits',
+    back: 'Attention: Reduced sustained, selective, alternating, and divided attention.\nMemory: Impaired working memory, difficulty encoding new information, prospective memory deficits.\nExecutive Function: Impaired planning, organizing, problem-solving, self-monitoring, inhibition, mental flexibility.\nLanguage: Word-finding difficulty, disorganized discourse, difficulty with complex language comprehension, pragmatic deficits.\nSocial Communication: Difficulty reading social cues, inappropriate comments, reduced empathy, difficulty with perspective-taking.\nKey difference from aphasia: Language form (phonology, syntax, morphology) is typically intact. The breakdown is in the USE of language and the cognitive processes that support communication.',
+    category: 'Adult Neurogenic',
+    subcategory: 'Traumatic Brain Injury',
+    tags: ['TBI', 'cognitive-communication', 'executive-function', 'memory'],
+  },
+
+  // ─── DEMENTIA ASSESSMENT ─────────────────────────────────────────────
+  {
+    id: 'c2-fc077',
+    front: 'Alzheimer Disease — Communication profile by stage',
+    back: 'Early: Word-finding difficulty, circumlocution, repetitive topics, difficulty with complex directions. Syntax/phonology preserved. Social graces intact.\nMiddle: Increased anomia, empty speech, difficulty following conversations, reading/writing decline, loss of topic coherence, perseveration, possible jargon.\nLate: Echolalia, palilalia, mutism or very limited output, comprehension severely impaired, may retain automatic speech (songs, prayers). Procedural and emotional memory may be partially preserved even when declarative memory is severely impaired.',
+    category: 'Adult Neurogenic',
+    subcategory: 'Dementia',
+    tags: ['Alzheimer', 'dementia', 'progressive', 'communication-stages'],
+  },
+
+  // ─── PEDIATRIC ASSESSMENT (EXPANDED) ─────────────────────────────────
+  {
+    id: 'c2-fc078',
+    front: 'Dynamic Assessment — What is it and when should it be used?',
+    back: 'Dynamic assessment is a test-teach-retest approach that evaluates a child\'s LEARNING POTENTIAL rather than current knowledge. Procedure: (1) Pretest baseline. (2) Mediated learning experience (teaching). (3) Posttest to measure change (modifiability).\n\nWhen to use: (1) Culturally/linguistically diverse children. (2) When standardized tests may be biased. (3) To distinguish language difference from disorder. (4) Children with limited test-taking experience.\n\nChildren with language differences learn quickly in the teaching phase. Children with language disorders show limited modifiability despite instruction.',
+    category: 'Assessment Approaches',
+    subcategory: 'Dynamic Assessment',
+    tags: ['dynamic-assessment', 'test-teach-retest', 'bilingual', 'culturally-diverse'],
+  },
+  {
+    id: 'c2-fc079',
+    front: 'Language Sampling — Key measures and why it matters',
+    back: 'A language sample is a recording and transcription of spontaneous language. Key measures: MLU (mean length of utterance in morphemes), TTR (type-token ratio — vocabulary diversity), NDW (number of different words), grammatical accuracy, sentence complexity.\n\nWhy it matters: (1) Ecologically valid — captures real communication. (2) Not biased by test-taking skills or cultural knowledge. (3) Reveals patterns not captured by standardized tests. (4) Can be analyzed in any language. (5) Recommended as a supplement to standardized testing.\n\nStandard: Minimum 50–100 utterances in at least two contexts.',
+    category: 'Assessment Approaches',
+    subcategory: 'Language Sampling',
+    tags: ['language-sample', 'MLU', 'TTR', 'NDW', 'spontaneous-language'],
+  },
+  {
+    id: 'c2-fc080',
+    front: 'What is the Social Communication Questionnaire (SCQ)?',
+    back: 'Screening tool for autism spectrum disorder. Ages: 4+ years (with mental age >2 years). 40 yes/no items completed by parent/caregiver in ~10 min. Two forms: Lifetime (for initial screening) and Current (for assessing present behavior). Based on the ADI-R (Autism Diagnostic Interview). Cutoff score of 15 suggests further evaluation. Not diagnostic — a positive screen should be followed by ADOS-2 and comprehensive evaluation.',
+    category: 'Standardized Assessments',
+    subcategory: 'Autism Screening',
+    tags: ['SCQ', 'autism-screening', 'parent-report'],
+  },
+
+  // ─── CLEFT PALATE ASSESSMENT ─────────────────────────────────────────
+  {
+    id: 'c2-fc081',
+    front: 'Velopharyngeal Insufficiency (VPI) — Assessment indicators',
+    back: 'Perceptual signs: Hypernasality, nasal air emission (audible or inaudible), nasal turbulence, weak pressure consonants, compensatory articulation errors (glottal stops, pharyngeal fricatives, nasal fricatives).\n\nInstrumental assessment: (1) Nasometry — measures nasalance (ratio of nasal to total acoustic energy). Normative values: nasal sentences ~55%, oral sentences ~15%. (2) Nasopharyngoscopy (endoscopic view of VP closure). (3) Videofluoroscopy (lateral and frontal views of VP mechanism).\n\nImportant: Speech therapy alone cannot correct structural VPI — surgical or prosthetic management is needed first.',
+    category: 'Instrumental Assessment',
+    subcategory: 'Velopharyngeal Assessment',
+    tags: ['VPI', 'hypernasality', 'nasometry', 'cleft-palate'],
+  },
+
+  // ─── VOICE ASSESSMENT (ADDITIONAL) ───────────────────────────────────
+  {
+    id: 'c2-fc082',
+    front: 'Maximum Phonation Time (MPT) — Normal values and clinical significance',
+    back: 'MPT is the longest duration a patient can sustain phonation of /a/ on a single breath. Normal adults: ~15–25 seconds (males tend higher than females). Children: shorter, varies by age. Reduced MPT suggests: glottal insufficiency (incomplete closure), reduced respiratory support, or poor coordination of respiration and phonation.\n\nS/Z ratio: Sustained /s/ time compared to sustained /z/ time. Ratio >1.4 suggests laryngeal pathology (vocal fold lesion limiting phonation time). Normal ratio ≈ 1.0.',
+    category: 'Voice Assessment',
+    subcategory: 'Aerodynamic Measures',
+    tags: ['MPT', 's-z-ratio', 'voice', 'aerodynamic'],
+  },
+  {
+    id: 'c2-fc083',
+    front: 'Common Vocal Fold Pathologies — Nodules vs. Polyps vs. Cysts',
+    back: 'Nodules: Bilateral, symmetric, at junction of anterior 1/3 and posterior 2/3 of vocal folds. Caused by vocal abuse/misuse (phonotrauma). Respond to voice therapy. Most common in women and children.\n\nPolyps: Usually unilateral, can be sessile or pedunculated. Can be hemorrhagic. Caused by acute vocal trauma or chronic irritation. Often require surgical removal + voice therapy.\n\nCysts: Submucosal, unilateral. Epidermoid (congenital) or retention (mucus). Do not respond to voice therapy alone — require surgical excision. May cause a contralateral reactive nodule.',
+    category: 'Voice Assessment',
+    subcategory: 'Vocal Pathologies',
+    tags: ['nodules', 'polyps', 'cysts', 'vocal-fold-pathology'],
+  },
+
+  // ─── AUTISM ASSESSMENT ───────────────────────────────────────────────
+  {
+    id: 'c2-fc084',
+    front: 'DSM-5 Diagnostic Criteria for Autism Spectrum Disorder — Summary',
+    back: 'Two core domains:\nA. Persistent deficits in SOCIAL COMMUNICATION and SOCIAL INTERACTION across contexts:\n  1. Deficits in social-emotional reciprocity\n  2. Deficits in nonverbal communication\n  3. Deficits in developing/maintaining relationships\n\nB. RESTRICTED, REPETITIVE BEHAVIORS (at least 2 of 4):\n  1. Stereotyped movements, speech, or object use\n  2. Insistence on sameness, routines, rituals\n  3. Highly restricted, fixated interests\n  4. Hyper- or hypo-reactivity to sensory input\n\nSymptoms must be present in early development, cause functional impairment, and not be better explained by ID. Severity levels: 1 (requiring support), 2 (requiring substantial support), 3 (requiring very substantial support).',
+    category: 'Assessment — ASD',
+    subcategory: 'Diagnostic Criteria',
+    tags: ['ASD', 'DSM-5', 'diagnostic-criteria', 'social-communication'],
+  },
+
+  // ─── SWALLOWING ASSESSMENT (EXPANDED) ────────────────────────────────
+  {
+    id: 'c2-fc085',
+    front: 'Clinical Swallowing Examination (CSE / Bedside Swallow Evaluation) — Components',
+    back: 'Components: (1) Medical history review (diagnoses, medications, NPO status). (2) Oral mechanism exam (lip, tongue, jaw, palate strength/range/symmetry). (3) Cranial nerve assessment (CN V, VII, IX, X, XII). (4) Cognitive/language screen (alertness, orientation, ability to follow directions). (5) Laryngeal function (voice quality, voluntary cough). (6) Trial swallows (various consistencies — observe oral control, timeliness, cough/wet voice).\n\nLimitations: Cannot detect silent aspiration, cannot visualize pharyngeal physiology. Should be followed by instrumental assessment (MBSS or FEES) if aspiration is suspected.',
+    category: 'Swallowing Assessment',
+    subcategory: 'Clinical Examination',
+    tags: ['CSE', 'bedside-swallow', 'oral-mech-exam', 'dysphagia'],
+  },
+  {
+    id: 'c2-fc086',
+    front: 'What is silent aspiration and why is it clinically significant?',
+    back: 'Silent aspiration = material passes below the true vocal folds WITHOUT triggering a cough or any observable sign. Occurs in 25–30% of aspirating patients. PAS score = 8. Cannot be detected by clinical/bedside evaluation alone — requires instrumental assessment (MBSS or FEES).\n\nCauses: Reduced laryngeal sensation, chronic aspiration (desensitization), neurological impairment (stroke, Parkinson, TBI).\n\nRisk factors: Wet/gurgly voice quality, recurrent pneumonia, reduced cough reflex, reduced alertness, tracheostomy.',
+    category: 'Swallowing Assessment',
+    subcategory: 'Aspiration',
+    tags: ['silent-aspiration', 'PAS-8', 'instrumental-assessment'],
+  },
+  {
+    id: 'c2-fc087',
+    front: 'When does aspiration occur relative to the swallow? Pre-swallow, during-swallow, and post-swallow aspiration.',
+    back: 'Pre-swallow aspiration: Material enters the airway BEFORE the pharyngeal swallow triggers. Causes: Delayed swallow initiation, poor oral containment, premature spillage. Most common timing.\n\nDuring-swallow aspiration: Material enters the airway DURING the pharyngeal swallow. Causes: Reduced laryngeal closure, reduced epiglottic deflection.\n\nPost-swallow aspiration: Material enters the airway AFTER the swallow from pharyngeal residue. Causes: Reduced pharyngeal contraction, reduced tongue base retraction, incomplete UES opening. Material falls into the airway when the larynx reopens for breathing.',
+    category: 'Swallowing Assessment',
+    subcategory: 'Aspiration Timing',
+    tags: ['aspiration-timing', 'pre-swallow', 'during-swallow', 'post-swallow'],
+  },
+
+  // ─── ADDITIONAL DYSARTHRIA ───────────────────────────────────────────
+  {
+    id: 'c2-fc088',
+    front: 'Unilateral Upper Motor Neuron (UUMN) Dysarthria — Features',
+    back: 'Lesion: Unilateral upper motor neuron (one side of corticobulbar tract). Features: Mild imprecise articulation, irregular articulatory breakdown, harsh voice, reduced loudness, slow rate. Milder than bilateral (spastic) dysarthria. Most common cause: Unilateral stroke. Often accompanied by unilateral lower face weakness (contralateral to lesion). Tongue may deviate away from the lesion (toward the weak side). Often resolves or improves significantly with recovery.',
+    category: 'Motor Speech Disorders',
+    subcategory: 'Dysarthria Types',
+    tags: ['UUMN', 'dysarthria', 'unilateral', 'stroke'],
+  },
+
+  // ─── ADDITIONAL ASSESSMENT CONCEPTS ──────────────────────────────────
+  {
+    id: 'c2-fc089',
+    front: 'What is a nonword repetition task and what does it assess?',
+    back: 'A nonword repetition (NWR) task requires the child to repeat nonsense words of increasing length (e.g., "fensitar," "bremolungist"). Assesses: Phonological working memory and phonological processing — independent of vocabulary knowledge and cultural experience.\n\nClinical use: (1) Less biased for bilingual and culturally diverse children. (2) Children with DLD/SLI perform significantly worse on NWR than typically developing peers. (3) Considered a clinical marker for language impairment. (4) Performance is relatively independent of specific language experience.',
+    category: 'Assessment Approaches',
+    subcategory: 'Processing Measures',
+    tags: ['nonword-repetition', 'phonological-memory', 'DLD-marker', 'culturally-fair'],
+  },
+  {
+    id: 'c2-fc090',
+    front: 'Oral Mechanism Examination — What is assessed?',
+    back: 'Structure: Lip symmetry, dental alignment/occlusion, hard palate integrity, soft palate symmetry/movement, tongue size/symmetry, frenulum length (ankyloglossia assessment).\n\nFunction: Lip rounding/retraction/closure, tongue protrusion/lateralization/elevation/retraction, jaw ROM, diadochokinetic rates (puh-tuh-kuh), velar elevation (say "ah"), cough strength.\n\nCranial nerves assessed: CN V (jaw), CN VII (face/lips), CN IX/X (palate/pharynx), CN XII (tongue). Notation of any drooling, fasciculations, asymmetry, or reduced ROM.',
+    category: 'Assessment Approaches',
+    subcategory: 'Oral Mechanism Exam',
+    tags: ['oral-mech-exam', 'cranial-nerve-assessment', 'structure-function'],
+  },
+  {
+    id: 'c2-fc091',
+    front: 'Diadochokinetic Rates (DDK) — Purpose and procedure',
+    back: 'Purpose: Assess speed and regularity of alternating and sequential movements of the speech articulators. Indicators of motor speech coordination.\n\nAlternating Motion Rates (AMR): Rapid repetition of single syllables — "puh puh puh" (lips), "tuh tuh tuh" (tongue tip), "kuh kuh kuh" (tongue back). Normal: ~6 per second for adults.\n\nSequential Motion Rates (SMR): Rapid repetition of "puh-tuh-kuh" in sequence. Tests ability to sequence different articulatory movements.\n\nAbnormal DDK: Irregular rate/rhythm = ataxic dysarthria. Slow rate = spastic/hypokinetic. Impaired sequencing = possible apraxia.',
+    category: 'Assessment Approaches',
+    subcategory: 'Motor Speech Exam',
+    tags: ['DDK', 'diadochokinetic', 'AMR', 'SMR', 'motor-speech'],
+  },
+
+  // ─── PEDIATRIC HEARING AND SYNDROMES ─────────────────────────────────
+  {
+    id: 'c2-fc092',
+    front: 'Auditory Neuropathy Spectrum Disorder (ANSD) — Key assessment findings',
+    back: 'ANSD involves abnormal neural transmission from the cochlea despite functioning outer hair cells. Key findings: (1) OAEs PRESENT (cochlear outer hair cells intact). (2) ABR ABSENT or severely abnormal. (3) Speech perception disproportionately poor relative to pure-tone audiogram. (4) Acoustic reflexes typically absent.\n\nImportant: Pure-tone audiogram may range from normal to profound loss. Speech understanding in noise is extremely difficult. Hearing aids may have limited benefit. Cochlear implants may be considered. Etiologies: Premature birth, hyperbilirubinemia, neonatal anoxia, genetic.',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Special Conditions',
+    tags: ['ANSD', 'auditory-neuropathy', 'OAE', 'ABR'],
+  },
+  {
+    id: 'c2-fc093',
+    front: 'Williams Syndrome — Communication Profile',
+    back: 'Language: Relative strength in expressive language and vocabulary ("cocktail party speech"). Syntax can be relatively preserved. Pragmatic difficulties despite verbal fluency. Language is often better than predicted by cognitive level.\n\nCognition: Mild to moderate intellectual disability. Visuo-spatial deficits (severe). Relative strength in facial recognition and music.\n\nPersonality: Overly friendly, hypersociable, anxiety, attention difficulties.\n\nHearing: Progressive sensorineural hearing loss in some individuals. Hyperacusis (sensitivity to loud sounds) is common.\n\nGenetic: Deletion on chromosome 7q11.23.',
+    category: 'Genetic Syndromes',
+    subcategory: 'Williams Syndrome',
+    tags: ['Williams-syndrome', 'cocktail-party-speech', 'hypersociability'],
+  },
+
+  // ─── ADDITIONAL APHASIA AND NEUROGENIC ───────────────────────────────
+  {
+    id: 'c2-fc094',
+    front: 'Apraxia of Speech (AOS) in Adults — Key features distinguishing it from aphasia and dysarthria',
+    back: 'AOS is a motor speech disorder affecting the planning and programming of speech movements. Key features: (1) Effortful, groping articulatory movements. (2) INCONSISTENT errors across repeated productions. (3) Sound distortions and substitutions. (4) Prosodic abnormalities (slow rate, equal stress). (5) Islands of fluency (automatic speech, overlearned phrases). (6) Errors increase with word length and complexity.\n\nDistinguishing from aphasia: Language comprehension is intact (in pure AOS). From dysarthria: No weakness or tone abnormality. Errors are inconsistent (dysarthria errors are consistent). Most common cause: Left hemisphere stroke involving the insula, premotor cortex, or Broca area.',
+    category: 'Motor Speech Disorders',
+    subcategory: 'Acquired Apraxia of Speech',
+    tags: ['AOS', 'apraxia-of-speech', 'adult', 'motor-planning'],
+  },
+  {
+    id: 'c2-fc095',
+    front: 'Paraphasias — Types and examples',
+    back: 'Semantic paraphasia: Word substitution from the same semantic category. "Fork" → "spoon." (Related meaning)\n\nPhonemic (literal) paraphasia: Sound substitution, addition, omission, or transposition within a word. "Table" → "tabel" or "sable." (Retains some phonemic similarity)\n\nNeologism: Nonword with no recognizable relationship to the target. "Table" → "plodik." (Unrelated to target)\n\nVerbal paraphasia: Real word substitution unrelated to the target. "Table" → "tomorrow." (No clear semantic/phonemic link)\n\nSemantic paraphasias are most common in anomic and Wernicke aphasia. Phonemic paraphasias are common in conduction aphasia.',
+    category: 'Adult Neurogenic',
+    subcategory: 'Paraphasias',
+    tags: ['paraphasia', 'semantic', 'phonemic', 'neologism', 'aphasia'],
+  },
+
+  // ─── HEARING SCREENING AND CLASSIFICATION ────────────────────────────
+  {
+    id: 'c2-fc096',
+    front: 'Newborn Hearing Screening — Protocol and follow-up',
+    back: 'Mandated in all 50 US states (EHDI: Early Hearing Detection and Intervention). Protocol: OAE or automated ABR within 1 month of birth.\n\nEHDI 1-3-6 guidelines: (1) Screen by 1 month of age. (2) Diagnose by 3 months of age. (3) Enroll in early intervention by 6 months of age.\n\nRefer rate: ~2–4% of newborns fail initial screen. Of those, ~50% pass on rescreen. Final diagnosis rate: ~1–3 per 1000 newborns with permanent hearing loss. Risk factors: NICU stay >5 days, family history, craniofacial anomalies, in utero infections, hyperbilirubinemia.',
+    category: 'Audiologic Assessment',
+    subcategory: 'Newborn Screening',
+    tags: ['newborn-hearing-screening', 'EHDI', 'OAE', 'ABR'],
+  },
+  {
+    id: 'c2-fc097',
+    front: 'Noise-Induced Hearing Loss (NIHL) — Audiometric pattern and prevention',
+    back: 'Audiometric pattern: Bilateral, symmetric, HIGH-FREQUENCY sensorineural hearing loss with a characteristic "noise notch" at 3000–6000 Hz (typically worst at 4000 Hz), with recovery at 8000 Hz.\n\nRisk: Prolonged exposure >85 dB. For every 3 dB increase, safe exposure time is halved. 85 dB = 8 hours; 88 dB = 4 hours; 91 dB = 2 hours.\n\nPrevention: Hearing protection, noise monitoring, educational programs. NIHL is the most common PREVENTABLE cause of hearing loss. Once damage occurs, it is permanent (outer hair cell destruction is irreversible).',
+    category: 'Audiogram Interpretation',
+    subcategory: 'Special Patterns',
+    tags: ['NIHL', 'noise-notch', 'high-frequency-loss', 'prevention'],
+  },
+
+  // ─── PEDIATRIC FEEDING ASSESSMENT ────────────────────────────────────
+  {
+    id: 'c2-fc098',
+    front: 'Pediatric Feeding Assessment — Key components',
+    back: 'History: Feeding history (breast/bottle/solid transition), growth chart review, medical diagnoses, GI symptoms, caregiver concerns.\n\nObservation: Positioning, oral motor skills during feeding, sensory responses to food, caregiver-child interaction, pacing, signs of aspiration (cough, wet voice, color change).\n\nOral motor exam: Jaw stability, lip closure, tongue lateralization, chewing pattern, rotary jaw movement.\n\nBehavioral: Food acceptance/refusal patterns, mealtime behavior, sensory preferences (texture, temperature).\n\nGrowth: Height/weight/BMI percentile tracking. Failure to thrive warrants immediate referral to nutrition/GI.',
+    category: 'Pediatric Assessment',
+    subcategory: 'Feeding Assessment',
+    tags: ['pediatric-feeding', 'feeding-assessment', 'oral-motor'],
+  },
+
+  // ─── ADDITIONAL SCORING AND ASSESSMENT ───────────────────────────────
+  {
+    id: 'c2-fc099',
+    front: 'What is the Glasgow Coma Scale (GCS) and why do SLPs need to know it?',
+    back: 'The GCS measures consciousness level after brain injury on a 3–15 scale.\n\nEye Opening (1–4): 4=spontaneous, 3=to voice, 2=to pain, 1=none.\nVerbal Response (1–5): 5=oriented, 4=confused, 3=inappropriate words, 2=incomprehensible sounds, 1=none.\nMotor Response (1–6): 6=obeys commands, 5=localizes pain, 4=withdrawal, 3=abnormal flexion, 2=extension, 1=none.\n\nSeverity: 13–15=mild TBI, 9–12=moderate TBI, 3–8=severe TBI.\n\nSLP relevance: GCS score helps predict communication and swallowing recovery. Correlates with Rancho levels and treatment planning.',
+    category: 'Assessment Scales',
+    subcategory: 'Neurological Scales',
+    tags: ['GCS', 'Glasgow-Coma-Scale', 'TBI', 'consciousness'],
+  },
+  {
+    id: 'c2-fc100',
+    front: 'Functional Communication Measures — ASHA NOMS',
+    back: 'ASHA National Outcomes Measurement System (NOMS): A 7-point rating scale measuring functional communication.\n\nLevel 1: Patient is not able to communicate functionally.\nLevel 2: Patient attempts to communicate but is rarely successful.\nLevel 3: Patient communicates basic needs/wants in highly structured settings with maximal cues.\nLevel 4: Patient communicates basic needs/wants with moderate cues.\nLevel 5: Patient communicates effectively in structured settings with minimal cues but has difficulty in unstructured settings.\nLevel 6: Patient communicates effectively in most situations but has occasional difficulty.\nLevel 7: Patient communicates independently and effectively in all situations.\n\nUsed for outcomes tracking and documentation of functional progress.',
+    category: 'Assessment Scales',
+    subcategory: 'Functional Measures',
+    tags: ['NOMS', 'ASHA', 'functional-communication', 'outcomes'],
+  },
 ]
