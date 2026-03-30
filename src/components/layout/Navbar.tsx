@@ -25,14 +25,15 @@ export default function Navbar() {
   // Detect whether navbar is over the dark hero section
   useEffect(() => {
     if (!isLanding) {
-      setOverDark(false)
       return
     }
     const hero = document.getElementById('hero')
-    if (!hero) { setOverDark(false); return }
+    if (!hero) {
+      return
+    }
 
     const observer = new IntersectionObserver(
-      ([entry]) => setOverDark(entry!.isIntersecting),
+      ([entry]) => setOverDark(Boolean(entry?.isIntersecting)),
       { threshold: 0.05 },
     )
     observer.observe(hero)

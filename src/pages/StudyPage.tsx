@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 import { GraduationCap, Brain, BookOpen, ArrowRight, Target, Zap, RotateCcw } from 'lucide-react'
 import QuestionCard from '@/components/question/QuestionCard'
 import { SwipeableCardStack, SwipeKeyboardHints, SwipeHint } from '@/components/swipe'
@@ -72,13 +72,21 @@ export default function StudyPage() {
 
   const toggleCategory = (cat: ContentCategory) => {
     const next = new Set(categoryFilters)
-    next.has(cat) ? next.delete(cat) : next.add(cat)
+    if (next.has(cat)) {
+      next.delete(cat)
+    } else {
+      next.add(cat)
+    }
     setCategoryFilters(next)
   }
 
   const toggleBigNine = (area: BigNineArea) => {
     const next = new Set(bigNineFilters)
-    next.has(area) ? next.delete(area) : next.add(area)
+    if (next.has(area)) {
+      next.delete(area)
+    } else {
+      next.add(area)
+    }
     setBigNineFilters(next)
   }
 
@@ -118,6 +126,41 @@ export default function StudyPage() {
     }
     return pool.length
   }, [categoryFilters, bigNineFilters])
+
+  const swipeMode = useSettingsStore((s) => s.swipeMode)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024
+  const useSwipe = swipeMode === 'swipe' || (swipeMode === 'auto' && isMobile)
+
+  const handleSwipeAdvance = useCallback(() => {
+    if (currentIndex + 1 >= sessionQuestions.length) {
+      setPhase('summary')
+      return
+    }
+
+    setCurrentIndex(currentIndex + 1)
+  }, [currentIndex, sessionQuestions.length])
+
+  const answeredSet = useMemo(() => new Set(
+    Object.keys(answers).map((qId) => sessionQuestions.findIndex((q) => q.id === qId)).filter((i) => i >= 0),
+  ), [answers, sessionQuestions])
+
+  const correctMap = useMemo(() => {
+    const map = new Map<number, boolean>()
+    Object.entries(answers).forEach(([qId, optId]) => {
+      const idx = sessionQuestions.findIndex((q) => q.id === qId)
+      if (idx >= 0) {
+        const q = sessionQuestions[idx]
+        map.set(idx, q?.options.find((o) => o.id === optId)?.isCorrect ?? false)
+      }
+    })
+    return map
+  }, [answers, sessionQuestions])
+
+  useEffect(() => {
+    if (phase === 'active' && !question) {
+      setPhase('summary')
+    }
+  }, [phase, question])
 
   /* ===== PHASE 1: SESSION SETUP ===== */
   if (phase === 'setup') {
@@ -268,37 +311,8 @@ export default function StudyPage() {
     )
   }
 
-  const swipeMode = useSettingsStore((s) => s.swipeMode)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024
-  const useSwipe = swipeMode === 'swipe' || (swipeMode === 'auto' && isMobile)
-
-  const handleSwipeAdvance = useCallback(() => {
-    if (currentIndex + 1 >= sessionQuestions.length) {
-      setPhase('summary')
-    } else {
-      setCurrentIndex(currentIndex + 1)
-    }
-  }, [currentIndex, sessionQuestions.length])
-
-  const answeredSet = useMemo(() => new Set(
-    Object.keys(answers).map((qId) => sessionQuestions.findIndex((q) => q.id === qId)).filter((i) => i >= 0),
-  ), [answers, sessionQuestions])
-
-  const correctMap = useMemo(() => {
-    const map = new Map<number, boolean>()
-    Object.entries(answers).forEach(([qId, optId]) => {
-      const idx = sessionQuestions.findIndex((q) => q.id === qId)
-      if (idx >= 0) {
-        const q = sessionQuestions[idx]
-        map.set(idx, q?.options.find((o) => o.id === optId)?.isCorrect ?? false)
-      }
-    })
-    return map
-  }, [answers, sessionQuestions])
-
   /* ===== PHASE 2: ACTIVE STUDY ===== */
   if (!question) {
-    setPhase('summary')
     return null
   }
 

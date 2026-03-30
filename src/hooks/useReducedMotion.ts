@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react'
 import { useSettingsStore } from '@/stores/settingsStore'
 
 export function useReducedMotion(): boolean {
-  const [osPreference, setOsPreference] = useState(false)
+  const [osPreference, setOsPreference] = useState(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return false
+    }
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  })
   const settingsOverride = useSettingsStore((s) => s.reducedMotion)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setOsPreference(mq.matches)
 
     const handler = (e: MediaQueryListEvent) => setOsPreference(e.matches)
     mq.addEventListener('change', handler)

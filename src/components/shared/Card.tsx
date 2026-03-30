@@ -19,7 +19,7 @@ const variantStyles = {
 export default function Card({
   variant = 'default',
   hover = false,
-  spotlight: _spotlight = false,
+  spotlight = false,
   className = '',
   children,
   ...props
@@ -27,6 +27,10 @@ export default function Card({
   return (
     <div
       className={`rounded-xl p-6 ${variantStyles[variant]} ${
+        spotlight
+          ? "relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:rounded-xl before:bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_65%)] before:content-['']"
+          : ''
+      } ${
         hover
           ? 'transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover'
           : ''

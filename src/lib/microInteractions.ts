@@ -4,7 +4,7 @@ import gsap from 'gsap'
  * Animates an XP gain popup element: floats up, scales, fades out.
  * The element should already be positioned and visible.
  */
-export function xpPopup(el: HTMLElement, _amount?: number) {
+export function xpPopup(el: HTMLElement) {
   return gsap.fromTo(
     el,
     { y: 0, opacity: 1, scale: 1 },

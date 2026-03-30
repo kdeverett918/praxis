@@ -5,23 +5,26 @@ import { ArrowRight } from 'lucide-react'
 const STORAGE_KEY = 'praxis-swipe-hint-seen'
 
 export default function SwipeHint() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(
+    () => typeof window !== 'undefined' && !window.localStorage.getItem(STORAGE_KEY),
+  )
 
   useEffect(() => {
-    const seen = localStorage.getItem(STORAGE_KEY)
-    if (!seen) {
-      setVisible(true)
-      const timer = setTimeout(() => {
-        setVisible(false)
-        localStorage.setItem(STORAGE_KEY, '1')
-      }, 4000)
-      return () => clearTimeout(timer)
+    if (!visible) {
+      return
     }
-  }, [])
+
+    const timer = window.setTimeout(() => {
+      setVisible(false)
+      window.localStorage.setItem(STORAGE_KEY, '1')
+    }, 4000)
+
+    return () => window.clearTimeout(timer)
+  }, [visible])
 
   const dismiss = () => {
     setVisible(false)
-    localStorage.setItem(STORAGE_KEY, '1')
+    window.localStorage.setItem(STORAGE_KEY, '1')
   }
 
   return (

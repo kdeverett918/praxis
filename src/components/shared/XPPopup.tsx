@@ -1,40 +1,13 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'motion/react'
-
-interface XPPopupItem {
-  id: string
-  amount: number
-  x: number
-  y: number
-}
-
-let popupId = 0
-
-// Global popup queue
-const listeners = new Set<(items: XPPopupItem[]) => void>()
-let queue: XPPopupItem[] = []
-
-export function triggerXPPopup(amount: number, x: number, y: number) {
-  const item: XPPopupItem = { id: `xp-${++popupId}`, amount, x, y }
-  queue = [...queue, item]
-  listeners.forEach((fn) => fn(queue))
-
-  // Auto-remove after animation
-  setTimeout(() => {
-    queue = queue.filter((p) => p.id !== item.id)
-    listeners.forEach((fn) => fn(queue))
-  }, 900)
-}
+import { subscribeToXPPopups, type XPPopupItem } from '@/components/shared/xpPopupQueue'
 
 export default function XPPopupLayer() {
   const [popups, setPopups] = useState<XPPopupItem[]>([])
 
   useEffect(() => {
-    listeners.add(setPopups)
-    return () => {
-      listeners.delete(setPopups)
-    }
+    return subscribeToXPPopups(setPopups)
   }, [])
 
   if (popups.length === 0) return null
