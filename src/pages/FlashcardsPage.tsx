@@ -3,26 +3,17 @@ import { RotateCcw, ThumbsUp, ThumbsDown, Minus, Brain, ArrowRight, BookOpen } f
 import Card from '@/components/shared/Card'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
-import { category1Flashcards } from '@/data/flashcards-category-1'
-import { category2Flashcards } from '@/data/flashcards-category-2'
-import { category3Flashcards } from '@/data/flashcards-category-3'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useFlashcardBank } from '@/hooks/useFlashcardBank'
 import { useGamificationStore } from '@/stores/gamificationStore'
-
-const ALL_FLASHCARDS = [
-  ...category1Flashcards,
-  ...category2Flashcards,
-  ...category3Flashcards,
-]
+import type { ContentCategory } from '@/types/question'
 
 type FlyDirection = 'left' | 'center' | 'right' | null
-type DeckChoice = 'all' | 'cat1' | 'cat2' | 'cat3'
-
-const DECK_OPTIONS: { key: DeckChoice; label: string; desc: string; count: number }[] = [
-  { key: 'all', label: 'All Cards', desc: 'Every flashcard across all categories', count: ALL_FLASHCARDS.length },
-  { key: 'cat1', label: 'Category I', desc: 'Foundations & Professional Practice', count: category1Flashcards.length },
-  { key: 'cat2', label: 'Category II', desc: 'Screening, Assessment & Diagnosis', count: category2Flashcards.length },
-  { key: 'cat3', label: 'Category III', desc: 'Treatment Planning & Implementation', count: category3Flashcards.length },
-]
+type DeckChoice = 'all' | ContentCategory
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr]
@@ -34,6 +25,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export default function FlashcardsPage() {
+  const { flashcards, loading, error } = useFlashcardBank()
   const [deckChoice, setDeckChoice] = useState<DeckChoice>('all')
   const [started, setStarted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -46,14 +38,40 @@ export default function FlashcardsPage() {
   const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
   const updateStreak = useGamificationStore((s) => s.updateStreak)
 
+  const deckOptions = useMemo(() => ([
+    {
+      key: 'all' as const,
+      label: 'All Cards',
+      desc: 'Every flashcard across all categories',
+      count: flashcards.length,
+    },
+    {
+      key: 'I' as const,
+      label: 'Category I',
+      desc: 'Foundations & Professional Practice',
+      count: flashcards.filter((card) => card.contentCategory === 'I').length,
+    },
+    {
+      key: 'II' as const,
+      label: 'Category II',
+      desc: 'Screening, Assessment & Diagnosis',
+      count: flashcards.filter((card) => card.contentCategory === 'II').length,
+    },
+    {
+      key: 'III' as const,
+      label: 'Category III',
+      desc: 'Treatment Planning & Implementation',
+      count: flashcards.filter((card) => card.contentCategory === 'III').length,
+    },
+  ]), [flashcards])
+
   const deck = useMemo(() => {
-    const base = deckChoice === 'cat1' ? category1Flashcards
-      : deckChoice === 'cat2' ? category2Flashcards
-      : deckChoice === 'cat3' ? category3Flashcards
-      : ALL_FLASHCARDS
+    const base = deckChoice === 'all'
+      ? flashcards
+      : flashcards.filter((card) => card.contentCategory === deckChoice)
     return shuffleArray(base)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [started])
+  }, [deckChoice, flashcards, started])
 
   const card = deck[currentIndex]
 
@@ -89,6 +107,23 @@ export default function FlashcardsPage() {
     setStarted(false)
   }
 
+  if (loading) {
+    return <PageLoadingState message="Loading your hosted flashcard library..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Flashcards Unavailable" message={error} />
+  }
+
+  if (flashcards.length === 0) {
+    return (
+      <PageEmptyState
+        title="No Flashcards Available"
+        message="Your Supabase project does not have published flashcards yet."
+      />
+    )
+  }
+
   /* ===== DECK SELECTOR ===== */
   if (!started) {
     return (
@@ -103,7 +138,7 @@ export default function FlashcardsPage() {
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {DECK_OPTIONS.map((opt) => (
+          {deckOptions.map((opt) => (
             <button
               key={opt.key}
               onClick={() => setDeckChoice(opt.key)}

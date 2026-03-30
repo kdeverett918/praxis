@@ -42,6 +42,7 @@ CREATE TRIGGER on_auth_user_created
 -- ============================================
 CREATE TABLE IF NOT EXISTS questions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id TEXT,
   stem TEXT NOT NULL,
   options JSONB NOT NULL,
   explanation TEXT NOT NULL,
@@ -53,15 +54,30 @@ CREATE TABLE IF NOT EXISTS questions (
   tags TEXT[] DEFAULT '{}',
   clinical_setting TEXT,
   reference_sources TEXT[] DEFAULT '{}',
+  is_free BOOLEAN NOT NULL DEFAULT false,
   is_published BOOLEAN NOT NULL DEFAULT true,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_questions_category ON questions (content_category);
-CREATE INDEX idx_questions_difficulty ON questions (difficulty);
-CREATE INDEX idx_questions_published ON questions (is_published) WHERE is_published = true;
-CREATE INDEX idx_questions_big_nine ON questions USING GIN (big_nine);
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS source_id TEXT;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS is_free BOOLEAN NOT NULL DEFAULT false;
+
+CREATE INDEX IF NOT EXISTS idx_questions_category ON questions (content_category);
+CREATE INDEX IF NOT EXISTS idx_questions_difficulty ON questions (difficulty);
+CREATE INDEX IF NOT EXISTS idx_questions_published ON questions (is_published) WHERE is_published = true;
+CREATE INDEX IF NOT EXISTS idx_questions_big_nine ON questions USING GIN (big_nine);
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'questions_source_id_key'
+  ) THEN
+    ALTER TABLE questions
+      ADD CONSTRAINT questions_source_id_key UNIQUE (source_id);
+  END IF;
+END $$;
 
 -- ============================================
 -- QUESTION ATTEMPTS (powers spaced repetition + analytics)
@@ -78,10 +94,10 @@ CREATE TABLE IF NOT EXISTS question_attempts (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_attempts_user ON question_attempts (user_id);
-CREATE INDEX idx_attempts_question ON question_attempts (question_id);
-CREATE INDEX idx_attempts_session ON question_attempts (session_id);
-CREATE INDEX idx_attempts_user_created ON question_attempts (user_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_attempts_user ON question_attempts (user_id);
+CREATE INDEX IF NOT EXISTS idx_attempts_question ON question_attempts (question_id);
+CREATE INDEX IF NOT EXISTS idx_attempts_session ON question_attempts (session_id);
+CREATE INDEX IF NOT EXISTS idx_attempts_user_created ON question_attempts (user_id, created_at DESC);
 
 -- ============================================
 -- EXAM SESSIONS
@@ -101,8 +117,8 @@ CREATE TABLE IF NOT EXISTS exam_sessions (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_sessions_user ON exam_sessions (user_id);
-CREATE INDEX idx_sessions_completed ON exam_sessions (user_id, completed_at DESC);
+CREATE INDEX IF NOT EXISTS idx_sessions_user ON exam_sessions (user_id);
+CREATE INDEX IF NOT EXISTS idx_sessions_completed ON exam_sessions (user_id, completed_at DESC);
 
 -- ============================================
 -- SPACED REPETITION STATE (SM-2)
@@ -119,15 +135,17 @@ CREATE TABLE IF NOT EXISTS srs_cards (
   UNIQUE(user_id, question_id)
 );
 
-CREATE INDEX idx_srs_review ON srs_cards (user_id, next_review_at);
+CREATE INDEX IF NOT EXISTS idx_srs_review ON srs_cards (user_id, next_review_at);
 
 -- ============================================
 -- FLASHCARDS
 -- ============================================
 CREATE TABLE IF NOT EXISTS flashcards (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id TEXT,
   front TEXT NOT NULL,
   back TEXT NOT NULL,
+  content_category TEXT NOT NULL DEFAULT 'I' CHECK (content_category IN ('I', 'II', 'III')),
   category TEXT NOT NULL,
   subcategory TEXT,
   tags TEXT[] DEFAULT '{}',
@@ -135,7 +153,33 @@ CREATE TABLE IF NOT EXISTS flashcards (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_flashcards_category ON flashcards (category);
+ALTER TABLE flashcards ADD COLUMN IF NOT EXISTS source_id TEXT;
+ALTER TABLE flashcards ADD COLUMN IF NOT EXISTS content_category TEXT NOT NULL DEFAULT 'I';
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'flashcards_content_category_check'
+  ) THEN
+    ALTER TABLE flashcards
+      ADD CONSTRAINT flashcards_content_category_check
+      CHECK (content_category IN ('I', 'II', 'III'));
+  END IF;
+END $$;
+
+CREATE INDEX IF NOT EXISTS idx_flashcards_category ON flashcards (category);
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'flashcards_source_id_key'
+  ) THEN
+    ALTER TABLE flashcards
+      ADD CONSTRAINT flashcards_source_id_key UNIQUE (source_id);
+  END IF;
+END $$;
 
 -- ============================================
 -- FLASHCARD PROGRESS
@@ -156,6 +200,7 @@ CREATE TABLE IF NOT EXISTS flashcard_progress (
 -- ============================================
 CREATE TABLE IF NOT EXISTS study_content (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  slug TEXT,
   title TEXT NOT NULL,
   content_category TEXT NOT NULL CHECK (content_category IN ('I', 'II', 'III')),
   subcategory TEXT NOT NULL,
@@ -166,6 +211,19 @@ CREATE TABLE IF NOT EXISTS study_content (
   is_published BOOLEAN NOT NULL DEFAULT true,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+ALTER TABLE study_content ADD COLUMN IF NOT EXISTS slug TEXT;
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'study_content_slug_key'
+  ) THEN
+    ALTER TABLE study_content
+      ADD CONSTRAINT study_content_slug_key UNIQUE (slug);
+  END IF;
+END $$;
 
 -- ============================================
 -- PAYMENTS (Stripe records)
@@ -182,7 +240,7 @@ CREATE TABLE IF NOT EXISTS payments (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_payments_user ON payments (user_id);
+CREATE INDEX IF NOT EXISTS idx_payments_user ON payments (user_id);
 
 -- ============================================
 -- ROW-LEVEL SECURITY
@@ -195,35 +253,66 @@ ALTER TABLE flashcard_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payments ENABLE ROW LEVEL SECURITY;
 
 -- Users can read and update their own profile
+DROP POLICY IF EXISTS "Users read own profile" ON profiles;
+DROP POLICY IF EXISTS "Users update own profile" ON profiles;
 CREATE POLICY "Users read own profile" ON profiles FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Users update own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
 
 -- Users own their attempt data
+DROP POLICY IF EXISTS "Users read own attempts" ON question_attempts;
+DROP POLICY IF EXISTS "Users insert own attempts" ON question_attempts;
 CREATE POLICY "Users read own attempts" ON question_attempts FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users insert own attempts" ON question_attempts FOR INSERT WITH CHECK (auth.uid() = user_id);
 
 -- Users own their exam sessions
+DROP POLICY IF EXISTS "Users read own sessions" ON exam_sessions;
+DROP POLICY IF EXISTS "Users insert own sessions" ON exam_sessions;
+DROP POLICY IF EXISTS "Users update own sessions" ON exam_sessions;
 CREATE POLICY "Users read own sessions" ON exam_sessions FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users insert own sessions" ON exam_sessions FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "Users update own sessions" ON exam_sessions FOR UPDATE USING (auth.uid() = user_id);
 
 -- Users own their SRS state
+DROP POLICY IF EXISTS "Users manage own srs" ON srs_cards;
 CREATE POLICY "Users manage own srs" ON srs_cards FOR ALL USING (auth.uid() = user_id);
 
 -- Users own their flashcard progress
+DROP POLICY IF EXISTS "Users manage own flashcard progress" ON flashcard_progress;
 CREATE POLICY "Users manage own flashcard progress" ON flashcard_progress FOR ALL USING (auth.uid() = user_id);
 
 -- Users read own payments
+DROP POLICY IF EXISTS "Users read own payments" ON payments;
 CREATE POLICY "Users read own payments" ON payments FOR SELECT USING (auth.uid() = user_id);
 
--- Questions, flashcards, and study content are readable by all authenticated users
+-- Published content access
 ALTER TABLE questions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE flashcards ENABLE ROW LEVEL SECURITY;
 ALTER TABLE study_content ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Authenticated read questions" ON questions FOR SELECT USING (auth.role() = 'authenticated');
-CREATE POLICY "Authenticated read flashcards" ON flashcards FOR SELECT USING (auth.role() = 'authenticated');
-CREATE POLICY "Authenticated read content" ON study_content FOR SELECT USING (auth.role() = 'authenticated');
+DROP POLICY IF EXISTS "Authenticated read questions" ON questions;
+DROP POLICY IF EXISTS "Anonymous read free questions" ON questions;
+DROP POLICY IF EXISTS "Authenticated read flashcards" ON flashcards;
+DROP POLICY IF EXISTS "Authenticated read content" ON study_content;
+
+CREATE POLICY "Authenticated read questions"
+  ON questions
+  FOR SELECT
+  USING (is_published = true AND auth.role() = 'authenticated');
+
+CREATE POLICY "Anonymous read free questions"
+  ON questions
+  FOR SELECT
+  USING (is_published = true AND is_free = true AND auth.role() = 'anon');
+
+CREATE POLICY "Authenticated read flashcards"
+  ON flashcards
+  FOR SELECT
+  USING (is_published = true AND auth.role() = 'authenticated');
+
+CREATE POLICY "Authenticated read content"
+  ON study_content
+  FOR SELECT
+  USING (is_published = true AND auth.role() = 'authenticated');
 
 -- ============================================
 -- HELPER FUNCTIONS

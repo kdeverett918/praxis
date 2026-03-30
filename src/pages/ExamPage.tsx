@@ -6,9 +6,15 @@ import {
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
 import QuestionCard from '@/components/question/QuestionCard'
 import type { QuestionOption } from '@/types/database'
-import { buildBalancedExamQuestions } from '@/lib/questionBank'
+import { buildBalancedExamQuestions, type QuestionBankItem } from '@/lib/questionBank'
+import { useQuestionBank } from '@/hooks/useQuestionBank'
 import { useSettingsStore } from '@/stores/settingsStore'
 
 type ExamPhase = 'ready' | 'active' | 'results'
@@ -21,12 +27,13 @@ function formatTime(seconds: number) {
 }
 
 export default function ExamPage() {
+  const { questions: questionBank, loading, error } = useQuestionBank()
   const examTimerWarnings = useSettingsStore((s) => s.examTimerWarnings)
   const [examType, setExamType] = useState<'full' | 'half'>('full')
   const totalQuestions = examType === 'full' ? 132 : 66
   const totalTime = examType === 'full' ? 150 * 60 : 75 * 60
   const [phase, setPhase] = useState<ExamPhase>('ready')
-  const [questions, setQuestions] = useState(() => buildBalancedExamQuestions(totalQuestions))
+  const [questions, setQuestions] = useState<QuestionBankItem[]>([])
   const [timeRemaining, setTimeRemaining] = useState(totalTime)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
@@ -63,7 +70,7 @@ export default function ExamPage() {
 
   function startExam() {
     const qCount = examType === 'full' ? 132 : 66
-    setQuestions(buildBalancedExamQuestions(qCount))
+    setQuestions(buildBalancedExamQuestions(questionBank, qCount))
     setTimeRemaining(examType === 'full' ? 150 * 60 : 75 * 60)
     setCurrentQuestion(0)
     setAnswers({})
@@ -84,6 +91,23 @@ export default function ExamPage() {
       else next.add(questionId)
       return next
     })
+  }
+
+  if (loading) {
+    return <PageLoadingState message="Loading your hosted exam bank..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Exam Bank Unavailable" message={error} />
+  }
+
+  if (questionBank.length === 0) {
+    return (
+      <PageEmptyState
+        title="No Questions Available"
+        message="Your Supabase project does not have published exam questions yet."
+      />
+    )
   }
 
   if (phase === 'ready') {

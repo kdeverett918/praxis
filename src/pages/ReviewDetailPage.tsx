@@ -2,7 +2,12 @@ import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, BookOpen, Lightbulb, ChevronRight } from 'lucide-react'
 import Badge from '@/components/shared/Badge'
 import Card from '@/components/shared/Card'
-import { studyContentData } from '@/data/study-content'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useStudyContentLibrary } from '@/hooks/useStudyContentLibrary'
 
 const CATEGORY_CONFIG: Record<string, { label: string; gradient: string; accentColor: string; badgeColor: string }> = {
   I: { label: 'Foundations & Professional Practice', gradient: 'from-purple-500 to-fuchsia-500', accentColor: 'text-purple-400', badgeColor: 'bg-purple-500/15 text-purple-400 border border-purple-500/20' },
@@ -146,27 +151,33 @@ function renderTable(tableLines: string[], key: number) {
 }
 
 export default function ReviewDetailPage() {
+  const { topics, loading, error } = useStudyContentLibrary()
   const { topicId } = useParams<{ topicId: string }>()
-  const topic = studyContentData.find((item) => item.id === topicId)
+  const topic = topics.find((item) => item.slug === topicId)
   const catConfig = topic ? CATEGORY_CONFIG[topic.contentCategory] : null
+
+  if (loading) {
+    return <PageLoadingState message="Loading this review topic..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Review Topic Unavailable" message={error} />
+  }
 
   if (!topic || !catConfig) {
     return (
-      <div className="mx-auto max-w-4xl pb-24 lg:pb-0">
-        <Link to="/review" className="mb-6 inline-flex items-center gap-2 font-body text-sm text-text-muted hover:text-text-secondary">
-          <ArrowLeft className="h-4 w-4" /> Back to Review
-        </Link>
-        <h1 className="font-display text-2xl text-text-primary">Topic Not Found</h1>
-        <p className="mt-4 font-body text-text-secondary">The requested review topic could not be found.</p>
-      </div>
+      <PageEmptyState
+        title="Topic Not Found"
+        message="The requested review topic could not be found in Supabase."
+      />
     )
   }
 
   // Find prev/next in the same category
-  const sameCat = studyContentData
+  const sameCat = topics
     .filter((s) => s.contentCategory === topic.contentCategory)
     .sort((a, b) => a.sortOrder - b.sortOrder)
-  const currentIdx = sameCat.findIndex((s) => s.id === topic.id)
+  const currentIdx = sameCat.findIndex((s) => s.slug === topic.slug)
   const prev = currentIdx > 0 ? sameCat[currentIdx - 1] : null
   const next = currentIdx < sameCat.length - 1 ? sameCat[currentIdx + 1] : null
 
@@ -225,7 +236,7 @@ export default function ReviewDetailPage() {
       {/* Prev / Next Navigation */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
         {prev ? (
-          <Link to={`/review/${prev.id}`} className="group flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
+          <Link to={`/review/${prev.slug}`} className="group flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
             <ArrowLeft className="h-4 w-4 shrink-0 text-text-muted transition-transform group-hover:-translate-x-1" />
             <div className="min-w-0">
               <p className="font-body text-[10px] uppercase tracking-wider text-text-muted">Previous</p>
@@ -234,7 +245,7 @@ export default function ReviewDetailPage() {
           </Link>
         ) : <div className="hidden flex-1 sm:block" />}
         {next ? (
-          <Link to={`/review/${next.id}`} className="group flex min-w-0 flex-1 items-center justify-end gap-3 rounded-xl border border-border bg-surface p-4 text-right transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
+          <Link to={`/review/${next.slug}`} className="group flex min-w-0 flex-1 items-center justify-end gap-3 rounded-xl border border-border bg-surface p-4 text-right transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
             <div className="min-w-0">
               <p className="font-body text-[10px] uppercase tracking-wider text-text-muted">Next</p>
               <p className="truncate font-body text-sm font-medium text-text-primary">{next.title}</p>

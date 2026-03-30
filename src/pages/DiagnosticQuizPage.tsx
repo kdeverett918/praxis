@@ -7,6 +7,12 @@ import {
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useQuestionBank } from '@/hooks/useQuestionBank'
 import { buildDiagnosticQuestions } from '@/lib/questionBank'
 import { useDiagnosticStore } from '@/stores/diagnosticStore'
 import { BIG_NINE_LABELS } from '@/types/question'
@@ -28,13 +34,14 @@ const PRO_FEATURES = [
 ]
 
 export default function DiagnosticQuizPage() {
+  const { questions: questionPool, loading, error } = useQuestionBank({ freeOnly: true })
   const [phase, setPhase] = useState<Phase>('intro')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
   const setDiagnosticResult = useDiagnosticStore((s) => s.setResult)
 
-  const questions = useMemo(() => buildDiagnosticQuestions(18), [])
+  const questions = useMemo(() => buildDiagnosticQuestions(questionPool, 18), [questionPool])
 
   const computeResults = useCallback(() => {
     const categoryScores: Record<ContentCategory, { total: number; correct: number; accuracy: number }> = {
@@ -110,6 +117,45 @@ export default function DiagnosticQuizPage() {
 
   const result = phase === 'results' ? computeResults() : null
   const scaledScore = result ? Math.round((result.accuracy / 100) * 200) : 0
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="px-6 pt-28 pb-20">
+          <PageLoadingState message="Loading the hosted diagnostic assessment..." />
+        </div>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="px-6 pt-28 pb-20">
+          <PageErrorState title="Diagnostic Unavailable" message={error} />
+        </div>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="px-6 pt-28 pb-20">
+          <PageEmptyState
+            title="No Diagnostic Questions Available"
+            message="Supabase does not currently expose a free diagnostic question set."
+          />
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 
   /* ===== INTRO ===== */
   if (phase === 'intro') {

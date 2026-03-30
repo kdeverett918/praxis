@@ -6,7 +6,12 @@ import StoryProgressBar from '@/components/shared/StoryProgressBar'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import Card from '@/components/shared/Card'
-import { ALL_QUESTIONS } from '@/lib/questionBank'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useQuestionBank } from '@/hooks/useQuestionBank'
 import { useGamificationStore } from '@/stores/gamificationStore'
 import { useSettingsStore } from '@/stores/settingsStore'
 import type { ContentCategory, BigNineArea } from '@/types/question'
@@ -32,6 +37,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export default function StudyPage() {
+  const { questions: questionBank, loading, error } = useQuestionBank()
   const [phase, setPhase] = useState<Phase>('setup')
   const [studyMode, setStudyMode] = useState<StudyMode>('smart')
   const [sessionLength, setSessionLength] = useState<number>(25)
@@ -47,7 +53,7 @@ export default function StudyPage() {
   const updateStreak = useGamificationStore((s) => s.updateStreak)
 
   const sessionQuestions = useMemo(() => {
-    let pool = [...ALL_QUESTIONS]
+    let pool = [...questionBank]
 
     if (categoryFilters.size > 0) {
       pool = pool.filter((q) => categoryFilters.has(q.contentCategory))
@@ -59,7 +65,7 @@ export default function StudyPage() {
     const shuffled = shuffleArray(pool)
     return shuffled.slice(0, sessionLength)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase]) // Recalculate when phase changes (i.e., when session starts)
+  }, [phase, questionBank]) // Recalculate when phase changes (i.e., when session starts)
 
   const question = sessionQuestions[currentIndex]
   const totalCorrect = Object.entries(answers).filter(([qId, optId]) => {
@@ -117,7 +123,7 @@ export default function StudyPage() {
 
   // Count matching questions for the current filters
   const matchingCount = useMemo(() => {
-    let pool = ALL_QUESTIONS
+    let pool = questionBank
     if (categoryFilters.size > 0) {
       pool = pool.filter((q) => categoryFilters.has(q.contentCategory))
     }
@@ -125,7 +131,7 @@ export default function StudyPage() {
       pool = pool.filter((q) => q.bigNine.some((b) => bigNineFilters.has(b as BigNineArea)))
     }
     return pool.length
-  }, [categoryFilters, bigNineFilters])
+  }, [bigNineFilters, categoryFilters, questionBank])
 
   const swipeMode = useSettingsStore((s) => s.swipeMode)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024
@@ -161,6 +167,23 @@ export default function StudyPage() {
       setPhase('summary')
     }
   }, [phase, question])
+
+  if (loading) {
+    return <PageLoadingState message="Loading your hosted question bank..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Question Bank Unavailable" message={error} />
+  }
+
+  if (questionBank.length === 0) {
+    return (
+      <PageEmptyState
+        title="No Questions Available"
+        message="Your Supabase project does not have published study questions yet."
+      />
+    )
+  }
 
   /* ===== PHASE 1: SESSION SETUP ===== */
   if (phase === 'setup') {

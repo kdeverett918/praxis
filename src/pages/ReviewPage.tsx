@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BookOpen, ChevronRight, Search, Filter, BookMarked, FlaskConical, Stethoscope } from 'lucide-react'
 import Card from '@/components/shared/Card'
-import { studyContentData } from '@/data/study-content'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useStudyContentLibrary } from '@/hooks/useStudyContentLibrary'
 
 const CATEGORIES = [
   {
@@ -46,9 +51,18 @@ const CATEGORIES = [
   },
 ]
 
-function buildSections() {
-  const grouped: Record<string, typeof studyContentData> = {}
-  for (const item of studyContentData) {
+function buildSections(items: Array<{
+  id: string
+  slug: string
+  title: string
+  contentCategory: string
+  subcategory: string
+  bigNine: string[]
+  keyTerms: Array<{ term: string; definition: string }>
+  sortOrder: number
+}>) {
+  const grouped: Record<string, typeof items> = {}
+  for (const item of items) {
     if (!grouped[item.contentCategory]) {
       grouped[item.contentCategory] = []
     }
@@ -60,7 +74,7 @@ function buildSections() {
     return {
       ...cat,
       topics: items.sort((a, b) => a.sortOrder - b.sortOrder).map((item) => ({
-        id: item.id,
+        id: item.slug,
         title: item.title,
         bigNine: item.bigNine,
         keyTermCount: item.keyTerms.length,
@@ -70,13 +84,30 @@ function buildSections() {
   })
 }
 
-const REVIEW_SECTIONS = buildSections()
-
 export default function ReviewPage() {
+  const { topics, loading, error } = useStudyContentLibrary()
   const [search, setSearch] = useState('')
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
+  const reviewSections = useMemo(() => buildSections(topics), [topics])
 
-  const filteredSections = REVIEW_SECTIONS.map((section) => ({
+  if (loading) {
+    return <PageLoadingState message="Loading your hosted review library..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Review Library Unavailable" message={error} />
+  }
+
+  if (topics.length === 0) {
+    return (
+      <PageEmptyState
+        title="No Review Topics Available"
+        message="Your Supabase project does not have published review topics yet."
+      />
+    )
+  }
+
+  const filteredSections = reviewSections.map((section) => ({
     ...section,
     topics: section.topics.filter((topic) => {
       const matchesSearch = search === '' ||
@@ -87,7 +118,7 @@ export default function ReviewPage() {
     }),
   })).filter((section) => section.topics.length > 0)
 
-  const totalTopics = REVIEW_SECTIONS.reduce((sum, s) => sum + s.topics.length, 0)
+  const totalTopics = reviewSections.reduce((sum, s) => sum + s.topics.length, 0)
 
   return (
     <div className="mx-auto max-w-5xl pb-24 lg:pb-0">

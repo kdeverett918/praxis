@@ -4,11 +4,16 @@ import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Badge from '@/components/shared/Badge'
 import QuestionCard from '@/components/question/QuestionCard'
+import {
+  PageEmptyState,
+  PageErrorState,
+  PageLoadingState,
+} from '@/components/shared/PageStates'
+import { useQuestionBank } from '@/hooks/useQuestionBank'
 import { CONTENT_CATEGORY_LABELS, BIG_NINE_LABELS, DIFFICULTY_LABELS } from '@/types/question'
 import type { ContentCategory, BigNineArea, Difficulty } from '@/types/question'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { useGamificationStore } from '@/stores/gamificationStore'
-import { ALL_QUESTIONS } from '@/lib/questionBank'
 import type { QuestionBankItem } from '@/lib/questionBank'
 
 function shuffle<T>(items: T[]): T[] {
@@ -23,6 +28,7 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export default function QuizPage() {
+  const { questions: questionBank, loading, error } = useQuestionBank()
   const defaultQuizLength = useSettingsStore((s) => s.defaultQuizLength)
   const addXP = useGamificationStore((s) => s.addXP)
   const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
@@ -48,15 +54,15 @@ export default function QuizPage() {
   }
 
   const matchingCount = useMemo(() => {
-    let pool = ALL_QUESTIONS
+    let pool = questionBank
     if (selectedCategories.size > 0) pool = pool.filter((q) => selectedCategories.has(q.contentCategory))
     if (selectedBigNine.size > 0) pool = pool.filter((q) => q.bigNine.some((a) => selectedBigNine.has(a as BigNineArea)))
     if (selectedDifficulty.size > 0) pool = pool.filter((q) => selectedDifficulty.has(q.difficulty))
     return pool.length
-  }, [selectedCategories, selectedBigNine, selectedDifficulty])
+  }, [questionBank, selectedCategories, selectedBigNine, selectedDifficulty])
 
   const handleStartQuiz = () => {
-    let filtered = [...ALL_QUESTIONS]
+    let filtered = [...questionBank]
 
     if (selectedCategories.size > 0) {
       filtered = filtered.filter((q) => selectedCategories.has(q.contentCategory))
@@ -126,6 +132,23 @@ export default function QuizPage() {
     const percentage = total > 0 ? Math.round((correct / total) * 100) : 0
     return { correct, total, percentage }
   }, [quizFinished, quizQuestions, answers])
+
+  if (loading) {
+    return <PageLoadingState message="Loading your hosted question bank..." />
+  }
+
+  if (error) {
+    return <PageErrorState title="Question Bank Unavailable" message={error} />
+  }
+
+  if (questionBank.length === 0) {
+    return (
+      <PageEmptyState
+        title="No Questions Available"
+        message="Your Supabase project does not have published quiz questions yet."
+      />
+    )
+  }
 
   // Results screen
   if (quizFinished && results) {
