@@ -38,7 +38,7 @@ export const category2PoolB: QuestionData[] = [
     incorrectExplanations: {
       a: 'The EVT-3 measures expressive vocabulary through labeling and synonym tasks, not receptive identification.',
       b: 'The CELF-5 is a comprehensive language battery assessing multiple language domains, not solely receptive vocabulary via picture pointing.',
-      d: 'The ROWPVT-4 also measures receptive vocabulary but uses a single-picture pointing format per item, not a four-picture plate like the PPVT-5.',
+      d: 'The ROWPVT-4 also measures receptive vocabulary using a similar four-picture plate format. The key distinction is that the PPVT-5 is more widely recognized and commonly cited on the Praxis, and the ROWPVT-4 is primarily distinguished by being co-normed with the EOWPVT-4.',
     },
     contentCategory: 'II',
     subcategory: 'Standardized Assessment',
@@ -656,7 +656,7 @@ export const category2PoolB: QuestionData[] = [
       { id: 'c', text: '22.2%; severe', isCorrect: false },
       { id: 'd', text: '77.8%; mild-moderate', isCorrect: false },
     ],
-    explanation: 'PCC = (140/180) x 100 = 77.8%. According to Shriberg and Kwiatkowski (1982), severity classifications are: mild (>85% or 65-85%), moderate (50-65%), moderate-severe (35-50%), and severe (<35%). A PCC of 77.8% falls in the mild range (65-85%).',
+    explanation: 'PCC = (140/180) x 100 = 77.8%. According to Shriberg and Kwiatkowski (1982), severity classifications are: normal (>85%), mild (65-85%), mild-moderate (50-65%), moderate-severe (35-50%), and severe (<35%). A PCC of 77.8% falls in the mild range (65-85%).',
     incorrectExplanations: {
       b: 'Moderate severity corresponds to a PCC of 50-65%, not 77.8%.',
       c: '22.2% would be the percentage of consonants incorrect, not the PCC. PCC is calculated as correct/total, not incorrect/total.',
