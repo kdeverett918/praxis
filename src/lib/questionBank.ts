@@ -1,20 +1,37 @@
 import { category1Questions } from '@/data/questions-category-1'
 import type { QuestionData } from '@/data/questions-category-1'
+import { category1PoolB } from '@/data/questions-category-1-pool-b'
+import { category1PoolC } from '@/data/questions-category-1-pool-c'
+import { category1PoolD } from '@/data/questions-category-1-pool-d'
 import { category2Questions } from '@/data/questions-category-2'
+import { category2PoolB } from '@/data/questions-category-2-pool-b'
+import { category2PoolC } from '@/data/questions-category-2-pool-c'
+import { category2PoolD } from '@/data/questions-category-2-pool-d'
 import { category3Questions } from '@/data/questions-category-3'
+import { category3PoolB } from '@/data/questions-category-3-pool-b'
+import { category3PoolC } from '@/data/questions-category-3-pool-c'
+import { category3PoolD } from '@/data/questions-category-3-pool-d'
 
 export type QuestionBankItem = QuestionData
 
+const allCategory1: QuestionBankItem[] = [
+  ...category1Questions, ...category1PoolB, ...category1PoolC, ...category1PoolD,
+]
+const allCategory2: QuestionBankItem[] = [
+  ...category2Questions, ...category2PoolB, ...category2PoolC, ...category2PoolD,
+]
+const allCategory3: QuestionBankItem[] = [
+  ...category3Questions, ...category3PoolB, ...category3PoolC, ...category3PoolD,
+]
+
 export const ALL_QUESTIONS: QuestionBankItem[] = [
-  ...category1Questions,
-  ...category2Questions,
-  ...category3Questions,
+  ...allCategory1, ...allCategory2, ...allCategory3,
 ]
 
 const QUESTIONS_BY_CATEGORY = {
-  I: category1Questions,
-  II: category2Questions,
-  III: category3Questions,
+  I: allCategory1,
+  II: allCategory2,
+  III: allCategory3,
 } as const
 
 function shuffle<T>(items: T[]): T[] {
