@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import ProtectedRoute from '@/components/layout/ProtectedRoute'
 import AchievementToast from '@/components/shared/AchievementToast'
+import AnalyticsTracker from '@/components/shared/AnalyticsTracker'
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'))
 const DiagnosticQuizPage = lazy(() => import('@/pages/DiagnosticQuizPage'))
@@ -35,6 +36,7 @@ function LoadingFallback() {
 export default function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
+      <AnalyticsTracker />
       <AchievementToast />
       <Routes>
         {/* Public routes */}
