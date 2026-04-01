@@ -11,27 +11,28 @@ import Button from '@/components/shared/Button'
 import VideoSlider from '@/components/shared/VideoSlider'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
+import { trackEvent } from '@/lib/analytics'
 
 const FEATURES = [
-  { icon: Brain, title: 'Adaptive Engine', desc: 'Spaced repetition targets your weak areas automatically. The more you study, the smarter it gets.', tier: 1 },
-  { icon: Sparkles, title: 'AI Rationales', desc: 'Get Claude-powered explanations for every question — why the right answer works and why yours didn\'t.', tier: 1 },
-  { icon: BookOpen, title: 'Exam Simulation', desc: '132 questions, 150-minute timer. Realistic test conditions.', tier: 2 },
-  { icon: Trophy, title: 'Track Progress', desc: 'Big Nine radar chart, study streaks, and weak area recommendations.', tier: 2 },
-  { icon: Layers, title: 'Custom Quizzes', desc: 'Build quizzes by category, difficulty, or Big Nine area.', tier: 2 },
-  { icon: Zap, title: 'Flashcard System', desc: 'Key terms, syndromes, cranial nerves, and milestones with spaced repetition.', tier: 3 },
+  { icon: Brain, title: 'Targeted Practice', desc: 'Study the Big Nine areas you keep missing instead of rereading everything from class.', tier: 1 },
+  { icon: Sparkles, title: 'Detailed Explanations', desc: 'Every question is paired with clear reasoning so misses turn into usable study notes.', tier: 1 },
+  { icon: BookOpen, title: 'Exam Simulation', desc: 'Use full 132-question practice exams when you need a realistic weekend rep.', tier: 2 },
+  { icon: Trophy, title: 'Progress Tracking', desc: 'See which content categories need the next block of study before test day.', tier: 2 },
+  { icon: Layers, title: 'Custom Quizzes', desc: 'Build 10-, 25-, or 50-question sets around the topics you need right now.', tier: 2 },
+  { icon: Zap, title: 'Flashcard Review', desc: 'Quick-hit decks for milestones, cranial nerves, syndromes, and high-yield facts.', tier: 3 },
 ]
 
 const STATS = [
-  { value: 600, suffix: '+', label: 'Practice Questions' },
-  { value: 4, suffix: '+', label: 'Full Practice Exams' },
-  { value: 9, suffix: '', label: 'Big Nine Areas' },
-  { value: 3, suffix: '', label: 'Content Categories' },
+  { value: 600, suffix: '+', label: 'Original Practice Questions' },
+  { value: 132, suffix: '', label: 'Questions On The Real Exam' },
+  { value: 150, suffix: 'm', label: 'Minutes For The Full Praxis' },
+  { value: 162, suffix: '', label: 'ASHA Passing Score' },
 ]
 
 const PRO_FEATURES = [
   'Unlimited questions',
   'Unlimited exam simulations',
-  'AI-powered rationales',
+  'Detailed answer explanations',
   'Full flashcard library',
   'Performance analytics',
   'Custom quiz builder',
@@ -39,14 +40,33 @@ const PRO_FEATURES = [
   '6-month full access',
 ]
 
+const GRAD_SCHOOL_REALITY = [
+  {
+    icon: Brain,
+    title: 'Built for short study blocks',
+    desc: 'Use 10-question sessions when you only have a few minutes before clinic, after class, or on the train home.',
+  },
+  {
+    icon: Layers,
+    title: 'Built for weak-area cleanup',
+    desc: 'Stop guessing what to review. Start with the diagnostic, then spend time on the Big Nine areas where you are actually dropping points.',
+  },
+  {
+    icon: Trophy,
+    title: 'Built for weekend exam reps',
+    desc: 'Save full-length practice exams for your longer blocks and use weekdays for focused, lower-friction review.',
+  },
+]
+
 const FAQ_ITEMS = [
-  { q: 'What exactly do I get for $49?', a: 'Full access for 6 months: unlimited questions, unlimited exam simulations, AI-powered rationales for every question, the complete flashcard library, performance analytics, and the custom quiz builder. No restrictions.' },
-  { q: 'Is this aligned with the actual Praxis 5331?', a: 'Yes. Every question is mapped to the official ETS content categories and Big Nine areas. The exam simulation mirrors the real test format: 132 questions, 150 minutes, scaled scoring.' },
-  { q: 'How is this different from TherapEd or ETS practice tests?', a: 'SLP Study Hub is adaptive — it learns your weak areas and prioritizes them. You also get AI explanations for every question, not just an answer key. And it costs a fraction of what competitors charge.' },
+  { q: 'What exactly do I get for $49?', a: 'Full access for 6 months: unlimited questions, unlimited exam simulations, detailed answer explanations, the complete flashcard library, performance analytics, and the custom quiz builder.' },
+  { q: 'Is this aligned with the actual Praxis 5331?', a: 'Yes. Questions are mapped to the official ETS content categories and Big Nine areas. The exam simulation follows the real 132-question, 150-minute format.' },
+  { q: 'How is this different from a static question bank?', a: 'SLP Study Hub is built around grad-school study reality: short focused practice blocks, weak-area targeting, and explanations that help you turn misses into review notes.' },
   { q: 'Who wrote these questions?', a: 'All questions are written by a practicing medical SLP and reviewed against the official ETS blueprint. Every question is original and clinically accurate.' },
   { q: 'What if I already passed the Praxis?', a: 'The platform is also useful as a clinical refresher and study tool for CFY clinicians. But it\'s primarily designed for students preparing for their first attempt.' },
   { q: 'Is there a money-back guarantee?', a: 'Yes — 30-day money-back guarantee. If SLP Study Hub doesn\'t help you study more effectively, email us for a full refund.' },
-  { q: 'Can I try it before paying?', a: 'Absolutely. The free tier gives you 25 questions per day, basic dashboard access, and the study content library. No credit card required.' },
+  { q: 'Can I try it before paying?', a: 'Absolutely. Start with the free diagnostic, then use the free tier for 25 questions per day. No credit card required.' },
+  { q: 'How should I use this during grad school?', a: 'Most students do best with short weekday practice blocks and a longer weekend exam session. Use the diagnostic first, then focus on your weakest categories before taking a full-length simulation.' },
 ]
 
 function useScrollReveal() {
@@ -164,29 +184,29 @@ export default function LandingPage() {
         <div className="relative z-10 mx-auto max-w-4xl">
           <span className="animated-gradient-border inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-text-secondary">
             <Shield className="h-3.5 w-3.5" />
-            Built by a CCC-SLP, not a publisher
+            Built for SLP grad students, externs, and first-time test takers
           </span>
 
           <h1 className="mx-auto mt-8 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] text-text-primary">
-            Pass the Praxis on your <span className="text-gradient-hero">first try.</span>
+            Pass the Praxis without pausing <span className="text-gradient-hero">grad school.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            AI-powered adaptive study with 600+ original questions, full practice exams, and instant rationales — built by an SLP, for SLPs.
+            Study in clinic-friendly blocks, spot your weak Big Nine areas fast, and build exam-day confidence with 600+ original questions, full practice exams, and clear explanations.
           </p>
 
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <Link to="/signup" className="w-full sm:w-auto">
+            <Link to="/diagnostic" className="w-full sm:w-auto" onClick={() => trackEvent('hero_cta_clicked', { cta: 'free_diagnostic' })}>
               <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Start Studying Free
+                Take Free Diagnostic
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <a href="#features" className="w-full sm:w-auto">
+            <Link to="/signup" className="w-full sm:w-auto" onClick={() => trackEvent('hero_cta_clicked', { cta: 'start_free' })}>
               <Button variant="outline" size="lg" className="w-full border-border text-text-secondary hover:bg-background-dark-elevated hover:text-text-primary sm:w-auto">
-                See What's Inside
+                Start Studying Free
               </Button>
-            </a>
+            </Link>
           </div>
 
           {BETA_MODE_AVAILABLE && (
@@ -214,7 +234,7 @@ export default function LandingPage() {
           )}
 
           <p className="mt-6 font-body text-sm text-text-muted">
-            No credit card required &middot; 25 free questions daily
+            No credit card required &middot; 8-minute diagnostic &middot; 25 free questions daily
           </p>
         </div>
       </section>
@@ -252,10 +272,10 @@ export default function LandingPage() {
             Why SLP Study Hub
           </span>
           <h2 className="mt-4 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
-            Built different from your textbook's question bank
+            Built for how SLP grad students actually prepare
           </h2>
           <p className="mt-4 font-body text-lg text-text-secondary">
-            Every feature is designed around how SLPs actually prepare — not how publishers think you should.
+            Less aimless rereading. More targeted reps, explanation review, and exam-specific practice that fits around class and clinic.
           </p>
         </div>
 
@@ -316,6 +336,38 @@ export default function LandingPage() {
         ))}
       </section>
 
+      <section className="border-y border-border bg-surface/30 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="scroll-reveal mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">
+              Built For Real Life
+            </span>
+            <h2 className="mt-4 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
+              Better fit for clinic schedules and externship weeks
+            </h2>
+            <p className="mt-4 font-body text-lg text-text-secondary">
+              You are probably fitting Praxis prep around placements, classes, paperwork, and exhaustion. The site should respect that instead of pretending you have endless uninterrupted study time.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {GRAD_SCHOOL_REALITY.map((item, i) => (
+              <div
+                key={item.title}
+                className="scroll-reveal rounded-2xl border border-border bg-surface p-6 shadow-card"
+                data-delay={i * 80}
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-light">
+                  <item.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-body text-lg font-semibold text-text-primary">{item.title}</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== HOW IT WORKS ===== */}
       <section className="border-y border-border bg-surface/30 py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
@@ -331,7 +383,7 @@ export default function LandingPage() {
           <div className="mt-16 grid gap-12 md:grid-cols-3">
             {[
               { step: '01', title: 'Take a diagnostic quiz', desc: 'Answer questions across all three content categories and Big Nine areas. We\'ll map your strengths and weaknesses.', icon: BookOpen },
-              { step: '02', title: 'Study your weak areas', desc: 'Our adaptive engine serves you questions where you need the most practice. AI rationales explain the clinical reasoning.', icon: Brain },
+              { step: '02', title: 'Study your weak areas', desc: 'Build short targeted practice blocks around the Big Nine areas where you are missing points and review the explanations right away.', icon: Brain },
               { step: '03', title: 'Simulate the real exam', desc: 'Take full 132-question practice exams under timed conditions. Track your scores and watch them improve.', icon: Trophy },
             ].map((item, i) => (
               <div key={item.step} className="scroll-reveal flex flex-col text-center md:text-left" data-delay={i * 100}>
@@ -360,12 +412,9 @@ export default function LandingPage() {
 
         {/* Comparison strip */}
         <div className="scroll-reveal mx-auto mt-10 max-w-2xl rounded-xl border border-secondary/20 bg-secondary-light p-5 text-center" data-delay={100}>
-          <p className="font-body text-sm font-semibold text-secondary">Stop overpaying for Praxis prep</p>
-          <p className="mt-1 font-body text-xs text-text-secondary">
-            <span className="line-through">TherapEd $149/yr</span> &middot; <span className="line-through">ETS Materials $99</span> &middot; <span className="line-through">Pocket Prep $79/yr</span>
-          </p>
+          <p className="font-body text-sm font-semibold text-secondary">Try the workflow before you pay</p>
           <p className="mt-1 font-body text-sm font-semibold text-text-primary">
-            SLP Study Hub: $49 once. Full access. Done.
+            Start with the free diagnostic and 25 questions per day, then upgrade only when you want full access.
           </p>
         </div>
 
@@ -386,7 +435,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <Link to="/signup" className="mt-8 block">
+          <Link to="/signup" className="mt-8 block" onClick={() => trackEvent('pricing_cta_clicked', { cta: 'pro_signup' })}>
             <Button variant="primary" size="lg" className="w-full">
               Get SLP Study Hub Pro
               <ArrowRight className="h-5 w-5" />
@@ -417,10 +466,10 @@ export default function LandingPage() {
               Built by an SLP, for SLPs
             </span>
             <h2 className="mt-6 text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
-              Study smarter, not harder
+              Stronger than a generic question bank
             </h2>
             <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary">
-              This platform uses <strong className="text-text-primary">spaced repetition</strong> to target your weak areas, <strong className="text-text-primary">AI-powered rationales</strong> to explain clinical reasoning, and <strong className="text-text-primary">realistic exam simulations</strong> so you know exactly what to expect on test day.
+              ASHA recommends most students take the Praxis during their final year of study. This platform is designed for that window: targeted practice, clinically relevant explanations, and realistic full-length simulations when you are ready to test yourself.
             </p>
             <p className="mt-6 font-body font-semibold text-text-primary">
               Every question is original, clinically accurate, and mapped to the official ETS blueprint.
@@ -433,7 +482,7 @@ export default function LandingPage() {
       <VideoSlider />
 
       {/* ===== FAQ ===== */}
-      <section className="mx-auto max-w-3xl px-6 py-20 md:py-24">
+      <section id="faq" className="mx-auto max-w-3xl px-6 py-20 md:py-24">
         <div className="scroll-reveal text-center">
           <h2 className="text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em]">
             Frequently asked questions
@@ -450,20 +499,20 @@ export default function LandingPage() {
       <section className="border-t border-border bg-surface/50 py-20 md:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="scroll-reveal text-[clamp(1.875rem,3.5vw,3rem)] leading-[1.15] tracking-[-0.025em] text-text-primary">
-            Your Praxis date isn't waiting.
+            Start with the same step a smart grad student would take.
           </h2>
           <p className="scroll-reveal mt-4 font-body text-lg text-text-secondary" data-delay={80}>
-            Start studying now and feel ready on test day.
+            Take the free diagnostic, see where you stand, then turn the result into a focused study routine.
           </p>
           <div className="scroll-reveal mt-8" data-delay={160}>
-            <Link to="/signup">
+            <Link to="/diagnostic" onClick={() => trackEvent('footer_cta_clicked', { cta: 'final_diagnostic' })}>
               <Button variant="primary" size="lg">
-                Start Studying Free
+                Take Free Diagnostic
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
             <p className="mt-4 font-body text-sm text-text-muted">
-              Already have an account? <Link to="/login" className="text-text-secondary underline hover:text-text-primary">Log in</Link>
+              Want the full question bank instead? <Link to="/signup" className="text-text-secondary underline hover:text-text-primary">Start free</Link>
             </p>
           </div>
         </div>

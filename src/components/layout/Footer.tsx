@@ -15,28 +15,29 @@ export default function Footer() {
               <span className="font-display text-xl text-text-primary">SLP Study Hub</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-              The smartest way to pass the SLP Praxis 5331. Built by an SLP, for SLPs.
+              Praxis prep built for SLP grad students balancing class, clinic, and externship life.
             </p>
           </div>
 
-          {/* Study */}
+          {/* Start Here */}
           <div>
-            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Study</h4>
+            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Start Here</h4>
             <ul className="space-y-3">
-              <li><Link to="/study" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Practice Questions</Link></li>
-              <li><Link to="/exam" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Exam Simulation</Link></li>
-              <li><Link to="/flashcards" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Flashcards</Link></li>
-              <li><Link to="/review" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Study Content</Link></li>
+              <li><Link to="/diagnostic" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Free Diagnostic</Link></li>
+              <li><Link to="/signup" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Start Free</Link></li>
               <li><Link to="/videos" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Study Videos</Link></li>
+              <li><Link to="/login" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Log In</Link></li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Explore */}
           <div>
-            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Company</h4>
+            <h4 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-text-muted">Explore</h4>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">About</a></li>
-              <li><a href="#pricing" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Pricing</a></li>
+              <li><a href="/#features" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Features</a></li>
+              <li><a href="/#pricing" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Pricing</a></li>
+              <li><a href="/#faq" className="text-sm text-text-secondary transition-colors hover:text-text-primary">FAQ</a></li>
+              <li><a href="/#about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">About</a></li>
               <li><Link to="/privacy" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Privacy Policy</Link></li>
               <li><Link to="/terms" className="text-sm text-text-secondary transition-colors hover:text-text-primary">Terms of Service</Link></li>
             </ul>

@@ -5,6 +5,7 @@ import Button from '@/components/shared/Button'
 import { useAuth } from '@/hooks/useAuth'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
+import { trackEvent } from '@/lib/analytics'
 
 export default function SignupPage() {
   const [name, setName] = useState('')
@@ -24,11 +25,13 @@ export default function SignupPage() {
     e.preventDefault()
     setLoading(true)
     setError(null)
+    trackEvent('signup_started', { source: 'signup_page' })
     const { error: authError } = await signUp(email, password, name)
     if (authError) {
       setError(authError)
       setLoading(false)
     } else {
+      trackEvent('signup_completed', { source: 'signup_page' })
       setSuccess(true)
       setTimeout(() => navigate('/dashboard'), 2000)
     }

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Layers, Play, ArrowLeft, Trophy } from 'lucide-react'
 import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
@@ -15,6 +16,7 @@ import type { ContentCategory, BigNineArea, Difficulty } from '@/types/question'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { useGamificationStore } from '@/stores/gamificationStore'
 import type { QuestionBankItem } from '@/lib/questionBank'
+import { useAttempts } from '@/hooks/useAttempts'
 
 function shuffle<T>(items: T[]): T[] {
   const next = [...items]
@@ -28,17 +30,28 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export default function QuizPage() {
+  const location = useLocation()
+  const locationState = location.state as {
+    preselectedCategory?: ContentCategory
+    preselectedBigNine?: BigNineArea[]
+    preselectedQuestionCount?: number
+  } | null
   const { questions: questionBank, loading, error } = useQuestionBank()
+  const { recordAttempt } = useAttempts()
   const defaultQuizLength = useSettingsStore((s) => s.defaultQuizLength)
   const addXP = useGamificationStore((s) => s.addXP)
   const addQuestionsAnswered = useGamificationStore((s) => s.addQuestionsAnswered)
   const addCorrectAnswer = useGamificationStore((s) => s.addCorrectAnswer)
   const updateStreak = useGamificationStore((s) => s.updateStreak)
 
-  const [selectedCategories, setSelectedCategories] = useState<Set<ContentCategory>>(new Set())
-  const [selectedBigNine, setSelectedBigNine] = useState<Set<BigNineArea>>(new Set())
+  const [selectedCategories, setSelectedCategories] = useState<Set<ContentCategory>>(
+    () => new Set(locationState?.preselectedCategory ? [locationState.preselectedCategory] : []),
+  )
+  const [selectedBigNine, setSelectedBigNine] = useState<Set<BigNineArea>>(
+    () => new Set(locationState?.preselectedBigNine ?? []),
+  )
   const [selectedDifficulty, setSelectedDifficulty] = useState<Set<Difficulty>>(new Set())
-  const [questionCount, setQuestionCount] = useState(defaultQuizLength)
+  const [questionCount, setQuestionCount] = useState(locationState?.preselectedQuestionCount ?? defaultQuizLength)
 
   const [quizStarted, setQuizStarted] = useState(false)
   const [quizFinished, setQuizFinished] = useState(false)
@@ -100,6 +113,12 @@ export default function QuizPage() {
     addXP(isCorrect ? 10 : 5)
     addQuestionsAnswered(1)
     if (isCorrect) addCorrectAnswer()
+    void recordAttempt({
+      questionId,
+      selectedAnswer: optionId,
+      isCorrect,
+      mode: 'quiz',
+    })
   }
 
   const handleNext = () => {
@@ -236,7 +255,6 @@ export default function QuizPage() {
           onAnswer={(optionId) => handleAnswer(question.id, optionId)}
           onNext={handleNext}
           onPrev={() => setCurrentIndex(Math.max(currentIndex - 1, 0))}
-          onRequestAIRationale={() => {/* Claude API call */}}
         />
       </div>
     )

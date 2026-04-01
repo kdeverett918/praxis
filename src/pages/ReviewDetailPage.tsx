@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, BookOpen, Lightbulb, ChevronRight } from 'lucide-react'
+import { ArrowLeft, BookOpen, Lightbulb, ChevronRight, GraduationCap, Layers } from 'lucide-react'
 import Badge from '@/components/shared/Badge'
 import Card from '@/components/shared/Card'
 import {
@@ -8,6 +8,7 @@ import {
   PageLoadingState,
 } from '@/components/shared/PageStates'
 import { useStudyContentLibrary } from '@/hooks/useStudyContentLibrary'
+import { BIG_NINE_LABELS } from '@/types/question'
 
 const CATEGORY_CONFIG: Record<string, { label: string; gradient: string; accentColor: string; badgeColor: string }> = {
   I: { label: 'Foundations & Professional Practice', gradient: 'from-purple-500 to-fuchsia-500', accentColor: 'text-purple-400', badgeColor: 'bg-purple-500/15 text-purple-400 border border-purple-500/20' },
@@ -205,7 +206,9 @@ export default function ReviewDetailPage() {
         {topic.bigNine.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-1.5">
             {topic.bigNine.map((area) => (
-              <Badge key={area} variant="default" className="text-[10px]">{area}</Badge>
+              <Badge key={area} variant="default" className="text-[10px]">
+                {BIG_NINE_LABELS[area as keyof typeof BIG_NINE_LABELS] ?? area}
+              </Badge>
             ))}
           </div>
         )}
@@ -232,6 +235,55 @@ export default function ReviewDetailPage() {
           </div>
         </div>
       )}
+
+      <div className="mb-10 grid gap-4 md:grid-cols-2">
+        <Card className="flex h-full flex-col justify-between">
+          <div>
+            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary-light">
+              <GraduationCap className="h-5 w-5 text-primary" />
+            </div>
+            <h2 className="font-display text-xl text-text-primary">Practice This Topic</h2>
+            <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">
+              Turn this review into a short targeted study session while the material is still fresh.
+            </p>
+          </div>
+          <Link
+            to="/study"
+            state={{
+              preselectedCategory: topic.contentCategory,
+              preselectedBigNine: topic.bigNine,
+              preselectedSessionLength: 10,
+              preselectedStudyMode: 'smart',
+            }}
+            className="mt-5 inline-flex items-center justify-center rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 font-body text-sm font-medium text-primary transition-colors hover:border-primary/50"
+          >
+            Start 10-question practice block
+          </Link>
+        </Card>
+
+        <Card className="flex h-full flex-col justify-between">
+          <div>
+            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/15">
+              <Layers className="h-5 w-5 text-secondary" />
+            </div>
+            <h2 className="font-display text-xl text-text-primary">Build A Quick Quiz</h2>
+            <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">
+              Use the same category and Big Nine filters to test whether the topic is sticking.
+            </p>
+          </div>
+          <Link
+            to="/quiz"
+            state={{
+              preselectedCategory: topic.contentCategory,
+              preselectedBigNine: topic.bigNine,
+              preselectedQuestionCount: 10,
+            }}
+            className="mt-5 inline-flex items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-3 font-body text-sm font-medium text-secondary transition-colors hover:border-secondary/50"
+          >
+            Open filtered quiz builder
+          </Link>
+        </Card>
+      </div>
 
       {/* Prev / Next Navigation */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">

@@ -5,6 +5,7 @@ import Button from '@/components/shared/Button'
 import { useAuth } from '@/hooks/useAuth'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { BETA_MODE_AVAILABLE, resolveBetaMode } from '@/lib/beta'
+import { trackEvent } from '@/lib/analytics'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -24,11 +25,13 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     setError(null)
+    trackEvent('login_started', { source: 'login_page' })
     const { error: authError } = await signIn(email, password)
     if (authError) {
       setError(authError)
       setLoading(false)
     } else {
+      trackEvent('login_completed', { source: 'login_page' })
       navigate(from, { replace: true })
     }
   }
@@ -113,9 +116,12 @@ export default function LoginPage() {
                 <input type="checkbox" className="rounded border-border bg-background text-primary focus:ring-primary" />
                 <span className="font-body text-sm text-text-secondary">Remember me</span>
               </label>
-              <Link to="/forgot-password" className="font-body text-sm text-primary hover:text-primary-hover">
-                Forgot password?
-              </Link>
+              <a
+                href="mailto:kristine@slpstudyhub.com?subject=Password%20reset%20help"
+                className="font-body text-sm text-primary hover:text-primary-hover"
+              >
+                Need password help?
+              </a>
             </div>
 
             <Button variant="primary" size="lg" className="w-full" disabled={loading}>

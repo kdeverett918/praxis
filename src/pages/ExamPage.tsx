@@ -16,6 +16,9 @@ import type { QuestionOption } from '@/types/database'
 import { buildBalancedExamQuestions, type QuestionBankItem } from '@/lib/questionBank'
 import { useQuestionBank } from '@/hooks/useQuestionBank'
 import { useSettingsStore } from '@/stores/settingsStore'
+import { trackEvent } from '@/lib/analytics'
+import { CONTENT_CATEGORY_LABELS } from '@/types/question'
+import type { ContentCategory } from '@/types/question'
 
 type ExamPhase = 'ready' | 'active' | 'results'
 
@@ -64,9 +67,45 @@ export default function ExamPage() {
     const correctOption = (question.options as QuestionOption[]).find((option) => option.isCorrect)
     return count + (selected && correctOption?.id === selected ? 1 : 0)
   }, 0)
-  const scaledScore = Math.round((correctCount / questions.length) * 200)
-  const passing = scaledScore >= 162
+  const accuracy = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0
+  const unansweredCount = Math.max(questions.length - answeredCount, 0)
+  const timeUsedSeconds = Math.max(totalTime - timeRemaining, 0)
   const isLowTime = examTimerWarnings && timeRemaining < 600
+  const categoryResults = (['I', 'II', 'III'] as ContentCategory[]).map((category) => {
+    const categoryQuestions = questions.filter((question) => question.contentCategory === category)
+    const categoryCorrect = categoryQuestions.reduce((count, question) => {
+      const selected = answers[question.id]
+      const correctOption = (question.options as QuestionOption[]).find((option) => option.isCorrect)
+      return count + (selected && correctOption?.id === selected ? 1 : 0)
+    }, 0)
+
+    return {
+      category,
+      total: categoryQuestions.length,
+      correct: categoryCorrect,
+      accuracy: categoryQuestions.length > 0
+        ? Math.round((categoryCorrect / categoryQuestions.length) * 100)
+        : 0,
+    }
+  })
+
+  const readiness = accuracy >= 80
+    ? {
+        label: 'Strong practice performance',
+        tone: 'bg-success-light text-text-primary',
+        desc: 'You are holding up well in a full simulation. Keep practicing pacing and clean up the weakest category below.',
+      }
+    : accuracy >= 65
+      ? {
+          label: 'Targeted cleanup needed',
+          tone: 'bg-warning-light text-text-primary',
+          desc: 'You are close enough to benefit from focused category review before the next full simulation.',
+        }
+      : {
+          label: 'Foundation rebuild recommended',
+          tone: 'bg-error-light text-text-primary',
+          desc: 'Use shorter targeted sets and the review library before leaning on another full simulation for feedback.',
+        }
 
   function startExam() {
     const qCount = examType === 'full' ? 132 : 66
@@ -76,6 +115,10 @@ export default function ExamPage() {
     setAnswers({})
     setFlagged(new Set())
     setFinishedDueToTime(false)
+    trackEvent('exam_started', {
+      exam_type: examType,
+      total_questions: qCount,
+    })
     setPhase('active')
   }
 
@@ -92,6 +135,18 @@ export default function ExamPage() {
       return next
     })
   }
+
+  useEffect(() => {
+    if (phase !== 'results' || questions.length === 0) return
+
+    trackEvent('exam_completed', {
+      exam_type: examType,
+      accuracy,
+      answered_count: answeredCount,
+      flagged_count: flagged.size,
+      completion_reason: finishedDueToTime ? 'time' : answeredCount >= questions.length ? 'complete' : 'manual',
+    })
+  }, [accuracy, answeredCount, examType, finishedDueToTime, flagged.size, phase, questions.length])
 
   if (loading) {
     return <PageLoadingState message="Loading your hosted exam bank..." />
@@ -115,7 +170,7 @@ export default function ExamPage() {
       <div className="mx-auto max-w-3xl pb-24 lg:pb-0">
         <h1 className="mb-2 font-display text-3xl text-text-primary">Exam Simulation</h1>
         <p className="mb-10 font-body text-text-secondary">
-          Experience realistic test conditions. 132 questions. 150 minutes. Just like the real Praxis 5331.
+          Experience realistic test conditions. Use this for pacing, endurance, and category-level feedback before test day.
         </p>
 
         {/* Exam type selector */}
@@ -154,6 +209,10 @@ export default function ExamPage() {
             <li className="flex items-start gap-3">
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
               Flag questions you want to revisit before finishing the exam
+            </li>
+            <li className="flex items-start gap-3">
+              <Trophy className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+              Results use practice accuracy and category breakdowns, not an official ETS scaled score
             </li>
           </ul>
         </Card>
@@ -198,29 +257,40 @@ export default function ExamPage() {
 
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-secondary">{scaledScore}</p>
-              <p className="mt-1 font-body text-sm text-text-muted">Scaled score</p>
+              <p className="font-mono text-3xl font-bold text-secondary">{accuracy}%</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Practice Accuracy</p>
             </Card>
             <Card className="text-center">
               <p className="font-mono text-3xl font-bold text-primary">{correctCount}</p>
               <p className="mt-1 font-body text-sm text-text-muted">Correct</p>
             </Card>
             <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-success">{answeredCount}</p>
-              <p className="mt-1 font-body text-sm text-text-muted">Answered</p>
+              <p className="font-mono text-3xl font-bold text-success">{unansweredCount}</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Unanswered</p>
             </Card>
             <Card className="text-center">
-              <p className="font-mono text-3xl font-bold text-warning">{flagged.size}</p>
-              <p className="mt-1 font-body text-sm text-text-muted">Flagged</p>
+              <p className="font-mono text-3xl font-bold text-warning">{Math.round(timeUsedSeconds / 60)}m</p>
+              <p className="mt-1 font-body text-sm text-text-muted">Time Used</p>
             </Card>
           </div>
 
-          <div className={`mt-6 rounded-2xl px-4 py-3 font-body text-sm ${
-            passing ? 'bg-success-light text-text-primary' : 'bg-warning-light text-text-primary'
-          }`}>
-            {passing
-              ? 'Projected outcome: above the 162 passing benchmark.'
-              : 'Projected outcome: below the 162 passing benchmark. Review weak areas and retake another simulation.'}
+          <div className={`mt-6 rounded-2xl px-4 py-4 font-body text-sm ${readiness.tone}`}>
+            <p className="font-semibold text-text-primary">{readiness.label}</p>
+            <p className="mt-1 leading-relaxed text-text-secondary">{readiness.desc}</p>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {categoryResults.map((result) => (
+              <Card key={result.category} className="text-center">
+                <p className="font-body text-xs font-semibold uppercase tracking-wider text-text-muted">
+                  {CONTENT_CATEGORY_LABELS[result.category]}
+                </p>
+                <p className="mt-2 font-mono text-3xl font-bold text-text-primary">{result.accuracy}%</p>
+                <p className="mt-1 font-body text-sm text-text-muted">
+                  {result.correct}/{result.total} correct
+                </p>
+              </Card>
+            ))}
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">

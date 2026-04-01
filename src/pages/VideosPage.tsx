@@ -1,8 +1,11 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Video } from 'lucide-react'
 import VideoCard from '@/components/shared/VideoCard'
+import Button from '@/components/shared/Button'
 import { SOCIAL_VIDEOS, CATEGORY_LABELS, PLATFORM_LABELS } from '@/data/social-videos'
 import type { SocialVideo } from '@/data/social-videos'
+import { trackEvent } from '@/lib/analytics'
 
 type CategoryFilter = SocialVideo['category'] | 'all'
 type PlatformFilter = SocialVideo['platform'] | 'all'
@@ -76,8 +79,29 @@ export default function VideosPage() {
             <div>
               <h1 className="font-display text-2xl text-text-primary md:text-3xl">Study Videos</h1>
               <p className="mt-1 font-body text-sm text-text-secondary">
-                Curated SLP content from top creators
+                Curated SLP content for grad students who want quick review between longer study blocks
               </p>
+            </div>
+          </div>
+
+          <div className="scroll-reveal mt-8 rounded-2xl border border-border bg-surface p-5" data-delay="40">
+            <p className="font-body text-sm font-semibold text-text-primary">
+              Free tips are great. A plan is better.
+            </p>
+            <p className="mt-1 max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
+              Use these videos for momentum, then take the free diagnostic so you know which categories deserve your actual study time this week.
+            </p>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <Link to="/diagnostic" onClick={() => trackEvent('videos_cta_clicked', { cta: 'free_diagnostic' })}>
+                <Button variant="primary" size="sm">
+                  Take Free Diagnostic
+                </Button>
+              </Link>
+              <Link to="/signup" onClick={() => trackEvent('videos_cta_clicked', { cta: 'start_free' })}>
+                <Button variant="outline" size="sm">
+                  Start Studying Free
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -137,6 +161,26 @@ export default function VideosPage() {
       {/* Disclaimer */}
       <div className="border-t border-border bg-surface/30 py-8">
         <div className="mx-auto max-w-7xl px-6 text-center">
+          <div className="mb-6 rounded-2xl border border-border bg-surface px-6 py-5 text-left sm:text-center">
+            <p className="font-body text-sm font-semibold text-text-primary">
+              Ready to move from passive watching to active review?
+            </p>
+            <p className="mt-1 font-body text-sm text-text-secondary">
+              Pair creator content with targeted questions and timed practice so your study time turns into score movement.
+            </p>
+            <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link to="/diagnostic" onClick={() => trackEvent('videos_footer_cta_clicked', { cta: 'free_diagnostic' })}>
+                <Button variant="primary" size="sm">
+                  Take Free Diagnostic
+                </Button>
+              </Link>
+              <Link to="/signup" onClick={() => trackEvent('videos_footer_cta_clicked', { cta: 'start_free' })}>
+                <Button variant="outline" size="sm">
+                  Start Studying Free
+                </Button>
+              </Link>
+            </div>
+          </div>
           <p className="font-body text-xs text-text-muted">
             Videos are curated from public content by independent SLP creators.
             SLP Study Hub is not affiliated with or endorsed by these creators.

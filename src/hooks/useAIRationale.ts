@@ -25,6 +25,11 @@ export function useAIRationale(): AIRationaleResult & {
       selectedAnswer: string
       correctAnswer: string
     }) => {
+      if (import.meta.env.PROD) {
+        setError('Client-side AI rationale is disabled in production. Route this through a server-side endpoint.')
+        return
+      }
+
       const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY as string | undefined
       if (!apiKey) {
         setError('AI rationale not configured')

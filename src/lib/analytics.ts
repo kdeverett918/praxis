@@ -63,3 +63,15 @@ export function trackPageView(path: string) {
     page_title: document.title,
   })
 }
+
+export function trackEvent(
+  eventName: string,
+  params: Record<string, string | number | boolean | null | undefined> = {},
+) {
+  if (!initializeAnalytics()) return
+
+  const analyticsWindow = getAnalyticsWindow()
+  if (!analyticsWindow) return
+
+  analyticsWindow.gtag?.('event', eventName, params)
+}

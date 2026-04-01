@@ -19,13 +19,14 @@ import { BIG_NINE_LABELS } from '@/types/question'
 import type { ContentCategory, BigNineArea } from '@/types/question'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { trackEvent } from '@/lib/analytics'
 
 type Phase = 'intro' | 'quiz' | 'results'
 
 const PRO_FEATURES = [
   'Unlimited questions',
   'Unlimited exam simulations',
-  'AI-powered rationales',
+  'Detailed answer explanations',
   'Full flashcard library',
   'Performance analytics',
   'Custom quiz builder',
@@ -108,6 +109,10 @@ export default function DiagnosticQuizPage() {
         // Complete
         const r = computeResults()
         setDiagnosticResult(r)
+        trackEvent('diagnostic_completed', {
+          accuracy: r.accuracy,
+          weak_area_count: r.weakAreas.length,
+        })
         setPhase('results')
       } else {
         setCurrentIndex((i) => i + 1)
@@ -116,7 +121,6 @@ export default function DiagnosticQuizPage() {
   }
 
   const result = phase === 'results' ? computeResults() : null
-  const scaledScore = result ? Math.round((result.accuracy / 100) * 200) : 0
 
   if (loading) {
     return (
@@ -171,7 +175,7 @@ export default function DiagnosticQuizPage() {
               Let's find out where you stand
             </h1>
             <p className="mx-auto mt-4 max-w-xl font-body text-lg text-text-secondary">
-              Answer 18 questions across all 3 content categories and 9 Big Nine areas. Takes about 8 minutes. No timer — focus on accuracy.
+              Answer 18 questions across all 3 content categories and 9 Big Nine areas. It takes about 8 minutes and gives you a quick readiness snapshot you can actually study from.
             </p>
           </div>
 
@@ -190,7 +194,14 @@ export default function DiagnosticQuizPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <Button variant="primary" size="lg" onClick={() => setPhase('quiz')}>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => {
+                trackEvent('diagnostic_started', { source: 'diagnostic_intro' })
+                setPhase('quiz')
+              }}
+            >
               Begin Assessment
               <ArrowRight className="h-5 w-5" />
             </Button>
@@ -277,6 +288,33 @@ export default function DiagnosticQuizPage() {
   /* ===== RESULTS + OFFER ===== */
   if (!result) return null
 
+  const plan =
+    result.accuracy >= 80
+      ? {
+          headline: 'Polish and pacing',
+          runway: '2 to 3 weeks',
+          weekday: 'Run 10 to 25 targeted questions on weekdays and review the misses immediately.',
+          weekend: 'Use one full-length exam block each weekend to build pacing confidence.',
+        }
+      : result.accuracy >= 60
+        ? {
+            headline: 'Targeted content rebuild',
+            runway: '4 to 6 weeks',
+            weekday: 'Use 25-question weekday blocks focused on your weakest areas first.',
+            weekend: 'Mix one longer review session with one timed practice set each week.',
+          }
+        : {
+            headline: 'Foundation first, then pacing',
+            runway: '6 to 8 weeks',
+            weekday: 'Keep weekday sessions short and consistent: 10-question sprints plus explanation review.',
+            weekend: 'Spend your longer block on fundamentals before moving into full exam simulations.',
+          }
+
+  const topWeakLabels = result.weakAreas
+    .slice(0, 3)
+    .map((area) => BIG_NINE_LABELS[area as BigNineArea] ?? area)
+    .join(', ')
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -297,11 +335,7 @@ export default function DiagnosticQuizPage() {
 
           <div className="mx-auto mt-4 max-w-lg rounded-xl border border-border bg-surface-elevated p-4">
             <p className="font-body text-sm text-text-secondary">
-              {scaledScore >= 162 ? (
-                <>Projected scaled score: <strong className="text-success">~{scaledScore}/200</strong> — you're on track to pass. Keep studying to strengthen weak areas.</>
-              ) : (
-                <>Projected scaled score: <strong className="text-error">~{scaledScore}/200</strong> — the passing score is 162. Focus on the areas below to close the gap.</>
-              )}
+              This is a quick readiness snapshot, not an official Praxis scaled score. Use it to decide what to review next, not to predict your exact exam outcome.
             </p>
           </div>
         </div>
@@ -348,13 +382,50 @@ export default function DiagnosticQuizPage() {
           </div>
         )}
 
+        <div className="mb-10 grid gap-4 md:grid-cols-3">
+          <Card className="md:col-span-2">
+            <p className="font-body text-xs font-semibold uppercase tracking-wider text-text-muted">Suggested Study Plan</p>
+            <h2 className="mt-2 font-display text-2xl text-text-primary">{plan.headline}</h2>
+            <p className="mt-3 font-body text-sm leading-relaxed text-text-secondary">
+              Recommended runway: <strong className="text-text-primary">{plan.runway}</strong>.
+              {topWeakLabels ? ` Start with ${topWeakLabels}.` : ' Start with the category cards above.'}
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border border-border bg-surface-elevated p-4">
+                <p className="font-body text-xs font-semibold uppercase tracking-wider text-text-muted">Weekday Plan</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">{plan.weekday}</p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface-elevated p-4">
+                <p className="font-body text-xs font-semibold uppercase tracking-wider text-text-muted">Weekend Plan</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">{plan.weekend}</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="flex flex-col justify-between">
+            <div>
+              <p className="font-body text-xs font-semibold uppercase tracking-wider text-text-muted">What To Do Next</p>
+              <ul className="mt-3 space-y-2 font-body text-sm leading-relaxed text-text-secondary">
+                <li>1. Review your weakest Big Nine areas first.</li>
+                <li>2. Study in short blocks on busy clinic days.</li>
+                <li>3. Save full sims for longer weekend sessions.</li>
+              </ul>
+            </div>
+            <Link to="/signup" className="mt-5">
+              <Button variant="outline" size="sm" className="w-full">
+                Turn This Into A Full Study Plan
+              </Button>
+            </Link>
+          </Card>
+        </div>
+
         {/* The Offer */}
         <div className="rounded-2xl border border-primary/40 bg-surface p-8 text-center shadow-glow-primary md:p-10">
           <h2 className="font-display text-2xl text-text-primary md:text-3xl">
-            You know where you're weak. Now fix it.
+            Turn this snapshot into a repeatable study routine.
           </h2>
           <p className="mx-auto mt-3 max-w-lg font-body text-text-secondary">
-            Get unlimited access to adaptive practice, AI rationales, and full exam simulations.
+            Get the full question bank, custom quiz builder, flashcards, and exam simulations so your weakest areas stop staying weak.
           </p>
 
           <div className="mt-6 flex items-baseline justify-center gap-1">
@@ -371,7 +442,7 @@ export default function DiagnosticQuizPage() {
             ))}
           </div>
 
-          <Link to="/signup" className="mt-8 block">
+          <Link to="/signup" className="mt-8 block" onClick={() => trackEvent('diagnostic_offer_clicked', { cta: 'pro_signup' })}>
             <Button variant="primary" size="lg" className="w-full max-w-md">
               Get Pro Access — $49
               <ArrowRight className="h-5 w-5" />

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BookOpen, ChevronRight, Search, Filter, BookMarked, FlaskConical, Stethoscope } from 'lucide-react'
+import { BookOpen, ChevronRight, Search, Filter, BookMarked, FlaskConical, Stethoscope, GraduationCap } from 'lucide-react'
 import Card from '@/components/shared/Card'
 import {
   PageEmptyState,
@@ -8,6 +8,7 @@ import {
   PageLoadingState,
 } from '@/components/shared/PageStates'
 import { useStudyContentLibrary } from '@/hooks/useStudyContentLibrary'
+import { BIG_NINE_LABELS } from '@/types/question'
 
 const CATEGORIES = [
   {
@@ -133,6 +134,24 @@ export default function ReviewPage() {
             <p className="font-body text-sm text-text-muted">{totalTopics} clinical cheat sheets</p>
           </div>
         </div>
+        <div className="mt-5 rounded-2xl border border-border bg-surface p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-body text-sm font-semibold text-text-primary">Turn review notes into active recall</p>
+              <p className="mt-1 font-body text-sm text-text-secondary">
+                Use these cheat sheets to get oriented, then jump into a short targeted study block while the topic is still fresh.
+              </p>
+            </div>
+            <Link
+              to="/study"
+              state={{ preselectedStudyMode: 'smart', preselectedSessionLength: 10 }}
+              className="inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2 font-body text-sm font-medium text-primary transition-colors hover:border-primary/50"
+            >
+              <GraduationCap className="h-4 w-4" />
+              Start 10-question study block
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Search + Filter Bar */}
@@ -198,6 +217,17 @@ export default function ReviewPage() {
                     {section.label}
                   </h2>
                 </div>
+                <Link
+                  to="/study"
+                  state={{
+                    preselectedCategory: section.key,
+                    preselectedStudyMode: 'free',
+                    preselectedSessionLength: 10,
+                  }}
+                  className="shrink-0 rounded-lg border border-border bg-surface px-3 py-2 font-body text-xs font-medium text-text-secondary transition-colors hover:border-primary/40 hover:text-text-primary"
+                >
+                  Study this category
+                </Link>
               </div>
             </div>
 
@@ -232,7 +262,7 @@ export default function ReviewPage() {
                                 key={area}
                                 className={`inline-flex rounded-md px-1.5 py-0.5 text-[10px] font-medium ${section.badgeColor}`}
                               >
-                                {area}
+                                {BIG_NINE_LABELS[area as keyof typeof BIG_NINE_LABELS] ?? area}
                               </span>
                             ))}
                             {topic.bigNine.length > 3 && (

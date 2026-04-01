@@ -82,6 +82,9 @@ export default function Navbar() {
               </a>
             </>
           )}
+          <Link to="/diagnostic" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+            Free Diagnostic
+          </Link>
           <Link to="/videos" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
             Videos
           </Link>
@@ -120,6 +123,7 @@ export default function Navbar() {
                 <a href="#about" className="text-text-secondary" onClick={() => setMobileOpen(false)}>About</a>
               </>
             )}
+            <Link to="/diagnostic" className="text-text-secondary" onClick={() => setMobileOpen(false)}>Free Diagnostic</Link>
             <Link to="/videos" className="text-text-secondary" onClick={() => setMobileOpen(false)}>Videos</Link>
             {BETA_MODE_AVAILABLE && (
               <Button variant={betaMode ? 'outline' : 'secondary'} size="md" className="w-full" onClick={handleContinueInBetaMode}>

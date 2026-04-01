@@ -3,7 +3,7 @@ import { Sparkles, Flag, ChevronRight, ChevronLeft } from 'lucide-react'
 import type { QuestionOption } from '@/types/database'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
-import { CONTENT_CATEGORY_LABELS, DIFFICULTY_LABELS } from '@/types/question'
+import { BIG_NINE_LABELS, CONTENT_CATEGORY_LABELS, DIFFICULTY_LABELS } from '@/types/question'
 import type { ContentCategory, Difficulty } from '@/types/question'
 
 interface QuestionCardProps {
@@ -161,7 +161,7 @@ export default function QuestionCard({
           <div className="mt-4 flex flex-wrap gap-2">
             {bigNine.map((area) => (
               <Badge key={area} variant="default" className="text-[10px]">
-                {area}
+                {BIG_NINE_LABELS[area as keyof typeof BIG_NINE_LABELS] ?? area}
               </Badge>
             ))}
           </div>
